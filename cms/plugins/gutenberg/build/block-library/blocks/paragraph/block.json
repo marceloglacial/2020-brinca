@@ -1,0 +1,29 @@
+{
+	"name": "core/paragraph",
+	"category": "common",
+	"attributes": {
+		"align": {
+			"type": "string"
+		},
+		"content": {
+			"type": "string",
+			"source": "html",
+			"selector": "p",
+			"default": ""
+		},
+		"dropCap": {
+			"type": "boolean",
+			"default": false
+		},
+		"placeholder": {
+			"type": "string"
+		},
+		"direction": {
+			"type": "string",
+			"enum": [
+				"ltr",
+				"rtl"
+			]
+		}
+	}
+}

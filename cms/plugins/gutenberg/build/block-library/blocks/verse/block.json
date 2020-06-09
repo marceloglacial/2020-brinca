@@ -1,0 +1,19 @@
+{
+	"name": "core/verse",
+	"category": "formatting",
+	"attributes": {
+		"content": {
+			"type": "string",
+			"source": "html",
+			"selector": "pre",
+			"default": "",
+			"__unstablePreserveWhiteSpace": true
+		},
+		"textAlign": {
+			"type": "string"
+		}
+	},
+	"supports": {
+		"lightBlockWrapper": true
+	}
+}

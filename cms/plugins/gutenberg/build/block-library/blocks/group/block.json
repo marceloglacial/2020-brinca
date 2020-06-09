@@ -1,0 +1,10 @@
+{
+	"name": "core/group",
+	"category": "layout",
+	"attributes": {
+		"tagName": {
+			"type": "string",
+			"default": "div"
+		}
+	}
+}

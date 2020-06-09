@@ -1,0 +1,24 @@
+{
+  "name": "2020-brinca",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "docker-compose up -d && cd ./www && gatsby develop -p 3003",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marceloglacial/2020-brinca.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/marceloglacial/2020-brinca/issues"
+  },
+  "homepage": "https://github.com/marceloglacial/2020-brinca#readme",
+  "dependencies": {
+    "gatsby-source-wordpress": "^3.3.10"
+  }
+}
