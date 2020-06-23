@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "docker-compose up -d && cd ./www && gatsby develop -p 3003",
+    "start": "docker-compose up -d && cd ./www && npm run dev",
     "build": "cd ./www && gatsby build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
