@@ -1,1 +1,2 @@
-import './components/basic/basic';
+import './components/Menu/Menu';
+import './components/Header/Header';

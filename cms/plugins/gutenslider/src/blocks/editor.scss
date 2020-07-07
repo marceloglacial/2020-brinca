@@ -1,0 +1,397 @@
+/**
+* #.# Editor Styles
+*
+* CSS for just Backend enqueued after style.scss
+* which makes it higher in priority.
+*/
+@import 'gutenslider/style/editor-list';
+
+.wp-block-eedee-block-gutenslider {
+	.gutenslider-edit {
+		display: flex;
+		flex-direction: row;
+		list-style: none !important;
+		z-index: 2;
+		max-height: 150px;
+		border-bottom: 2px solid #333;
+		padding: 0 0 1rem 0;
+		margin-bottom: 1rem;
+
+		.blocks-gallery-item {
+			transition: all 1s;
+			flex: 1;
+			padding: 0 2px;
+
+			&.has-add-item-button {
+				align-self: center;
+				padding: 0 1rem;
+
+				.dashicon {
+					margin-top: 3px;
+					margin-right: 3px;
+					margin-left: 0;
+				}
+			}
+
+			figure {
+				margin: 4px;
+				position: relative;
+				height: 100%;
+				display: flex;
+				justify-content: center;
+
+				img {
+					object-fit: cover;
+					width: 100%;
+				}
+			}
+		}
+	}
+
+	.slick-dots {
+		z-index: 2;
+	}
+
+	.gutenslider-info {
+		margin-left: 16px;
+		margin-right: 16px;
+		text-align: center;
+
+		span {
+			font-family: Consolas,Monaco,monospace;
+			font-size: 14px;
+		}
+
+		.btn-gutenslider-info-visibility {
+			display: inline-block;
+			vertical-align: middle;
+			height: 36px;
+	    width: 36px;
+	    padding: 3px;
+
+			> svg {
+				height: 30px;
+				width: 30px;
+				padding: 5px;
+			}
+		}
+	}
+
+	[data-type="eedee/block-gutenslide"] {
+		textarea.editor-default-block-appender__content {
+			// background: #fff6;
+		}
+	}
+
+	.editor-inner-blocks.block-editor-inner-blocks {
+		background: #fff4;
+	}
+}
+
+// this has no use until NOW
+// .wp-block-eedee-block-gutenslider > div {
+// 	overflow-x: hidden;
+// 	word-break: break-word;
+// 	overflow-wrap: break-word;
+// 	min-width: 0;
+// }
+//
+
+.wp-block-eedee-block-gutenslider.content-change {
+	[data-type="eedee/block-gutenslider-content"] {
+		display: none;
+	}
+
+	> .gutenslider-preview > .editor-inner-blocks > div > div.wp-block:not([data-type="eedee/block-gutenslide"]) {
+		display: none;
+	}
+}
+
+.wp-block-eedee-block-gutenslider.content-fixed {
+	[data-type="eedee/block-gutenslide"] {
+		display: none;
+	}
+
+	.gutenslider-preview {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+
+	.slick-slider {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+	}
+
+	.slick-slider,
+	.slick-list,
+	.slick-track {
+		height: 100%;
+	}
+
+	.slick-slider .slide-content {
+		display: none;
+	}
+}
+
+.slick-track{
+	display: flex;
+
+	.slick-slide{
+		display: flex;
+		height: auto;
+	}
+}
+
+.slick-list {
+	height: 100%;
+}
+
+.slick-slide {
+	height: auto;
+
+	> div {
+		height: 100%;
+		width: 100%;
+		display: flex;
+	}
+}
+
+/** editing controls **/
+.with-unit-buttons {
+	display: flex;
+	flex-direction: row-reverse;
+	padding-right: 12px;
+}
+
+.unit-buttons {
+	position: absolute;
+	right: 18px;
+
+	button {
+		font-size: 12px;
+		padding: 0;
+		margin-left: 10px;
+
+		&:hover {
+			background: #eee;
+			border-color: #00435d;
+		}
+	}
+
+	.is-toggled {
+		border-color: #006a95 #00648c #00648c;
+		border-bottom: 1px solid;
+	}
+}
+
+.gutenslider-toggle-edit-mode {
+	padding-top: 10px;
+}
+
+.wp-block-eedee-block-gutenslider {
+	.components-button.components-icon-button.block-list-appender__toggle {
+		display: none;
+	}
+}
+
+
+.gutenslider-toggle-fade-mode {
+	margin-bottom: 8px;
+}
+
+.gutenslider-toggle-content-mode {
+	margin-bottom: 16px;
+}
+
+.gutenslider-controls-general {
+	.components-button-group {
+		width: 100%;
+
+		.components-button {
+			width: 50%;
+			justify-content: center;
+			font-size: 12px;
+			margin-left: 0;
+		}
+	}
+}
+
+.eedee-icon-panel {
+	.components-panel__body-title {
+		.components-button {
+			display: flex;
+			flex-direction: row-reverse;
+			justify-content: flex-end;
+			align-items: center;
+
+			svg.components-panel__icon {
+				margin: 0 6px 0 0;
+				fill: none;
+			}
+		}
+	}
+}
+
+.gutenslider-controls-autoplay,
+.gutenslider-controls-general {
+	.components-base-control.components-range-control,
+	.components-base-control.components-toggle-control {
+		margin-bottom: 15px;
+	}
+
+	.components-toggle-control .components-form-toggle {
+		margin-right: 9px;
+	}
+}
+
+.gutenslider-controls-arrows,
+.gutenslider-controls-dots {
+	.component-color-indicator {
+		vertical-align: text-bottom;
+	}
+}
+
+.gutenslider-btn-add-slide {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	outline: 1px dashed #8d96a0;
+	width: 100%;
+	color: #555d66;
+	height: 60px !important;
+	background: transparent;
+	border-radius: 0;
+	border: none !important;
+	box-shadow: none !important;
+	color: #555d66;
+	font-size: 14px;
+	height: 40px;
+	justify-content: center;
+	line-height: 31px;
+	padding: 0 8px 0 8px;
+	text-align: center;
+	transition: color 0.2s ease;
+	width: 100%;
+	margin-top: 10px;
+
+	&:hover {
+		outline-color: #191e23 !important;
+		border: none !important;
+	}
+}
+
+.gutenslider-dimension-tabs {
+	.components-tab-panel__tabs {
+		margin-bottom: 10px;
+		display: flex;
+	}
+
+	.gutenslider-device-tab {
+		flex: 1;
+	}
+}
+
+.gutenslider-device-tab {
+	height: 35px;
+
+	.gutenslider-tab-title {
+		display: flex;
+		height: 35px;
+		padding-top: 7px;
+
+		span {
+			margin-left: 2px;
+		}
+	}
+}
+
+.gutenslider-device-tab.is-active {
+	box-shadow: inset 0 -3px #007cba;
+	font-weight: 600;
+	position: relative;
+	background: #f3f4f5;
+
+	&.is-active::before {
+		content: "";
+		position: absolute;
+		top: 0;
+		bottom: 1px;
+		right: 0;
+		left: 0;
+		border-bottom: 3px solid transparent;
+	}
+}
+
+//make the inner blocks of the active slide on top
+.slick-active .editor-block-list__layout.block-editor-block-list__layout {
+	z-index: 10;
+}
+
+//style the edit button of gallery images
+.block-library-gallery-item__inline-menu.inline-edit {
+	bottom: -2px;
+	left: -2px;
+	top: auto;
+	right: auto;
+
+	.blocks-gallery-item__edit {
+		padding: 0;
+	}
+}
+
+.wp-block-eedee-block-gutenslide {
+
+	.editor-default-block-appender__content.block-editor-default-block-appender__content
+	.block-editor-rich-text__editable[data-is-placeholder-visible="true"] {
+		// background: #fff3;
+	}
+
+	//make mover visible
+	.editor-block-list__layout.block-editor-block-list__layout {
+		padding-left: 32px;
+		padding-right: 32px;
+	}
+}
+
+[data-type="eedee/block-gutenslider"][data-align="center"],
+[data-type="eedee/block-gutenslider"][data-align="left"],
+[data-type="eedee/block-gutenslider"][data-align="right"] {
+	.editor-block-list__block-edit {
+		min-width: 50%;
+	}
+}
+
+.block-editor-block-list__block[data-align="full"] .wp-block-eedee-block-gutenslider .gutenslider-edit {
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+
+/**
+** Taken from columns editor.SCSS
+**/
+// .wp-block-eedee-block-gutenslide .block-editor-block-list__layout,
+.wp-block-eedee-block-gutenslider .block-editor-block-list__layout {
+	margin-left: 0;
+	margin-right: 0;
+
+	// This max-width is used to constrain the main editor column, it should not cascade into columns
+	.block-editor-block-list__block {
+		max-width: none;
+	}
+}
+
+// .block-editor-block-list__block[data-align="full"] .wp-block-eedee-block-gutenslide > .block-editor-inner-blocks,
+.block-editor-block-list__block[data-align="full"] .wp-block-eedee-block-gutenslider > .block-editor-inner-blocks {
+	padding-left: $block-padding;
+	padding-right: $block-padding;
+
+	@include break-small() {
+		padding-left: $block-padding + $block-padding + $block-side-ui-width + $block-side-ui-clearance + $block-side-ui-clearance;
+		padding-right: $block-padding + $block-padding + $block-side-ui-width + $block-side-ui-clearance + $block-side-ui-clearance;
+	}
+}
