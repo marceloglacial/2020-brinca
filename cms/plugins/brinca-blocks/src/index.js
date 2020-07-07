@@ -1,0 +1,1 @@
+import './components/basic/basic';

@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "docker-compose up -d && cd ./www && npm run dev",
-    "build": "cd ./www && gatsby build",
+    "start": "docker-compose up -d && cd ./cms/plugins/brinca-blocks && npm start",
+    "build": "./cms/plugins/brinca-blocks && npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
