@@ -135,6 +135,7 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__["registerBlockType"])('myg
     }
   },
   edit: function edit(props) {
+    console.log(props);
     var content = props.attributes.content;
     var textProps = {
       title: content

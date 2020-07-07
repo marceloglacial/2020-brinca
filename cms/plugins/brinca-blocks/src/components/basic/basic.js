@@ -12,6 +12,8 @@ registerBlockType('myguten/test-block', {
     },
   },
   edit: (props) => {
+    console.log(props);
+
     const { content } = props.attributes;
     const textProps = { title: content };
 
