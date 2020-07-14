@@ -2,6 +2,7 @@ import PageHeader from './PageHeader';
 import Menu from './Menu';
 import Main from './Main';
 import Footer from './Footer';
+import Header from './Header';
 
 const Layout = (props) => {
   const data = {
@@ -14,12 +15,22 @@ const Layout = (props) => {
     },
     topMenu: [
       {
-        name: 'Home',
-        link: '/',
+        pt: {
+          name: 'Conheça a Brinca',
+          link: '/conheca',
+        },
       },
       {
-        name: 'About',
-        link: '/about',
+        pt: {
+          name: 'Nossa missão',
+          link: '/missao',
+        },
+      },
+      {
+        pt: {
+          name: 'Quem Somos',
+          link: '/quem-somos',
+        },
       },
     ],
   };
@@ -27,6 +38,7 @@ const Layout = (props) => {
   return (
     <>
       <PageHeader {...data} />
+      <Header />
       <Menu {...data} />
       <Main {...data}>{props.children}</Main>
       <Footer {...data} />
