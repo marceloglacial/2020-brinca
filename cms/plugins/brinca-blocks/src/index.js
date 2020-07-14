@@ -1,2 +1,1 @@
-import './components/Menu/Menu';
-import './components/Header/Header';
+console.log('test');
