@@ -1,0 +1,210 @@
+.settings {
+	&-image {
+		max-width   : 100%;
+		padding-top : 5px;
+	}
+
+	&-tabs {
+
+		> li {
+			display : inline-block;
+
+			a {
+				padding : .6em;
+
+				&.active {
+					background-color : #ffffff;
+				}
+			}
+		}
+	}
+
+	&-tab {
+
+		&-section {
+			padding   : 20px 0 0 0;
+			max-width : 1030px;
+			position  : relative;
+
+			&.cloudinary-welcome & {
+				&-fields {
+					&-dashboard {
+						display       : flex;
+						align-items   : flex-start;
+						align-content : flex-start;
+						margin-top    : 40px;
+
+						&-description {
+							width  : 55%;
+							margin : 0 auto 0 0;
+						}
+
+						&-content {
+							width  : 35%;
+							margin : 0 auto;
+
+							.dashicons {
+								color : #9EA3A8;
+							}
+						}
+					}
+				}
+
+				&-card {
+					margin-top : 0;
+				}
+			}
+
+			&-fields {
+				.field-heading {
+					th {
+						display   : block;
+						width     : auto;
+						color     : #23282d;
+						font-size : 1.1em;
+						margin    : 1em 0;
+					}
+
+					td {
+						display    : none;
+						visibility : hidden;
+					}
+				}
+
+				.regular-textarea {
+					width  : 100%;
+					height : 60px;
+				}
+
+				.dashicons {
+					text-decoration : none;
+					vertical-align  : middle;
+				}
+
+				a .dashicons {
+					color : #5F5F5F;
+				}
+
+				&-dashboard {
+					&-error {
+						font-size : 1.2em;
+						color     : #5F5F5F;
+
+						.dashicons {
+							color : #AC0000;
+						}
+
+						.button {
+							font-size     : 1.1em;
+							height        : 40px;
+							line-height   : 40px;
+							padding-right : 40px;
+							padding-left  : 40px;
+						}
+					}
+
+					&-success {
+						font-size : 1.2em;
+						color     : #23282d;
+
+						&.expanded {
+							padding-top : 40px;
+						}
+
+						.dashicons {
+							color : #4FB651;
+						}
+
+						.button {
+							font-size     : 1.1em;
+							height        : 40px;
+							line-height   : 40px;
+							padding-right : 40px;
+							padding-left  : 40px;
+						}
+
+						.description {
+							color       : #5F5F5F;
+							font-weight : normal;
+							margin-top  : 12px;
+						}
+					}
+				}
+			}
+
+			&-card {
+				box-sizing       : border-box;
+				border           : 1px solid #E5E5E5;
+				background-color : #FFFFFF;
+				box-shadow       : 0 1px 1px 0 rgba(0, 0, 0, 0.07);
+				padding          : 20px 23px;
+				margin-top       : 12px;
+
+				.dashicons {
+					font-size : 1.4em;
+				}
+
+				h2 {
+					font-size   : 1.8em;
+					font-weight : normal;
+					margin-top  : 0;
+				}
+
+				&.pull-right {
+					width    : 450px;
+					padding  : 12px;
+					float    : right;
+					position : relative;
+					z-index  : 10;
+
+					img.settings-image {
+						box-shadow : 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+						border     : 1px solid #979797;
+						margin-top : 12px;
+					}
+
+					& h4, h3 {
+						margin-top : 0;
+					}
+				}
+			}
+
+			.field-row-cloudinary_url, .field-row-signup {
+				display : block;
+
+				td, th {
+					display : block;
+					width   : auto;
+					padding : 10px 0 0;
+
+					.sign-up {
+						vertical-align : baseline;
+					}
+				}
+			}
+
+			&.connect {
+				.form-table {
+					display   : inline-block;
+					width     : auto;
+					max-width : 580px;
+				}
+			}
+		}
+	}
+
+	&-valid {
+		color     : $color-green;
+		font-size : 30px;
+
+		&-field {
+			border-color : $color-green !important;
+		}
+	}
+
+	&-invalid {
+		&-field {
+			border-color : $color-red !important;
+		}
+	}
+}

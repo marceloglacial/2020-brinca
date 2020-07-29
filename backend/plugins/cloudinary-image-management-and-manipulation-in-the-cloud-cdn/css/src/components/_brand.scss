@@ -1,0 +1,109 @@
+@font-face {
+	font-family : 'cloudinary';
+	src         : url('fonts/cloudinary.eot?fj77m5');
+	src         : url('fonts/cloudinary.eot?fj77m5#iefix') format('embedded-opentype'),
+	url('fonts/cloudinary.ttf?fj77m5') format('truetype'),
+	url('fonts/cloudinary.woff?fj77m5') format('woff'),
+	url('fonts/cloudinary.svg?fj77m5#cloudinary') format('svg');
+	font-weight : normal;
+	font-style  : normal;
+}
+
+.dashicons {
+	&-cloudinary {
+		/* use !important to prevent issues with browser extensions that change fonts */
+		speak                   : none;
+		font-style              : normal;
+		font-weight             : normal;
+		font-variant            : normal;
+		text-transform          : none;
+		line-height             : 1;
+
+		/* Better Font Rendering =========== */
+		-webkit-font-smoothing  : antialiased;
+		-moz-osx-font-smoothing : grayscale;
+
+		&:before {
+			font-family : 'cloudinary' !important;
+			content     : '\e900';
+		}
+
+		&.success {
+			color : $color-green;
+		}
+
+		&.error {
+			color : $color-red;
+
+			&:before {
+				content : '\e901';
+			}
+		}
+
+		&.warning {
+			color : $color-orange;
+
+			&:before {
+				content : '\e902';
+			}
+		}
+
+		&.warning {
+			color : $color-orange;
+		}
+
+		&.warning {
+			color : $color-orange;
+		}
+	}
+}
+
+.column-cld_status {
+	width : 5.5em;
+
+	.dashicons {
+		&-cloudinary {
+			display : inline-block;
+
+			&:before {
+				font-size : 1.8rem;
+			}
+		}
+	}
+}
+
+.form-field, .form-table {
+	.error-notice {
+		display : none;
+		color   : $color-red;
+	}
+
+	input.cld-field:invalid {
+		border-color : $color-red;
+
+		+ .error-notice {
+			display : inline-block;
+		}
+	}
+}
+
+.cloudinary {
+	&-welcome {
+		background-image    : url("logo.svg");
+		background-repeat   : no-repeat;
+		background-size     : 153px;
+		background-position : top 12px right 20px;
+	}
+	&-stats{
+		display: inline-block;
+		margin-left: 25px;
+	}
+	&-stat{
+		cursor: help;
+	}
+	&-percent {
+		font-size      : 0.8em;
+		vertical-align : top;
+		color          : $color-blue;
+	}
+}

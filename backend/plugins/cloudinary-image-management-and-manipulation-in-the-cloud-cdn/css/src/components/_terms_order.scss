@@ -1,0 +1,53 @@
+.cld {
+	&-tax {
+		&-order {
+
+
+			&-list {
+				&-item {
+					border: 1px solid #efefef;
+					padding: 4px;
+					margin: 0 0 -1px;
+					background-color: $color-white;
+
+					&.no-items {
+						color: #888;
+						text-align: center;
+						display: none;
+
+						&:last-child {
+							display: block;
+						}
+					}
+
+					&.ui-sortable-helper {
+						box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+					}
+
+					&-placeholder {
+						background-color: #efefef;
+						height: 45px;
+						margin: 0;
+					}
+
+					&-handle {
+						cursor: grab;
+						margin-right: 4px;
+						color: #999;
+					}
+
+				}
+
+				&-type {
+					width: 45%;
+					display: inline-block;
+					margin-right: 8px;
+
+					input {
+						margin-right: 4px !important;
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,88 @@
+.sync {
+	.spinner {
+		display    : inline-block;
+		visibility : visible;
+		float      : none;
+		margin     : 0 5px 0 0;
+	}
+
+	&-media {
+
+		display : none;
+
+		&-progress {
+			display : none;
+
+			&-outer {
+				height           : 20px;
+				margin           : 20px 0 10px;
+				width            : 500px;
+				background-color : $color-light-grey;
+				position         : relative;
+
+				.progress-bar {
+					width            : 0;
+					height           : 20px;
+					background-color : $color-green;
+					transition       : width 250ms;
+				}
+			}
+
+			&-notice {
+				color : $color-red;
+			}
+		}
+
+		&-resource {
+			width   : 100px;
+			display : inline-block;
+		}
+
+		&-error {
+			color : $color-red;
+		}
+	}
+
+	&-count {
+		font-weight : bold;
+	}
+
+	&-details {
+		margin-top : 10px;
+	}
+
+	.button.stop-sync, .button.start-sync {
+		display : none;
+		padding : 0 16px;
+
+		.dashicons {
+			line-height : 2.2em;
+		}
+	}
+
+	.progress-text {
+		padding     : 12px 4px 12px 12px;
+		display     : inline-block;
+		font-weight : bold;
+	}
+
+	.completed {
+		max-width : 300px;
+		display   : none;
+	}
+
+	&-status {
+		&-disabled {
+			color : $color-red;
+		}
+
+		&-enabled {
+			color : $color-green;
+		}
+
+		&-button.button {
+			vertical-align : baseline;
+		}
+	}
+}
+
