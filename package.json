@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "docker-compose up -d && cd ./wordpress/plugins/brinca-blocks && npm start",
-    "build": "./cms/plugins/brinca-blocks && npm run build",
+    "dev": "(cd .. && cd backend && npm run dev) & next dev",
+    "start": "(docker-compose up -d && cd ./backend/plugins/brinca-blocks && npm start) & cd frontend && npm run dev",
+    "build": "./backend/plugins/brinca-blocks && npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
