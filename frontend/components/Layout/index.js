@@ -6,9 +6,7 @@ const Layout = (props) => {
   return (
     <>
       <Head />
-      <Container fluid>
-        <Header />
-      </Container>
+      <Header />
       <Container fluid>{props.children}</Container>
     </>
   );
