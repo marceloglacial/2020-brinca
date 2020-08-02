@@ -1,0 +1,51 @@
+.global {
+	&-transformations {
+		&-preview {
+			position  : relative;
+			max-width : 600px;
+		}
+
+		&-spinner {
+			display : none;
+		}
+
+		&-button.button-primary {
+			display  : none;
+			position : absolute;
+			z-index  : 100;
+		}
+
+		&-url {
+			margin-bottom : 5px;
+			margin-top    : 5px;
+
+
+			&-transformation {
+				max-width     : 100px;
+				overflow      : hidden;
+				text-overflow : ellipsis;
+				color         : #51A3FF;
+			}
+
+			&-file {
+				color : #f2d864;
+			}
+
+			&-link {
+				display          : block;
+				padding          : 16px;
+				background-color : #262c35;
+				text-decoration  : none;
+				color            : #fff;
+				border-radius    : 6px;
+				overflow         : hidden;
+				text-overflow    : ellipsis;
+
+				&:hover {
+					color           : #888888;
+					text-decoration : underline;
+				}
+			}
+		}
+	}
+}

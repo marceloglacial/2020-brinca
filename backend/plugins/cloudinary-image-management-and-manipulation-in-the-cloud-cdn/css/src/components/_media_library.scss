@@ -1,0 +1,11 @@
+.cloudinary {
+	&-media {
+		&-library {
+			position: relative;
+			margin-left: -20px;
+			@media screen and (max-width: 782px) {
+				margin-left: -10px;
+			}
+		}
+	}
+}
