@@ -1,6 +1,7 @@
 import { Nav, Navbar, NavDropdown, Container } from 'react-bootstrap';
 import Logo from 'components/Logo';
 import Link from 'next/link';
+import styles from './index.module.scss';
 
 const Header = (props) => {
   return (
@@ -13,13 +14,19 @@ const Header = (props) => {
         <Navbar.Collapse id='basic-navbar-nav'>
           <Nav className='mr-auto'>
             <Link href='/fale-conosco'>
-              <Nav.Link href='/fale-conosco'>Quem Somos</Nav.Link>
+              <Nav.Link className={styles.topNavLink} href='/fale-conosco'>
+                Quem Somos
+              </Nav.Link>
             </Link>
             <Link href='/eventos/'>
-              <Nav.Link href='/eventos/'>Eventos</Nav.Link>
+              <Nav.Link className={styles.topNavLink} href='/eventos/'>
+                Eventos
+              </Nav.Link>
             </Link>
             <Link href='/fale-conosco'>
-              <Nav.Link href='/fale-conosco'>Fale Conosco</Nav.Link>
+              <Nav.Link className={styles.topNavLink} href='/fale-conosco'>
+                Fale Conosco
+              </Nav.Link>
             </Link>
           </Nav>
           <Nav>
