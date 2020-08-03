@@ -1,7 +1,7 @@
 import { Nav, Navbar, NavDropdown, Container } from 'react-bootstrap';
 import Logo from 'components/Logo';
 import Link from 'next/link';
-import styles from './index.module.scss';
+import styles from './styles.module.scss';
 
 const Header = (props) => {
   return (
