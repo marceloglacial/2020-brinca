@@ -4,6 +4,29 @@ import Link from 'next/link';
 import styles from './styles.module.scss';
 
 const Header = (props) => {
+  const menuItems = [
+    {
+      id: 1,
+      title: 'Quem somos',
+      link: '/quem-somos',
+    },
+    {
+      id: 2,
+      title: 'Associe-se',
+      link: '/associe-se',
+    },
+    {
+      id: 3,
+      title: 'Eventos',
+      link: '/eventos',
+    },
+    {
+      id: 4,
+      title: 'Fale Conosco',
+      link: '/fale-conosco',
+    },
+  ];
+
   return (
     <Container>
       <Navbar expand='lg'>
@@ -13,21 +36,16 @@ const Header = (props) => {
         <Navbar.Toggle aria-controls='basic-navbar-nav' />
         <Navbar.Collapse id='basic-navbar-nav'>
           <Nav className='mr-auto'>
-            <Link href='/fale-conosco'>
-              <Nav.Link className={styles.topNavLink} href='/fale-conosco'>
-                Quem Somos
-              </Nav.Link>
-            </Link>
-            <Link href='/eventos/'>
-              <Nav.Link className={styles.topNavLink} href='/eventos/'>
-                Eventos
-              </Nav.Link>
-            </Link>
-            <Link href='/fale-conosco'>
-              <Nav.Link className={styles.topNavLink} href='/fale-conosco'>
-                Fale Conosco
-              </Nav.Link>
-            </Link>
+            {menuItems.map((item) => {
+              const { id, title, link } = item;
+              return (
+                <Link href={link} key={id}>
+                  <Nav.Link className={styles.topNavLink} href={link}>
+                    {title}
+                  </Nav.Link>
+                </Link>
+              );
+            })}
           </Nav>
           <Nav>
             <NavDropdown title='Language' id='basic-nav-dropdown'>

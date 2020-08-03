@@ -3,19 +3,35 @@ import Link from 'next/link';
 import styles from './styles.module.scss';
 
 const Footer = (props) => {
+  const menuItems = [
+    {
+      id: 1,
+      title: 'Associe-se',
+      link: 'associe-se',
+    },
+    {
+      id: 2,
+      title: 'Facebook',
+      link: '/',
+    },
+    {
+      id: 3,
+      title: 'Associe-se',
+      link: 'associe-se',
+    },
+  ];
   return (
     <>
       <Container className={styles.footer} fluid>
         <Nav className='justify-content-center py-3'>
-          <Link href='/fale-conosco'>
-            <Nav.Link href='/fale-conosco'>Associe-se</Nav.Link>
-          </Link>
-          <Link href='/eventos/'>
-            <Nav.Link href='/eventos/'>FaceBook</Nav.Link>
-          </Link>
-          <Link href='/fale-conosco'>
-            <Nav.Link href='/fale-conosco'>Quem Somos</Nav.Link>
-          </Link>
+          {menuItems.map((item) => {
+            const { id, title, link } = item;
+            return (
+              <Link href={link} key={id}>
+                <Nav.Link href={link}>{title}</Nav.Link>
+              </Link>
+            );
+          })}
         </Nav>
       </Container>
       <Container className={styles.copyright}>
