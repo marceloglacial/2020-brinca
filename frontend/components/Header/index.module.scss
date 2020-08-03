@@ -2,15 +2,17 @@
   color: green !important;
   position: relative;
 
-  &:before {
-      display: block;
-      height: 3px;
-      width: 100%;
-      background: yellow;
-      position: absolute;
+  &:after {
+    position: absolute;
+    display: block;
+    content: '';
+    height: 3px;
+    width: 0;
+    background: green;
+    transition: width 0.1s ease-in-out;
   }
 
-  &:hover {
-    text-decoration: underline;
+  &:hover:after {
+    width: calc(100% - 1rem);
   }
 }
