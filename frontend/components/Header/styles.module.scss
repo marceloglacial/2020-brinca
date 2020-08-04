@@ -1,5 +1,5 @@
 .topNavLink {
-  color: green !important;
+  color: var(--green) !important;
   position: relative;
 
   &:after {
@@ -8,7 +8,7 @@
     content: '';
     height: 3px;
     width: 0;
-    background: green;
+    background: var(--green);
     transition: width 0.1s ease-in-out;
   }
 

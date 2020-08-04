@@ -1,5 +1,5 @@
 .footer {
-  background: green;
+  background: var(--green);
 
   a {
     color: white;
@@ -10,5 +10,5 @@
   }
 }
 .copyright {
-  background: white;
+  background: var(--white);
 }

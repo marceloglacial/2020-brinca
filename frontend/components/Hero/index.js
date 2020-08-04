@@ -1,10 +1,6 @@
 import { Row, Carousel, Image, Container } from 'react-bootstrap';
 import Link from 'next/link';
-
-const styles = {
-  height: '100vh',
-  maxHeight: '720px',
-};
+import styles from './styles.module.scss';
 
 const Hero = (props) => {
   const images = [
@@ -44,7 +40,7 @@ const Hero = (props) => {
           {images.map((item) => {
             const { id, src, alt, title, description, link } = item;
             return (
-              <Carousel.Item style={styles} key={id}>
+              <Carousel.Item className={styles.item} key={id}>
                 <Link href={link}>
                   <a>
                     <Image className='d-block w-100' src={src} alt={alt} />

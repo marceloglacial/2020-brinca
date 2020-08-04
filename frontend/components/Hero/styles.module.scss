@@ -1,0 +1,16 @@
+.item {
+  height: 90vh;
+  max-height: 720px;
+  position: relative;
+}
+
+.item a::after {
+  display: block;
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  background: var(--fade);
+}
