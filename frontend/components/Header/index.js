@@ -33,7 +33,10 @@ const Header = (props) => {
         <Navbar.Brand>
           <Logo />
         </Navbar.Brand>
-        <Navbar.Toggle aria-controls='basic-navbar-nav' />
+        <Navbar.Toggle
+          aria-controls='basic-navbar-nav'
+          className={styles.navBarButton}
+        />
         <Navbar.Collapse id='basic-navbar-nav'>
           <Nav className='mr-auto'>
             {menuItems.map((item) => {
