@@ -3,8 +3,8 @@ import { Container, Row, Col } from 'react-bootstrap';
 const Main = (props) => {
   return (
     <Container>
-      <Row>
-        <Col></Col>
+      <Row className='py-5'>
+        <Col>{props.children}</Col>
       </Row>
     </Container>
   );
