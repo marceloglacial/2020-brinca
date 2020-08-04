@@ -14,7 +14,7 @@ const HighLights = (props) => {
             </Col>
           </Row>
           <Row>
-            <Col className='text-center'>
+            <Col xs={12} md={4} className='text-center'>
               <Image
                 src='/uploads/union.jpeg'
                 alt='Highlights'
@@ -24,7 +24,7 @@ const HighLights = (props) => {
               <h4>União</h4>
               <p>Integrando a comunidade Brasileira em Ottawa-Gatineau</p>
             </Col>
-            <Col className='text-center'>
+            <Col xs={12} md={4} className='text-center'>
               <Image
                 src='/uploads/collab.jpeg'
                 alt='Highlights'
@@ -35,7 +35,7 @@ const HighLights = (props) => {
               <h4>Colaboração</h4>
               <p>Apoiando o crescimento das famílias Brasileiras</p>
             </Col>
-            <Col className='text-center'>
+            <Col xs={12} md={4} className='text-center'>
               <Image
                 src='/uploads/diversitty.jpg'
                 alt='Highlights'

@@ -40,7 +40,11 @@ const Hero = (props) => {
               <Carousel.Item className={styles.item} key={id}>
                 <Link href={link}>
                   <a>
-                    <Image className='d-block w-100' src={src} alt={alt} />
+                    <Image
+                      className={`d-block w-100 ${styles.heroImage}`}
+                      src={src}
+                      alt={alt}
+                    />
                     <Carousel.Caption>
                       <h3>{title}</h3>
                       <p>{description}</p>

@@ -32,9 +32,9 @@ const Footer = (props) => {
               <Link href={link} key={id}>
                 <Nav.Link
                   href={link}
-                  className={style && styles.navItemHighlight}
+                  className={`mx-3 ${style && styles.navItemHighlight}`}
                 >
-                  {icon && <i class={`${icon} mr-2`}></i>}
+                  {icon && <i className={`${icon} mr-2`}></i>}
                   {title}
                 </Nav.Link>
               </Link>

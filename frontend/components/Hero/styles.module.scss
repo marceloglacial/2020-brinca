@@ -1,6 +1,4 @@
 .item {
-  height: 90vh;
-  max-height: 720px;
   position: relative;
 }
 
@@ -13,4 +11,31 @@
   height: 100vh;
   width: 100%;
   background: var(--fade);
+}
+
+.heroImage {
+  object-fit: cover;
+  max-height: 2000px;
+  min-height: 280px;
+  width: 100%;
+
+  // Small devices (landscape phones, 576px and up)
+  @media (min-width: 576px) {
+    max-height: 100vh;
+  }
+
+  // Medium devices (tablets, 768px and up)
+  @media (min-width: 768px) {
+    height: 620px;
+  }
+
+  // Extra large devices (large desktops, 1200px and up)
+  @media (min-width: 1200px) {
+    height: 650px;
+  }
+
+  // Extra Extra large devices (large monitors, 1920px and up)
+  @media (min-width: 1920px) {
+    height: 800px;
+  }
 }
