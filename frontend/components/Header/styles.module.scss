@@ -1,3 +1,8 @@
+.navbarContainer {
+  background-color: var(--white);
+  border-bottom: solid 1px var(--grey-light);
+  box-shadow: var(--shadow);
+}
 .topNavLink {
   color: var(--green) !important;
   position: relative;

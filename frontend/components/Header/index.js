@@ -28,8 +28,8 @@ const Header = (props) => {
   ];
 
   return (
-    <Container>
-      <Navbar expand='lg'>
+    <Navbar expand='lg' fixed='top' className={styles.navbarContainer}>
+      <Container>
         <Navbar.Brand>
           <Logo />
         </Navbar.Brand>
@@ -62,8 +62,8 @@ const Header = (props) => {
             </NavDropdown>
           </Nav>
         </Navbar.Collapse>
-      </Navbar>
-    </Container>
+      </Container>
+    </Navbar>
   );
 };
 export default Header;

@@ -1,13 +1,14 @@
 import Layout from 'components/Layout';
-import Hero from 'components/Hero';
-import HighLights from 'components/Highlights';
+import Main from 'components/Main';
+import Content from '../components/Content';
 
 const Home = (props) => {
   return (
     <>
       <Layout {...props}>
-        <Hero {...props} />
-        <HighLights {...props} />
+        <Main {...props}>
+          <Content {...props} />
+        </Main>
       </Layout>
     </>
   );
