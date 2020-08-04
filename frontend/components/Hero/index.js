@@ -33,7 +33,7 @@ const Hero = (props) => {
   return (
     <Container fluid>
       <Row>
-        <Carousel>
+        <Carousel className={styles.carouselContainer}>
           {images.map((item) => {
             const { id, src, alt, title, description, link } = item;
             return (

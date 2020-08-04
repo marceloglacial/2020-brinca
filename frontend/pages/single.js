@@ -1,9 +1,12 @@
 import Layout from 'components/Layout';
+import Main from 'components/Main';
 
 const Home = (props) => {
   return (
     <>
-      <Layout></Layout>
+      <Layout {...props}>
+        <Main {...props} />
+      </Layout>
     </>
   );
 };
