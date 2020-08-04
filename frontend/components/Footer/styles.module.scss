@@ -1,0 +1,27 @@
+.footer {
+  background: var(--green);
+
+  a {
+    color: white;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+.copyright {
+  background: var(--white);
+}
+
+.navItemHighlight {
+  background-color: var(--yellow);
+  border-radius: 50px;
+  color: var(--black) !important;
+  padding-right: 2rem;
+  padding-left: 2rem;
+
+  &:hover {
+    background-color: var(--white);
+    text-decoration: none !important;
+  }
+}

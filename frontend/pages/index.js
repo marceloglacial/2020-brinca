@@ -1,13 +1,13 @@
-import Header from 'components/Head';
 import Layout from 'components/Layout';
 import Hero from 'components/Hero';
+import HighLights from 'components/Highlights';
 
 const Home = (props) => {
   return (
     <>
-      <Header />
       <Layout>
         <Hero />
+        <HighLights />
       </Layout>
     </>
   );

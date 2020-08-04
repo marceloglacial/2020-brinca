@@ -1,31 +1,69 @@
-import { Nav, Navbar, NavDropdown } from 'react-bootstrap';
+import { Nav, Navbar, NavDropdown, Container } from 'react-bootstrap';
 import Logo from 'components/Logo';
+import Link from 'next/link';
+import styles from './styles.module.scss';
 
 const Header = (props) => {
+  const menuItems = [
+    {
+      id: 1,
+      title: 'Quem somos',
+      link: '/quem-somos',
+    },
+    {
+      id: 2,
+      title: 'Associe-se',
+      link: '/associe-se',
+    },
+    {
+      id: 3,
+      title: 'Eventos',
+      link: '/eventos',
+    },
+    {
+      id: 4,
+      title: 'Fale Conosco',
+      link: '/fale-conosco',
+    },
+  ];
+
   return (
-    <Navbar expand='lg'>
-      <Navbar.Brand>
-        <Logo />
-      </Navbar.Brand>
-      <Navbar.Toggle aria-controls='basic-navbar-nav' />
-      <Navbar.Collapse id='basic-navbar-nav'>
-        <Nav className='mr-auto'>
-          <Nav.Link href='#home'>Home</Nav.Link>
-          <Nav.Link href='#link'>Link</Nav.Link>
-          <NavDropdown title='Dropdown' id='basic-nav-dropdown'>
-            <NavDropdown.Item href='#action/3.1'>Action</NavDropdown.Item>
-            <NavDropdown.Item href='#action/3.2'>
-              Another action
-            </NavDropdown.Item>
-            <NavDropdown.Item href='#action/3.3'>Something</NavDropdown.Item>
-            <NavDropdown.Divider />
-            <NavDropdown.Item href='#action/3.4'>
-              Separated link
-            </NavDropdown.Item>
-          </NavDropdown>
-        </Nav>
-      </Navbar.Collapse>
-    </Navbar>
+    <Container>
+      <Navbar expand='lg'>
+        <Navbar.Brand>
+          <Logo />
+        </Navbar.Brand>
+        <Navbar.Toggle
+          aria-controls='basic-navbar-nav'
+          className={styles.navBarButton}
+        />
+        <Navbar.Collapse id='basic-navbar-nav'>
+          <Nav className='mr-auto'>
+            {menuItems.map((item) => {
+              const { id, title, link } = item;
+              return (
+                <Link href={link} key={id}>
+                  <Nav.Link className={styles.topNavLink} href={link}>
+                    {title}
+                  </Nav.Link>
+                </Link>
+              );
+            })}
+          </Nav>
+          <Nav>
+            <NavDropdown
+              title='Idioma'
+              id='basic-nav-dropdown'
+              className={styles.dropDownNavLink}
+            >
+              <NavDropdown.Item>Português</NavDropdown.Item>
+              <NavDropdown.Item>English</NavDropdown.Item>
+              <NavDropdown.Item>Française</NavDropdown.Item>
+            </NavDropdown>
+          </Nav>
+        </Navbar.Collapse>
+      </Navbar>
+    </Container>
   );
 };
 export default Header;
