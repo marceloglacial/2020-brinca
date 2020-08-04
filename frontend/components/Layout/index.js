@@ -7,6 +7,9 @@ const Layout = (props) => {
     <>
       <Head>
         <title>Brinca 2020 </title>
+        <meta name='description' content='Brinca 2020' />
+        <meta name='keywords' content='description' />
+
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <Header />
