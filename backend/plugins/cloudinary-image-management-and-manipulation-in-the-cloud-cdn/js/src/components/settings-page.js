@@ -1,5 +1,26 @@
 (function() {
 
+	// Disable the "off" dropdown option for Autoplay if
+	// the player isn't set to Cloudinary or if Show Controls if unchecked.
+	const disableAutoplayOff = function() {
+		const player = jQuery( '#field-video_player' ).val();
+		const showControls = jQuery( '#field-video_controls' ).prop( 'checked' );
+		const offSelection = jQuery( '#field-video_autoplay_mode option[value="off"]' );
+
+		if ( player === 'cld' && ! showControls ) {
+			offSelection.prop( 'disabled', true );
+			if ( offSelection.prop( 'selected' ) ) {
+				offSelection.next().prop( 'selected', true );
+			}
+		} else {
+			offSelection.prop( 'disabled', false );
+		}
+	}
+
+	disableAutoplayOff();
+	jQuery( document ).on( 'change', '#field-video_player', disableAutoplayOff );
+	jQuery( document ).on( 'change', '#field-video_controls', disableAutoplayOff );
+
 	jQuery( document ).ready( function( $ ) {
 
 		// Initilize instance events

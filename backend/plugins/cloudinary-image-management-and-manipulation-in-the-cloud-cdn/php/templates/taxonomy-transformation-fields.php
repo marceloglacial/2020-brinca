@@ -8,6 +8,7 @@ wp_enqueue_style( 'cld-player' );
 wp_enqueue_script( 'cld-player' );
 
 wp_add_inline_script( 'cloudinary', 'var CLD_GLOBAL_TRANSFORMATIONS = CLD_GLOBAL_TRANSFORMATIONS ? CLD_GLOBAL_TRANSFORMATIONS : {};', 'before' );
+$show_desc = true;
 ?>
 <h2><?php esc_html_e( 'Global Transformations', 'cloudinary' ); ?></h2>
 <?php foreach ( $this->fields as $field_slug => $field ) : ?>
@@ -16,7 +17,8 @@ wp_add_inline_script( 'cloudinary', 'var CLD_GLOBAL_TRANSFORMATIONS = CLD_GLOBAL
 		<?php
 		$field['slug']      = $field_slug;
 		$field['label_for'] = 'field-' . $field['slug'];
-		$this->media->plugin->components['settings']->render_field( $field );
+		$this->media->plugin->components['settings']->render_field( $field, null, $show_desc );
+		$show_desc = false;
 		?>
 	</div>
 <?php endforeach; ?>

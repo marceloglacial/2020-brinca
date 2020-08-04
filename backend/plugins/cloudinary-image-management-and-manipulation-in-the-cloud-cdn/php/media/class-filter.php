@@ -524,7 +524,7 @@ class Filter {
 		$context = $request->get_param( 'context' );
 		if ( 'edit' === $context ) {
 			$data                   = $response->get_data();
-			$content                = wp_unslash( $data['content']['raw'] );
+			$content                = $data['content']['raw'];
 			$data['content']['raw'] = $this->filter_out_local( $content );
 
 			$response->set_data( $data );

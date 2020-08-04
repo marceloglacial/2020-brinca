@@ -52,14 +52,14 @@ class Video {
 	 *
 	 * @var string
 	 */
-	const PLAYER_VER = '1.3.3';
+	const PLAYER_VER = '1.4.0';
 
 	/**
 	 * Cloudinary Core Version.
 	 *
 	 * @var string
 	 */
-	const CORE_VER = '2.6.2';
+	const CORE_VER = '2.6.3';
 
 	/**
 	 * Meta key to store usable video transformations for an attachment.
@@ -220,6 +220,7 @@ class Video {
 
 		if ( isset( $attr['autoplay'] ) ) {
 			$args['autoplay'] = 'true' === $attr['autoplay'];
+			$args['muted'] = 'true' === $attr['autoplay'];
 		}
 		if ( isset( $attr['loop'] ) ) {
 			$args['loop'] = 'true' === $attr['loop'];
@@ -228,6 +229,7 @@ class Video {
 		if ( ! empty( $transformations ) ) {
 			$args['transformation'] = $transformations;
 		}
+		$args['overwrite_transformations'] = $overwrite_transformations;
 		// Size settings.
 		$size = '';
 		if ( ! empty( $attr['width'] ) ) {
@@ -284,6 +286,7 @@ class Video {
 			// Enable Autoplay for this video.
 			if ( false !== strpos( $tag, 'autoplay' ) ) {
 				$args['autoplayMode'] = $this->config['video_autoplay_mode']; // if on, use defined mode.
+				$args['muted'] = 'always' === $this->config['video_autoplay_mode'];
 			}
 			// Enable Loop.
 			if ( false !== strpos( $tag, 'loop' ) ) {
@@ -307,20 +310,26 @@ class Video {
 			if ( false !== strpos( $classes, 'cld-overwrite' ) ) {
 				$overwrite_transformations = true;
 			}
+			$args['overwrite_transformations'] = $overwrite_transformations;
+
 			$cloudinary_url  = $this->media->cloudinary_url( $attachment_id, false, false, null, $overwrite_transformations );
-			$transformations = $this->media->get_transformations_from_string( $cloudinary_url, 'video' );
-			if ( ! empty( $transformations ) ) {
-				$args['transformation'] = $transformations;
-			}
-			$video = wp_get_attachment_metadata( $attachment_id );
-			if ( $this->player_enabled() ) {
-				$instance = $this->queue_video_config( $attachment_id, $url, $video['fileformat'], $args );
-				// Remove src and replace with an ID.
-				$new_tag = str_replace( 'src="' . $url . '"', 'id="cloudinary-video-' . esc_attr( $instance ) . '"', $tag );
-				$content = str_replace( $tag, $new_tag, $content );
-			} else {
-				// Just replace URL.
-				$content = str_replace( $url, $cloudinary_url, $content );
+			// Bail replacing the video URL for cases where it doesn't exist.
+			// Cases are, for instance, when the file size is larger than the API limits — free accounts.
+			if ( ! empty( $cloudinary_url ) ) {
+				$transformations = $this->media->get_transformations_from_string( $cloudinary_url, 'video' );
+				if ( ! empty( $transformations ) ) {
+					$args['transformation'] = $transformations;
+				}
+				$video = wp_get_attachment_metadata( $attachment_id );
+				if ( $this->player_enabled() ) {
+					$instance = $this->queue_video_config( $attachment_id, $url, $video['fileformat'], $args );
+					// Remove src and replace with an ID.
+					$new_tag = str_replace( 'src="' . $url . '"', 'id="cloudinary-video-' . esc_attr( $instance ) . '"', $tag );
+					$content = str_replace( $tag, $new_tag, $content );
+				} else {
+					// Just replace URL.
+					$content = str_replace( $url, $cloudinary_url, $content );
+				}
 			}
 		}
 
@@ -341,7 +350,6 @@ class Video {
 				$default       = array(
 					'publicId'    => $cloudinary_id,
 					'sourceTypes' => array( $video['format'] ), // @todo Make this based on eager items as mentioned above.
-					'controls'    => 'on' === $this->config['video_controls'] ? true : false,
 					'autoplay'    => 'off' !== $this->config['video_autoplay_mode'] ? true : false,
 					'loop'        => 'on' === $this->config['video_loop'] ? true : false,
 				);
@@ -356,9 +364,9 @@ class Video {
 				if ( empty( $config['size'] ) && ! empty( $config['transformation'] ) && ! $this->media->get_crop_from_transformation( $config['transformation'] ) ) {
 					$config['fluid'] = true;
 				}
-
+				
+				$config['controls'] = 'on' === $this->config['video_controls'] ? true : false;
 				$cld_videos[ $instance ] = $config;
-
 			}
 
 			if ( empty( $cld_videos ) ) {
@@ -384,15 +392,19 @@ class Video {
 					if ( videoElement.length === 1 ) {
 						videoElement = videoElement[0];
 						videoElement.style.width = '100%';
-
 						<?php if ( $this->config['video_freeform'] ): ?>
-							if ( videoElement.src.indexOf( '<?php echo esc_js( $this->config['video_freeform'] ) ?>' ) === -1 ) {
-								videoElement.src = videoElement.src.replace(
-									'upload/',
-									'upload/<?php echo esc_js( $this->config['video_freeform'] ) ?>/'
-								);
-							}
+
+						if ( 
+							videoElement.src.indexOf( '<?php echo esc_js( $this->config['video_freeform'] ) ?>' ) === -1 &&
+							! cldVideos[videoInstance]['overwrite_transformations']
+						) {
+							videoElement.src = videoElement.src.replace(
+								'upload/',
+								'upload/<?php echo esc_js( $this->config['video_freeform'] ) ?>/'
+							);
+						}
 						<?php endif ?>
+
 					}
 				}
 			} );

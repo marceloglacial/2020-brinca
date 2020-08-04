@@ -64,7 +64,7 @@ const cldCore = {
 					{
 						loader: 'file-loader',
 						options: {
-							name: '[name].[ext]',
+							name: '[name].[contenthash].[ext]',
 							outputPath: '../css/fonts/'
 						}
 					}

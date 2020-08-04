@@ -363,7 +363,8 @@ class Connect implements Config, Setup, Notice {
 				if ( 'limit' === $stat && isset( $this->usage[ $type ]['usage'] ) ) {
 					$value = $this->usage[ $type ]['usage'];
 				} elseif ( 'used_percent' === $stat && isset( $this->usage[ $type ]['credits_usage'] ) ) {
-					$value = $this->usage[ $type ]['credits_usage'];
+					// Calculate percentage based on credit limit and usage.
+					$value = round( $this->usage[ $type ]['credits_usage']/$this->usage['credits']['limit'] * 100, 2 );
 				}
 			}
 		}
@@ -432,28 +433,27 @@ class Connect implements Config, Setup, Notice {
 	 */
 	public function usage_notices() {
 		if ( ! empty( $this->usage ) ) {
-			$usage_type = 'used_percent';
-			if ( isset( $this->usage['credits'] ) ) {
-				$usage_type = 'credits_usage';
-			}
 			foreach ( $this->usage as $stat => $values ) {
 
-				if ( ! is_array( $values ) || ! isset( $values[ $usage_type ] ) || 0 > $values[ $usage_type ] ) {
+				if ( ! is_array( $values ) ) {
 					continue;
 				}
-
+				$usage = $this->get_usage_stat( $stat, 'used_percent' );
+				if ( empty ( $usage ) ) {
+					continue;
+				}
 				$link      = null;
 				$link_text = null;
-				if ( 90 <= $values[ $usage_type ] ) {
+				if ( 90 <= $usage ) {
 					// 90% used - show error.
 					$level     = 'error';
 					$link      = 'https://cloudinary.com/console/lui/upgrade_options';
 					$link_text = __( 'upgrade your account', 'cloudinary' );
-				} elseif ( 80 <= $values[ $usage_type ] ) {
-					$level = 'warning';
+				} elseif ( 80 <= $usage ) {
+					$level     = 'warning';
 					$link_text = __( 'upgrade your account', 'cloudinary' );
-				} elseif ( 70 <= $values[ $usage_type ] ) {
-					$level = 'neutral';
+				} elseif ( 70 <= $usage ) {
+					$level     = 'neutral';
 					$link_text = __( 'upgrade your account', 'cloudinary' );
 				} else {
 					continue;
@@ -465,7 +465,7 @@ class Connect implements Config, Setup, Notice {
 						'cloudinary'
 					),
 					ucwords( $stat ),
-					$values[ $usage_type ] . '%',
+					$usage . '%',
 					$link,
 					$link_text
 				);

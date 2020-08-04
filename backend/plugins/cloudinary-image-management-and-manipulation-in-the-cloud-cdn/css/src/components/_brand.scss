@@ -1,10 +1,10 @@
 @font-face {
 	font-family : 'cloudinary';
-	src         : url('fonts/cloudinary.eot?fj77m5');
-	src         : url('fonts/cloudinary.eot?fj77m5#iefix') format('embedded-opentype'),
-	url('fonts/cloudinary.ttf?fj77m5') format('truetype'),
-	url('fonts/cloudinary.woff?fj77m5') format('woff'),
-	url('fonts/cloudinary.svg?fj77m5#cloudinary') format('svg');
+	src         : url('fonts/cloudinary.eot');
+	src         : url('fonts/cloudinary.eot?x#iefix') format('embedded-opentype'),
+	url('fonts/cloudinary.ttf') format('truetype'),
+	url('fonts/cloudinary.woff') format('woff'),
+	url('fonts/cloudinary.svg?x#cloudinary') format('svg');
 	font-weight : normal;
 	font-style  : normal;
 }
@@ -48,12 +48,20 @@
 			}
 		}
 
-		&.warning {
-			color : $color-orange;
+		&.info {
+			color : $color-blue;
 		}
 
-		&.warning {
-			color : $color-orange;
+		&.downloading {
+			&:before {
+				content: '\e903';
+			}
+		}
+
+		&.syncing {
+			&:before {
+				content: '\e904';
+			}
 		}
 	}
 }
