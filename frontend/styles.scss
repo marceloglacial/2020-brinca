@@ -1,4 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Open+Sans:wght@300;400;700&display=swap');
+// Global
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Open+Sans:wght@300;400;600&display=swap');
 
 :root {
   --green: green;
@@ -22,6 +24,25 @@ body {
 
 a:hover {
   transition: all 0.3s ease-in-out !important;
+}
+
+.bottomLine {
+  position: relative;
+  padding-bottom: 0.5rem;
+  font-weight: bold;
+  z-index: 1;
+
+  &:after {
+    display: block;
+    content: '';
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    height: 0.5rem;
+    width: 150px;
+    background-color: var(--yellow);
+    z-index: 0;
+  }
 }
 
 // Bootstrap overrides

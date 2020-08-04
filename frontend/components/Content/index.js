@@ -1,3 +1,5 @@
+import styles from './styles.module.scss';
+
 const Content = (props) => {
   const contentProps = {
     title: 'Title',
@@ -9,9 +11,18 @@ const Content = (props) => {
 
   return (
     <>
-      <h2>{title}</h2>
+      <h2 className={`bottomLine ${styles.contentTitle} mb-5`}>{title}</h2>
       <p>{content}</p>
       <p>{content}</p>
+      <figure className='figure'>
+        <img
+          src='uploads/photo-1503516591419-4919952369f1.jpeg'
+          className='figure-img img-fluid rounded'
+        />
+        <figcaption className='figure-caption text-center'>
+          A caption for the above image.
+        </figcaption>
+      </figure>
       <p>{content}</p>
       <p>{content}</p>
       <p>{content}</p>
