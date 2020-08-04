@@ -6,8 +6,7 @@ const Hero = (props) => {
   const images = [
     {
       id: 1,
-      src:
-        'https://images.unsplash.com/photo-1536082555308-99948d5c8ecf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2467&q=80',
+      src: 'uploads/photo-1503516591419-4919952369f1.jpeg',
       alt: 'Fisrt',
       title: 'First Slide',
       description: 'Show!',
@@ -15,8 +14,7 @@ const Hero = (props) => {
     },
     {
       id: 2,
-      src:
-        'https://images.unsplash.com/photo-1530298867005-03ec1a6affd9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2467&q=80',
+      src: 'uploads/photo-1530298867005-03ec1a6affd9.jpeg',
       alt: 'Second',
       title: 'Second Slide',
       description: 'Show as well!',
@@ -24,8 +22,7 @@ const Hero = (props) => {
     },
     {
       id: 3,
-      src:
-        'https://images.unsplash.com/photo-1503516591419-4919952369f1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2700&q=80',
+      src: 'uploads/photo-1536082555308-99948d5c8ecf.jpeg',
       alt: 'Third',
       title: 'Third Slide',
       description: 'Show again!',

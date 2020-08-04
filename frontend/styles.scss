@@ -5,12 +5,19 @@
   --yellow: yellow;
   --red: red;
   --blue: blue;
+  --black: black;
   --white: white;
-  --fade: rgba(0, 0, 0, 0.6);
+  --fade: rgba(0, 0, 0, 0.5);
+  --grey: rgba(0, 0, 0, 0.7);
   --main-font: 'Open Sans', sans-serif;
   --secondary-font: 'Montserrat', sans-serif;
 }
 
 body {
   font-family: var(--main-font);
+}
+
+// Bootstrap overrides
+.navbar-light .navbar-nav .nav-link {
+  color: var(--black) !important;
 }
