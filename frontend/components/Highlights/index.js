@@ -8,7 +8,9 @@ const HighLights = (props) => {
         <Container className='p-5'>
           <Row>
             <Col>
-              <h3 className='text-center py-4'>Conheça o Brinca</h3>
+              <h3 className={`text-center py-4 ${styles.highlightsTitle}`}>
+                Conheça o Brinca
+              </h3>
             </Col>
           </Row>
           <Row>
