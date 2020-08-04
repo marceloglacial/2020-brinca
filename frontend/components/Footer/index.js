@@ -8,11 +8,13 @@ const Footer = (props) => {
       id: 1,
       title: 'Associe-se',
       link: 'associe-se',
+      style: true,
     },
     {
       id: 2,
       title: 'Facebook',
       link: '/',
+      icon: 'fab fa-facebook-square',
     },
     {
       id: 3,
@@ -23,12 +25,18 @@ const Footer = (props) => {
   return (
     <>
       <Container className={styles.footer} fluid>
-        <Nav className='justify-content-center py-3'>
+        <Nav className='justify-content-center py-4'>
           {menuItems.map((item) => {
-            const { id, title, link } = item;
+            const { id, title, link, icon, style } = item;
             return (
               <Link href={link} key={id}>
-                <Nav.Link href={link}>{title}</Nav.Link>
+                <Nav.Link
+                  href={link}
+                  className={style && styles.navItemHighlight}
+                >
+                  {icon && <i class={`${icon} mr-2`}></i>}
+                  {title}
+                </Nav.Link>
               </Link>
             );
           })}
@@ -36,9 +44,7 @@ const Footer = (props) => {
       </Container>
       <Container className={styles.copyright}>
         <Nav className={`justify-content-center py-3`}>
-          <Link href='/fale-conosco'>
-            <Nav.Item>Copyrights Brinca - 2020</Nav.Item>
-          </Link>
+          <Nav.Item>Copyrights Brinca - 2020</Nav.Item>
         </Nav>
       </Container>
     </>

@@ -2,9 +2,9 @@
 
 :root {
   --green: green;
+  --blue: blue;
   --yellow: yellow;
   --red: red;
-  --blue: blue;
   --black: black;
   --white: white;
   --fade: rgba(0, 0, 0, 0.5);
@@ -15,6 +15,10 @@
 
 body {
   font-family: var(--main-font);
+}
+
+a:hover {
+  transition: all 0.3s ease-in-out !important;
 }
 
 // Bootstrap overrides
