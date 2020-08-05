@@ -3,8 +3,11 @@ import Logo from 'components/Logo/Logo';
 import Link from 'next/link';
 import styles from './styles.module.scss';
 
+import dataContext from 'context/dataContext';
+import { useContext } from 'react';
+
 const Header = (props) => {
-  const { menuItems } = props;
+  const { menuItems } = useContext(dataContext);
   const items = menuItems ? menuItems : [];
 
   return (
