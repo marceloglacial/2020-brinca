@@ -19,10 +19,7 @@ const Content = (props) => {
       <h2 className={`bottomLine ${styles.contentTitle} mb-5`}>
         {title.rendered}
       </h2>
-      <div
-        contentEditable='true'
-        dangerouslySetInnerHTML={{ __html: content.rendered }}
-      />
+      <div dangerouslySetInnerHTML={{ __html: content.rendered }} />
     </>
   );
 };
