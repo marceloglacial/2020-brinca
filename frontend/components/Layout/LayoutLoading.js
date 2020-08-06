@@ -23,7 +23,7 @@ const LayoutLoading = (props) => {
         </div>
       </div>
       <div className='container-fluid'>
-        <Skeleton height={4} />
+        <Skeleton height={6} />
       </div>
 
       <div className='container'>
