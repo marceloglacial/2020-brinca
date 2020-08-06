@@ -18,7 +18,6 @@
     "@fortawesome/fontawesome-free": "^5.14.0",
     "bootstrap": "^4.5.0",
     "react-bootstrap": "^1.3.0",
-    "sass": "^1.26.10",
-    "swr": "^0.3.0"
+    "sass": "^1.26.10"
   }
 }

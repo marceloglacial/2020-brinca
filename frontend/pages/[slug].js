@@ -4,9 +4,9 @@ import Content from '../components/Content/Content';
 
 const Home = (props) => {
   return (
-    <Layout {...props}>
-      <Main {...props}>
-        <Content {...props} />
+    <Layout>
+      <Main>
+        <Content />
       </Main>
     </Layout>
   );

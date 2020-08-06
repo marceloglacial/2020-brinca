@@ -4,9 +4,9 @@ import HighLights from 'components/Highlights/Highlights';
 
 const Home = (props) => {
   return (
-    <Layout {...props}>
-      <Hero {...props} />
-      <HighLights {...props} />
+    <Layout>
+      <Hero />
+      <HighLights />
     </Layout>
   );
 };
