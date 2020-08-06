@@ -57,11 +57,12 @@ class Push_Sync {
 
 		// Define the sync types and their option keys.
 		$sync_types       = array(
+			'cloud_name'  => 'upload',
+			'folder'      => 'upload',
 			'file'        => 'upload',
+			'public_id'   => 'rename',
 			'breakpoints' => 'explicit',
 			'options'     => 'context',
-			'folder'      => 'upload',
-			'cloud_name'  => 'upload',
 		);
 		$this->sync_types = apply_filters( 'cloudinary_sync_types', $sync_types );
 
@@ -230,9 +231,9 @@ class Push_Sync {
 	public function resume_queue() {
 		// Check if there is a Cloudinary ID in case this was synced on-demand before being processed by the queue.
 		add_filter( 'cloudinary_on_demand_sync_enabled', '__return_false' ); // Disable the on-demand sync since we want the status.
-		add_filter( 'cloudinary_id', '__return_false' ); // Disable the on-demand sync since we want the status.
+		define( 'DOING_BULK_SYNC', true ); // Define bulk sync in action.
 
-		if ( false === $this->plugin->components['media']->cloudinary_id( $this->post_id ) ) {
+		if ( ! $this->plugin->components['sync']->is_synced( $this->post_id ) ) {
 			$stat = $this->push_attachments( array( $this->post_id ) );
 			if ( ! empty( $stat['processed'] ) ) {
 				$result = 'done';
@@ -303,7 +304,7 @@ class Push_Sync {
 
 		$type = 'upload';
 		// Check for explicit (has public_id, but no breakpoints).
-		$attachment_signature = $attachment->{Sync::META_KEYS['signature']};
+		$attachment_signature = $this->plugin->components['sync']->get_signature( $attachment->ID );
 		if ( empty( $attachment_signature ) ) {
 			if ( ! empty( $attachment->{Sync::META_KEYS['public_id']} ) ) {
 				// Has a public id but no signature, explicit update to complete download.
@@ -311,7 +312,7 @@ class Push_Sync {
 			}
 			// fallback to upload.
 		} else {
-			// Has signature. Compare and find if different.
+			// Has signature find differences and use specific sync method.
 			$required_signature = $this->plugin->components['sync']->generate_signature( $attachment->ID );
 			foreach ( $required_signature as $key => $signature ) {
 				if ( ( ! isset( $attachment_signature[ $key ] ) || $attachment_signature[ $key ] !== $signature ) && isset( $this->sync_types[ $key ] ) ) {
@@ -350,25 +351,31 @@ class Push_Sync {
 				return new \WP_Error( 'attachment_post_expected', __( 'An attachment post was expected.', 'cloudinary' ) );
 			}
 
+			// Get the media component.
+			$media = $this->plugin->components['media'];
+
 			// First check if this has a file and it can be uploaded.
 			$file      = get_attached_file( $post->ID );
 			$file_size = 0;
+			$downsync  = false;
 			if ( empty( $file ) ) {
 				return new \WP_Error( 'attachment_no_file', __( 'Attachment did not have a file.', 'cloudinary' ) );
 			} elseif ( ! file_exists( $file ) ) {
 				// May be an old upload type.
 				$src = get_post_meta( $post->ID, '_wp_attached_file', true );
-				if ( $this->plugin->components['media']->is_cloudinary_url( $src ) ) {
+				if ( $media->is_cloudinary_url( $src ) ) {
 					// Download first maybe.
 					if ( true === $down_sync ) {
 						$download = $this->plugin->components['sync']->managers['download']->down_sync( $post->ID );
 						if ( is_wp_error( $download ) ) {
+							delete_post_meta( $post->ID, Sync::META_KEYS['downloading'] );
 							update_post_meta( $post->ID, Sync::META_KEYS['sync_error'], $download->get_error_message() );
 
 							return new \WP_Error( 'attachment_download_error', $download->get_error_message() );
 						}
 						$file      = get_attached_file( $post->ID );
 						$file_size = filesize( $file );
+						$downsync  = true;
 					}
 				}
 			} else {
@@ -383,36 +390,48 @@ class Push_Sync {
 
 				// translators: variable is file size.
 				$error = sprintf( __( 'File size exceeds the maximum of %s. This media asset will be served from WordPress.', 'cloudinary' ), $max_size_hr );
-				$this->plugin->components['media']->delete_post_meta( $post->ID, Sync::META_KEYS['pending'] ); // Remove Flag.
+				$media->delete_post_meta( $post->ID, Sync::META_KEYS['pending'] ); // Remove Flag.
+
+				// Cleanup flags
+				delete_post_meta( $post->ID, Sync::META_KEYS['syncing'] );
+				delete_post_meta( $post->ID, Sync::META_KEYS['downloading'] );
 
 				return new \WP_Error( 'upload_error', $error );
 			}
 
 			// If it's got a public ID, then this is an explicit update.
+			$settings   = $this->plugin->config['settings'];
 			$public_id  = $post->{Sync::META_KEYS['public_id']}; // use the __get method on the \WP_Post to get post_meta.
-			$dirs       = wp_get_upload_dir();
-			$cld_folder = false;
-			$folder     = trailingslashit( $dirs['cloudinary_folder'] );
-			if ( '/' === $dirs['cloudinary_folder'] ) {
-				$folder = '';
-			}
+			$cld_folder = trailingslashit( $settings['sync_media']['cloudinary_folder'] );
 			if ( empty( $public_id ) ) {
 				$file_info = pathinfo( $file );
-				$public_id = $folder . $file_info['filename'];
+				$public_id = $cld_folder . $file_info['filename'];
 			}
 
-			// Check if cloudinary folder is in public_id.
-			$parts = explode( '/', $public_id );
-			if ( untrailingslashit( $dirs['cloudinary_folder'] ) === $parts[0] ) {
-				$cld_folder = $dirs['cloudinary_folder'];
+			// Assume that the public_id is a root item.
+			$public_id_folder = '';
+			$public_id_file   = $public_id;
+
+			// Check if in a lower level.
+			if ( false !== strpos( $public_id, '/' ) ) {
+				// Split the public_id into path and filename to allow filtering just the ID and not giving access to the path.
+				$public_id_info   = pathinfo( $public_id );
+				$public_id_folder = trailingslashit( $public_id_info['dirname'] );
+				$public_id_file   = $public_id_info['filename'];
 			}
-
-
+			// Check if this asset is a folder sync.
+			$folder_sync = $media->get_post_meta( $post->ID, Sync::META_KEYS['folder_sync'], true );
+			if ( ! empty( $folder_sync ) && false === $downsync ) {
+				$public_id_folder = $cld_folder; // Ensure the public ID folder is constant.
+			} else {
+				// Not folder synced, so set the folder to the folder that the asset originally came from.
+				$cld_folder = $public_id_folder;
+			}
 			// Prepare upload options.
 			$options = array(
 				'unique_filename' => false,
 				'resource_type'   => $resource_type,
-				'public_id'       => $public_id,
+				'public_id'       => $public_id_file,
 				'context'         => array(
 					'caption' => esc_attr( $post->post_title ),
 					'alt'     => $post->_wp_attachment_image_alt,
@@ -434,17 +453,17 @@ class Push_Sync {
 					$imagesize     = getimagesize( $file );
 					$meta['width'] = $imagesize[0];
 				}
-				$max_width = $this->plugin->components['media']->get_max_width();
+				$max_width = $media->get_max_width();
 				// Add breakpoints request options.
-				if ( ! empty( $this->plugin->config['settings']['global_transformations']['enable_breakpoints'] ) ) {
+				if ( ! empty( $settings['global_transformations']['enable_breakpoints'] ) ) {
 					$options['responsive_breakpoints'] = array(
 						'create_derived' => true,
-						'bytes_step'     => $this->plugin->config['settings']['global_transformations']['bytes_step'],
-						'max_images'     => $this->plugin->config['settings']['global_transformations']['breakpoints'],
+						'bytes_step'     => $settings['global_transformations']['bytes_step'],
+						'max_images'     => $settings['global_transformations']['breakpoints'],
 						'max_width'      => $meta['width'] < $max_width ? $meta['width'] : $max_width,
-						'min_width'      => $this->plugin->config['settings']['global_transformations']['min_width'],
+						'min_width'      => $settings['global_transformations']['min_width'],
 					);
-					$transformations                   = $this->plugin->components['media']->get_transformation_from_meta( $post->ID );
+					$transformations                   = $media->get_transformation_from_meta( $post->ID );
 					if ( ! empty( $transformations ) ) {
 						$options['responsive_breakpoints']['transformation'] = Api::generate_transformation_string( $transformations );
 					}
@@ -474,14 +493,19 @@ class Push_Sync {
 				$breakpoints['context'] = http_build_query( $breakpoints['context'], null, '|' );
 			}
 
-			$return = array(
+			// Restructure the path to the filename to allow correct placement in Cloudinary.
+			$public_id                      = ltrim( $public_id_folder . $options['public_id'], '/' );
+			$return                         = array(
 				'file'        => $file,
-				'folder'      => $cld_folder,
+				'folder'      => ltrim( $cld_folder, '/' ),
+				'public_id'   => $public_id,
 				'breakpoints' => array(),
 				'options'     => $options,
 			);
+			$return['options']['public_id'] = $public_id;
 			if ( ! empty( $breakpoints ) ) {
-				$return['breakpoints'] = $breakpoints;
+				$return['breakpoints']              = $breakpoints;
+				$return['breakpoints']['public_id'] = $public_id; // Stage public ID to folder for breakpoints.
 			}
 			$this->upload_options[ $post->ID ] = $return;
 
@@ -519,11 +543,16 @@ class Push_Sync {
 			'total'     => count( $attachments ),
 			'processed' => 0,
 		);
+		// Get media component.
+		$media = $this->plugin->components['media'];
 
 		// Go over each attachment.
 		foreach ( $attachments as $attachment ) {
 			$attachment = get_post( $attachment );
-			$upload     = $this->prepare_upload( $attachment->ID, true );
+			// Clear upload option cache for this item to allow down sync.
+			$this->upload_options[ $attachment->ID ] = false;
+
+			$upload = $this->prepare_upload( $attachment->ID, true );
 
 			// Filter out any attachments with problematic options.
 			if ( is_wp_error( $upload ) ) {
@@ -560,7 +589,7 @@ class Push_Sync {
 				if ( 'explicit' === $sync_type ) {
 					// Explicit update.
 					$args = array(
-						'public_id' => $upload['options']['public_id'],
+						'public_id' => $upload['public_id'],
 						'type'      => 'upload',
 					);
 					if ( ! empty( $upload['options']['responsive_breakpoints'] ) ) {
@@ -570,6 +599,13 @@ class Push_Sync {
 						$args['context'] = $upload['options']['context'];
 					}
 					$result = $this->plugin->components['connect']->api->explicit( $args );
+				} elseif ( 'rename' === $sync_type ) {
+					// Rename an asset.
+					$args   = array(
+						'from_public_id' => $media->get_post_meta( $attachment->ID, Sync::META_KEYS['public_id'] ),
+						'to_public_id'   => $upload['public_id'],
+					);
+					$result = $this->plugin->components['connect']->api->{$upload['options']['resource_type']}( 'rename', 'POST', $args );
 				} else {
 					// dynamic sync type..
 					$result = $this->plugin->components['connect']->api->{$sync_type}( $upload['file'], $upload['options'] );
@@ -583,7 +619,8 @@ class Push_Sync {
 			if ( is_wp_error( $result ) ) {
 				$error           = $result->get_error_message();
 				$stats['fail'][] = $error;
-				$this->plugin->components['media']->update_post_meta( $attachment->ID, Sync::META_KEYS['sync_error'], $error );
+				$media->update_post_meta( $attachment->ID, Sync::META_KEYS['sync_error'], $error );
+				delete_post_meta( $attachment->ID, Sync::META_KEYS['syncing'] );
 				continue;
 			}
 
@@ -597,8 +634,13 @@ class Push_Sync {
 				if ( ! empty( $result['version'] ) ) {
 					$meta_data[ Sync::META_KEYS['version'] ] = $result['version'];
 				}
-				$this->plugin->components['media']->delete_post_meta( $attachment->ID, Sync::META_KEYS['pending'] );
-				$this->plugin->components['media']->delete_post_meta( $attachment->ID, Sync::META_KEYS['sync_error'], false );
+				$media->delete_post_meta( $attachment->ID, Sync::META_KEYS['pending'] );
+
+				// Cleanup flags
+				delete_post_meta( $attachment->ID, Sync::META_KEYS['downloading'] );
+				delete_post_meta( $attachment->ID, Sync::META_KEYS['syncing'] );
+
+				$media->delete_post_meta( $attachment->ID, Sync::META_KEYS['sync_error'], false );
 				if ( ! empty( $this->plugin->config['settings']['global_transformations']['enable_breakpoints'] ) ) {
 					if ( ! empty( $result['responsive_breakpoints'] ) ) { // Images only.
 						$meta_data[ Sync::META_KEYS['breakpoints'] ] = $result['responsive_breakpoints'][0]['breakpoints'];
@@ -619,7 +661,7 @@ class Push_Sync {
 				$meta                                  = wp_get_attachment_metadata( $attachment->ID, true );
 				$meta[ Sync::META_KEYS['cloudinary'] ] = $meta_data;
 				wp_update_attachment_metadata( $attachment->ID, $meta );
-				$this->plugin->components['media']->update_post_meta( $attachment->ID, Sync::META_KEYS['public_id'], $upload['options']['public_id'] );
+				$media->update_post_meta( $attachment->ID, Sync::META_KEYS['public_id'], $upload['options']['public_id'] );
 				// Search and update link references in content.
 				$content_search = new \WP_Query( array( 's' => 'wp-image-' . $attachment->ID, 'fields' => 'ids', 'posts_per_page' => 1000 ) );
 				if ( ! empty( $content_search->found_posts ) ) {

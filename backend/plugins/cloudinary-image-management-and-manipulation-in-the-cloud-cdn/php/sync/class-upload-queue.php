@@ -140,6 +140,7 @@ class Upload_Queue {
 					$queue[ $type ][] = '<div>' . basename( $file ) . ': ' . $state->get_error_message() . '</div>';
 					// Add a flag that this file had an error as to not try process it again.
 					update_post_meta( $id, Sync::META_KEYS['sync_error'], $state->get_error_message() );
+					delete_post_meta( $id, Sync::META_KEYS['syncing'], $state->get_error_message() );
 				}
 			} else {
 				if ( ! in_array( $id, $queue[ $type ], true ) ) {

@@ -48,6 +48,9 @@ class Sync implements Setup, Assets {
 		'transformation' => '_transformations',
 		'sync_error'     => '_sync_error',
 		'cloudinary'     => '_cloudinary_v2',
+		'folder_sync'    => '_folder_sync',
+		'syncing'        => '_cloudinary_syncing',
+		'downloading'    => '_cloudinary_downloading',
 	);
 
 	/**
@@ -99,13 +102,18 @@ class Sync implements Setup, Assets {
 	 * @return bool
 	 */
 	public function is_synced( $post_id ) {
-		$return    = false;
-		$signature = $this->plugin->components['media']->get_post_meta( $post_id, self::META_KEYS['signature'], true );
-		if ( ! empty( $signature ) && $this->generate_signature( $post_id ) === $signature ) {
-			$return = $signature;
+		$signature = $this->get_signature( $post_id );
+		$expecting = $this->generate_signature( $post_id );
+
+		if ( ! empty( $signature ) && ! empty( $expecting ) && $expecting === $signature ) {
+			return true;
 		}
 
-		return $return;
+		if ( $this->plugin->components['settings']->is_auto_sync_enabled() && apply_filters( 'cloudinary_flag_sync', '__return_false' ) && ! get_post_meta( $post_id, Sync::META_KEYS['downloading'], true ) ) {
+			update_post_meta( $post_id, Sync::META_KEYS['syncing'], true );
+		}
+
+		return false;
 	}
 
 	/**
@@ -113,10 +121,16 @@ class Sync implements Setup, Assets {
 	 *
 	 * @param int $post_id The post id to generate a signature for.
 	 *
-	 * @return string
+	 * @return string|bool
 	 */
 	public function generate_signature( $post_id ) {
-		$upload               = $this->managers['push']->prepare_upload( $post_id );
+		$upload = $this->managers['push']->prepare_upload( $post_id );
+		// Check if has an error (ususally due to file quotas).
+		if ( is_wp_error( $upload ) ) {
+			$this->plugin->components['media']->get_post_meta( $post_id, self::META_KEYS['sync_error'], $upload->get_error_message() );
+
+			return false;
+		}
 		$credentials          = $this->plugin->components['connect']->get_credentials();
 		$upload['cloud_name'] = $credentials['cloud_name'];
 		$return               = array_map(
@@ -129,6 +143,31 @@ class Sync implements Setup, Assets {
 			},
 			$upload
 		);
+
+		return $return;
+	}
+
+	/**
+	 * Get the current sync signature of an asset.
+	 *
+	 * @param int $post_id The post ID.
+	 *
+	 * @return array|bool
+	 */
+	public function get_signature( $post_id ) {
+		static $signatures = array(); // Cache signatures already fetched.
+
+		$return = false;
+		if ( ! empty( $signatures[ $post_id ] ) ) {
+			$return = $signatures[ $post_id ];
+		} else {
+			$signature = $this->plugin->components['media']->get_post_meta( $post_id, self::META_KEYS['signature'], true );
+			if ( ! empty( $signature ) ) {
+				$base_signatures        = $this->generate_signature( $post_id );
+				$signatures[ $post_id ] = wp_parse_args( $signature, $base_signatures );
+				$return                 = $signatures[ $post_id ];
+			}
+		}
 
 		return $return;
 	}

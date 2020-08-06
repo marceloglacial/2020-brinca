@@ -157,6 +157,16 @@ class Download_Sync {
 		$public_id = strstr( $public_id, '.' . $path['extension'], true );
 		// Save public ID.
 		$media->update_post_meta( $attachment_id, Sync::META_KEYS['public_id'], $public_id );
+		// Check if the asset is in the same folder as the defined Cloudinary folder.
+		if ( false !== strpos( $public_id, '/' ) ) {
+			$path              = pathinfo( $public_id );
+			$asset_folder      = trailingslashit( $path['dirname'] );
+			$cloudinary_folder = trailingslashit( $this->plugin->config['settings']['sync_media']['cloudinary_folder'] );
+			if ( $asset_folder === $cloudinary_folder ) {
+				// The asset folder matches the defined cloudinary folder, flag it as being in a folder sync.
+				$media->update_post_meta( $attachment_id, Sync::META_KEYS['folder_sync'], true );
+			}
+		}
 
 		return $this->download_asset( $attachment_id, $file, basename( $file ), $media->get_transformations_from_string( $file ) );
 	}

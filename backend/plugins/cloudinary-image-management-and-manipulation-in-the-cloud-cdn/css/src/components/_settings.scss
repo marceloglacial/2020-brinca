@@ -208,3 +208,12 @@
 		}
 	}
 }
+
+.settings-warning {
+	display: inline-block;
+	padding: 5px 7px;
+	background-color: #e9faff;
+	border: 1px solid #ccd0d4;
+	border-left: 4px solid #00a0d2;
+	box-shadow: 0 1px 1px rgba(0,0,0,.04);
+}

@@ -685,14 +685,22 @@ class Media implements Setup {
 		}
 
 		/**
-		 * Filter the Cloudinary ID to allow extending it's availability.
+		 * Filter to  validate the Cloudinary ID to allow extending it's availability.
 		 *
 		 * @param string|bool $cloudinary_id The public ID from Cloudinary, or false if not found.
 		 * @param int         $attachment_id The id of the asset.
 		 *
 		 * @return string|bool
 		 */
-		$cloudinary_id = apply_filters( 'cloudinary_id', $cloudinary_id, $attachment_id );
+		$cloudinary_id = apply_filters( 'validate_cloudinary_id', $cloudinary_id, $attachment_id );
+
+		/**
+		 * Action the Cloudinary ID to allow extending it's availability.
+		 *
+		 * @param string|bool $cloudinary_id The public ID from Cloudinary, or false if not found.
+		 * @param int         $attachment_id The id of the asset.
+		 */
+		do_action( 'cloudinary_id', $cloudinary_id, $attachment_id );
 		// Cache ID to prevent multiple lookups.
 		if ( false !== $cloudinary_id ) {
 			$this->cloudinary_ids[ $attachment_id ] = $cloudinary_id;
@@ -1027,7 +1035,7 @@ class Media implements Setup {
 			if ( $format !== $file_info['extension'] ) {
 				// Format transformation.
 				$this->set_transformation( $transformations, 'fetch_format', $file_info['extension'] );
-				$url = $file_info['dirname'] . '/' . $file_info['filename'] . '.' . $format;
+				$url = $file_info['dirname'] . '/' . $file_info['filename'] . '.' . $file_info['extension'];
 			}
 			// Try to find the Attachment ID in context meta data.
 			$attachment_id = $this->get_id_from_sync_key( $sync_key );
@@ -1088,6 +1096,7 @@ class Media implements Setup {
 					'state' => 'inactive',
 					'note'  => esc_html__( 'Not Synced', 'cloudinary' ),
 				);
+				add_filter( 'cloudinary_flag_sync', '__return_true' );
 				if ( false === $this->cloudinary_id( $attachment_id ) ) {
 					// If false, lets check why by seeing if the file size is too large.
 					$file     = get_attached_file( $attachment_id ); // Get the file size to make sure it can exist in cloudinary.
@@ -1104,6 +1113,7 @@ class Media implements Setup {
 						'note'  => esc_html__( 'Synced', 'cloudinary' ),
 					);
 				}
+				remove_filter( 'cloudinary_flag_sync', '__return_true' );
 				// filter status.
 				$status = apply_filters( 'cloudinary_media_status', $status, $attachment_id );
 				?>

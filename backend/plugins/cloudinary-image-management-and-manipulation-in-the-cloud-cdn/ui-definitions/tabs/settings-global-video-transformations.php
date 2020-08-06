@@ -48,17 +48,23 @@ $struct = array(
 			),
 		),
 		'video_autoplay_mode' => array(
-			'label'     => null,
-			'prefix'    => __( 'Autoplay:', 'cloudinary' ),
-			'type'      => 'select',
-			'default'   => 'never',
-			'choices'   => array(
+			'label'       => null,
+			'prefix'      => __( 'Autoplay:', 'cloudinary' ),
+			'type'        => 'select',
+			'default'     => 'never',
+			'choices'     => array(
 				'off'       => __( 'Off', 'cloudinary' ),
 				'always'    => __( 'Always', 'cloudinary' ),
 				'on-scroll' => __( 'On-Scroll (Autoplay when in view)', 'cloudinary' ),
 			),
-			'condition' => array(
+			'condition'   => array(
 				'video_player' => 'cld',
+			),
+			'description' => sprintf(
+				// translators: Placeholders are <a> tags.
+				__( 'Please note that when choosing "always", the video will autoplay without sound (muted). This is a built-in browser feature and applies to all major browsers.%1$sRead more about muted autoplay%2$s', 'cloudinary' ),
+				'<br><a href="https://developers.google.com/web/updates/2016/07/autoplay" target="_blank">',
+				'</a>'
 			),
 		),
 
@@ -96,9 +102,10 @@ $struct = array(
 			'label'             => __( 'Video Transformation String', 'cloudinary' ),
 			'description'       => sprintf(
 				// translators: Placeholders are <a> tags.
-				__( 'The set of transformations to apply to all video assets, as a URL transformation string. %1$sVideo transformation reference%2$s.', 'cloudinary' ),
+				__( 'The set of transformations to apply to all video assets, as a URL transformation string. %1$sVideo transformation reference%2$s.%3$s<span class="settings-warning"><strong>Note</strong>: When updating transformations, all relevant assets will have new transformations applied; This may cause an increase in your Cloudinary usage.</span>', 'cloudinary' ),
 				'<br><a href="https://cloudinary.com/documentation/video_transformation_reference" target="_blank">',
-				'</a>'
+				'</a>',
+				'<br><br>'
 			),
 			'type'              => 'textarea',
 			'contextual'        => true, // Flags the field to be used in a contextual basis. i.e. taxonomies.

@@ -13,6 +13,7 @@ $transformations = array(
 	'video' => $this->get_transformations( 'video' ),
 );
 wp_add_inline_script( 'cloudinary', 'var CLD_GLOBAL_TRANSFORMATIONS = CLD_GLOBAL_TRANSFORMATIONS ? CLD_GLOBAL_TRANSFORMATIONS : {};', 'before' );
+$show_desc = true;
 ?>
 <tr>
 	<td colspan="2"><h2><?php esc_html_e( 'Global Transformations', 'cloudinary' ); ?></h2></td>
@@ -31,7 +32,8 @@ wp_add_inline_script( 'cloudinary', 'var CLD_GLOBAL_TRANSFORMATIONS = CLD_GLOBAL
 				$transformations[ $field['context'] ][ $field_slug ] = null;
 			}
 			// Render Field.
-			$this->media->plugin->components['settings']->render_field( $field, $transformations[ $field['context'] ][ $field_slug ] );
+			$this->media->plugin->components['settings']->render_field( $field, $transformations[ $field['context'] ][ $field_slug ], $show_desc );
+			$show_desc = false;
 			?>
 		</td>
 	</tr>

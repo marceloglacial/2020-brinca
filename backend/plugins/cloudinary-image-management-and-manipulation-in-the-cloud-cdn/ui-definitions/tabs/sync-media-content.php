@@ -5,10 +5,7 @@
  * @package Cloudinary
  */
 
-$autosync = false;
-if ( isset( $this->plugin->config['settings']['sync_media']['auto_sync'] ) && 'on' === $this->plugin->config['settings']['sync_media']['auto_sync'] ) {
-	$autosync = true;
-}
+$autosync = $this->plugin->components['settings']->is_auto_sync_enabled();
 ?>
 <?php if ( ! empty( $this->plugin->config['connect'] ) ) : ?>
 	<div class="settings-tab-section-card">
