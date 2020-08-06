@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Head from 'next/head';
 import Header from 'components/Header/Header';
 import Footer from 'components/Footer/Footer';
+import LayoutLoading from './LayoutLoading';
 import dataContext from 'context/dataContext';
 
 const Layout = (props) => {
@@ -20,12 +21,7 @@ const Layout = (props) => {
   }, []);
 
   // Loading states
-  if (!data || !pages)
-    return (
-      <div className='container text-center'>
-        <img src='images/loading.gif' />
-      </div>
-    );
+  if (!data || !pages) return <LayoutLoading />;
 
   const menuItems = data.items;
 
