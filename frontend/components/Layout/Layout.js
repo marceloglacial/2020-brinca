@@ -8,26 +8,29 @@ import dataContext from 'context/dataContext';
 const Layout = (props) => {
   const [pages, setPages] = useState(null);
   const [data, setData] = useState(null);
-  useEffect(() => {
-    fetch(`${process.env.NEXT_PUBLIC_WORDPRESS_URL}/wp-json/wp/v2/pages/`)
-      .then((response) => response.json())
-      .then((data) => setPages(data));
+  const [footerMenu, setFooterMenu] = useState(null);
 
-    fetch(
-      `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/wp-json/menus/v1/menus/main`
-    )
+  const fetchData = (endpoint, setter) => {
+    return fetch(`${process.env.NEXT_PUBLIC_WORDPRESS_URL}/wp-json/${endpoint}`)
       .then((response) => response.json())
-      .then((data) => setData(data));
+      .then((data) => setter(data));
+  };
+
+  useEffect(() => {
+    fetchData('wp/v2/pages/', setPages);
+    fetchData('menus/v1/menus/main', setData);
+    fetchData('menus/v1/menus/footer', setFooterMenu);
   }, []);
 
   // Loading states
-  if (!data || !pages) return <LayoutLoading />;
+  if (!data || !pages || !footerMenu) return <LayoutLoading />;
 
   const menuItems = data.items;
 
   const pageProps = {
     menuItems,
     pages,
+    footerMenu,
   };
 
   return (
