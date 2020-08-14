@@ -2,36 +2,35 @@ import { Nav, Container } from 'react-bootstrap';
 import Link from 'next/link';
 import styles from './styles.module.scss';
 
+import dataContext from 'context/dataContext';
+import { useContext } from 'react';
+
 const Footer = (props) => {
-  const menuItems = [
-    {
-      id: 1,
-      title: 'Associe-se',
-      link: 'associe-se',
-      style: true,
-    },
-    {
-      id: 2,
-      title: 'Facebook',
-      link: '/',
-      icon: 'fab fa-facebook-square',
-    },
-    {
-      id: 3,
-      title: 'Associe-se',
-      link: 'associe-se',
-    },
-  ];
+  const { footerMenu } = useContext(dataContext);
+  const menuItems = footerMenu.items;
   return (
     <>
       <Container className={styles.footer} fluid>
         <Nav className='justify-content-center py-4'>
           {menuItems.map((item) => {
-            const { id, title, link, icon, style } = item;
-            return (
-              <Link href={link} key={id}>
+            const { ID, title, slug, icon, url, style } = item;
+            if (!slug) {
+              return (
                 <Nav.Link
-                  href={link}
+                  key={ID}
+                  href={url}
+                  target='_blank'
+                  className={`mx-3 ${style && styles.navItemHighlight}`}
+                >
+                  {icon && <i className={`${icon} mr-2`}></i>}
+                  {title}
+                </Nav.Link>
+              );
+            }
+            return (
+              <Link href={slug} key={ID}>
+                <Nav.Link
+                  href={slug}
                   className={`mx-3 ${style && styles.navItemHighlight}`}
                 >
                   {icon && <i className={`${icon} mr-2`}></i>}

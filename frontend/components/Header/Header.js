@@ -33,7 +33,7 @@ const Header = (props) => {
               );
             })}
           </Nav>
-          <Nav>
+          {/* <Nav>
             <NavDropdown
               title='Idioma'
               id='basic-nav-dropdown'
@@ -43,7 +43,7 @@ const Header = (props) => {
               <NavDropdown.Item>English</NavDropdown.Item>
               <NavDropdown.Item>Française</NavDropdown.Item>
             </NavDropdown>
-          </Nav>
+          </Nav> */}
         </Navbar.Collapse>
       </Container>
     </Navbar>
