@@ -7,7 +7,7 @@ import dataContext from 'context/dataContext';
 
 const Layout = (props) => {
   const [pages, setPages] = useState(null);
-  const [data, setData] = useState(null);
+  const [headerMenu, setHeaderMenu] = useState(null);
   const [footerMenu, setFooterMenu] = useState(null);
 
   const fetchData = (endpoint, setter) => {
@@ -18,17 +18,15 @@ const Layout = (props) => {
 
   useEffect(() => {
     fetchData('wp/v2/pages/', setPages);
-    fetchData('menus/v1/menus/header', setData);
+    fetchData('menus/v1/menus/header', setHeaderMenu);
     fetchData('menus/v1/menus/footer', setFooterMenu);
   }, []);
 
   // Loading states
-  if (!data || !pages || !footerMenu) return <LayoutLoading />;
-
-  const menuItems = data.items;
+  if (!headerMenu || !pages || !footerMenu) return <LayoutLoading />;
 
   const pageProps = {
-    menuItems,
+    menuItems: headerMenu.items,
     pages,
     footerMenu,
   };
