@@ -1,23 +1,24 @@
 {
-  "name": "2020-brinca",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "frontend",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
-    "dev": "(cd .. && cd backend && npm run dev) & next dev",
-    "start": "(docker-compose up -d && cd ./backend/plugins/brinca-blocks && npm start) & cd frontend && npm run dev",
-    "build": "./backend/plugins/brinca-blocks && npm run build",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "postbuild": "next-on-netlify"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/marceloglacial/2020-brinca.git"
+  "dependencies": {
+    "next": "9.5.0",
+    "next-on-netlify": "^2.3.2",
+    "react": "16.13.1",
+    "react-dom": "16.13.1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/marceloglacial/2020-brinca/issues"
-  },
-  "homepage": "https://github.com/marceloglacial/2020-brinca#readme"
+  "devDependencies": {
+    "@fortawesome/fontawesome-free": "^5.14.0",
+    "bootstrap": "^4.5.0",
+    "react-bootstrap": "^1.3.0",
+    "react-loading-skeleton": "^2.1.1",
+    "sass": "^1.26.10"
+  }
 }
