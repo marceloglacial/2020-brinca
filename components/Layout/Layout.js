@@ -4,26 +4,20 @@ import Header from 'components/Header/Header';
 import Footer from 'components/Footer/Footer';
 import LayoutLoading from './LayoutLoading';
 import dataContext from 'context/dataContext';
+import fetchData from 'functions/fechData';
 
 const Layout = (props) => {
   const [pages, setPages] = useState(null);
   const [headerMenu, setHeaderMenu] = useState(null);
   const [footerMenu, setFooterMenu] = useState(null);
 
-  const fetchData = (endpoint, setter) => {
-    return fetch(`${process.env.NEXT_PUBLIC_WORDPRESS_URL}/wp-json/${endpoint}`)
-      .then((response) => response.json())
-      .then((data) => setter(data));
-  };
-
   useEffect(() => {
-    fetchData('wp/v2/pages/', setPages);
     fetchData('menus/v1/menus/header', setHeaderMenu);
     fetchData('menus/v1/menus/footer', setFooterMenu);
   }, []);
 
   // Loading states
-  if (!headerMenu || !pages || !footerMenu) return <LayoutLoading />;
+  if (!headerMenu || !footerMenu) return <LayoutLoading />;
 
   const pageProps = {
     menuItems: headerMenu.items,
