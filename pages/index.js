@@ -1,11 +1,12 @@
 import Layout from 'components/Layout/Layout';
 import Home from 'components/Home/Home';
-import Main from 'components/Main/Main';
+import Content from 'components/Content/Content';
 
 const Index = (props) => {
+  // TODO: Get front page from REST API
   return (
     <Layout>
-      <Home />
+      <Content slug={'pagina-inicial'} frontpage />
     </Layout>
   );
 };
