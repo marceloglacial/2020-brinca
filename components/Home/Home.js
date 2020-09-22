@@ -2,6 +2,7 @@ import { useContext } from 'react';
 import dataContext from 'context/dataContext';
 
 const Content = (props) => {
+  // TODO: Get it from the API
   const slug = 'pagina-inicial';
   const { pages } = useContext(dataContext);
   const hasPages = pages.length > 0;
