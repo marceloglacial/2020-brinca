@@ -8,7 +8,9 @@ import { useContext } from 'react';
 
 const Header = (props) => {
   const { menuItems } = useContext(dataContext);
-  const items = menuItems ? menuItems : [];
+  const items = menuItems
+    ? menuItems
+    : [{ ID: 0, title: 'Please create a menu called Header', slug: '/' }];
 
   return (
     <Navbar expand='lg' fixed='top' className={styles.navbarContainer}>
