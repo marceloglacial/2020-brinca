@@ -15,7 +15,7 @@ const Footer = (props) => {
   return (
     <>
       <Container className={styles.footer} fluid>
-        <Nav className='justify-content-center py-4'>
+        <Nav className='justify-content-center py-4  flex-column flex-sm-row'>
           {menuItems.map((item) => {
             const { ID, title, slug, icon, url } = item;
             if (!slug) {
@@ -43,14 +43,18 @@ const Footer = (props) => {
         </Nav>
       </Container>
       <Container className={styles.copyright}>
-        <Nav className={`justify-content-center py-3 ${styles.copyrightMenu}`}>
-          <Nav.Item>Copyrights Brinca - {year}</Nav.Item>
-          <Nav.Item>
+        <Nav
+          className={`justify-content-center py-4 flex-column flex-sm-row ${styles.copyrightMenu}`}
+        >
+          <Nav.Item className={`py-2 px-3`}>
+            Copyrights Brinca - {year}
+          </Nav.Item>
+          <Nav.Item className={`py-2 px-3`}>
             <a href={`http://marceloglacial.com`}>
               Developed by Marcelo Glacial
             </a>
           </Nav.Item>
-          <Nav.Item>
+          <Nav.Item className={`py-2 px-3`}>
             <a href={`${process.env.NEXT_PUBLIC_WORDPRESS_URL}/wp-admin`}>
               User Login
             </a>
