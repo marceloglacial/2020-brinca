@@ -45,6 +45,8 @@ Build
 
 ### Wordpress required Configuration
 
+Make sure <a href='https://thebatclaud.io/'>WP-REST-API V2 Menus</a> is installed.
+
 1. Create a menu called: 'Header'
 2. Create a menu called 'Footer'
 3. Define a Front page

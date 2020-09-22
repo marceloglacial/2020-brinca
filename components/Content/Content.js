@@ -1,24 +1,27 @@
-import { useContext } from 'react';
+import { useState, useEffect } from 'react';
 import styles from './styles.module.scss';
-import dataContext from 'context/dataContext';
-import { useRouter } from 'next/router';
+import fetchData from 'functions/fechData';
 
 const Content = (props) => {
-  const router = useRouter();
-  const { slug } = router.query;
-  const { pages } = useContext(dataContext);
-  const hasPages = pages.length > 0;
+  const { slug, frontpage } = props;
+  const [pageData, setPageData] = useState([]);
 
-  if (!hasPages) return <div className='container'>Loading ...</div>;
+  useEffect(() => {
+    fetchData(`wp/v2/pages?slug=${slug}`, setPageData);
+  }, []);
 
-  const actualPage = pages.find((item) => item.slug === slug);
-  const { title, content } = actualPage;
+  const hasData = pageData.length > 0;
+  if (!hasData) return null;
+
+  const { title, content } = pageData[0];
 
   return (
     <>
-      <h2 className={`bottomLine ${styles.contentTitle} mb-5`}>
-        {title.rendered}
-      </h2>
+      {!frontpage && (
+        <h2 className={`bottomLine ${styles.contentTitle} mb-5`}>
+          {title.rendered}
+        </h2>
+      )}
       <div dangerouslySetInnerHTML={{ __html: content.rendered }} />
     </>
   );

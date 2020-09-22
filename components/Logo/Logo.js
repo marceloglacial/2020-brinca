@@ -1,9 +1,6 @@
 import Link from 'next/link';
 import { Image } from 'react-bootstrap';
-
-const styles = {
-  maxWidth: '200px',
-};
+import styles from './logo.module.scss';
 
 const Logo = (props) => {
   return (
@@ -12,8 +9,7 @@ const Logo = (props) => {
         <Image
           src='/images/logo.png'
           alt='Brinca logo'
-          className='mb-3 mt-2'
-          style={styles}
+          className={`mb-1 mb-sm-3 mt-0 mt-sm-2 ${styles.logo}`}
         />
       </a>
     </Link>
