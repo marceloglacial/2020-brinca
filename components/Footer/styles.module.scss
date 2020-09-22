@@ -13,15 +13,17 @@
   background: var(--white);
 }
 
-.navItemHighlight {
-  background-color: var(--yellow);
-  border-radius: 50px;
-  color: var(--black) !important;
-  padding-right: 2rem;
-  padding-left: 2rem;
+.copyrightMenu {
+  text-transform: lowercase;
+  color: var(--grey-soft);
 
-  &:hover {
-    background-color: var(--white);
-    text-decoration: none !important;
+  div:not(:last-child) {
+    padding-right: 1rem;
+    margin-right: 1rem;
+    border-right: solid 1px var(--grey-soft);
+  }
+  a {
+    color: var(--grey-soft);
+    margin: 0;
   }
 }
