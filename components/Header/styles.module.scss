@@ -1,0 +1,27 @@
+.navbarContainer {
+  background-color: var(--white);
+  border-bottom: solid 1px var(--grey-light);
+  box-shadow: var(--shadow);
+}
+.topNavLink {
+  color: var(--green) !important;
+  position: relative;
+
+  &:after {
+    position: absolute;
+    display: block;
+    content: '';
+    height: 3px;
+    width: 0;
+    background: var(--green);
+    transition: width 0.1s ease-in-out;
+  }
+
+  &:hover:after {
+    width: calc(100% - 1rem);
+  }
+}
+
+.navBarButton {
+  border: none;
+}

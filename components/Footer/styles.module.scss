@@ -1,0 +1,29 @@
+.footer {
+  background: var(--green);
+
+  a {
+    color: white;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+.copyright {
+  background: var(--white);
+}
+
+.copyrightMenu {
+  text-transform: lowercase;
+  color: var(--grey-soft);
+
+  div:not(:last-child) {
+    padding-right: 1rem;
+    margin-right: 1rem;
+    border-right: solid 1px var(--grey-soft);
+  }
+  a {
+    color: var(--grey-soft);
+    margin: 0;
+  }
+}

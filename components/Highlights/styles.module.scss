@@ -1,0 +1,21 @@
+.highlights {
+  background: #f7f7f7;
+}
+
+.highlightsTitle {
+  position: relative;
+  z-index: 1;
+
+  &:after {
+    display: block;
+    content: '';
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 0.5rem;
+    width: 150px;
+    background-color: var(--yellow);
+    z-index: 0;
+  }
+}
