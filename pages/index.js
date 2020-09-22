@@ -1,13 +1,12 @@
 import Layout from 'components/Layout/Layout';
-import Hero from 'components/Hero/Hero';
-import HighLights from 'components/Highlights/Highlights';
+import Home from 'components/Home/Home';
+import Main from 'components/Main/Main';
 
-const Home = (props) => {
+const Index = (props) => {
   return (
     <Layout>
-      <Hero />
-      <HighLights />
+      <Home />
     </Layout>
   );
 };
-export default Home;
+export default Index;
