@@ -34,6 +34,9 @@ const Layout = (props) => {
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <Header />
+      <a class='skip-link' href='#main'>
+        Skip to main
+      </a>
       {props.children}
       <Footer />
     </dataContext.Provider>
