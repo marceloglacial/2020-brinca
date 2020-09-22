@@ -7,7 +7,9 @@ import { useContext } from 'react';
 
 const Footer = (props) => {
   const { footerMenu } = useContext(dataContext);
-  const menuItems = footerMenu.items;
+  const menuItems = footerMenu.items
+    ? footerMenu.items
+    : [{ ID: 0, title: 'Please create a menu called Footer', slug: '/' }];
   const year = new Date().getUTCFullYear();
 
   return (
