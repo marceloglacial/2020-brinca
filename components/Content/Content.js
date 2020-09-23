@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import styles from './styles.module.scss';
 import fetchData from 'functions/fechData';
+import ContentLoading from './ContentLoading';
 
 const Content = (props) => {
   const { slug, frontpage } = props;
@@ -11,7 +12,7 @@ const Content = (props) => {
   }, []);
 
   const hasData = pageData.length > 0;
-  if (!hasData) return null;
+  if (!hasData) return <ContentLoading />;
 
   const { title, content } = pageData[0];
 
