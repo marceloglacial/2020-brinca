@@ -1,9 +1,14 @@
 import ContentLoading from 'components/Content/ContentLoading';
+import Head from 'next/head';
 import Skeleton from 'react-loading-skeleton';
 
 const LayoutLoading = (props) => {
   return (
     <>
+      <Head>
+        <title>Brinca 2020 </title>
+      </Head>
+
       <div className='fixed-top'>
         <div className='container py-4 d-flex align-items-center'>
           <span className='mr-4'>
