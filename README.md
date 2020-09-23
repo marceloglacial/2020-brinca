@@ -36,6 +36,14 @@ Build
 
 ## WordPress Requirements
 
+### REST API
+
+Please be sure your permalink settings is set to `Post name`.
+
+### Front Page
+
+Please be sure your front page is set on `Settings > Reading > Your homepage displays`
+
 ### Must-use plugins:
 
 - <a href='http://joebr.io/'>WP Headless</a>

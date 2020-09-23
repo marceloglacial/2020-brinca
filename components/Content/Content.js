@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import styles from './styles.module.scss';
 import fetchData from 'functions/fechData';
+import ContentLoading from './ContentLoading';
+import Head from 'next/head';
 
 const Content = (props) => {
   const { slug, frontpage } = props;
@@ -11,16 +13,21 @@ const Content = (props) => {
   }, []);
 
   const hasData = pageData.length > 0;
-  if (!hasData) return null;
+  if (!hasData) return <ContentLoading />;
 
   const { title, content } = pageData[0];
 
   return (
     <>
       {!frontpage && (
-        <h2 className={`bottomLine ${styles.contentTitle} mb-5`}>
-          {title.rendered}
-        </h2>
+        <>
+          <Head>
+            <title>Brinca 2020 {`- ${title.rendered}`}</title>
+          </Head>
+          <h2 className={`bottomLine ${styles.contentTitle} mb-5`}>
+            {title.rendered}
+          </h2>
+        </>
       )}
       <div dangerouslySetInnerHTML={{ __html: content.rendered }} />
     </>
