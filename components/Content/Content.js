@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import styles from './styles.module.scss';
+import styles from './Content.module.scss';
 import fetchData from 'functions/fechData';
 import ContentLoading from './ContentLoading';
 import Head from 'next/head';
