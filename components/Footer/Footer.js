@@ -13,7 +13,7 @@ const Footer = (props) => {
   const year = new Date().getUTCFullYear();
 
   return (
-    <>
+    <footer>
       <Container className={styles.footer} fluid>
         <Nav className='justify-content-center py-4  flex-column flex-sm-row'>
           {menuItems.map((item) => {
@@ -61,7 +61,7 @@ const Footer = (props) => {
           </Nav.Item>
         </Nav>
       </Container>
-    </>
+    </footer>
   );
 };
 export default Footer;

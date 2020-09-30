@@ -29,7 +29,10 @@ const Content = (props) => {
           </h2>
         </>
       )}
-      <div dangerouslySetInnerHTML={{ __html: content.rendered }} />
+      <main
+        className='content'
+        dangerouslySetInnerHTML={{ __html: content.rendered }}
+      />
     </>
   );
 };
