@@ -30,7 +30,7 @@ const Content = (props) => {
         </>
       )}
       <main
-        className='content'
+        className={`content container ${styles.content}`}
         dangerouslySetInnerHTML={{ __html: content.rendered }}
       />
     </>
