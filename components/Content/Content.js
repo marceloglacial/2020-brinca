@@ -20,19 +20,21 @@ const Content = (props) => {
   return (
     <>
       {!frontpage && (
-        <>
-          <Head>
-            <title>Brinca 2020 {`- ${title.rendered}`}</title>
-          </Head>
+        <Head>
+          <title>Brinca 2020 {`- ${title.rendered}`}</title>
+        </Head>
+      )}
+      <article className='content pt-5'>
+        <header className='article__title'>
           <h2 className={`bottomLine ${styles.contentTitle} mb-5`}>
             {title.rendered}
           </h2>
-        </>
-      )}
-      <main
-        className={`content container ${styles.content}`}
-        dangerouslySetInnerHTML={{ __html: content.rendered }}
-      />
+        </header>
+        <section
+          className={`article__content`}
+          dangerouslySetInnerHTML={{ __html: content.rendered }}
+        />
+      </article>
     </>
   );
 };

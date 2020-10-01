@@ -1,5 +1,4 @@
 import Layout from 'components/Layout/Layout';
-import Main from 'components/Main/Main';
 import Content from '../components/Content/Content';
 import { useRouter } from 'next/router';
 
@@ -9,9 +8,7 @@ const Page = (props) => {
 
   return (
     <Layout>
-      <Main>
-        <Content slug={slug} />
-      </Main>
+      <Content slug={slug} />
     </Layout>
   );
 };

@@ -5,6 +5,7 @@ import Footer from 'components/Footer/Footer';
 import LayoutLoading from './LayoutLoading';
 import dataContext from 'context/dataContext';
 import fetchData from 'functions/fechData';
+import Main from 'components/Main/Main';
 
 const Layout = (props) => {
   const [pages, setPages] = useState(null);
@@ -37,7 +38,7 @@ const Layout = (props) => {
       <a className='skip-link' href='#main'>
         Skip to main
       </a>
-      {props.children}
+      <Main>{props.children}</Main>
       <Footer />
     </dataContext.Provider>
   );
