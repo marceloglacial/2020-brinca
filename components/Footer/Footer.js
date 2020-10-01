@@ -1,6 +1,6 @@
 import { Nav, Container } from 'react-bootstrap';
 import Link from 'next/link';
-import styles from './styles.module.scss';
+import styles from './Footer.module.scss';
 
 import dataContext from 'context/dataContext';
 import { useContext } from 'react';

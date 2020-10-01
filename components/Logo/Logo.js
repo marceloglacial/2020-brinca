@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { Image } from 'react-bootstrap';
-import styles from './logo.module.scss';
+import styles from './Logo.module.scss';
 
 const Logo = (props) => {
   return (

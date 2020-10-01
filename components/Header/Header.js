@@ -1,7 +1,7 @@
 import { Nav, Navbar, NavDropdown, Container } from 'react-bootstrap';
 import Logo from 'components/Logo/Logo';
 import Link from 'next/link';
-import styles from './styles.module.scss';
+import styles from './Header.module.scss';
 
 import dataContext from 'context/dataContext';
 import { useContext } from 'react';
