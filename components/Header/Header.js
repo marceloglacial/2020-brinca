@@ -35,17 +35,6 @@ const Header = (props) => {
               );
             })}
           </Nav>
-          {/* <Nav>
-            <NavDropdown
-              title='Idioma'
-              id='basic-nav-dropdown'
-              className={styles.dropDownNavLink}
-            >
-              <NavDropdown.Item>Português</NavDropdown.Item>
-              <NavDropdown.Item>English</NavDropdown.Item>
-              <NavDropdown.Item>Française</NavDropdown.Item>
-            </NavDropdown>
-          </Nav> */}
         </Navbar.Collapse>
       </Container>
     </Navbar>

@@ -13,7 +13,12 @@ const Content = (props) => {
   }, []);
 
   const hasData = pageData.length > 0;
-  if (!hasData) return <ContentLoading />;
+  if (!hasData)
+    return (
+      <div className='pt-4'>
+        <ContentLoading />
+      </div>
+    );
 
   const { title, content } = pageData[0];
 
@@ -24,12 +29,14 @@ const Content = (props) => {
           <title>Brinca 2020 {`- ${title.rendered}`}</title>
         </Head>
       )}
-      <article className='content pt-5'>
-        <header className='article__title'>
-          <h2 className={`bottomLine ${styles.contentTitle} mb-5`}>
-            {title.rendered}
-          </h2>
-        </header>
+      <article className='content pb-5'>
+        {!frontpage && (
+          <header className='article__title'>
+            <h2 className={`bottomLine ${styles.contentTitle} pt-5 mb-5`}>
+              {title.rendered}
+            </h2>
+          </header>
+        )}
         <section
           className={`article__content`}
           dangerouslySetInnerHTML={{ __html: content.rendered }}

@@ -31,7 +31,9 @@ const LayoutLoading = (props) => {
       <div className='container-fluid'>
         <Skeleton height={6} />
       </div>
-      <ContentLoading />
+      <div className='container'>
+        <ContentLoading />
+      </div>
       <div className='container-fluid mt-4 text-center'>
         <Skeleton height={70} />
         <p className='mt-2'>
