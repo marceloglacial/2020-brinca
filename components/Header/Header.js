@@ -1,4 +1,4 @@
-import { Nav, Navbar, NavDropdown, Container } from 'react-bootstrap';
+import { Nav, Navbar, Container } from 'react-bootstrap';
 import Logo from 'components/Logo/Logo';
 import Link from 'next/link';
 import styles from './Header.module.scss';

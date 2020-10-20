@@ -1,4 +1,5 @@
 import Skeleton from 'react-loading-skeleton';
+import { loadingLogo } from './Header.module.scss';
 
 const HeaderLoading = (props) => {
   return (
@@ -6,7 +7,7 @@ const HeaderLoading = (props) => {
       <div className='fixed-top'>
         <div className='container py-4 d-flex align-items-center'>
           <span className='mr-4'>
-            <Skeleton width={200} height={80} />
+            <Skeleton width={200} className={loadingLogo} />
           </span>
           <span className='mr-3  d-none d-sm-block'>
             <Skeleton width={100} />
