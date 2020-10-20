@@ -1,6 +1,6 @@
 import Link from 'next/link';
-import { Image } from 'react-bootstrap';
 import styles from './Logo.module.scss';
+import { Image } from 'react-bootstrap';
 
 const Logo = (props) => {
   // TODO: Get logo pro API
