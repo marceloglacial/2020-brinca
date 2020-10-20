@@ -25,3 +25,10 @@
 .navBarButton {
   border: none;
 }
+
+.loadingLogo {
+  height: 40px;
+  @media (min-width: 768px) {
+    height: 80px;
+  }
+}
