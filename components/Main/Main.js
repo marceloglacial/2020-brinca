@@ -1,12 +1,12 @@
-import { Container, Row, Col } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 
 const Main = (props) => {
   return (
-    <Container>
-      <Row className='py-0 py-sm-5'>
+    <main className='container'>
+      <Row>
         <Col>{props.children}</Col>
       </Row>
-    </Container>
+    </main>
   );
 };
 export default Main;

@@ -1,28 +1,38 @@
-import { useState, useEffect } from 'react';
-import styles from './styles.module.scss';
-import fetchData from 'functions/fechData';
+import styles from './Content.module.scss';
+import ContentLoading from './ContentLoading';
+import Head from 'next/head';
+import usePage from 'functions/usePage';
+import ContentError from './ContentError';
 
 const Content = (props) => {
   const { slug, frontpage } = props;
-  const [pageData, setPageData] = useState([]);
+  const { pageContent, isLoading, isError } = usePage(slug);
 
-  useEffect(() => {
-    fetchData(`wp/v2/pages?slug=${slug}`, setPageData);
-  }, []);
+  if (isLoading) return <ContentLoading />;
+  if (isError) return <ContentError />;
 
-  const hasData = pageData.length > 0;
-  if (!hasData) return null;
-
-  const { title, content } = pageData[0];
+  const { title, content } = pageContent[0];
 
   return (
     <>
       {!frontpage && (
-        <h2 className={`bottomLine ${styles.contentTitle} mb-5`}>
-          {title.rendered}
-        </h2>
+        <Head>
+          <title>Brinca 2020 {`- ${title.rendered}`}</title>
+        </Head>
       )}
-      <div dangerouslySetInnerHTML={{ __html: content.rendered }} />
+      <article className='content pb-5'>
+        {!frontpage && (
+          <header className='article__title'>
+            <h2 className={`bottomLine ${styles.contentTitle} pt-5 mb-5`}>
+              {title.rendered}
+            </h2>
+          </header>
+        )}
+        <section
+          className={`article__content`}
+          dangerouslySetInnerHTML={{ __html: content.rendered }}
+        />
+      </article>
     </>
   );
 };

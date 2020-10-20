@@ -1,22 +1,21 @@
 import { Nav, Container } from 'react-bootstrap';
 import Link from 'next/link';
-import styles from './styles.module.scss';
-
-import dataContext from 'context/dataContext';
-import { useContext } from 'react';
+import styles from './Footer.module.scss';
+import useMenu from 'functions/useMenu';
+import FooterLoading from './FooterLoading';
 
 const Footer = (props) => {
-  const { footerMenu } = useContext(dataContext);
-  const menuItems = footerMenu.items
-    ? footerMenu.items
-    : [{ ID: 0, title: 'Please create a menu called Footer', slug: '/' }];
   const year = new Date().getUTCFullYear();
+  const { menuContent, isLoading, isError } = useMenu('footer');
+
+  if (isLoading) return <FooterLoading />;
+  if (isError) return <HeaderError />;
 
   return (
-    <>
+    <footer>
       <Container className={styles.footer} fluid>
         <Nav className='justify-content-center py-4  flex-column flex-sm-row'>
-          {menuItems.map((item) => {
+          {menuContent.items.map((item) => {
             const { ID, title, slug, icon, url } = item;
             if (!slug) {
               return (
@@ -61,7 +60,7 @@ const Footer = (props) => {
           </Nav.Item>
         </Nav>
       </Container>
-    </>
+    </footer>
   );
 };
 export default Footer;
