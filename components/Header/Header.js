@@ -2,15 +2,15 @@ import { Nav, Navbar, NavDropdown, Container } from 'react-bootstrap';
 import Logo from 'components/Logo/Logo';
 import Link from 'next/link';
 import styles from './Header.module.scss';
-
-import dataContext from 'context/dataContext';
-import { useContext } from 'react';
+import useMenu from 'functions/useMenu';
+import HeaderLoading from './HeaderLoading';
+import HeaderError from './HeaderError';
 
 const Header = (props) => {
-  const { menuItems } = useContext(dataContext);
-  const items = menuItems
-    ? menuItems
-    : [{ ID: 0, title: 'Please create a menu called Header', slug: '/' }];
+  const { menuContent, isLoading, isError } = useMenu('header');
+
+  if (isLoading) return <HeaderLoading />;
+  if (isError) return <HeaderError />;
 
   return (
     <Navbar expand='lg' fixed='top' className={styles.navbarContainer}>
@@ -24,7 +24,7 @@ const Header = (props) => {
         />
         <Navbar.Collapse id='basic-navbar-nav'>
           <Nav className='mr-auto'>
-            {items.map((item) => {
+            {menuContent.items.map((item) => {
               const { ID, title, slug } = item;
               return (
                 <Link href={slug} key={ID}>
