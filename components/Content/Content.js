@@ -1,26 +1,17 @@
-import { useState, useEffect } from 'react';
 import styles from './Content.module.scss';
-import fetchData from 'functions/fechData';
 import ContentLoading from './ContentLoading';
 import Head from 'next/head';
+import usePage from 'functions/usePage';
+import ContentError from './ContentError';
 
 const Content = (props) => {
   const { slug, frontpage } = props;
-  const [pageData, setPageData] = useState([]);
+  const { pageContent, isLoading, isError } = usePage(slug);
 
-  useEffect(() => {
-    fetchData(`wp/v2/pages?slug=${slug}`, setPageData);
-  }, []);
+  if (isLoading) return <ContentLoading />;
+  if (isError) return <ContentError />;
 
-  const hasData = pageData.length > 0;
-  if (!hasData)
-    return (
-      <div className='pt-4'>
-        <ContentLoading />
-      </div>
-    );
-
-  const { title, content } = pageData[0];
+  const { title, content } = pageContent[0];
 
   return (
     <>

@@ -2,7 +2,7 @@ import Skeleton from 'react-loading-skeleton';
 
 const ContentLoading = (props) => {
   return (
-    <div className='py-5'>
+    <article className='content py-5'>
       <p>
         <Skeleton />
         <Skeleton width={'50%'} /> <br />
@@ -21,7 +21,7 @@ const ContentLoading = (props) => {
         <Skeleton width={'30%'} />
         <br />
       </p>
-    </div>
+    </article>
   );
 };
 export default ContentLoading;
