@@ -12,6 +12,10 @@ const Header = (props) => {
   if (isLoading) return <HeaderLoading />;
   if (isError) return <HeaderError />;
 
+  //
+  // WIP: Remove React Bootstrap
+  //
+
   return (
     <Navbar expand='lg' fixed='top' className={styles.navbarContainer}>
       <Container>
