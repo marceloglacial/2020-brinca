@@ -3,10 +3,12 @@ import styles from './Footer.module.scss';
 import useMenu from 'functions/useMenu';
 import FooterLoading from './FooterLoading';
 import FooterError from './FooterError';
+import useDeviceDetect from 'functions/useDeviceDetect';
 
 const Footer = (props) => {
   const year = new Date().getUTCFullYear();
   const { menuContent, isLoading, isError } = useMenu('footer');
+  const { isMobile } = useDeviceDetect();
 
   if (isLoading) return <FooterLoading />;
   if (isError) return <FooterError />;
@@ -20,7 +22,10 @@ const Footer = (props) => {
           {menuContent.items.map((item) => {
             const { ID, title, slug } = item;
             return (
-              <li className='pr-4 py-4' key={ID}>
+              <li
+                className={`pr-4 ${isMobile ? 'pt-4 pb-5' : 'py-4'}`}
+                key={ID}
+              >
                 <Link href={slug} key={ID}>
                   <a href={slug}>{title}</a>
                 </Link>

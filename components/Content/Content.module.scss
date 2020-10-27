@@ -1,5 +1,5 @@
 .content {
-  min-height: calc(100vh - 314px);
+  min-height: 100vh;
 
   @media (min-width: 768px) {
     min-height: unset;
