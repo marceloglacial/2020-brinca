@@ -16,11 +16,11 @@ const Header = (props) => {
       className={`navbar navbar-expand-lg fixed-top ${styles.navbarContainer}`}
     >
       <div className='container'>
-        <a className='navbar-brand' href='#'>
+        <div className='navbar-brand'>
           <Logo />
-        </a>
+        </div>
         <div className='collapse navbar-collapse'>
-          <ul className='navbar-nav mr-auto'>
+          <ul className='navbar-nav ml-auto'>
             {menuContent.items.map((item) => {
               const { ID, title, slug } = item;
               return (

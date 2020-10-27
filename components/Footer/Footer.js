@@ -13,25 +13,25 @@ const Footer = (props) => {
 
   return (
     <footer>
-      <div className={`container-fluid ${styles.footer}`}>
-        <ul className='nav justify-content-center py-3'>
+      <div className={styles.footerNav}>
+        <ul
+          className={`container px-3 mb-0 justify-content-sm-center ${styles.menuNav}`}
+        >
           {menuContent.items.map((item) => {
             const { ID, title, slug } = item;
             return (
-              <li className='nav-item' key={ID}>
+              <li className='pr-4 py-4' key={ID}>
                 <Link href={slug} key={ID}>
-                  <a className='nav-link' href={slug}>
-                    {title}
-                  </a>
+                  <a href={slug}>{title}</a>
                 </Link>
               </li>
             );
           })}
         </ul>
       </div>
-      <div className={`container-fluid`}>
+      <div className={styles.copyright}>
         <ul
-          className={`nav justify-content-center py-3 ${styles.copyrightMenu}`}
+          className={`nav justify-content-center flex-column flex-md-row py-3 ${styles.copyrightMenu}`}
         >
           <li className='nav-item' className='nav-link'>
             Copyrights Brinca - {year}
