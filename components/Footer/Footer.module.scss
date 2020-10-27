@@ -10,9 +10,6 @@
     }
   }
 }
-.copyright {
-  background: var(--white);
-}
 
 .copyrightMenu {
   text-transform: lowercase;
@@ -22,5 +19,9 @@
   a {
     color: var(--grey-soft);
     margin: 0;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }

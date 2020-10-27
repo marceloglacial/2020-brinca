@@ -1,11 +1,9 @@
-import { Row, Col } from 'react-bootstrap';
-
 const Main = (props) => {
   return (
     <main className='container'>
-      <Row>
-        <Col>{props.children}</Col>
-      </Row>
+      <div className='row'>
+        <div className='col'>{props.children}</div>
+      </div>
     </main>
   );
 };
