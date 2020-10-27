@@ -1,4 +1,3 @@
-import { Nav, Navbar, Container } from 'react-bootstrap';
 import Logo from 'components/Logo/Logo';
 import Link from 'next/link';
 import styles from './Header.module.scss';
@@ -13,31 +12,31 @@ const Header = (props) => {
   if (isError) return <HeaderError />;
 
   return (
-    <Navbar expand='lg' fixed='top' className={styles.navbarContainer}>
-      <Container>
-        <Navbar.Brand>
+    <nav
+      className={`navbar navbar-expand-lg fixed-top ${styles.navbarContainer}`}
+    >
+      <div className='container'>
+        <div className='navbar-brand'>
           <Logo />
-        </Navbar.Brand>
-        <Navbar.Toggle
-          aria-controls='basic-navbar-nav'
-          className={styles.navBarButton}
-        />
-        <Navbar.Collapse id='basic-navbar-nav'>
-          <Nav className='mr-auto'>
+        </div>
+        <div className='collapse navbar-collapse'>
+          <ul className='navbar-nav ml-auto'>
             {menuContent.items.map((item) => {
               const { ID, title, slug } = item;
               return (
-                <Link href={slug} key={ID}>
-                  <Nav.Link className={styles.topNavLink} href={slug}>
-                    {title}
-                  </Nav.Link>
-                </Link>
+                <li className='nav-item' key={ID}>
+                  <Link href={slug} key={ID}>
+                    <a className={`nav-link ${styles.topNavLink}`} href={slug}>
+                      {title}
+                    </a>
+                  </Link>
+                </li>
               );
             })}
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
+          </ul>
+        </div>
+      </div>
+    </nav>
   );
 };
 export default Header;

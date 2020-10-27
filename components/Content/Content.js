@@ -20,7 +20,7 @@ const Content = (props) => {
           <title>Brinca 2020 {`- ${title.rendered}`}</title>
         </Head>
       )}
-      <article className='content pb-5'>
+      <article className={`${styles.content} pb-5`}>
         {!frontpage && (
           <header className='article__title'>
             <h2 className={`bottomLine ${styles.contentTitle} pt-5 mb-5`}>

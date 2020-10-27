@@ -4,6 +4,7 @@
 
 :root {
   --green: green;
+  --green-soft: #2ecc40;
   --blue: blue;
   --yellow: yellow;
   --red: red;
@@ -21,8 +22,10 @@
 body {
   font-family: var(--main-font);
   margin-top: 90px;
+  margin-bottom: 72px;
   @media (min-width: 768px) {
     margin-top: 130px;
+    margin-bottom: unset;
   }
 }
 
@@ -91,13 +94,21 @@ img {
 }
 
 .jumbotron {
-  padding-top: 20rem;
+  padding-top: 5rem;
   padding-bottom: 3rem;
   width: 100vw;
   position: relative;
   margin-left: -50vw;
   left: 50%;
   background-color: unset;
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  @media (min-width: 768px) {
+    padding-top: 20rem;
+  }
 
   &::after {
     display: block;
