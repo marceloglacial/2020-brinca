@@ -1,7 +1,7 @@
 .navbarContainer {
   background-color: var(--white);
-  border-bottom: solid 1px var(--grey-light);
-  box-shadow: var(--shadow);
+  // border-bottom: solid 1px var(--grey-light);
+  // box-shadow: var(--shadow);
 }
 .topNavLink {
   color: var(--green) !important;
@@ -30,5 +30,16 @@
   height: 40px;
   @media (min-width: 768px) {
     height: 80px;
+  }
+}
+
+.subscribeNavLink {
+  background-color: var(--green);
+  border-radius: 50rem;
+  color: var(--white);
+
+  &:hover {
+    color: var(--white);
+    background-color: var(--black);
   }
 }

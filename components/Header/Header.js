@@ -4,6 +4,7 @@ import styles from './Header.module.scss';
 import useMenu from 'functions/useMenu';
 import HeaderLoading from './HeaderLoading';
 import HeaderError from './HeaderError';
+import MenuSubscribe from './MenuSusbcribe';
 
 const Header = (props) => {
   const { menuContent, isLoading, isError } = useMenu('header');
@@ -24,7 +25,7 @@ const Header = (props) => {
             {menuContent.items.map((item) => {
               const { ID, title, slug } = item;
               return (
-                <li className='nav-item' key={ID}>
+                <li className='nav-item mx-2' key={ID}>
                   <Link href={slug} key={ID}>
                     <a className={`nav-link ${styles.topNavLink}`} href={slug}>
                       {title}
@@ -34,6 +35,7 @@ const Header = (props) => {
               );
             })}
           </ul>
+          <MenuSubscribe />
         </div>
       </div>
     </nav>
