@@ -5,21 +5,29 @@ const Hero = (props) => {
   const { title, description, imageUrl, image, hasButton } = props;
   const { alt } = image;
   return (
-    <section className='hero py-5'>
+    <section className={`${styles.heroContainer}`}>
       <div className='row'>
-        <div className='col'>
-          <h2>{title}</h2>
-          <p>{description}</p>
-          {hasButton && <button className='btn btn-secondary'>Button</button>}
+        <div className={`col col-lg-6 col-xl-5`}>
+          <div className={styles.contentContainer}>
+            <h1 className={styles.heroTitle}>{title}</h1>
+            <p className={styles.heroDescription}>{description}</p>
+            {hasButton && (
+              <div className={styles.heroButton}>
+                <button className='btn btn-secondary'>Saiba mais</button>
+              </div>
+            )}
+          </div>
         </div>
-        <div className='col'>
-          <Image
-            src={imageUrl}
-            alt={alt ? alt : 'Hero Image'}
-            width={500}
-            height={300}
-            className={`rounded ${styles.heroImage}`}
-          />
+        <div className={`col col-lg-6 col-xl-7`}>
+          <div className={styles.imageContainer}>
+            <Image
+              src={imageUrl}
+              alt={alt ? alt : 'Hero Image'}
+              width={615}
+              height={460}
+              className={`rounded ${styles.heroImage}`}
+            />
+          </div>
         </div>
       </div>
     </section>

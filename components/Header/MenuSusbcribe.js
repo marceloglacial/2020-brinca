@@ -1,15 +1,11 @@
-import Logo from 'components/Logo/Logo';
 import Link from 'next/link';
-import styles from './Header.module.scss';
 import useMenu from 'functions/useMenu';
-import HeaderLoading from './HeaderLoading';
-import HeaderError from './HeaderError';
 
 const MenuSubscribe = (props) => {
   const { menuContent, isLoading, isError } = useMenu('subscribe');
 
-  if (isLoading) return <HeaderLoading />;
-  if (isError) return <HeaderError />;
+  if (isLoading) return 'Loading ...';
+  if (isError) return 'Error!';
 
   return (
     <ul className='navbar-nav ml-3'>
@@ -18,10 +14,7 @@ const MenuSubscribe = (props) => {
         return (
           <li className='nav-item' key={ID}>
             <Link href={slug} key={ID}>
-              <a
-                className={`nav-link py-3 px-4 ${styles.subscribeNavLink}`}
-                href={slug}
-              >
+              <a className={`btn btn-primary`} href={slug}>
                 {title}
               </a>
             </Link>

@@ -6,7 +6,7 @@ import FooterError from './FooterError';
 
 const Footer = (props) => {
   const year = new Date().getUTCFullYear();
-  const { menuContent, isLoading, isError } = useMenu('header');
+  const { menuContent, isLoading, isError } = useMenu('footer');
 
   if (isLoading) return <FooterLoading />;
   if (isError) return <FooterError />;

@@ -13,11 +13,9 @@ const Header = (props) => {
   if (isError) return <HeaderError />;
 
   return (
-    <nav
-      className={`navbar navbar-expand-lg fixed-top ${styles.navbarContainer}`}
-    >
+    <nav className={`navbar navbar-expand-lg ${styles.navbarContainer}`}>
       <div className='container'>
-        <div className='navbar-brand'>
+        <div className='navbar-brand mx-auto mx-sx-0'>
           <Logo />
         </div>
         <div className='collapse navbar-collapse'>
@@ -25,7 +23,7 @@ const Header = (props) => {
             {menuContent.items.map((item) => {
               const { ID, title, slug } = item;
               return (
-                <li className='nav-item mx-2' key={ID}>
+                <li className='nav-item mx-3' key={ID}>
                   <Link href={slug} key={ID}>
                     <a className={`nav-link ${styles.topNavLink}`} href={slug}>
                       {title}
