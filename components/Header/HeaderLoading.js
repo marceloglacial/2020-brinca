@@ -1,6 +1,9 @@
 import Skeleton from 'react-loading-skeleton';
 
 const HeaderLoading = (props) => {
+  //
+  // WIP: Loading
+  //
   return (
     <>
       <div className='container py-4 d-flex align-items-center'>

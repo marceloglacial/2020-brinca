@@ -1,19 +1,32 @@
 import Image from 'next/image';
 import styles from './Hero.module.scss';
+import Link from 'next/link';
 
 const Hero = (props) => {
-  const { title, description, imageUrl, image, hasButton } = props;
+  const {
+    title,
+    description,
+    imageUrl,
+    image,
+    hasButton,
+    buttonText,
+    buttonLink = '#',
+    imagePosition,
+  } = props;
   const { alt } = image;
+
   return (
-    <section className={`${styles.heroContainer}`}>
-      <div className='row'>
+    <section className={`hero  ${styles.heroContainer}`}>
+      <div className={`row ${imagePosition === 'left' && `flex-row-reverse`}`}>
         <div className={`col col-lg-6 col-xl-5`}>
           <div className={styles.contentContainer}>
             <h1 className={styles.heroTitle}>{title}</h1>
             <p className={styles.heroDescription}>{description}</p>
             {hasButton && (
               <div className={styles.heroButton}>
-                <button className='btn btn-secondary'>Saiba mais</button>
+                <Link href={buttonLink}>
+                  <a className='btn btn-secondary'>{buttonText}</a>
+                </Link>
               </div>
             )}
           </div>
