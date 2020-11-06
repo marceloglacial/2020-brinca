@@ -12,7 +12,3 @@ const BlocksView = (props) => {
   return blockType[blockName];
 };
 export default BlocksView;
-
-//
-// WIP: Button Block
-//

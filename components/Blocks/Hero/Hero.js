@@ -11,6 +11,7 @@ const Hero = (props) => {
     hasButton,
     buttonText,
     buttonLink = '#',
+    buttonSlug,
     imagePosition,
   } = props;
   const { alt } = image;
@@ -25,7 +26,7 @@ const Hero = (props) => {
             {hasButton && (
               <div className={styles.heroButton}>
                 <Button
-                  link={buttonLink}
+                  link={buttonSlug}
                   title={buttonText}
                   type={'secondary'}
                 />
