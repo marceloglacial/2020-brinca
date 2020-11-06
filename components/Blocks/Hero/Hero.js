@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import styles from './Hero.module.scss';
 import Link from 'next/link';
+import Button from 'components/Button/Button';
 
 const Hero = (props) => {
   const {
@@ -24,9 +25,11 @@ const Hero = (props) => {
             <p className={styles.heroDescription}>{description}</p>
             {hasButton && (
               <div className={styles.heroButton}>
-                <Link href={buttonLink}>
-                  <a className='btn btn-secondary'>{buttonText}</a>
-                </Link>
+                <Button
+                  link={buttonLink}
+                  title={buttonText}
+                  type={'secondary'}
+                />
               </div>
             )}
           </div>
