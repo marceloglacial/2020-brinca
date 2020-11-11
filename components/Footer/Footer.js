@@ -3,6 +3,7 @@ import styles from './Footer.module.scss';
 import useMenu from 'functions/useMenu';
 import FooterLoading from './FooterLoading';
 import FooterError from './FooterError';
+import Image from 'next/image';
 
 const Footer = (props) => {
   const year = new Date().getUTCFullYear();
@@ -11,22 +12,75 @@ const Footer = (props) => {
   if (isLoading) return <FooterLoading />;
   if (isError) return <FooterError />;
 
+  const socialIcons = [
+    {
+      id: 1,
+      title: 'facebook',
+      link: 'http://facebook.com',
+    },
+    {
+      id: 2,
+      title: 'instagram',
+      link: 'http://instagram.com',
+    },
+    {
+      id: 3,
+      title: 'linkedin',
+      link: 'http://linkedin.com',
+    },
+    {
+      id: 4,
+      title: 'youtube',
+      link: 'http://youtube.com',
+    },
+  ];
+
   return (
     <footer>
-      <div className={styles.footerNav}>
+      <div className={`container p-3 ${styles.footerNav}`}>
         <ul
-          className={`container px-3 mb-0 justify-content-sm-center ${styles.menuNav}`}
+          className={`container align-items-center justify-content-sm-center ${styles.menuNav}`}
         >
+          <li className='mr-auto pt-2'>
+            <Link href='/'>
+              <a href='/'>
+                <Image
+                  src='/images/logo-white.png'
+                  alt='Brinca logo'
+                  width={152}
+                  height={60}
+                  className={styles.footerLogo}
+                />
+              </a>
+            </Link>
+          </li>
           {menuContent.items.map((item) => {
             const { ID, title, slug } = item;
             return (
-              <li className='pr-4 py-4' key={ID}>
+              <li className='pr-4 pt-3' key={ID}>
                 <Link href={slug} key={ID}>
                   <a href={slug}>{title}</a>
                 </Link>
               </li>
             );
           })}
+          <li className={'ml-auto pt-3'}>
+            {socialIcons.map((item) => {
+              const { id, title, link } = item;
+              return (
+                <Link href={link} key={id}>
+                  <a href={link}>
+                    <Image
+                      src={`/images/icon-${title}.png`}
+                      alt={`logo ${title}`}
+                      width={32}
+                      height={32}
+                    />
+                  </a>
+                </Link>
+              );
+            })}
+          </li>
         </ul>
       </div>
       <div className={styles.copyright}>
