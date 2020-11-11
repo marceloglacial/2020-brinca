@@ -25,7 +25,7 @@ const Footer = (props) => {
     },
     {
       id: 3,
-      title: 'linkedin',
+      title: 'linked-in',
       link: 'http://linkedin.com',
     },
     {
