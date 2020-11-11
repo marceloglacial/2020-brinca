@@ -12,7 +12,7 @@ const Content = (props) => {
   if (isLoading) return <ContentLoading />;
   if (isError) return <ContentError />;
 
-  const { title, blocks } = pageContent[0];
+  const { title, blocks = [] } = pageContent[0];
 
   return (
     <>

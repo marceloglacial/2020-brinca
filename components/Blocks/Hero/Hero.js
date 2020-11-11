@@ -10,11 +10,18 @@ const Hero = (props) => {
     image,
     hasButton,
     buttonText,
-    buttonLink = '#',
     buttonSlug,
     imagePosition,
+    imageStyle,
   } = props;
   const { alt } = image;
+
+  if (!imageUrl)
+    return (
+      <div className='alert alert-danger' role='alert'>
+        Please add an image.
+      </div>
+    );
 
   return (
     <section className={`hero  ${styles.heroContainer}`}>
@@ -41,7 +48,9 @@ const Hero = (props) => {
               alt={alt ? alt : 'Hero Image'}
               width={615}
               height={460}
-              className={`rounded ${styles.heroImage}`}
+              className={`${imageStyle} ${styles.heroImage} ${
+                styles[`heroImage--${imageStyle}`]
+              }`}
             />
           </div>
         </div>

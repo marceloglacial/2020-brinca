@@ -44,5 +44,8 @@
 
 .heroImage {
   object-fit: cover;
-  box-shadow: var(--shadow);
+
+  &--rounded {
+    box-shadow: var(--shadow);
+  }
 }
