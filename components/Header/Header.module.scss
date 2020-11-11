@@ -1,11 +1,16 @@
 .navbarContainer {
   background-color: var(--white);
-  border-bottom: solid 1px var(--grey-light);
-  box-shadow: var(--shadow);
+  @media (min-width: 768px) {
+    padding: 2.5rem 0;
+  }
 }
 .topNavLink {
-  color: var(--green) !important;
+  color: var(--black) !important;
   position: relative;
+
+  &:hover {
+    color: var(--green) !important;
+  }
 
   &:after {
     position: absolute;
@@ -24,11 +29,4 @@
 
 .navBarButton {
   border: none;
-}
-
-.loadingLogo {
-  height: 40px;
-  @media (min-width: 768px) {
-    height: 80px;
-  }
 }

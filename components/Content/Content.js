@@ -3,6 +3,7 @@ import ContentLoading from './ContentLoading';
 import Head from 'next/head';
 import usePage from 'functions/usePage';
 import ContentError from './ContentError';
+import Blocks from 'components/Blocks/Blocks';
 
 const Content = (props) => {
   const { slug, frontpage } = props;
@@ -11,7 +12,7 @@ const Content = (props) => {
   if (isLoading) return <ContentLoading />;
   if (isError) return <ContentError />;
 
-  const { title, content } = pageContent[0];
+  const { title, blocks = [] } = pageContent[0];
 
   return (
     <>
@@ -28,10 +29,12 @@ const Content = (props) => {
             </h2>
           </header>
         )}
-        <section
-          className={`article__content`}
-          dangerouslySetInnerHTML={{ __html: content.rendered }}
-        />
+
+        <section className={`article__content`}>
+          {blocks.map((block, index) => (
+            <Blocks {...block} key={index} />
+          ))}
+        </section>
       </article>
     </>
   );

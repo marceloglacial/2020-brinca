@@ -1,0 +1,51 @@
+.heroContainer {
+  padding: 2rem 0;
+}
+
+.heroTitle {
+  margin: 0;
+}
+
+.heroDescription {
+  font-weight: 200;
+  color: var(--grey);
+  padding: 1rem 0;
+  margin: 0;
+  @media (min-width: 768px) {
+    font-size: 1.25rem;
+    line-height: 2rem;
+    padding: 1.5rem 0;
+  }
+}
+
+.contentContainer {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  padding-bottom: 4rem;
+
+  @media (min-width: 1024px) {
+    text-align: left;
+    padding-bottom: 0rem;
+  }
+}
+
+.imageContainer {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+
+  @media (min-width: 1024px) {
+    justify-content: flex-end;
+  }
+}
+
+.heroImage {
+  object-fit: cover;
+
+  &--rounded {
+    box-shadow: var(--shadow);
+  }
+}
