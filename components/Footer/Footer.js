@@ -41,7 +41,7 @@ const Footer = (props) => {
         <ul
           className={`container align-items-center justify-content-sm-center ${styles.menuNav}`}
         >
-          <li className='mr-auto pt-2'>
+          <li className={`mr-auto pt-2 ${styles.footerLogo}`}>
             <Link href='/'>
               <a href='/'>
                 <Image
@@ -49,7 +49,6 @@ const Footer = (props) => {
                   alt='Brinca logo'
                   width={152}
                   height={60}
-                  className={styles.footerLogo}
                 />
               </a>
             </Link>
