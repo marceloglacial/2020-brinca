@@ -4,6 +4,7 @@ import useMenu from 'functions/useMenu';
 import FooterLoading from './FooterLoading';
 import Alert from 'components/Alert/Alert';
 import Image from 'next/image';
+import FooterSocial from './FooterSocial';
 
 const Footer = (props) => {
   const year = new Date().getUTCFullYear();
@@ -13,29 +14,6 @@ const Footer = (props) => {
   if (isError) return <Alert title={`Data error`} />;
   if (menuContent.code === 'not_found')
     return <Alert title={menuContent.message} />;
-
-  const socialIcons = [
-    {
-      id: 1,
-      title: 'facebook',
-      link: 'http://facebook.com',
-    },
-    {
-      id: 2,
-      title: 'instagram',
-      link: 'http://instagram.com',
-    },
-    {
-      id: 3,
-      title: 'linked-in',
-      link: 'http://linkedin.com',
-    },
-    {
-      id: 4,
-      title: 'youtube',
-      link: 'http://youtube.com',
-    },
-  ];
 
   return (
     <footer>
@@ -65,23 +43,7 @@ const Footer = (props) => {
               </li>
             );
           })}
-          <li className={'ml-auto pt-3'}>
-            {socialIcons.map((item) => {
-              const { id, title, link } = item;
-              return (
-                <Link href={link} key={id}>
-                  <a href={link}>
-                    <Image
-                      src={`/images/icon-${title}.png`}
-                      alt={`logo ${title}`}
-                      width={32}
-                      height={32}
-                    />
-                  </a>
-                </Link>
-              );
-            })}
-          </li>
+          <FooterSocial />
         </ul>
       </div>
       <div className={styles.copyright}>
