@@ -1,43 +1,44 @@
-import { Nav, Navbar, Container } from 'react-bootstrap';
 import Logo from 'components/Logo/Logo';
 import Link from 'next/link';
 import styles from './Header.module.scss';
 import useMenu from 'functions/useMenu';
 import HeaderLoading from './HeaderLoading';
-import HeaderError from './HeaderError';
+import Alert from 'components/Alert/Alert';
+import MenuSubscribe from './MenuSusbcribe';
 
 const Header = (props) => {
   const { menuContent, isLoading, isError } = useMenu('header');
 
   if (isLoading) return <HeaderLoading />;
-  if (isError) return <HeaderError />;
+  if (isError) return <Alert title='Data error' />;
+  if (menuContent.code === 'not_found')
+    return <Alert title={menuContent.message} />;
 
   return (
-    <Navbar expand='lg' fixed='top' className={styles.navbarContainer}>
-      <Container>
-        <Navbar.Brand>
+    <nav className={`navbar navbar-expand-lg ${styles.navbarContainer}`}>
+      <div className='container'>
+        <div className='navbar-brand mx-auto mx-sx-0'>
           <Logo />
-        </Navbar.Brand>
-        <Navbar.Toggle
-          aria-controls='basic-navbar-nav'
-          className={styles.navBarButton}
-        />
-        <Navbar.Collapse id='basic-navbar-nav'>
-          <Nav className='mr-auto'>
+        </div>
+        <div className='collapse navbar-collapse'>
+          <ul className='navbar-nav ml-auto'>
             {menuContent.items.map((item) => {
               const { ID, title, slug } = item;
               return (
-                <Link href={slug} key={ID}>
-                  <Nav.Link className={styles.topNavLink} href={slug}>
-                    {title}
-                  </Nav.Link>
-                </Link>
+                <li className='nav-item mx-3' key={ID}>
+                  <Link href={slug} key={ID}>
+                    <a className={`nav-link ${styles.topNavLink}`} href={slug}>
+                      {title}
+                    </a>
+                  </Link>
+                </li>
               );
             })}
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
+          </ul>
+          <MenuSubscribe />
+        </div>
+      </div>
+    </nav>
   );
 };
 export default Header;

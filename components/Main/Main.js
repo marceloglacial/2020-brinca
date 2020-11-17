@@ -1,12 +1,4 @@
-import { Row, Col } from 'react-bootstrap';
-
 const Main = (props) => {
-  return (
-    <main className='container'>
-      <Row>
-        <Col>{props.children}</Col>
-      </Row>
-    </main>
-  );
+  return <main className='container'>{props.children}</main>;
 };
 export default Main;
