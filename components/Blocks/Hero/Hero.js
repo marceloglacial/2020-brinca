@@ -14,7 +14,7 @@ const Hero = (props) => {
     imagePosition,
     imageStyle,
   } = props;
-  const { alt } = image;
+  const { alt } = image || {};
 
   if (!imageUrl)
     return (

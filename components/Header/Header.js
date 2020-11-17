@@ -3,14 +3,16 @@ import Link from 'next/link';
 import styles from './Header.module.scss';
 import useMenu from 'functions/useMenu';
 import HeaderLoading from './HeaderLoading';
-import HeaderError from './HeaderError';
+import Alert from 'components/Alert/Alert';
 import MenuSubscribe from './MenuSusbcribe';
 
 const Header = (props) => {
   const { menuContent, isLoading, isError } = useMenu('header');
 
   if (isLoading) return <HeaderLoading />;
-  if (isError) return <HeaderError />;
+  if (isError) return <Alert title='Data error' />;
+  if (menuContent.code === 'not_found')
+    return <Alert title={menuContent.message} />;
 
   return (
     <nav className={`navbar navbar-expand-lg ${styles.navbarContainer}`}>

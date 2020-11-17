@@ -5,18 +5,13 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "postbuild": "next-on-netlify"
+    "start": "next start"
   },
   "dependencies": {
-    "next": "^10.0.0",
-    "next-on-netlify": "^2.3.2",
-    "react": "16.13.1",
-    "react-dom": "16.13.1"
+    "next": "^10.0.0"
   },
   "devDependencies": {
     "bootstrap": "^4.5.0",
-    "react-loading-skeleton": "^2.1.1",
     "sass": "^1.26.10",
     "swr": "^0.3.6"
   }
