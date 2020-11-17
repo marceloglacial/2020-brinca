@@ -20,8 +20,8 @@ const FooterSocial = (props) => {
             <Image
               src={`/images/icon-${title.toLowerCase()}.png`}
               alt={`logo ${title}`}
-              width={32}
-              height={32}
+              width={42}
+              height={42}
             />
           </a>
         );
