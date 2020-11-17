@@ -1,11 +1,14 @@
 import Link from 'next/link';
 import useMenu from 'functions/useMenu';
+import Alert from 'components/Alert/Alert';
 
 const MenuSubscribe = (props) => {
   const { menuContent, isLoading, isError } = useMenu('subscribe');
 
   if (isLoading) return 'Loading ...';
   if (isError) return 'Error!';
+  if (menuContent.code === 'not_found')
+    return <Alert title={menuContent.message} />;
 
   return (
     <ul className='navbar-nav ml-3'>
