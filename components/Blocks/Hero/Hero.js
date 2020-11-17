@@ -26,7 +26,7 @@ const Hero = (props) => {
   return (
     <section className={`hero  ${styles.heroContainer}`}>
       <div className={`row ${imagePosition === 'left' && `flex-row-reverse`}`}>
-        <div className={`col col-lg-6 col-xl-5`}>
+        <div className={`col-12 col-lg-6 col-xl-5`}>
           <div className={styles.contentContainer}>
             <h1 className={styles.heroTitle}>{title}</h1>
             <p className={styles.heroDescription}>{description}</p>
@@ -41,16 +41,18 @@ const Hero = (props) => {
             )}
           </div>
         </div>
-        <div className={`col col-lg-6 col-xl-7`}>
-          <div className={styles.imageContainer}>
+        <div className={`col-12 col-lg-6 col-xl-7`}>
+          <div
+            className={`${styles.imageContainer} ${
+              styles[`heroImage--${imageStyle}`]
+            }`}
+          >
             <Image
               src={imageUrl}
               alt={alt ? alt : 'Hero Image'}
               width={615}
               height={460}
-              className={`${imageStyle} ${styles.heroImage} ${
-                styles[`heroImage--${imageStyle}`]
-              }`}
+              className={`${imageStyle} ${styles.heroImage}`}
             />
           </div>
         </div>
