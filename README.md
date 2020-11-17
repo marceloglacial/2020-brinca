@@ -19,8 +19,7 @@ Brazil-Canada Community Association's website. A headless WordPress application 
   - <a href='https://wordpress.org/'>WordPress</a>
   - <a href='https://wordpress.org/gutenberg/'>Gutenberg Blocks</a>
 - CI/CD
-  - <a href='https://www.heroku.com/'>Heroku</a>
-  - <a href='https://www.netlify.com/'>Netlify</a>
+  - <a href='https://vercel.com/'>Vercel</a>
 
 ## How to use
 
