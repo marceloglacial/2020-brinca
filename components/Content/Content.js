@@ -2,15 +2,17 @@ import styles from './Content.module.scss';
 import ContentLoading from './ContentLoading';
 import Head from 'next/head';
 import usePage from 'functions/usePage';
-import ContentError from './ContentError';
 import Blocks from 'components/Blocks/Blocks';
+import Alert from 'components/Alert/Alert';
 
 const Content = (props) => {
   const { slug, frontpage } = props;
   const { pageContent, isLoading, isError } = usePage(slug);
 
   if (isLoading) return <ContentLoading />;
-  if (isError) return <ContentError />;
+  if (isError) return <Alert title='Data error' />;
+  if (pageContent.length === 0)
+    return <Alert title={`Please setup a Homepage`} />;
 
   const { title, blocks = [] } = pageContent[0];
 
