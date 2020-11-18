@@ -16,7 +16,7 @@ const FooterSocial = (props) => {
       {menuContent.items.map((item) => {
         const { ID, title, url } = item;
         return (
-          <a href={url} key={ID} target='_blank'>
+          <a href={url} key={ID} target='_blank' rel='noopener'>
             <Image
               src={`/images/icon-${title.toLowerCase()}.png`}
               alt={`logo ${title}`}
