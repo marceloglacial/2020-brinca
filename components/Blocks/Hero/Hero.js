@@ -51,7 +51,7 @@ const Hero = (props) => {
               src={imageUrl}
               alt={alt ? alt : 'Hero Image'}
               width={615}
-              height={460}
+              height={465}
               className={`${imageStyle} ${styles.heroImage}`}
             />
           </div>
