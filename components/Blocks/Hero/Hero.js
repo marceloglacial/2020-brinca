@@ -33,7 +33,7 @@ const Hero = (props) => {
             {hasButton && (
               <div className={styles.heroButton}>
                 <Button
-                  link={buttonSlug[1]}
+                  link={buttonSlug}
                   title={buttonText}
                   type={'secondary'}
                 />
