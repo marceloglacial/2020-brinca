@@ -112,3 +112,22 @@ h1 {
 .rounded {
   border-radius: var(--boder-radius) !important;
 }
+
+.figure {
+  position: relative;
+
+  div {
+    border-radius: var(--boder-radius) !important;
+    box-shadow: var(--shadow);
+  }
+
+  .figure-caption {
+    position: absolute;
+    bottom: 6px;
+    width: 100%;
+    padding: 1rem;
+    border-bottom-left-radius: var(--boder-radius) !important;
+    border-bottom-right-radius: var(--boder-radius) !important;
+    background-color: rgba(255, 255, 255, 1);
+  }
+}
