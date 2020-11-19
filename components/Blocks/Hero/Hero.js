@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import styles from './Hero.module.scss';
 import Button from 'components/Button/Button';
+import getSlug from 'functions/getSlug';
 
 const Hero = (props) => {
   const {
@@ -10,7 +11,7 @@ const Hero = (props) => {
     image,
     hasButton,
     buttonText,
-    buttonSlug,
+    buttonLink,
     imagePosition,
     imageStyle,
   } = props;
@@ -33,7 +34,7 @@ const Hero = (props) => {
             {hasButton && (
               <div className={styles.heroButton}>
                 <Button
-                  link={buttonSlug}
+                  link={getSlug(buttonLink)}
                   title={buttonText}
                   type={'secondary'}
                 />
