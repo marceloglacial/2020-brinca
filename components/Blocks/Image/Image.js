@@ -7,27 +7,29 @@ const ImageCore = (props) => {
   const { align, width, height } = attrs;
   const image = parseTagFromString(innerHTML, 'img');
   const caption = parseTagFromString(innerHTML, 'figcaption');
+  const link = parseTagFromString(innerHTML, 'a');
 
   const imageAlign = {
-    center: 'mx-auto d-block',
     left: 'float-left mr-3',
     right: 'float-right ml-3',
   };
 
   return (
-    <figure className={`${styles.figure} ${imageAlign[align]} mb-5`}>
-      <Image
-        src={image.src}
-        alt={image.alt}
-        width={width || 800}
-        height={height || 600}
-      />
-      {caption && (
-        <figcaption className={styles['figure-caption']}>
-          {caption.innerHTML}
-        </figcaption>
-      )}
-    </figure>
+    <div className={`text-${align} ${align === 'full' && styles.full}`}>
+      <figure className={`${styles.figure} ${imageAlign[align]} mt-4 mb-5`}>
+        <Image
+          src={image.src}
+          alt={image.alt}
+          width={width || 1440}
+          height={height || 900}
+        />
+        {caption && (
+          <figcaption className={styles['figure-caption']}>
+            {caption.innerHTML}
+          </figcaption>
+        )}
+      </figure>
+    </div>
   );
 };
 export default ImageCore;
