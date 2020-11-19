@@ -1,5 +1,6 @@
 import parseTagFromString from 'functions/parseTagFromString';
 import Image from 'next/image';
+import styles from './Image.module.scss';
 
 const ImageCore = (props) => {
   const { attrs, innerHTML } = props;
@@ -14,16 +15,17 @@ const ImageCore = (props) => {
   };
 
   return (
-    <figure className={`figure ${imageAlign[align]} mb-5`}>
+    <figure className={`${styles.figure} ${imageAlign[align]} mb-5`}>
       <Image
         src={image.src}
         alt={image.alt}
         width={width || 800}
         height={height || 600}
-        className='figure-img rounded'
       />
       {caption && (
-        <figcaption className='figure-caption'>{caption.innerHTML}</figcaption>
+        <figcaption className={styles['figure-caption']}>
+          {caption.innerHTML}
+        </figcaption>
       )}
     </figure>
   );
