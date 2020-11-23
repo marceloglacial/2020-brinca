@@ -1,0 +1,15 @@
+//
+// Typography
+//
+
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@200;400;700&display=swap');
+
+h1 {
+  font-size: 2rem;
+  font-weight: 700;
+
+  @media (min-width: 768px) {
+    font-size: 3rem;
+    line-height: 3.5rem;
+  }
+}

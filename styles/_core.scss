@@ -1,0 +1,31 @@
+body {
+  font-family: var(--main-font);
+
+  @media (min-width: 768px) {
+    font-size: 1.125rem;
+  }
+}
+
+a:hover {
+  transition: all 0.3s ease-in-out !important;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.skip-link {
+  position: absolute;
+  top: -140px;
+  left: 0;
+  background: #000000;
+  color: white;
+  padding: 8px;
+  z-index: 100;
+}
+
+.skip-link:focus {
+  top: 0;
+}
