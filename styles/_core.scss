@@ -6,8 +6,11 @@ body {
   }
 }
 
+a:focus,
 a:hover {
   transition: all 0.3s ease-in-out !important;
+  outline-color: var(--green);
+  box-shadow: none;
 }
 
 img {

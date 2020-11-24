@@ -1,5 +1,6 @@
 import Hero from './Hero/Hero';
 import ImageCore from './Image/Image';
+import Gallery from './Gallery/Gallery';
 
 const BlocksView = (props) => {
   const { attrs, innerHTML, blockName } = props;

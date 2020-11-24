@@ -1,6 +1,8 @@
-@import './styles/variables';
-@import './styles/core';
-@import './styles/typhography';
-@import './styles/utils';
-@import './styles/buttons';
-@import './styles/gallery';
+@import 'node_modules/bootstrap/dist/css/bootstrap.min.css';
+
+@import 'styles/variables';
+@import 'styles/core';
+@import 'styles/typhography';
+@import 'styles/utils';
+@import 'styles/gallery';
+@import 'styles/buttons';
