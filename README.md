@@ -25,18 +25,18 @@ Brazil-Canada Community Association's website. A headless WordPress application 
 
 ### 1. Install NPM packages:
 
-`npm install`
+`yarn install` 
 
 
 ### 2. Set local env file 
 
 1. Rename `.env.example` to `.env.local`
-2. Change `NEXT_PUBLIC_WORDPRESS_URL` to your local WordPress address. Ex: `http://localhost:8080`
+2. Change `NEXT_PUBLIC_WORDPRESS_URL` to your local WordPress address. E.G.: `http://localhost:8080`
 
 
 ### 3. Run development environment
 
-`npm run dev`
+`yarn run dev`
 
 ### 4. Setup WordPress
 
@@ -65,4 +65,4 @@ Make sure <a href='https://thebatclaud.io/'>WP-REST-API V2 Menus</a> is installe
 
 ## How to Build
 
-`npm run build`
+`yarn run build`
