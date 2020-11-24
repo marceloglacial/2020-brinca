@@ -5,12 +5,18 @@ body {
     font-size: 1.125rem;
   }
 }
+a {
+  color: var(--green);
 
-a:focus,
-a:hover {
-  transition: all 0.3s ease-in-out !important;
-  outline-color: var(--green);
-  box-shadow: none;
+  &:hover {
+    color: var(--green);
+  }
+
+  &:focus {
+    transition: all 0.3s ease-in-out !important;
+    outline-color: var(--green);
+    box-shadow: none;
+  }
 }
 
 img {
