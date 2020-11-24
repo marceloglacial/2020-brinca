@@ -9,6 +9,7 @@ const BlocksView = (props) => {
   const blockType = {
     'snow-blocks/hero': <Hero {...attrs} />,
     'core/image': <ImageCore {...props} />,
+    'core/gallery': <Gallery {...props} />,
   };
 
   if (!blockType[blockName])
