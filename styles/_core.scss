@@ -25,6 +25,35 @@ img {
   object-fit: cover;
 }
 
+blockquote {
+  border-left: solid 0.25rem var(--green);
+  padding: 0.5rem 1rem;
+  display: inline-block;
+  margin: 2rem 4rem 3rem 4rem;
+  font-style: italic;
+  color: var(--grey);
+
+  cite {
+    font-size: 0.9rem;
+    color: var(--green);
+  }
+}
+
+table {
+  border: solid 1px var(--grey);
+  width: 100%;
+  th,
+  tr,
+  td {
+    border: solid 1px var(--grey-soft);
+    padding: 0.5rem;
+  }
+  thead,
+  tfoot {
+    background-color: var(--grey-clear);
+  }
+}
+
 .skip-link {
   position: absolute;
   top: -140px;

@@ -1,6 +1,7 @@
 import useGallery from 'functions/useGallery';
 import parseTagFromString from 'functions/parseTagFromString';
 import Image from 'next/image';
+import Alert from 'components/Alert/Alert';
 
 const Gallery = (props) => {
   const { attrs, innerHTML } = props;
@@ -11,7 +12,7 @@ const Gallery = (props) => {
     const { mediaContent, isLoading, isError } = useGallery(id);
 
     if (isLoading) return 'loading ...';
-    if (isError) return 'ERROR!';
+    if (isError) return <Alert title='ERROR' />;
 
     const { source_url, alt_text, media_details } = mediaContent;
     const { width, height } = media_details;

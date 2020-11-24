@@ -14,7 +14,6 @@
   },
   "devDependencies": {
     "bootstrap": "^4.5.0",
-    "react-images": "^1.1.7",
     "sass": "^1.26.10",
     "swr": "^0.3.6"
   }

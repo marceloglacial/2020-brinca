@@ -1,3 +1,22 @@
 .contentTitle {
   color: var(--black);
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  max-width: 80%;
+  margin: 0 auto;
+
+  &::after {
+    display: block;
+    height: 2px;
+    content: '';
+    width: 100px;
+    background-color: var(--black);
+    margin: 2rem auto;
+  }
+
+  @media (min-width: 768px) {
+    font-size: 3rem;
+    line-height: 3.5rem;
+  }
 }
