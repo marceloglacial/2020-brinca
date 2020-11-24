@@ -1,5 +1,6 @@
 import Hero from './Hero/Hero';
 import ImageCore from './Image/Image';
+import Gallery from './Gallery/Gallery';
 
 const BlocksView = (props) => {
   const { attrs, innerHTML, blockName } = props;
@@ -8,6 +9,7 @@ const BlocksView = (props) => {
   const blockType = {
     'snow-blocks/hero': <Hero {...attrs} />,
     'core/image': <ImageCore {...props} />,
+    'core/gallery': <Gallery {...props} />,
   };
 
   if (!blockType[blockName])

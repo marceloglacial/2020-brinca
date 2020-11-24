@@ -26,9 +26,9 @@ const Content = (props) => {
       <article className={`${styles.content} pb-5`}>
         {!frontpage && (
           <header className='article__title'>
-            <h2 className={`bottomLine ${styles.contentTitle} pt-5 mb-5`}>
+            <h1 className={`bottomLine ${styles.contentTitle} mb-5`}>
               {title.rendered}
-            </h2>
+            </h1>
           </header>
         )}
 

@@ -29,7 +29,7 @@ const Hero = (props) => {
       <div className={`row ${imagePosition === 'left' && `flex-row-reverse`}`}>
         <div className={`col-12 col-lg-6 col-xl-5`}>
           <div className={styles.contentContainer}>
-            <h1 className={styles.heroTitle}>{title}</h1>
+            <h2 className={styles.heroTitle}>{title}</h2>
             <p className={styles.heroDescription}>{description}</p>
             {hasButton && (
               <div className={styles.heroButton}>

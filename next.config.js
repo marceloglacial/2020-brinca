@@ -2,6 +2,6 @@ module.exports = {
   // Target must be serverless
   target: 'serverless',
   images: {
-    domains: ['res.cloudinary.com'],
+    domains: ['res.cloudinary.com', 'localhost'],
   },
 };

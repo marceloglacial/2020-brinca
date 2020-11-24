@@ -1,0 +1,45 @@
+//
+// Buttons
+//
+
+.btn {
+  font-weight: 700;
+  border-width: 2px;
+  border-radius: 55px;
+  border-color: transparent;
+  padding: 0.5rem 2rem;
+
+  @media (min-width: 768px) {
+    font-size: 1.125rem;
+    line-height: 1;
+    padding: 1rem 2.5rem;
+  }
+}
+
+.btn-primary {
+  background: var(--green);
+  border-color: var(--green);
+  color: var(--white);
+
+  &:focus,
+  &:hover {
+    background-color: var(--white);
+    border-color: var(--green);
+    color: var(--green);
+  }
+  &:focus {
+    box-shadow: 0 0 0 0.2rem rgba(130, 138, 145, 0.5);
+  }
+}
+
+.btn-secondary {
+  background: var(--white);
+  border-color: var(--green);
+  color: var(--green);
+  &:focus,
+  &:hover {
+    background-color: var(--green);
+    border-color: var(--green);
+    color: var(--white);
+  }
+}
