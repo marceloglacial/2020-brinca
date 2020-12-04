@@ -7,14 +7,6 @@ const PostListImage = (props) => {
     media_details: { height, width } = { height: '200', width: '300' },
   } = props;
 
-  return (
-    <Image
-      src={src}
-      alt={alt}
-      height={height}
-      width={width}
-      className='card-img-top'
-    />
-  );
+  return <Image src={src} alt={alt} height={height} width={width} />;
 };
 export default PostListImage;

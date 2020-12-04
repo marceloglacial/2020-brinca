@@ -16,7 +16,11 @@ const PostList = (props) => {
         return (
           <div className='card' key={id}>
             <div className='card-body'>
-              {!showImage && <PostListImage {...better_featured_image} />}
+              {!showImage && (
+                <div className='card-img-top'>
+                  <PostListImage {...better_featured_image} />
+                </div>
+              )}
               <h5 className='card-title'>{title.rendered}</h5>
               {showText && <p className='card-text'>{excerpt.rendered}</p>}
               {showDate && (
