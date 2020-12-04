@@ -12,6 +12,13 @@
   padding-bottom: 0.5rem;
 }
 
+.card-text {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
 .card-img-top {
   background-color: var(--grey-neutral);
   height: 250px;
