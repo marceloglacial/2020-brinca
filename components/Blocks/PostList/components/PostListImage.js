@@ -1,11 +1,10 @@
 import Image from 'next/image';
 
 const PostListImage = (props) => {
-  if (!props.source_url) return null;
   const {
-    source_url: src,
-    alt_text: alt,
-    media_details: { height, width },
+    source_url: src = '/images/logo-white.png',
+    alt_text: alt = '',
+    media_details: { height, width } = { height: '200', width: '300' },
   } = props;
 
   return (
