@@ -1,9 +1,34 @@
+.card {
+  border: unset;
+  font-weight: 200;
+}
+
+.card-body {
+  padding: 2rem;
+}
+
+.card-title {
+  font-weight: 700;
+  padding-bottom: 0.5rem;
+}
+
 .card-img-top {
-  background-color: var(--grey);
+  background-color: var(--grey-neutral);
+  height: 250px;
 
   div {
     width: 100%;
-    height: 200px;
+    height: 250px;
     object-fit: cover;
+  }
+}
+
+.card-img-top--empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  div {
+    width: 250px;
+    height: 100px;
   }
 }
