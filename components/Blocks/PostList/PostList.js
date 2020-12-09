@@ -1,4 +1,6 @@
 import Alert from 'components/Alert/Alert';
+import Button from 'components/Button/Button';
+import getSlug from 'functions/getSlug';
 import usePosts from 'functions/usePosts';
 import PostListImage from './components/PostListImage';
 import PostListLoading from './components/PostListLoading';
@@ -14,7 +16,7 @@ const PostList = (props) => {
     <section className={styles.postList}>
       <div className='card-deck row-cols-1 row-cols-md-3'>
         {postData.map((item) => {
-          const { id, title, excerpt, better_featured_image } = item;
+          const { id, title, excerpt, link, better_featured_image } = item;
           return (
             <div className={`card ${styles.postListCard}`} key={id}>
               {!showImage && (
@@ -41,15 +43,18 @@ const PostList = (props) => {
                     </small>
                   </p>
                 )}
+                <Button
+                  title={`Veja a cobertura`}
+                  type='link'
+                  link={getSlug(link)}
+                />
               </div>
             </div>
           );
         })}
       </div>
       <div className={styles.postListloadMore}>
-        <a href='#' className='btn btn-secondary'>
-          Carregar mais
-        </a>
+        <Button title='Carregar Mais' type={'secondary'} />
       </div>
     </section>
   );
