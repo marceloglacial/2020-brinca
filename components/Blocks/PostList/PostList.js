@@ -31,7 +31,7 @@ const PostList = (props) => {
               <div className='card-body'>
                 <h5 className='card-title'>{title.rendered}</h5>
                 {showText && (
-                  <p
+                  <div
                     className='card-text'
                     dangerouslySetInnerHTML={{ __html: excerpt.rendered }}
                   />

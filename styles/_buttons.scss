@@ -16,7 +16,7 @@
   }
 }
 
-.btn-primary {
+.btn.btn-primary {
   background: var(--green);
   border-color: var(--green);
   color: var(--white);
@@ -32,7 +32,7 @@
   }
 }
 
-.btn-secondary {
+.btn.btn-secondary {
   background: var(--white);
   border-color: var(--green);
   color: var(--green);
@@ -47,4 +47,8 @@
 .btn.btn-link {
   padding: 0;
   color: var(--grey);
+}
+
+.btn__icon {
+  margin-left: 0.5rem;
 }
