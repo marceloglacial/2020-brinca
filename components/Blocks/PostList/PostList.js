@@ -1,9 +1,8 @@
 import Alert from 'components/Alert/Alert';
 import Button from 'components/Button/Button';
-import getSlug from 'functions/getSlug';
+import Card from 'components/Card/Card';
 import usePosts from 'functions/usePosts';
 import { useState } from 'react';
-import PostListImage from './components/PostListImage';
 import PostListLoading from './components/PostListLoading';
 
 const PostList = (props) => {
@@ -24,40 +23,17 @@ const PostList = (props) => {
       <div className={`card-grid`}>
         {postData.map((item) => {
           const { id, title, excerpt, link, better_featured_image } = item;
-          return (
-            <div className={`card`} key={id}>
-              {!showImage && (
-                <div
-                  className={`card-img-top ${
-                    !better_featured_image && `card-img-top--empty`
-                  }`}
-                >
-                  <PostListImage {...better_featured_image} />
-                </div>
-              )}
-              <div className='card-body'>
-                <h5 className='card-title'>{title.rendered}</h5>
-                {showText && (
-                  <div
-                    className='card-text'
-                    dangerouslySetInnerHTML={{ __html: excerpt.rendered }}
-                  />
-                )}
-                {showDate && (
-                  <p className='card-text'>
-                    <small className='text-muted'>
-                      Last updated 3 mins ago
-                    </small>
-                  </p>
-                )}
-                <Button
-                  title={`Veja a cobertura`}
-                  type='link'
-                  link={getSlug(link)}
-                />
-              </div>
-            </div>
-          );
+          const cardProps = {
+            showImage,
+            showDate,
+            showText,
+            id,
+            title: title.rendered,
+            excerpt: excerpt.rendered,
+            link,
+            image: better_featured_image,
+          };
+          return <Card {...cardProps} key={id} />;
         })}
       </div>
       <div className={`card-grid__load`}>

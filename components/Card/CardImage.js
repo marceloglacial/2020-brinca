@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-const PostListImage = (props) => {
+const CardImage = (props) => {
   const {
     source_url: src = '/images/logo-white.png',
     alt_text: alt = '',
@@ -9,4 +9,4 @@ const PostListImage = (props) => {
 
   return <Image src={src} alt={alt} height={height} width={width} />;
 };
-export default PostListImage;
+export default CardImage;
