@@ -1,14 +1,20 @@
 import Button from 'components/Button/Button';
 import PosstListPage from './components/PostListPage';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const PostList = (props) => {
   const per_page = 3;
-  const [offSet, setOffSet] = useState(0);
-  const [pages, setPages] = useState([
-    <PosstListPage offset={offSet} per_page={per_page} key={offSet} />,
-  ]);
+  const [offSet, setOffSet] = useState(per_page);
+  const [pages, setPages] = useState([]);
   const [isLoadingPage, setIsLoadingPage] = useState(false);
+
+  useEffect(() => {
+    setPages([<PosstListPage per_page={per_page} key={offSet} />]);
+  }, []);
+
+  //
+  // WIP: Fix rendering error
+  //
 
   const pageProps = {
     isLoadingPage,

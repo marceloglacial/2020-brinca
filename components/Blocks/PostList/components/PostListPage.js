@@ -1,7 +1,6 @@
 import Alert from 'components/Alert/Alert';
 import Card from 'components/Card/Card';
 import usePosts from 'functions/usePosts';
-import { useEffect } from 'react';
 
 const PostListPage = (props) => {
   const { setIsLoadingPage, per_page, offSet } = props;
@@ -9,10 +8,7 @@ const PostListPage = (props) => {
 
   if (isLoading) return <p>loading ...</p>;
   if (isError) return <Alert title='Error fetching API' />;
-  setIsLoadingPage &&
-    useEffect(() => {
-      setIsLoadingPage(false);
-    }, []);
+  setIsLoadingPage && setIsLoadingPage(false);
 
   const { showImage, showDate, showText } = props;
   return (
