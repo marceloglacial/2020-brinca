@@ -2,10 +2,9 @@ import Alert from 'components/Alert/Alert';
 import Button from 'components/Button/Button';
 import getSlug from 'functions/getSlug';
 import usePosts from 'functions/usePosts';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import PostListImage from './components/PostListImage';
 import PostListLoading from './components/PostListLoading';
-import styles from './PostList.module.scss';
 
 const PostList = (props) => {
   const { showImage, showDate, showText } = props;
@@ -21,12 +20,12 @@ const PostList = (props) => {
   };
 
   return (
-    <section className={styles.postList}>
-      <div className={styles.postListCards}>
+    <section className={`posts-list`}>
+      <div className={`card-grid`}>
         {postData.map((item) => {
           const { id, title, excerpt, link, better_featured_image } = item;
           return (
-            <div className={`card ${styles.postListCard}`} key={id}>
+            <div className={`card`} key={id}>
               {!showImage && (
                 <div
                   className={`card-img-top ${
@@ -61,7 +60,7 @@ const PostList = (props) => {
           );
         })}
       </div>
-      <div className={styles.postListloadMore}>
+      <div className={`card-grid__load`}>
         <Button
           title='Carregar Mais'
           type={'secondary'}

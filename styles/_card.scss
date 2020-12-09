@@ -1,6 +1,15 @@
 .card {
   border: unset;
   font-weight: 200;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  @media (min-width: 450px) {
+    width: calc(50% - 18px);
+  }
+  @media (min-width: 1024px) {
+    width: calc(33% - 19px);
+  }
 }
 
 .card-body {
