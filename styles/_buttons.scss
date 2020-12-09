@@ -52,3 +52,20 @@
 .btn__icon {
   margin-left: 0.5rem;
 }
+
+.btn.btn-disable {
+  background: var(--grey);
+  border: unset;
+  color: var(--white);
+
+  &:focus,
+  &:hover {
+    background-color: var(--grey);
+    border-color: var(--grey);
+    color: var(--white);
+    cursor: not-allowed;
+  }
+  &:focus {
+    box-shadow: 0 0 0 0.2rem rgba(130, 138, 145, 0.5);
+  }
+}

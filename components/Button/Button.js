@@ -5,11 +5,12 @@ const Button = (props) => {
   const domain = window.location.href;
   return (
     <Link href={link || domain}>
-      <a
+      <button
         className={`btn btn-${type || 'primary'} ${className || ''}`}
         onClick={onClick}
+        disabled={type === 'disable' && true}
       >
-        {title || 'Please add a title'}{' '}
+        {title || 'Please add a title'}
         {type === 'link' && (
           <svg
             width='15'
@@ -25,7 +26,7 @@ const Button = (props) => {
             />
           </svg>
         )}
-      </a>
+      </button>
     </Link>
   );
 };
