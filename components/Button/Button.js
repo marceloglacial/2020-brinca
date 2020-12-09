@@ -1,10 +1,14 @@
 import Link from 'next/link';
 
 const Button = (props) => {
-  const { title, link, type, className } = props;
+  const { title, link, type, className, onClick } = props;
+  const domain = window.location.href;
   return (
-    <Link href={link || '#'}>
-      <a className={`btn btn-${type || 'primary'} ${className || ''}`}>
+    <Link href={link || domain}>
+      <a
+        className={`btn btn-${type || 'primary'} ${className || ''}`}
+        onClick={onClick}
+      >
         {title || 'Please add a title'}{' '}
         {type === 'link' && (
           <svg

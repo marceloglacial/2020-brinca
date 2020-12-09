@@ -3,8 +3,19 @@
   text-align: center;
 }
 
+.postListCards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
 .postListCard {
   border-radius: 1rem;
   overflow: hidden;
   box-shadow: var(--shadow);
+  @media (min-width: 450px) {
+    width: calc(50% - 18px);
+  }
+  @media (min-width: 1024px) {
+    width: calc(33% - 19px);
+  }
 }

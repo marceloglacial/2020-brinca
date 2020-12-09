@@ -2,19 +2,27 @@ import Alert from 'components/Alert/Alert';
 import Button from 'components/Button/Button';
 import getSlug from 'functions/getSlug';
 import usePosts from 'functions/usePosts';
+import { useEffect, useState } from 'react';
 import PostListImage from './components/PostListImage';
 import PostListLoading from './components/PostListLoading';
 import styles from './PostList.module.scss';
 
 const PostList = (props) => {
   const { showImage, showDate, showText } = props;
-  const { postData, isLoading, isError } = usePosts();
+  const per_page = 3;
+  const [offSet, setOffSet] = useState(per_page);
+  const { postData, isLoading, isError } = usePosts(null, offSet);
   if (isLoading) return <PostListLoading />;
   if (isError) return <Alert title='Error fetching API' />;
 
+  const handleClick = (e) => {
+    e.preventDefault();
+    setOffSet(offSet + per_page);
+  };
+
   return (
     <section className={styles.postList}>
-      <div className='card-deck row-cols-1 row-cols-md-3'>
+      <div className={styles.postListCards}>
         {postData.map((item) => {
           const { id, title, excerpt, link, better_featured_image } = item;
           return (
@@ -54,7 +62,11 @@ const PostList = (props) => {
         })}
       </div>
       <div className={styles.postListloadMore}>
-        <Button title='Carregar Mais' type={'secondary'} />
+        <Button
+          title='Carregar Mais'
+          type={'secondary'}
+          onClick={(e) => handleClick(e)}
+        />
       </div>
     </section>
   );
