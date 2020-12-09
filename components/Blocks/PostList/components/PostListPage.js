@@ -3,12 +3,11 @@ import Card from 'components/Card/Card';
 import usePosts from 'functions/usePosts';
 
 const PostListPage = (props) => {
-  const { setIsLoadingPage, per_page, offSet } = props;
+  const { per_page, offSet } = props;
   const { postData, isLoading, isError } = usePosts(null, per_page, offSet);
 
   if (isLoading) return <p>loading ...</p>;
   if (isError) return <Alert title='Error fetching API' />;
-  setIsLoadingPage && setIsLoadingPage(false);
 
   const { showImage, showDate, showText } = props;
   return (

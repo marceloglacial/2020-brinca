@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 
 const PostList = (props) => {
   const per_page = 3;
-  const [offSet, setOffSet] = useState(per_page);
+  const [offSet, setOffSet] = useState(0);
   const [pages, setPages] = useState([]);
   const [isLoadingPage, setIsLoadingPage] = useState(false);
 
@@ -12,25 +12,18 @@ const PostList = (props) => {
     setPages([<PosstListPage per_page={per_page} key={offSet} />]);
   }, []);
 
-  //
-  // WIP: Fix rendering error
-  //
-
-  const pageProps = {
-    isLoadingPage,
-    setIsLoadingPage,
-    per_page,
-    offSet,
-  };
+  useEffect(() => {
+    setPages([
+      ...pages,
+      <PosstListPage per_page={per_page} offSet={offSet} key={offSet} />,
+    ]);
+    setIsLoadingPage(false);
+  }, [offSet]);
 
   const handleClick = (e) => {
     e.preventDefault();
     setOffSet(offSet + per_page);
     setIsLoadingPage(true);
-    return setPages([
-      ...pages,
-      <PosstListPage {...pageProps} key={offSet + 1} />,
-    ]);
   };
 
   return (
