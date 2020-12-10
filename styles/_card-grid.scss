@@ -1,0 +1,10 @@
+.card-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.card-grid__load {
+  padding-top: 5rem;
+  text-align: center;
+}

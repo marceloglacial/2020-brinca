@@ -1,6 +1,7 @@
 import Hero from './Hero/Hero';
 import ImageCore from './Image/Image';
 import Gallery from './Gallery/Gallery';
+import PostList from './PostList/PostList';
 
 const BlocksView = (props) => {
   const { attrs, innerHTML, blockName } = props;
@@ -8,6 +9,7 @@ const BlocksView = (props) => {
 
   const blockType = {
     'snow-blocks/hero': <Hero {...attrs} />,
+    'snow-blocks/postslist': <PostList {...attrs} />,
     'core/image': <ImageCore {...props} />,
     'core/gallery': <Gallery {...props} />,
   };
