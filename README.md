@@ -5,7 +5,7 @@ Brazil-Canada Community Association's website. A headless WordPress application 
 ## Live Demo
 
 - <a href='https://brinca-2020.herokuapp.com/'>Back-end (WordPress)</a>
-- <a href='https://brinca-2020.netlify.app/'>Front-end (Next)</a>
+- <a href='https://brinca2020.vercel.app/'>Front-end (Next)</a>
 
 
 ## Stack
