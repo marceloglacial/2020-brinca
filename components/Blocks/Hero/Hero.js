@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import styles from './Hero.module.scss';
 import Button from 'components/Button/Button';
+import getSlug from 'functions/getSlug';
 
 const Hero = (props) => {
   const {
@@ -10,7 +11,7 @@ const Hero = (props) => {
     image,
     hasButton,
     buttonText,
-    buttonSlug,
+    buttonLink,
     imagePosition,
     imageStyle,
   } = props;
@@ -28,12 +29,12 @@ const Hero = (props) => {
       <div className={`row ${imagePosition === 'left' && `flex-row-reverse`}`}>
         <div className={`col-12 col-lg-6 col-xl-5`}>
           <div className={styles.contentContainer}>
-            <h1 className={styles.heroTitle}>{title}</h1>
+            <h2 className={styles.heroTitle}>{title}</h2>
             <p className={styles.heroDescription}>{description}</p>
             {hasButton && (
               <div className={styles.heroButton}>
                 <Button
-                  link={buttonSlug}
+                  link={getSlug(buttonLink)}
                   title={buttonText}
                   type={'secondary'}
                 />
@@ -51,7 +52,7 @@ const Hero = (props) => {
               src={imageUrl}
               alt={alt ? alt : 'Hero Image'}
               width={615}
-              height={460}
+              height={465}
               className={`${imageStyle} ${styles.heroImage}`}
             />
           </div>
