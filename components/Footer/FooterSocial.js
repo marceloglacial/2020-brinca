@@ -2,6 +2,7 @@ import useMenu from 'functions/useMenu';
 import FooterLoading from './FooterLoading';
 import Alert from 'components/Alert/Alert';
 import Image from 'next/image';
+import { socialLink } from './Footer.module.scss';
 
 const FooterSocial = (props) => {
   const { menuContent, isLoading, isError } = useMenu('social');
@@ -12,7 +13,7 @@ const FooterSocial = (props) => {
     return <Alert title={menuContent.message} />;
 
   return (
-    <li className={'ml-auto'}>
+    <li className={`ml-auto ${socialLink}`}>
       {menuContent.items.map((item) => {
         const { ID, title, url } = item;
         return (
