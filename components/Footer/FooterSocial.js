@@ -12,7 +12,7 @@ const FooterSocial = (props) => {
     return <Alert title={menuContent.message} />;
 
   return (
-    <li className={'ml-auto pt-3'}>
+    <li className={'ml-auto'}>
       {menuContent.items.map((item) => {
         const { ID, title, url } = item;
         return (

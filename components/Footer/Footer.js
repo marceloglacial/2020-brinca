@@ -17,11 +17,11 @@ const Footer = (props) => {
 
   return (
     <footer className='container'>
-      <div className={`container p-3 ${styles.footerNav}`}>
+      <div className={`${styles.footerNav}`}>
         <ul
           className={`container align-items-center justify-content-sm-center ${styles.menuNav}`}
         >
-          <li className={`mr-auto pt-2 ${styles.footerLogo}`}>
+          <li className={`mr-auto ${styles.footerLogo}`}>
             <Link href='/'>
               <a href='/'>
                 <Image
@@ -36,7 +36,7 @@ const Footer = (props) => {
           {menuContent.items.map((item) => {
             const { ID, title, slug } = item;
             return (
-              <li className='pr-4 pt-3' key={ID}>
+              <li className={styles.menuLink} key={ID}>
                 <Link href={slug} key={ID}>
                   <a href={slug}>{title}</a>
                 </Link>

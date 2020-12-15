@@ -4,10 +4,12 @@
   position: fixed;
   width: 100%;
   bottom: 0;
+  left: 0;
 
   @media (min-width: 768px) {
     position: static;
     border-radius: 1rem;
+    padding: 1rem;
   }
 
   a {
@@ -20,26 +22,41 @@
   }
 }
 
-.menuNav {
+ul.menuNav {
   white-space: nowrap;
   width: 100%;
   overflow-x: scroll;
   display: flex;
+  margin: 0;
 
   li {
     display: inline-flex;
-    &.footerLogo {
-      display: none;
-      @media (min-width: 768px) {
-        display: inline-flex;
-      }
-    }
+  }
+}
+
+li.footerLogo {
+  display: none;
+
+  @media (min-width: 768px) {
+    display: inline-flex;
+    margin-bottom: 0.5rem;
+  }
+}
+
+li.menuLink {
+  padding: 3rem 1rem 1rem 1rem;
+  margin-bottom: 2.5rem;
+
+  @media (min-width: 768px) {
+    padding: 1rem;
+    margin: 0;
   }
 }
 
 .copyright {
   background-color: var(--green-soft);
-  margin-bottom: 6rem;
+  margin-bottom: 8rem;
+  border-radius: 1rem;
 
   @media (min-width: 768px) {
     background-color: unset;
