@@ -16,7 +16,7 @@ const Footer = (props) => {
     return <Alert title={menuContent.message} />;
 
   return (
-    <footer>
+    <footer className='container'>
       <div className={`container p-3 ${styles.footerNav}`}>
         <ul
           className={`container align-items-center justify-content-sm-center ${styles.menuNav}`}
