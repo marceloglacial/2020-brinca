@@ -2,14 +2,7 @@
   border: unset;
   font-weight: 200;
   border-radius: 1rem;
-  overflow: hidden;
   box-shadow: var(--shadow);
-  @media (min-width: 450px) {
-    width: calc(50% - 18px);
-  }
-  @media (min-width: 1024px) {
-    width: calc(33% - 19px);
-  }
 }
 
 .card-body {
@@ -35,9 +28,13 @@
 .card-img-top {
   background-color: var(--grey-neutral);
   height: 250px;
+  width: 100%;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
 
   div {
-    width: 100%;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
     height: 250px;
     object-fit: cover;
   }
@@ -47,6 +44,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+
   div {
     width: 250px;
     height: 100px;

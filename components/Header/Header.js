@@ -17,7 +17,7 @@ const Header = (props) => {
   return (
     <nav className={`navbar navbar-expand-lg ${styles.navbarContainer}`}>
       <div className='container'>
-        <div className='navbar-brand mx-auto mx-sx-0'>
+        <div className={`navbar-brand mx-auto mx-sx-0 ${styles.brandLogo}`}>
           <Logo />
         </div>
         <div className='collapse navbar-collapse'>
