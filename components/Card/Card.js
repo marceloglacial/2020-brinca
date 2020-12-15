@@ -10,14 +10,14 @@ const Card = (props) => {
     link,
     image,
     date,
-    showImage = true,
-    showDate = false,
-    showText = true,
+    showImage = 'no',
+    showDate = 'no',
+    showText = 'no',
   } = props;
 
   return (
     <div className={`card`} key={id}>
-      {showImage && (
+      {showImage === 'yes' && (
         <div className={`card-img-top ${!image && `card-img-top--empty`}`}>
           <CardImage {...image} />
         </div>
@@ -27,13 +27,13 @@ const Card = (props) => {
           className='card-title'
           dangerouslySetInnerHTML={{ __html: title }}
         />
-        {showText && (
+        {showText === 'yes' && (
           <div
             className='card-text'
             dangerouslySetInnerHTML={{ __html: excerpt }}
           />
         )}
-        {showDate && (
+        {showDate === 'yes' && (
           <p className='card-text'>
             <small className='text-muted'>{date}</small>
           </p>

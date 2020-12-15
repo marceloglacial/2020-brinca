@@ -3,3 +3,24 @@
 //
 
 @import url('https://fonts.googleapis.com/css2?family=Mulish:wght@200;400;700&display=swap');
+
+h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  padding-bottom: 0.5rem;
+
+  &::after {
+    display: block;
+    height: 2px;
+    content: '';
+    width: 100px;
+    background-color: var(--black);
+    margin: 2rem auto;
+  }
+
+  @media (min-width: 768px) {
+    font-size: 3rem;
+    line-height: 3.5rem;
+  }
+}

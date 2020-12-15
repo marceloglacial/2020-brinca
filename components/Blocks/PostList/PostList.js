@@ -16,13 +16,18 @@ const PostList = (props) => {
   const hasPosts = !isLoading && !isError && postData.length > 0 ? true : false;
 
   useEffect(() => {
-    setPages([<PosstListPage per_page={per_page} key={offSet} />]);
+    setPages([<PosstListPage per_page={per_page} {...props} key={offSet} />]);
   }, []);
 
   useEffect(() => {
     setPages([
       ...pages,
-      <PosstListPage per_page={per_page} offSet={offSet} key={offSet} />,
+      <PosstListPage
+        per_page={per_page}
+        offSet={offSet}
+        {...props}
+        key={offSet}
+      />,
     ]);
     setIsLoadingPage(false);
   }, [offSet]);
@@ -33,8 +38,11 @@ const PostList = (props) => {
     setIsLoadingPage(true);
   };
 
+  const { title } = props;
+
   return (
     <section className={`posts-list`}>
+      {title && <h2>{title}</h2>}
       <div className={`card-grid`}>{pages}</div>
       {hasPosts && (
         <div className={`card-grid__load`}>
