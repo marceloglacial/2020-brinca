@@ -5,7 +5,7 @@ const Index = (props) => {
   // TODO: Get front page from REST API
   return (
     <Layout>
-      <Content slug={'pagina-inicial'} frontpage />
+      <Content slug={['pagina-inicial']} frontpage />
     </Layout>
   );
 };

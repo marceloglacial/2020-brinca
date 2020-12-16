@@ -13,6 +13,7 @@ const Card = (props) => {
     showImage = 'no',
     showDate = 'no',
     showText = 'no',
+    type = '',
   } = props;
 
   return (
@@ -38,8 +39,8 @@ const Card = (props) => {
             <small className='text-muted'>{date}</small>
           </p>
         )}
-        <Link href={getSlug(link)}>
-          <a className='btn btn-link' href={getSlug(link)}>
+        <Link href={type + '/' + getSlug(link)}>
+          <a className='btn btn-link' href={type + '/' + getSlug(link)}>
             Leia mais
             <svg
               width='15'
