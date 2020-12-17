@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import styles from './Hero.module.scss';
-import Button from 'components/Button/Button';
 import getSlug from 'functions/getSlug';
+import Link from 'next/link';
 
 const Hero = (props) => {
   const {
@@ -33,11 +33,11 @@ const Hero = (props) => {
             <p className={styles.heroDescription}>{description}</p>
             {hasButton && (
               <div className={styles.heroButton}>
-                <Button
-                  link={getSlug(buttonLink)}
-                  title={buttonText}
-                  type={'secondary'}
-                />
+                <Link href={getSlug(buttonLink)}>
+                  <a href={getSlug(buttonLink)} className={`btn btn-secondary`}>
+                    {buttonText}
+                  </a>
+                </Link>
               </div>
             )}
           </div>
