@@ -7,7 +7,8 @@ import Alert from 'components/Alert/Alert';
 
 const Content = (props) => {
   const { slug, frontpage } = props;
-  const { pageContent, isLoading, isError } = usePage(slug);
+  const type = slug && slug.length > 1 && slug[0];
+  const { pageContent, isLoading, isError } = usePage(slug, type);
 
   if (isLoading) return <ContentLoading />;
   if (isError) return <Alert title='Data error' />;

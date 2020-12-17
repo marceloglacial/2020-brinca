@@ -2,7 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 const Logo = (props) => {
-  // TODO: Get logo pro API
+  // TODO: Get logo from API
   return (
     <Link href='/'>
       <a alt='Home'>

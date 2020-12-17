@@ -1,9 +1,11 @@
 import useSWR from 'swr';
 import fetcher from './fetcher';
 
-const usePage = (slug) => {
+const usePage = (slug, type) => {
   const { data, error } = useSWR(
-    `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/wp-json/wp/v2/pages?slug=${slug}`,
+    `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/wp-json/wp/v2/${
+      type || 'page'
+    }s?slug=${slug}`,
     fetcher
   );
   return {

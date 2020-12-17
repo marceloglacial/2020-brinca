@@ -13,7 +13,7 @@ const PostListPage = (props) => {
   return (
     <>
       {postData.map((item) => {
-        const { id, title, excerpt, link, better_featured_image } = item;
+        const { id, title, excerpt, link, better_featured_image, type } = item;
         const cardProps = {
           showImage,
           showDate,
@@ -23,6 +23,7 @@ const PostListPage = (props) => {
           excerpt: excerpt.rendered,
           link,
           image: better_featured_image,
+          type,
         };
         return <Card {...cardProps} key={id} />;
       })}
