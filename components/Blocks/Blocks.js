@@ -2,6 +2,7 @@ import Hero from './Hero/Hero';
 import ImageCore from './Image/Image';
 import Gallery from './Gallery/Gallery';
 import PostList from './PostList/PostList';
+import Form from './Form/Form';
 
 const BlocksView = (props) => {
   const { attrs, innerHTML, blockName } = props;
@@ -12,6 +13,7 @@ const BlocksView = (props) => {
     'snow-blocks/postslist': <PostList {...attrs} />,
     'core/image': <ImageCore {...props} />,
     'core/gallery': <Gallery {...props} />,
+    'core/form': <Form {...props} />,
   };
 
   if (!blockType[blockName])
