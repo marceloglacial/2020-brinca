@@ -1,0 +1,45 @@
+.form {
+  @media (min-width: 1024px) {
+    padding-top: 2rem;
+    max-width: 80%;
+  }
+}
+
+.formItem {
+  @media (min-width: 1024px) {
+    padding-bottom: 2rem;
+    display: flex;
+    align-items: center;
+  }
+
+  label {
+    margin: 1rem 0.5rem;
+    text-align: right;
+    color: var(--green-soft);
+    font-weight: 700;
+    @media (min-width: 1024px) {
+      margin: 0 1rem 0 0;
+      width: 200px;
+    }
+  }
+}
+
+.input {
+  border-radius: 100px;
+  border: solid 2px var(--green-soft);
+  padding: 1.5rem;
+}
+
+.textarea {
+  border-radius: 20px;
+  border: solid 2px var(--green-soft);
+  padding: 1.5rem;
+}
+
+.button {
+  margin-top: 1.5rem;
+  @media (min-width: 1024px) {
+    margin-top: 0rem;
+    margin-left: 170px;
+  }
+}

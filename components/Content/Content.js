@@ -4,6 +4,7 @@ import Head from 'next/head';
 import usePage from 'functions/usePage';
 import Blocks from 'components/Blocks/Blocks';
 import Alert from 'components/Alert/Alert';
+import Form from 'components/Blocks/Form/Form';
 
 const Content = (props) => {
   const { slug, frontpage } = props;
@@ -37,6 +38,7 @@ const Content = (props) => {
           {blocks.map((block, index) => (
             <Blocks {...block} key={index} />
           ))}
+          {slug[0] === 'fale-conosco' && <Form />}
         </section>
       </article>
     </>
