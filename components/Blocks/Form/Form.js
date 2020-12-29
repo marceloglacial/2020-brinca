@@ -2,7 +2,7 @@ import { useState } from 'react';
 import axios from 'axios';
 import styles from './Form.module.scss';
 
-const Form = () => {
+const Form = (props) => {
   const [status, setStatus] = useState({
     submitted: false,
     submitting: false,
@@ -50,7 +50,7 @@ const Form = () => {
     setStatus((prevStatus) => ({ ...prevStatus, submitting: true }));
     axios({
       method: 'POST',
-      url: `https://formspree.io/${process.env.NEXT_PUBLIC_FORM_ID}`,
+      url: props.attrs.formUrl,
       data: inputs,
     })
       .then((response) => {
