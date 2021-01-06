@@ -8,6 +8,7 @@ const FormField = (props) => {
     value,
     label,
     required = true,
+    handleOnChange,
   } = props;
   const noLabelItems = ['submit', 'checkbox'];
   const noLabel = noLabelItems.find((item) => item === type);
@@ -18,6 +19,7 @@ const FormField = (props) => {
         type={type}
         name={name}
         placeholder={placeholder}
+        onChange={(e) => handleOnChange(e)}
         required={required}
       />
     ),
@@ -29,6 +31,7 @@ const FormField = (props) => {
           name={name}
           defaultValue={value}
           required={required}
+          onChange={(e) => handleOnChange(e)}
         />
         <label htmlFor={id}>{label || type}</label>
       </>
@@ -48,6 +51,7 @@ const FormField = (props) => {
           name={name || type}
           placeholder={placeholder}
           className={`form__${noLabel ? 'button' : 'input'}`}
+          onChange={(e) => handleOnChange(e)}
           required={required}
         />
       )}

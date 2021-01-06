@@ -11,7 +11,7 @@ const Form = (props) => {
     info: { error: false, message: null },
   });
 
-  const [inputs, setInputs] = useState(formFields);
+  const [inputs, setInputs] = useState({});
 
   const handleServerResponse = (ok, message) => {
     if (ok) {
@@ -20,7 +20,7 @@ const Form = (props) => {
         submitting: false,
         info: { error: false, message: message },
       });
-      setInputs(formFields);
+      setInputs({});
     } else {
       setStatus({
         info: { error: true, message: message },
@@ -32,7 +32,7 @@ const Form = (props) => {
     e.persist();
     setInputs((prev) => ({
       ...prev,
-      [e.target.id]: e.target.value,
+      [e.target.name || e.target.type]: e.target.value,
     }));
     setStatus({
       submitted: false,
@@ -64,9 +64,13 @@ const Form = (props) => {
 
   return (
     <form onSubmit={(e) => handleOnSubmit(e)}>
-      {formFields.map((field, index) => (
-        <FormField {...field} key={index} />
-      ))}
+      {formFields.map((field, index) => {
+        const fieldProps = {
+          ...field,
+          handleOnChange,
+        };
+        return <FormField {...fieldProps} key={index} />;
+      })}
       {status.submitting && <p>Sending ...</p>}
     </form>
   );
