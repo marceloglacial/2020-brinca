@@ -7,11 +7,12 @@ const FormField = (props) => {
     placeholder,
     value,
     label,
-    required = true,
+    required,
     handleOnChange,
   } = props;
   const noLabelItems = ['submit', 'checkbox'];
   const noLabel = noLabelItems.find((item) => item === type);
+
   const fieldType = {
     textarea: (
       <textarea
@@ -19,6 +20,7 @@ const FormField = (props) => {
         type={type}
         name={name}
         placeholder={placeholder}
+        defaultValue={value}
         onChange={(e) => handleOnChange(e)}
         className={styles.textarea}
         required={required}
@@ -53,6 +55,7 @@ const FormField = (props) => {
           id={id}
           type={type}
           name={name || type}
+          defaultValue={value}
           placeholder={placeholder}
           className={
             noLabel ? `btn btn-secondary ${styles.button}` : styles.input
