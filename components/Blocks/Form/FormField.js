@@ -7,7 +7,7 @@ const FormField = (props) => {
     placeholder,
     value,
     label,
-    required = true,
+    required,
     handleOnChange,
   } = props;
   const noLabelItems = ['submit', 'checkbox'];
