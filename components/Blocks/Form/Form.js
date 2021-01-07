@@ -1,18 +1,17 @@
 import { useState } from 'react';
 import axios from 'axios';
-import styles from './Form.module.scss';
+import FormField from './FormField';
+import { form } from './Form.module.scss';
 
 const Form = (props) => {
+  const { formUrl, formFields } = props.attributes || props.attrs;
   const [status, setStatus] = useState({
     submitted: false,
     submitting: false,
     info: { error: false, message: null },
   });
 
-  const [inputs, setInputs] = useState({
-    email: '',
-    message: '',
-  });
+  const [inputs, setInputs] = useState({});
 
   const handleServerResponse = (ok, message) => {
     if (ok) {
@@ -21,10 +20,7 @@ const Form = (props) => {
         submitting: false,
         info: { error: false, message: message },
       });
-      setInputs({
-        email: '',
-        message: '',
-      });
+      setInputs({});
     } else {
       setStatus({
         info: { error: true, message: message },
@@ -36,7 +32,7 @@ const Form = (props) => {
     e.persist();
     setInputs((prev) => ({
       ...prev,
-      [e.target.id]: e.target.value,
+      [e.target.name || e.target.type]: e.target.value,
     }));
     setStatus({
       submitted: false,
@@ -50,7 +46,7 @@ const Form = (props) => {
     setStatus((prevStatus) => ({ ...prevStatus, submitting: true }));
     axios({
       method: 'POST',
-      url: props.attrs.formUrl,
+      url: formUrl,
       data: inputs,
     })
       .then((response) => {
@@ -67,58 +63,15 @@ const Form = (props) => {
   if (status.submitted) return <p>Obrigado por enviar essa mensagem.</p>;
 
   return (
-    <form onSubmit={handleOnSubmit} className={styles.form}>
-      <div className={styles.formItem}>
-        <label className='form-label' htmlFor='name'>
-          Name
-        </label>
-        <input
-          className={`form-control ${styles.input}`}
-          id='name'
-          type='text'
-          name='_name'
-          onChange={handleOnChange}
-          required
-        />
-      </div>
-      <div className={styles.formItem}>
-        <label className='form-label' htmlFor='email'>
-          Email
-        </label>
-        <input
-          className={`form-control ${styles.input}`}
-          id='email'
-          type='email'
-          name='_replyto'
-          onChange={handleOnChange}
-          required
-        />
-      </div>
-      <div className={styles.formItem}>
-        <label className='form-label' htmlFor='message'>
-          Message
-        </label>
-        <textarea
-          className={`form-control ${styles.textarea}`}
-          id='message'
-          name='message'
-          onChange={handleOnChange}
-          required
-        />
-      </div>
-      <div className={styles.formItem}>
-        <button
-          type='submit'
-          disabled={status.submitting}
-          className={`btn btn-secondary ${styles.button}`}
-        >
-          {!status.submitting
-            ? !status.submitted
-              ? 'Submit'
-              : 'Submitted'
-            : 'Submitting...'}
-        </button>
-      </div>
+    <form onSubmit={(e) => handleOnSubmit(e)} className={form}>
+      {formFields.map((field, index) => {
+        const fieldProps = {
+          ...field,
+          handleOnChange,
+        };
+        return <FormField {...fieldProps} key={index} />;
+      })}
+      {status.submitting && <p>Sending ...</p>}
     </form>
   );
 };
