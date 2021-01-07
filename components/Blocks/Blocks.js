@@ -11,9 +11,9 @@ const BlocksView = (props) => {
   const blockType = {
     'snow-blocks/hero': <Hero {...attrs} />,
     'snow-blocks/postslist': <PostList {...attrs} />,
+    'snow-blocks/forms': <Form {...props} />,
     'core/image': <ImageCore {...props} />,
     'core/gallery': <Gallery {...props} />,
-    'core/form': <Form {...props} />,
   };
 
   if (!blockType[blockName])
