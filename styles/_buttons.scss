@@ -20,6 +20,7 @@
   background: var(--green);
   border-color: var(--green);
   color: var(--white);
+  text-decoration: none;
 
   &:focus,
   &:hover {
@@ -36,6 +37,8 @@
   background: var(--white);
   border-color: var(--green);
   color: var(--green);
+  text-decoration: none;
+
   &:focus,
   &:hover {
     background-color: var(--green);
@@ -47,6 +50,7 @@
 .btn.btn-link {
   padding: 0;
   color: var(--grey);
+  text-decoration: none;
 }
 
 .btn__icon {
