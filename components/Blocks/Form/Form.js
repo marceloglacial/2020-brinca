@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import axios from 'axios';
-import styles from './Form.module.scss';
 import FormField from './FormField';
+import { form } from './Form.module.scss';
 
 const Form = (props) => {
   const { formUrl, formFields } = props.attributes || props.attrs;
@@ -63,7 +63,7 @@ const Form = (props) => {
   if (status.submitted) return <p>Obrigado por enviar essa mensagem.</p>;
 
   return (
-    <form onSubmit={(e) => handleOnSubmit(e)}>
+    <form onSubmit={(e) => handleOnSubmit(e)} className={form}>
       {formFields.map((field, index) => {
         const fieldProps = {
           ...field,

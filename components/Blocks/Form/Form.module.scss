@@ -2,6 +2,7 @@
   @media (min-width: 1024px) {
     padding-top: 2rem;
     max-width: 80%;
+    margin: 0 auto;
   }
 }
 
@@ -25,21 +26,23 @@
 }
 
 .input {
-  border-radius: 100px;
+  border-radius: 16px;
   border: solid 2px var(--green-soft);
   padding: 1.5rem;
+  flex-grow: 1;
 }
 
 .textarea {
-  border-radius: 20px;
+  border-radius: 16px;
   border: solid 2px var(--green-soft);
   padding: 1.5rem;
+  flex-grow: 1;
 }
 
 .button {
   margin-top: 1.5rem;
   @media (min-width: 1024px) {
     margin-top: 0rem;
-    margin-left: 170px;
+    margin-left: 220px;
   }
 }

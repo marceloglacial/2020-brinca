@@ -1,7 +1,7 @@
+import styles from './Form.module.scss';
 const FormField = (props) => {
   const {
     id,
-    index,
     type,
     name,
     placeholder,
@@ -20,6 +20,7 @@ const FormField = (props) => {
         name={name}
         placeholder={placeholder}
         onChange={(e) => handleOnChange(e)}
+        className={styles.textarea}
         required={required}
       />
     ),
@@ -31,16 +32,19 @@ const FormField = (props) => {
           name={name}
           defaultValue={value}
           required={required}
+          className={styles.input}
           onChange={(e) => handleOnChange(e)}
         />
-        <label htmlFor={id}>{label || type}</label>
+        <label htmlFor={id} className={styles.label}>
+          {label || type}
+        </label>
       </>
     ),
   };
   return (
-    <div className='form__field'>
+    <div className={styles.formItem}>
       {!noLabel && (
-        <label htmlFor={id} className='form__label'>
+        <label htmlFor={id} className='form__label' className={styles.label}>
           {label || type}
         </label>
       )}
@@ -50,7 +54,9 @@ const FormField = (props) => {
           type={type}
           name={name || type}
           placeholder={placeholder}
-          className={`form__${noLabel ? 'button' : 'input'}`}
+          className={
+            noLabel ? `btn btn-secondary ${styles.button}` : styles.input
+          }
           onChange={(e) => handleOnChange(e)}
           required={required}
         />
