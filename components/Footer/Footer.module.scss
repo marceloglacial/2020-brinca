@@ -2,9 +2,10 @@
   background: var(--green);
   text-align: center;
   position: fixed;
-  width: 100%;
-  bottom: 3rem;
-  left: 0;
+  width: calc(100% - 2rem);
+  bottom: 1rem;
+  left: 1rem;
+  border-radius: 1rem;
 
   @media (min-width: 1023px) {
     position: static;
@@ -46,7 +47,7 @@ ul li.footerLogo {
 
 li.menuLink {
   padding: 2rem 1rem 0.3rem 1rem;
-  margin-bottom: 2.5rem;
+  margin-bottom: 2rem;
 
   @media (min-width: 1023px) {
     padding: 1rem;
@@ -56,14 +57,15 @@ li.menuLink {
 
 ul li.socialLink {
   @media (max-width: 1022px) {
-    position: absolute;
-    left: 0;
-    bottom: -3rem;
-    width: 100%;
-    background-color: var(--green-soft);
-    display: flex;
-    justify-content: center;
-    padding: 0.5rem;
+    // position: absolute;
+    // left: 0;
+    // bottom: -3rem;
+    // width: 100%;
+    // background-color: var(--green-soft);
+    // display: flex;
+    // justify-content: center;
+    // padding: 0.5rem;
+    display: none;
   }
 }
 
