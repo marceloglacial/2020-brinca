@@ -17,8 +17,10 @@ const BlocksView = (props) => {
   };
 
   if (!blockType[blockName])
-    return <div dangerouslySetInnerHTML={{ __html: innerHTML }} />;
+    return (
+      <div dangerouslySetInnerHTML={{ __html: innerHTML }} data-aos='fade-in' />
+    );
 
-  return blockType[blockName];
+  return <div data-aos='fade-up'>{blockType[blockName]}</div>;
 };
 export default BlocksView;

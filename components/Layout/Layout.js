@@ -1,17 +1,9 @@
-import { useEffect } from 'react';
 import Head from 'next/head';
 import Header from 'components/Header/Header';
 import Footer from 'components/Footer/Footer';
 import Main from 'components/Main/Main';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
 
 const Layout = (props) => {
-  useEffect(() => {
-    AOS.init();
-    AOS.refresh();
-  });
-
   return (
     <>
       <Head>

@@ -41,7 +41,7 @@ const PostList = (props) => {
   const { title } = props;
 
   return (
-    <section className={`posts-list`} data-aos='fade-up'>
+    <section className={`posts-list`}>
       {title && <h2>{title}</h2>}
       <div className={`card-grid`}>{pages}</div>
       {hasPosts && (

@@ -35,7 +35,7 @@ const Gallery = (props) => {
   });
 
   return (
-    <figure className={galleryClass} data-aos='fade-up'>
+    <figure className={galleryClass}>
       <ul className='blocks-gallery-grid'>{images}</ul>
     </figure>
   );
