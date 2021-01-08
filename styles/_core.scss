@@ -13,7 +13,7 @@ a {
   }
 
   &:focus {
-    transition: all 0.3s ease-in-out !important;
+    transition: all 0.3s ease-in-out;
     outline-color: var(--green);
     box-shadow: none;
   }

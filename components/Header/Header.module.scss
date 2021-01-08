@@ -5,11 +5,11 @@
   }
 }
 .topNavLink {
-  color: var(--black) !important;
+  color: var(--black);
   position: relative;
 
   &:hover {
-    color: var(--green) !important;
+    color: var(--green);
   }
 
   &:after {
