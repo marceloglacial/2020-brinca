@@ -24,9 +24,9 @@ const Content = (props) => {
           <title>Brinca 2020 {`- ${title.rendered}`}</title>
         </Head>
       )}
-      <article className={`${styles.content} pb-5`} data-aos='fade-in'>
+      <article className={`${styles.content} pb-5`}>
         {!frontpage && (
-          <header className='article__title'>
+          <header className='article__title' data-aos='fade-in'>
             <h1 className={`bottomLine ${styles.contentTitle} mb-5`}>
               {title.rendered}
             </h1>
