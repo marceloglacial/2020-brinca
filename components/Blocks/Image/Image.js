@@ -16,7 +16,10 @@ const ImageCore = (props) => {
 
   return (
     <div className={`text-${align} ${align === 'full' && styles.full}`}>
-      <figure className={`${styles.figure} ${imageAlign[align]} mt-4 mb-5`}>
+      <figure
+        className={`${styles.figure} ${imageAlign[align]} mt-4 mb-5`}
+        data-aos='fade-in'
+      >
         <Image
           src={image.src}
           alt={image.alt}

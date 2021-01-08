@@ -25,7 +25,7 @@ const Hero = (props) => {
     );
 
   return (
-    <section className={`hero  ${styles.heroContainer}`}>
+    <section className={`hero  ${styles.heroContainer}`} data-aos='fade-up'>
       <div className={`row ${imagePosition === 'left' && `flex-row-reverse`}`}>
         <div className={`col-12 col-lg-6 col-xl-5`}>
           <div className={styles.contentContainer}>

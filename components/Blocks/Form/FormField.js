@@ -44,7 +44,7 @@ const FormField = (props) => {
     ),
   };
   return (
-    <div className={styles.formItem}>
+    <div className={styles.formItem} data-aos='fade-in' data-aos-delay='50'>
       {!noLabel && (
         <label htmlFor={id} className='form__label' className={styles.label}>
           {label || type}
