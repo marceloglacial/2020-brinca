@@ -2,5 +2,9 @@
 // Utils
 //
 .rounded {
-  border-radius: var(--boder-radius) !important;
+  border-radius: var(--boder-radius);
+}
+
+.has-text-align-center {
+  text-align: center;
 }

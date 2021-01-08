@@ -1,3 +1,11 @@
+.content {
+  font-size: 1rem;
+  font-weight: 200;
+
+  @media (min-width: 768px) {
+    font-size: 1.3rem;
+  }
+}
 .contentTitle {
   color: var(--black);
   font-size: 2rem;
@@ -19,4 +27,9 @@
     font-size: 3rem;
     line-height: 3.5rem;
   }
+}
+
+.content a {
+  font-weight: 400;
+  text-decoration: underline;
 }

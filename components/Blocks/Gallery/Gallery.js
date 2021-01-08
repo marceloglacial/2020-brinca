@@ -17,7 +17,7 @@ const Gallery = (props) => {
     const { source_url, alt_text, media_details } = mediaContent;
     const { width, height } = media_details;
     return (
-      <li className='blocks-gallery-item' key={id}>
+      <li className='blocks-gallery-item' key={id} data-aos='fade-in'>
         <figure>
           <Image
             src={source_url}
