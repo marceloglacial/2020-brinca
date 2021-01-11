@@ -2,9 +2,9 @@
   background: var(--green);
   text-align: center;
   position: fixed;
-  width: calc(100% - 2rem);
+  width: calc(100% - 30px);
   bottom: 1rem;
-  left: 1rem;
+  left: 15px;
   border-radius: 1rem;
 
   @media (min-width: 1023px) {
@@ -21,6 +21,30 @@
     &:hover {
       text-decoration: underline;
     }
+  }
+
+  &::before {
+    content: '';
+    background: rgb(0, 0, 0);
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, var(--green) 100%);
+    position: fixed;
+    right: 1rem;
+    width: 2rem;
+    height: 4.1rem;
+    border-top-right-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+  }
+  &::after {
+    content: '';
+    background: rgb(0, 0, 0);
+    background: linear-gradient(270deg, rgba(0, 0, 0, 0) 0%, var(--green) 100%);
+    position: fixed;
+    bottom: 1rem;
+    left: 1rem;
+    width: 2rem;
+    height: 4.1rem;
+    border-top-left-radius: 1rem;
+    border-bottom-left-radius: 1rem;
   }
 }
 
@@ -47,7 +71,7 @@ ul li.footerLogo {
 
 li.menuLink {
   padding: 2rem 1rem 0.3rem 1rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1.8rem;
 
   @media (min-width: 1023px) {
     padding: 1rem;
@@ -70,8 +94,8 @@ ul li.socialLink {
 }
 
 .copyright {
-  background-color: var(--green-soft);
-  margin-bottom: 11rem;
+  background-color: var(--grey-soft);
+  margin-bottom: 7rem;
   border-radius: 1rem;
 
   @media (min-width: 1023px) {
