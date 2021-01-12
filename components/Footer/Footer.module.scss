@@ -31,11 +31,7 @@
   @media (max-width: 1021px) {
     &::before {
       content: '';
-      background: linear-gradient(
-        90deg,
-        rgba(0, 0, 0, 0) 0%,
-        var(--green) 100%
-      );
+      background: linear-gradient(90deg, rgba(#0e874e, 0) 0%, var(--green) 90%);
       position: fixed;
       right: 15px;
       width: 2.5rem;
@@ -48,8 +44,8 @@
       background: rgb(0, 0, 0);
       background: linear-gradient(
         270deg,
-        rgba(0, 0, 0, 0) 0%,
-        var(--green) 100%
+        rgba(#0e874e, 0) 0%,
+        var(--green) 90%
       );
       position: fixed;
       bottom: 1rem;
