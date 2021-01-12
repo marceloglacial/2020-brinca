@@ -15,10 +15,13 @@
 
   label {
     margin: 1rem 0.5rem;
-    text-align: right;
     color: var(--black);
     font-weight: 700;
+    width: 100%;
+    text-align: left;
+
     @media (min-width: 1024px) {
+      text-align: right;
       margin: 0 1rem 0 0;
       width: 200px;
     }
@@ -26,17 +29,27 @@
 }
 
 .input {
-  border-radius: 16px;
+  border-radius: var(--border-radius);
   border: solid 2px var(--green-soft);
   padding: 0.9rem 1rem;
   flex-grow: 1;
+  width: 100%;
+
+  @media (min-width: 1024px) {
+    width: unset;
+  }
 }
 
 .textarea {
-  border-radius: 16px;
+  border-radius: var(--border-radius);
   border: solid 2px var(--green-soft);
   padding: 1.5rem;
   flex-grow: 1;
+  width: 100%;
+
+  @media (min-width: 1024px) {
+    width: unset;
+  }
 }
 
 .button {
