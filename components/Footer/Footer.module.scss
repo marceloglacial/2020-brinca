@@ -1,3 +1,8 @@
+.footer {
+  @media (min-width: 1023px) {
+    position: relative;
+  }
+}
 .footerNav {
   background: var(--green);
   text-align: center;
@@ -10,7 +15,6 @@
 
   @media (min-width: 1023px) {
     position: static;
-    border-radius: var(--border-radius);
     padding: 1rem;
   }
 
@@ -142,8 +146,10 @@ ul li.menuLink {
   border-radius: 2rem;
 
   @media (min-width: 1023px) {
-    position: unset;
-    display: none;
+    top: 1.5rem;
+    right: unset;
+    left: 220px;
+    background: unset;
   }
 }
 
@@ -157,4 +163,9 @@ ul li.menuLink {
 .socialLink a {
   display: flex;
   margin: 0;
+  width: 36px;
+
+  @media (min-width: 1023px) {
+    width: unset;
+  }
 }

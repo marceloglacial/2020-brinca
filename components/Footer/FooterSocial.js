@@ -13,7 +13,7 @@ const FooterSocial = (props) => {
     return <Alert title={menuContent.message} />;
 
   return (
-    <div className={socialMenu} data-aos='fade'>
+    <div className={socialMenu}>
       <ul className={socialList}>
         {menuContent.items.map((item) => {
           const { ID, title, url } = item;

@@ -24,7 +24,7 @@ const Card = (props) => {
         </div>
       )}
       <div className='card-body'>
-        <h5
+        <div
           className='card-title'
           dangerouslySetInnerHTML={{ __html: title }}
         />
