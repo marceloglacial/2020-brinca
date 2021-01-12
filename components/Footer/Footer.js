@@ -16,7 +16,7 @@ const Footer = (props) => {
     return <Alert title={menuContent.message} />;
 
   return (
-    <footer className='container'>
+    <footer className='footer container'>
       <div className={`${styles.footerNav}`}>
         <ul
           className={`container align-items-center justify-content-sm-center ${styles.menuNav}`}
@@ -43,10 +43,9 @@ const Footer = (props) => {
               </li>
             );
           })}
-          <FooterSocial />
         </ul>
       </div>
-      <div className={styles.copyright}>
+      <div className={styles.copyright} data-aos='fade-up'>
         <ul
           className={`nav justify-content-center flex-column flex-md-row py-3 ${styles.copyrightMenu}`}
         >
@@ -68,6 +67,7 @@ const Footer = (props) => {
           </li>
         </ul>
       </div>
+      <FooterSocial />
     </footer>
   );
 };
