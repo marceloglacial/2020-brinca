@@ -1,0 +1,6 @@
+.logo div {
+  width: 200px;
+  @media (min-width: 450px) {
+    width: unset;
+  }
+}

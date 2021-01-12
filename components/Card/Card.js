@@ -17,14 +17,14 @@ const Card = (props) => {
   } = props;
 
   return (
-    <div className={`card`} key={id} data-aos='fade-in'>
+    <div className={`card`} key={id} data-aos='fade-up'>
       {showImage === 'yes' && (
         <div className={`card-img-top ${!image && `card-img-top--empty`}`}>
           <CardImage {...image} />
         </div>
       )}
       <div className='card-body'>
-        <h5
+        <div
           className='card-title'
           dangerouslySetInnerHTML={{ __html: title }}
         />
