@@ -2,12 +2,10 @@ import useSWR from 'swr';
 import fetcher from './fetcher';
 
 const useForms = (key) => {
-  const { data, error } = useSWR(
-    `https://api.typeform.com/forms/cUzUw6Ft`,
-    fetcher
-  );
+  const url = `/api/forms/${key}`;
+  const { data, error } = useSWR(url, fetcher);
   return {
-    pageContent: data,
+    data: data,
     isLoading: !error && !data,
     isError: error,
   };
