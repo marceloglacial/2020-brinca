@@ -64,6 +64,14 @@
   }
 }
 
+.multiple {
+  display: flex;
+  div label {
+    font-weight: normal;
+    width: auto;
+    padding-left: 0.5rem;
+  }
+}
 .button {
   margin-top: 1.5rem;
   @media (min-width: 1024px) {

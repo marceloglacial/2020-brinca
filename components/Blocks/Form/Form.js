@@ -1,7 +1,7 @@
 import Alert from 'components/Alert/Alert';
 import useForms from 'functions/useForms';
 import FormField from './components/FormField';
-import { form } from './Form.module.scss';
+import { form, button } from './Form.module.scss';
 
 const Form = (props) => {
   const { formKey } = props.attributes || props.attrs;
@@ -21,6 +21,11 @@ const Form = (props) => {
       {fields.map((field) => (
         <FormField attributes={field} key={field.id} />
       ))}
+      <input
+        type='submit'
+        value='Enviar'
+        className={`btn btn-secondary ${button}`}
+      />
     </form>
   );
 };
