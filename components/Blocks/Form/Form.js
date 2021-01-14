@@ -11,7 +11,7 @@ const Form = (props) => {
   if (isError) return <p>Error!</p>;
 
   const { title, fields } = data;
-  const hasFields = fields.length > 0;
+  const hasFields = fields && fields.length > 0;
 
   if (!hasFields) return <Alert title='No Fields' />;
 
@@ -19,7 +19,7 @@ const Form = (props) => {
     <form className={form}>
       {title && <h3>{title}</h3>}
       {fields.map((field) => (
-        <FormField props={field} key={field.id} />
+        <FormField attributes={field} key={field.id} />
       ))}
     </form>
   );

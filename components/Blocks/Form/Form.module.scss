@@ -52,6 +52,18 @@
   }
 }
 
+.select {
+  border-radius: var(--border-radius);
+  border: solid 2px var(--green-soft);
+  padding: 0.5rem;
+  flex-grow: 1;
+  width: 100%;
+
+  @media (min-width: 1024px) {
+    width: unset;
+  }
+}
+
 .button {
   margin-top: 1.5rem;
   @media (min-width: 1024px) {
