@@ -16,6 +16,10 @@ const FormField = (props) => {
     multiple_choice: <FormMultiple {...props} />,
     dropdown: <FormSelect {...props} />,
   };
-  return <div className={styles.formItem}>{fieldTypes[type] || type}</div>;
+  return (
+    <div className={styles.formItem} data-aos='fade-in'>
+      {fieldTypes[type] || ''}
+    </div>
+  );
 };
 export default FormField;

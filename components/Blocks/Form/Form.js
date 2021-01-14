@@ -16,7 +16,7 @@ const Form = (props) => {
   if (!hasFields) return <Alert title='No Fields' />;
 
   return (
-    <form className={form}>
+    <form className={form} data-aos='fade-up'>
       {title && <h3>{title}</h3>}
       {fields.map((field) => (
         <FormField attributes={field} key={field.id} />
@@ -25,6 +25,7 @@ const Form = (props) => {
         type='submit'
         value='Enviar'
         className={`btn btn-secondary ${button}`}
+        data-aos='fade-in'
       />
     </form>
   );
