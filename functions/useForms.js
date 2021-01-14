@@ -1,10 +1,10 @@
 import useSWR from 'swr';
-import fetchetWithToken from './fetchetWithToken';
+import fetcher from './fetcher';
 
 const useForms = (key) => {
   const { data, error } = useSWR(
-    [`/api/forms/${key}`, process.env.NEXT_PUBLIC_TYPEFORM_KEY],
-    fetchetWithToken
+    `https://api.typeform.com/forms/cUzUw6Ft`,
+    fetcher
   );
   return {
     pageContent: data,
