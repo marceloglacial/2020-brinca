@@ -2,20 +2,21 @@ import { multiple } from '../Form.module.scss';
 const FormMultiple = (props) => {
   const {
     id,
-    title,
-    validations: { required },
-    properties: { choices, allow_multiple_selection },
+    headings,
+    required,
+    family,
+    answers: { choices },
   } = props.attributes;
-  const type = allow_multiple_selection ? 'checkbox' : 'radio';
-
+  const type = family === 'single_choice' ? 'radio' : 'checkbox';
+  const title = headings[0].heading;
   return (
     <fieldset className={multiple}>
       <label>{title}</label>
       <div>
         {choices.map((item) => (
           <div key={item.id}>
-            <input type={type} id={item.id} name={id} value={item.label} />
-            <label htmlFor={item.id}>{item.label}</label>
+            <input type={type} id={item.id} name={id} value={item.text} />
+            <label htmlFor={item.id}>{item.text}</label>
           </div>
         ))}
       </div>

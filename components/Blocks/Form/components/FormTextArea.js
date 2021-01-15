@@ -1,13 +1,10 @@
-import { textarea } from '../Form.module.scss';
+import { textarea, textareaLabel } from '../Form.module.scss';
 const FormTextArea = (props) => {
-  const {
-    id,
-    title,
-    validations: { required },
-  } = props.attributes;
+  const { id, headings, required } = props.attributes;
+  const title = headings[0].heading;
   return (
     <>
-      {title && <label>{title}</label>}
+      {title && <label className={textareaLabel}>{title}</label>}
       <textarea
         id={id}
         name={title}

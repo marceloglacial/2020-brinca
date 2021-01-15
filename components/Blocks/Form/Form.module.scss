@@ -52,6 +52,11 @@
   }
 }
 
+.textareaLabel {
+  align-self: flex-start;
+  padding-top: 0.5rem;
+}
+
 .select {
   border-radius: var(--border-radius);
   border: solid 2px var(--green-soft);

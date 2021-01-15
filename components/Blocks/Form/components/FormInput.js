@@ -1,14 +1,11 @@
 import { input } from '../Form.module.scss';
 const FormInput = (props) => {
-  const {
-    id,
-    title,
-    type,
-    validations: { required, max_length },
-  } = props.attributes;
-
+  const { id, headings, type, required, validation } = props.attributes;
+  const title = headings[0].heading;
+  const validationType = validation && validation.type;
+  const finalType = type || validationType;
   const inputType = {
-    short_text: 'text',
+    single: 'text',
     email: 'email',
     phone_number: 'tel',
     website: 'url',
@@ -17,11 +14,10 @@ const FormInput = (props) => {
     <>
       <label htmlFor={id}>{title}</label>
       <input
-        type={inputType[type] || type}
+        type={inputType[finalType] || finalType}
         id={id}
         name={title}
         className={input}
-        maxLength={max_length}
         required={required}
       />
     </>

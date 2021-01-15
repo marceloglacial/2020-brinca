@@ -2,8 +2,9 @@ module.exports = {
   async rewrites() {
     return [
       {
-        source: '/api/forms/:slug',
-        destination: 'https://api.typeform.com/forms/:slug',
+        source: '/api/forms',
+        destination:
+          'https://api.surveymonkey.com/v3/surveys/299692952/details',
       },
     ];
   },

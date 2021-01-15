@@ -10,8 +10,10 @@ const Form = (props) => {
   if (isLoading) return <p>loading...</p>;
   if (isError) return <p>Error!</p>;
 
-  const { title, fields } = data;
+  const { title, pages } = data;
+  const fields = pages[0].questions;
   const hasFields = fields && fields.length > 0;
+  console.log(fields);
 
   if (!hasFields) return <Alert title='No Fields' />;
 
