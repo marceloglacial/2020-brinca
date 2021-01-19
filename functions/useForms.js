@@ -1,8 +1,7 @@
 import useSWR from 'swr';
 import fetcherWithAuth from './fetcherWithAuth';
 
-const useForms = (key) => {
-  const url = `/api/forms/`;
+const useForms = (url) => {
   const { data, error } = useSWR(url, fetcherWithAuth);
   return {
     data: data,

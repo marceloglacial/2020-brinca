@@ -5,15 +5,14 @@ import FormSelect from './FormSelect';
 import FormMultiple from './FormMultiple';
 
 const FormField = (props) => {
-  const { subtype } = props.attributes;
-  const type = subtype;
+  const { type } = props.attributes;
   const fieldTypes = {
-    single: <FormInput {...props} />,
+    textfield: <FormInput {...props} />,
     email: <FormInput {...props} />,
     number: <FormInput {...props} />,
-    website: <FormInput {...props} />,
-    phone_number: <FormInput {...props} />,
-    essay: <FormTextArea {...props} />,
+    url: <FormInput {...props} />,
+    phoneNumber: <FormInput {...props} />,
+    textarea: <FormTextArea {...props} />,
     vertical: <FormMultiple {...props} />,
     menu: <FormSelect {...props} />,
   };

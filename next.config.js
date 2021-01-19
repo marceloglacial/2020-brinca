@@ -2,9 +2,8 @@ module.exports = {
   async rewrites() {
     return [
       {
-        source: '/api/forms',
-        destination:
-          'https://api.surveymonkey.com/v3/surveys/299692952/details',
+        source: '/api/forms/:slug*',
+        destination: 'https://api.surveymonkey.com/v3/surveys/:slug*',
       },
     ];
   },

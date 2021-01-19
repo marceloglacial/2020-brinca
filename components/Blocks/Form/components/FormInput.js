@@ -1,23 +1,26 @@
 import { input } from '../Form.module.scss';
 const FormInput = (props) => {
-  const { id, headings, type, required, validation } = props.attributes;
-  const title = headings[0].heading;
+  const { attributes, handleOnChange } = props;
+  const { id, label, type, required, validation } = attributes;
+  const title = label;
   const validationType = validation && validation.type;
   const finalType = type || validationType;
-  const inputType = {
-    single: 'text',
+  const inputTypes = {
+    text: 'text',
     email: 'email',
-    phone_number: 'tel',
-    website: 'url',
+    phoneNumber: 'tel',
+    url: 'url',
   };
+
   return (
     <>
       <label htmlFor={id}>{title}</label>
       <input
-        type={inputType[finalType] || finalType}
+        type={inputTypes[finalType] || finalType}
         id={id}
         name={title}
         className={input}
+        onChange={(e) => handleOnChange(e)}
         required={required}
       />
     </>

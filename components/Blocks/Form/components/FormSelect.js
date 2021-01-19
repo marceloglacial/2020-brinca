@@ -1,11 +1,12 @@
 import { select } from '../Form.module.scss';
 const FormSelect = (props) => {
+  const { attributes, handleOnChange } = props;
   const {
     id,
     headings,
     required,
     answers: { choices },
-  } = props.attributes;
+  } = attributes;
   const title = headings[0].heading;
 
   return (
@@ -17,6 +18,7 @@ const FormSelect = (props) => {
         defaultValue='nenhuma'
         className={select}
         required={required}
+        onChange={(e) => handleOnChange(e)}
       >
         <option value={'nenhuma'}>Escolha uma opção</option>
         {choices.map((item) => (
