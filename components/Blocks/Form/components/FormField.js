@@ -10,7 +10,7 @@ const FormField = (props) => {
   const fieldTypes = {
     textfield: <FormInput {...props} />,
     email: <FormInput {...props} />,
-    number: <FormInput {...props} />,
+    phoneNumber: <FormInput {...props} />,
     url: <FormInput {...props} />,
     tel: <FormInput {...props} />,
     textarea: <FormTextArea {...props} />,
