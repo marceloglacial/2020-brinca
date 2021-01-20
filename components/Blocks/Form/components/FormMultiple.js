@@ -1,32 +1,30 @@
-import { multiple } from '../Form.module.scss';
+import { multiple, multipleLabel, multipleItem } from '../Form.module.scss';
 const FormMultiple = (props) => {
   const { attributes, handleOnChange } = props;
-  const {
-    id,
-    headings,
-    required,
-    family,
-    answers: { choices },
-  } = attributes;
-  const type = family === 'single_choice' ? 'radio' : 'checkbox';
-  const title = headings[0].heading;
+  console.log(attributes);
+  const { id, type, label, values: choices } = attributes;
+  const title = label;
+  const inputType = {
+    selectboxes: 'checkbox',
+    radio: 'radio',
+  };
   return (
     <fieldset className={multiple}>
       <label>{title}</label>
-      <div>
-        {choices.map((item) => (
-          <div key={item.id}>
-            <input
-              type={type}
-              id={item.id}
-              name={id}
-              value={item.text}
-              onChange={(e) => handleOnChange(e)}
-            />
-            <label htmlFor={item.id}>{item.text}</label>
-          </div>
-        ))}
-      </div>
+      {choices.map((item, index) => (
+        <div key={item.id} key={index} className={multipleItem}>
+          <input
+            type={inputType[type]}
+            id={id + index}
+            name={id}
+            value={item.label}
+            onChange={(e) => handleOnChange(e)}
+          />
+          <label className={multipleLabel} htmlFor={id + index}>
+            {item.label}
+          </label>
+        </div>
+      ))}
     </fieldset>
   );
 };

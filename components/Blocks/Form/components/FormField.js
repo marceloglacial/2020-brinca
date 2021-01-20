@@ -11,9 +11,10 @@ const FormField = (props) => {
     email: <FormInput {...props} />,
     number: <FormInput {...props} />,
     url: <FormInput {...props} />,
-    phoneNumber: <FormInput {...props} />,
+    tel: <FormInput {...props} />,
     textarea: <FormTextArea {...props} />,
-    vertical: <FormMultiple {...props} />,
+    radio: <FormMultiple {...props} />,
+    selectboxes: <FormMultiple {...props} />,
     menu: <FormSelect {...props} />,
   };
   return (
