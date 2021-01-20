@@ -3,6 +3,7 @@ import styles from '../Form.module.scss';
 import FormTextArea from './FormTextArea';
 import FormSelect from './FormSelect';
 import FormMultiple from './FormMultiple';
+import FormCheckbox from './FormCheckbox';
 
 const FormField = (props) => {
   const { type } = props.attributes;
@@ -15,6 +16,7 @@ const FormField = (props) => {
     textarea: <FormTextArea {...props} />,
     radio: <FormMultiple {...props} />,
     selectboxes: <FormMultiple {...props} />,
+    checkbox: <FormCheckbox {...props} />,
     menu: <FormSelect {...props} />,
   };
   return (

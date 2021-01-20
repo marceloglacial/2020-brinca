@@ -7,7 +7,7 @@
 
 .formItem {
   label {
-    margin: 1rem 0.5rem;
+    margin: 1rem 0;
     color: var(--black);
     font-weight: 700;
     width: 100%;
@@ -59,8 +59,12 @@ form .multipleItem {
     margin: 0;
   }
   input {
-    margin: 0.7rem 0.7rem 0 1.5rem;
+    margin: 0.7rem 0.7rem 0 0;
   }
+}
+
+.multipleCheckbox {
+  padding-top: 1.5rem;
 }
 
 .button {
