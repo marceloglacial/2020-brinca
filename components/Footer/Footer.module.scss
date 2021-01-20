@@ -4,6 +4,7 @@
   }
 }
 .footerNav {
+  width: calc(100% - 30px);
   background: var(--green);
   text-align: center;
   position: fixed;
@@ -15,6 +16,7 @@
   @media (min-width: 1023px) {
     position: static;
     padding: 1rem;
+    width: unset;
   }
 
   a {
