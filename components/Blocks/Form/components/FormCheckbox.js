@@ -6,7 +6,7 @@ import {
 
 const FormCheckbox = (props) => {
   const { attributes, handleOnChange } = props;
-  const { id, label } = attributes;
+  const { id, key, label } = attributes;
   const title = label;
   return (
     <fieldset className={multipleCheckbox}>
@@ -15,7 +15,7 @@ const FormCheckbox = (props) => {
           type={'checkbox'}
           id={id}
           name={id}
-          onChange={(e) => handleOnChange(e)}
+          onChange={(e) => handleOnChange(e, key)}
         />
         <label className={multipleLabel} htmlFor={id}>
           {title}

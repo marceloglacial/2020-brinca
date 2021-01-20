@@ -1,9 +1,7 @@
 import Alert from 'components/Alert/Alert';
-import getFormKey from 'functions/getFormKey';
 import useForms from 'functions/useForms';
 import { useState } from 'react';
 import FormField from './components/FormField';
-import axios from 'axios';
 import { form, button } from './Form.module.scss';
 
 const Form = (props) => {
@@ -24,11 +22,11 @@ const Form = (props) => {
 
   if (!fields) return <Alert title='No Fields' />;
 
-  const handleOnChange = (e) => {
+  const handleOnChange = (e, key) => {
     e.persist();
     setFormdata((prev) => ({
       ...prev,
-      [e.target.name || e.target.type]: e.target.value,
+      [key]: e.target.value,
     }));
   };
 
@@ -39,7 +37,6 @@ const Form = (props) => {
         submitting: false,
         info: { error: false, message: message },
       });
-      setInputs({});
     } else {
       setStatus({
         info: { error: true, message: message },
@@ -49,24 +46,34 @@ const Form = (props) => {
 
   const handleSubmition = (e) => {
     e.preventDefault();
-    axios({
-      method: 'POST',
-      url: `https://api.surveymonkey.com/v3/collectors/299834934/responses`,
+    const myHeaders = new Headers();
+    myHeaders.append('x-token', process.env.NEXT_PUBLIC_FORM_KEY);
+    myHeaders.append('Content-Type', 'application/json');
+
+    const raw = JSON.stringify({
       data: formData,
-    })
+    });
+
+    const requestOptions = {
+      method: 'POST',
+      headers: myHeaders,
+      body: raw,
+      redirect: 'follow',
+    };
+
+    fetch(`${formUrl}/submission`, requestOptions)
       .then((response) => {
-        handleServerResponse(
-          true,
-          'Thank you, your message has been submitted.'
-        );
+        response.text();
+        handleServerResponse(true, 'Obrigado por enviar essa mensagem.');
       })
       .catch((error) => {
+        console.log('error', error);
         handleServerResponse(false, 'Error!');
       });
   };
 
   if (status.submitting) return <p>Enviando sua mensagem.</p>;
-  if (status.submitted) return <p>Obrigado por enviar essa mensagem.</p>;
+  if (status.submitted) return <p>Obrigado. Mensagem enviada com sucesso.</p>;
 
   return (
     <form
@@ -80,7 +87,6 @@ const Form = (props) => {
           attributes: field,
           handleOnChange,
         };
-        console.log(field.type);
         return <FormField {...fieldProps} key={field.id} />;
       })}
       <input

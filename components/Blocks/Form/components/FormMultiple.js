@@ -2,7 +2,7 @@ import { multiple, multipleLabel, multipleItem } from '../Form.module.scss';
 
 const FormMultiple = (props) => {
   const { attributes, handleOnChange } = props;
-  const { id, type, label, values: choices } = attributes;
+  const { id, key, type, label, values: choices } = attributes;
   const title = label;
   const inputType = {
     selectboxes: 'checkbox',
@@ -17,7 +17,7 @@ const FormMultiple = (props) => {
             id={id + index}
             name={id}
             value={item.label}
-            onChange={(e) => handleOnChange(e)}
+            onChange={(e) => handleOnChange(e, key)}
           />
           <label className={multipleLabel} htmlFor={id + index}>
             {item.label}

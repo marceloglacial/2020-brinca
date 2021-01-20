@@ -1,7 +1,12 @@
 import { textarea, textareaLabel } from '../Form.module.scss';
 const FormTextArea = (props) => {
   const { attributes, handleOnChange } = props;
-  const { id, label, required } = attributes;
+  const {
+    id,
+    key,
+    label,
+    validate: { required },
+  } = attributes;
   const title = label;
 
   return (
@@ -13,7 +18,7 @@ const FormTextArea = (props) => {
         rows='10'
         cols='30'
         className={textarea}
-        onChange={(e) => handleOnChange(e)}
+        onChange={(e) => handleOnChange(e, key)}
         required={required}
       />
     </>

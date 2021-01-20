@@ -1,7 +1,14 @@
 import { input } from '../Form.module.scss';
 const FormInput = (props) => {
   const { attributes, handleOnChange } = props;
-  const { id, label, type, required, validation } = attributes;
+  const {
+    id,
+    key,
+    label,
+    type,
+    validate: { required },
+    validation,
+  } = attributes;
   const title = label;
   const validationType = validation && validation.type;
   const finalType = type || validationType;
@@ -20,7 +27,7 @@ const FormInput = (props) => {
         id={id}
         name={title}
         className={input}
-        onChange={(e) => handleOnChange(e)}
+        onChange={(e) => handleOnChange(e, key)}
         required={required}
       />
     </>

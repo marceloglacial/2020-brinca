@@ -3,8 +3,9 @@ const FormSelect = (props) => {
   const { attributes, handleOnChange } = props;
   const {
     id,
+    key,
     headings,
-    required,
+    validate: { required },
     answers: { choices },
   } = attributes;
   const title = headings[0].heading;
@@ -18,7 +19,7 @@ const FormSelect = (props) => {
         defaultValue='nenhuma'
         className={select}
         required={required}
-        onChange={(e) => handleOnChange(e)}
+        onChange={(e) => handleOnChange(e, key)}
       >
         <option value={'nenhuma'}>Escolha uma opção</option>
         {choices.map((item) => (
