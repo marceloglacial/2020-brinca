@@ -1,17 +1,34 @@
+import Alert from 'components/Alert/Alert';
+import useForms from 'functions/useForms';
 import { useState } from 'react';
-import axios from 'axios';
-import FormField from './FormField';
-import { form } from './Form.module.scss';
+import FormField from './components/FormField';
+import { form, button } from './Form.module.scss';
 
 const Form = (props) => {
-  const { formUrl, formFields } = props.attributes || props.attrs;
+  const { formUrl } = props.attributes || props.attrs;
+  const { data, isLoading, isError } = useForms(formUrl);
+  const [formData, setFormdata] = useState({});
   const [status, setStatus] = useState({
     submitted: false,
     submitting: false,
     info: { error: false, message: null },
   });
 
-  const [inputs, setInputs] = useState({});
+  if (isLoading) return <p>loading...</p>;
+  if (isError) return <Alert title='Error loading the data' />;
+
+  const { title, components } = data;
+  const fields = components;
+
+  if (!fields) return <Alert title='No Fields' />;
+
+  const handleOnChange = (e, key) => {
+    e.persist();
+    setFormdata((prev) => ({
+      ...prev,
+      [key]: e.target.value,
+    }));
+  };
 
   const handleServerResponse = (ok, message) => {
     if (ok) {
@@ -20,7 +37,6 @@ const Form = (props) => {
         submitting: false,
         info: { error: false, message: message },
       });
-      setInputs({});
     } else {
       setStatus({
         info: { error: true, message: message },
@@ -28,50 +44,57 @@ const Form = (props) => {
     }
   };
 
-  const handleOnChange = (e) => {
-    e.persist();
-    setInputs((prev) => ({
-      ...prev,
-      [e.target.name || e.target.type]: e.target.value,
-    }));
-    setStatus({
-      submitted: false,
-      submitting: false,
-      info: { error: false, message: null },
-    });
-  };
-
-  const handleOnSubmit = (e) => {
+  const handleSubmition = (e) => {
     e.preventDefault();
-    setStatus((prevStatus) => ({ ...prevStatus, submitting: true }));
-    axios({
+    const myHeaders = new Headers();
+    myHeaders.append('x-token', process.env.NEXT_PUBLIC_FORM_KEY);
+    myHeaders.append('Content-Type', 'application/json');
+
+    const raw = JSON.stringify({
+      data: formData,
+    });
+
+    const requestOptions = {
       method: 'POST',
-      url: formUrl,
-      data: inputs,
-    })
+      headers: myHeaders,
+      body: raw,
+      redirect: 'follow',
+    };
+
+    fetch(`${formUrl}/submission`, requestOptions)
       .then((response) => {
-        handleServerResponse(
-          true,
-          'Thank you, your message has been submitted.'
-        );
+        response.text();
+        handleServerResponse(true, 'Obrigado por enviar essa mensagem.');
       })
       .catch((error) => {
-        handleServerResponse(false, error.response.data.error);
+        console.log('error', error);
+        handleServerResponse(false, 'Error!');
       });
   };
 
-  if (status.submitted) return <p>Obrigado por enviar essa mensagem.</p>;
+  if (status.submitting) return <p>Enviando sua mensagem.</p>;
+  if (status.submitted) return <p>Obrigado. Mensagem enviada com sucesso.</p>;
 
   return (
-    <form onSubmit={(e) => handleOnSubmit(e)} className={form}>
-      {formFields.map((field, index) => {
+    <form
+      className={form}
+      data-aos='fade-up'
+      onSubmit={(e) => handleSubmition(e)}
+    >
+      {title && <h3>{title}</h3>}
+      {fields.map((field) => {
         const fieldProps = {
-          ...field,
+          attributes: field,
           handleOnChange,
         };
-        return <FormField {...fieldProps} key={index} />;
+        return <FormField {...fieldProps} key={field.id} />;
       })}
-      {status.submitting && <p>Sending ...</p>}
+      <input
+        type='submit'
+        value='Enviar'
+        className={`btn btn-secondary ${button}`}
+        data-aos='fade-in'
+      />
     </form>
   );
 };

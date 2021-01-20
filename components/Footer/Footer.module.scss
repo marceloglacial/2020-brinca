@@ -4,10 +4,10 @@
   }
 }
 .footerNav {
+  width: calc(100% - 30px);
   background: var(--green);
   text-align: center;
   position: fixed;
-  width: calc(100% - 30px);
   bottom: 1rem;
   left: 15px;
   border-radius: var(--border-radius);
@@ -16,6 +16,7 @@
   @media (min-width: 1023px) {
     position: static;
     padding: 1rem;
+    width: unset;
   }
 
   a {
