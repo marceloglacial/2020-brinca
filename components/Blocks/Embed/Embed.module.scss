@@ -1,0 +1,26 @@
+$spacing: 1rem;
+
+.videoContainer {
+  width: 100%;
+  padding-top: 56.25%;
+  height: 0px;
+  position: relative;
+}
+
+.video {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.videoWithCaption {
+  margin-bottom: ($spacing * 2)+ 4rem;
+}
+
+.videoCaption {
+  background-color: var(--grey-light);
+  padding: $spacing;
+  text-align: center;
+}
