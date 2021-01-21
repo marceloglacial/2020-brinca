@@ -1,7 +1,7 @@
 import styles from './Content.module.scss';
 import ContentLoading from './ContentLoading';
 import Head from 'next/head';
-import usePage from 'functions/usePage';
+import usePage from 'hooks/usePage';
 import Blocks from 'components/Blocks/Blocks';
 import Alert from 'components/Alert/Alert';
 

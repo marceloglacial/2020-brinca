@@ -1,4 +1,4 @@
-import useGallery from 'functions/useGallery';
+import useGallery from 'hooks/useGallery';
 import parseTagFromString from 'functions/parseTagFromString';
 import Image from 'next/image';
 import Alert from 'components/Alert/Alert';

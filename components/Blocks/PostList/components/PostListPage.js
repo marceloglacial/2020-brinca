@@ -1,6 +1,6 @@
 import Alert from 'components/Alert/Alert';
 import Card from 'components/Card/Card';
-import usePosts from 'functions/usePosts';
+import usePosts from 'hooks/usePosts';
 
 const PostListPage = (props) => {
   const { per_page, offSet } = props;

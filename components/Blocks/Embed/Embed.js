@@ -16,7 +16,6 @@ const Embed = (props) => {
     facebook: <Facebook url={url} />,
     inatagram: <Instagram url={url} />,
   };
-
   return embeds[type] || <p>Embed not found.</p>;
 };
 export default Embed;
