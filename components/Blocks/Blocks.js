@@ -4,7 +4,7 @@ import Gallery from './Gallery/Gallery';
 import PostList from './PostList/PostList';
 import Form from './Form/Form';
 import Embed from './Embed/Embed';
-import InstaFeed from './InstaFeed/InstaFeed';
+import Instagram from './Embed/components/Instagram';
 
 const BlocksView = (props) => {
   const { attrs, innerHTML, blockName } = props;
@@ -14,6 +14,7 @@ const BlocksView = (props) => {
     'snow-blocks/hero': <Hero {...attrs} />,
     'snow-blocks/postslist': <PostList {...attrs} />,
     'snow-blocks/forms': <Form {...props} />,
+    'snow-blocks/instagram': <Instagram {...props} />,
     'core/image': <ImageCore {...props} />,
     'core/gallery': <Gallery {...props} />,
     'core/embed': <Embed {...props} />,
@@ -24,11 +25,6 @@ const BlocksView = (props) => {
       <div dangerouslySetInnerHTML={{ __html: innerHTML }} data-aos='fade-in' />
     );
 
-  return (
-    <>
-      <InstaFeed />
-      <div data-aos='fade-up'>{blockType[blockName]}</div>
-    </>
-  );
+  return <div data-aos='fade-up'>{blockType[blockName]}</div>;
 };
 export default BlocksView;

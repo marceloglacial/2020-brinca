@@ -9,7 +9,7 @@ const Instagram = (props) => {
         id='instagram-media'
         className='instagram-media'
         data-instgrm-captioned
-        data-instgrm-permalink={props.url}
+        data-instgrm-permalink={props.attrs.url}
         data-instgrm-version='13'
       />
     </div>
