@@ -1,9 +1,10 @@
 import { useEffect } from 'react';
-import postscribe from 'postscribe';
 
-const useScript = (containerId, script) => {
+const useScript = (containerId, scriptUrl) => {
   useEffect(() => {
-    postscribe(`#${containerId}`, script);
+    const script = document.createElement('script');
+    script.src = scriptUrl;
+    document.getElementById(containerId).prepend(script);
   }, []);
 };
 export default useScript;

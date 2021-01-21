@@ -17,6 +17,7 @@
     "bootstrap": "^4.5.0",
     "postscribe": "^2.0.8",
     "react-html-parser": "^2.0.2",
+    "react-instagram-embed": "^2.0.0",
     "react-twitter-embed": "^3.0.3",
     "sass": "^1.26.10",
     "swr": "^0.3.6"
