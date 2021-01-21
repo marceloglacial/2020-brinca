@@ -1,13 +1,12 @@
 $spacing: 1rem;
 
-.videoContainer {
+.iframeContainer {
   width: 100%;
-  padding-top: 56.25%;
-  height: 0px;
   position: relative;
+  height: 0px;
 }
 
-.video {
+.iframe {
   width: 100%;
   height: 100%;
   position: absolute;
@@ -15,11 +14,29 @@ $spacing: 1rem;
   left: 0;
 }
 
-.videoWithCaption {
+.iframeWithCaption {
   margin-bottom: ($spacing * 2)+ 4rem;
 }
+.video {
+  padding-top: 56.25%;
+}
 
-.videoCaption {
+.audio {
+  padding-top: 16.25%;
+}
+
+.twitter {
+  margin: 0 auto;
+  border: solid 1px var(--grey-light);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+
+  @media (min-width: 768px) {
+    max-width: 50%;
+  }
+}
+
+.caption {
   background-color: var(--grey-light);
   padding: $spacing;
   text-align: center;
