@@ -8,3 +8,10 @@
 .has-text-align-center {
   text-align: center;
 }
+
+.line-clamp {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
