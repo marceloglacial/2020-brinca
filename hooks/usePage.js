@@ -1,5 +1,5 @@
 import useSWR from 'swr';
-import fetcher from './fetcher';
+import fetcher from '../functions/fetcher';
 
 const usePage = (slug, type) => {
   const { data, error } = useSWR(

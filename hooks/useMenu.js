@@ -1,5 +1,5 @@
 import useSWR from 'swr';
-import fetcher from './fetcher';
+import fetcher from '../functions/fetcher';
 
 const useMenu = (slug) => {
   const { data, error } = useSWR(

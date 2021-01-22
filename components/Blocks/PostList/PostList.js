@@ -1,7 +1,7 @@
 import Button from 'components/Button/Button';
 import PosstListPage from './components/PostListPage';
 import { useEffect, useState } from 'react';
-import usePosts from 'functions/usePosts';
+import usePosts from 'hooks/usePosts';
 
 const PostList = (props) => {
   const per_page = 3;

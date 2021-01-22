@@ -1,5 +1,5 @@
 import useSWR from 'swr';
-import fetcher from './fetcher';
+import fetcher from '../functions/fetcher';
 
 const usePosts = (id, per_age, offset) => {
   const postId = id ? id : '';
