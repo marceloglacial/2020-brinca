@@ -1,5 +1,5 @@
 import Alert from 'components/Alert/Alert';
-import useForms from 'functions/useForms';
+import useForms from 'hooks/useForms';
 import { useState } from 'react';
 import FormField from './components/FormField';
 import { form, button } from './Form.module.scss';

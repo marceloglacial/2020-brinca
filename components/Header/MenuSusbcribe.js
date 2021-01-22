@@ -1,4 +1,4 @@
-import useMenu from 'functions/useMenu';
+import useMenu from 'hooks/useMenu';
 import Alert from 'components/Alert/Alert';
 import Button from 'components/Button/Button';
 import getSlug from 'functions/getSlug';

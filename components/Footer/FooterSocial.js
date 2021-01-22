@@ -1,4 +1,4 @@
-import useMenu from 'functions/useMenu';
+import useMenu from 'hooks/useMenu';
 import FooterLoading from './FooterLoading';
 import Alert from 'components/Alert/Alert';
 import Image from 'next/image';
