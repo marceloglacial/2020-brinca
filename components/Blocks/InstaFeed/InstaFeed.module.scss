@@ -1,8 +1,16 @@
-.cardCol {
-  margin-bottom: 2rem;
-}
-.cardBody {
-  max-height: 150px;
+.card {
+  border-radius: var(--border-radius);
   overflow: hidden;
-  margin-bottom: 2rem;
+  box-shadow: var(--shadow);
+  display: block;
+  position: relative;
+  // margin: 1rem;
+}
+
+.cardBody {
+  display: none;
+
+  &::hover {
+    display: block;
+  }
 }
