@@ -36,8 +36,14 @@ const InstaFeed = (props) => {
               key={id}
             >
               <img src={imageSrc} alt='' className={styles.cardImage} />
-              <div className={styles.cardBody}>
-                {title && <p className={styles.cardTitle}>{title.node.text}</p>}
+              <div className={styles.cardContainer}>
+                <div className={styles.cardBody}>
+                  {title && (
+                    <p className={`line-clamp ${styles.cardTitle}`}>
+                      {title.node.text}
+                    </p>
+                  )}
+                </div>
               </div>
             </a>
           );

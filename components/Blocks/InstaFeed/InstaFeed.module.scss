@@ -4,13 +4,33 @@
   box-shadow: var(--shadow);
   display: block;
   position: relative;
-  // margin: 1rem;
+}
+
+.cardContainer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 2rem;
+  font-size: 1rem;
+  color: var(--white);
+  background-color: rgba(0, 0, 0, 0.75);
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.1s ease-in-out;
+}
+
+.card:hover .cardContainer {
+  opacity: 1;
 }
 
 .cardBody {
-  display: none;
+  transform: translateY(120%);
+  transition: transform 0.2s ease-in-out;
+}
 
-  &::hover {
-    display: block;
-  }
+.card:hover .cardBody {
+  transform: translateY(0%);
 }
