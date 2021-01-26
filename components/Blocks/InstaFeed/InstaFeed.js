@@ -7,10 +7,14 @@ const InstaFeed = (props) => {
   const { data, isLoading, isError } = useApi(url);
   const isThumbnail = imageType === 'thumbnail';
 
-  if (isError) return <p>Error!</p>;
+  if (isError) {
+    console.log(isError);
+    return <p>Error!</p>;
+  }
   if (isLoading) return <p>Loading ...</p>;
 
   if (!data.data) return <p>No items.</p>;
+
   const array = data.data.user.edge_owner_to_timeline_media.edges;
   return (
     <section className='instafeed'>
