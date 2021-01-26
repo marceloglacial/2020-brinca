@@ -6,7 +6,6 @@ const InstaFeed = (props) => {
   const { userID, title, itemsNumber = '6', imageType } = props;
   const url = `https://www.instagram.com/graphql/query/?query_hash=42323d64886122307be10013ad2dcc44&variables={"id":${userID},"first":${itemsNumber}}`;
   const { data, isLoading, isError } = useApi(url);
-  console.log(imageType);
   const isThumbnail = imageType === 'thumbnail';
 
   if (isError) return <p>Error!</p>;
@@ -19,9 +18,9 @@ const InstaFeed = (props) => {
       {title && <h2 className={'pb-5'}>{title}</h2>}
       <ResponsiveMasonry
         className={styles.instaFeedGrid}
-        columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 3 }}
+        columnsCountBreakPoints={{ 350: 2, 750: 2, 900: 3 }}
       >
-        <Masonry gutter={'2rem'}>
+        <Masonry gutter={'1rem'}>
           {array.map((item) => {
             const {
               id,
