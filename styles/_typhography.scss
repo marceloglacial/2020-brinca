@@ -14,11 +14,17 @@ h6 {
 }
 
 h2 {
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 700;
   text-align: center;
   padding-bottom: 0.5rem;
   text-align: center;
+
+  @media (min-width: 768px) {
+    text-align: center;
+    font-size: 2.5rem;
+    line-height: 3.5rem;
+  }
 
   &::after {
     display: block;
@@ -30,22 +36,15 @@ h2 {
 
     @media (min-width: 768px) {
       width: 100px;
-      margin: 2rem auto;
     }
-  }
-
-  @media (min-width: 768px) {
-    text-align: center;
-    font-size: 3rem;
-    line-height: 3.5rem;
   }
 }
 
 h3 {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: 700;
   text-align: center;
-  padding: 3rem 0 1rem 0;
+  padding: 2rem 0 1rem 0;
 
   &::after {
     display: block;

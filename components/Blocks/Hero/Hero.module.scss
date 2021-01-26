@@ -1,11 +1,3 @@
-.heroContainer {
-  padding: 2rem 0;
-
-  @media (min-width: 1024px) {
-    padding: 2rem 0 4rem 0;
-  }
-}
-
 .heroTitle {
   margin: 0;
   padding: 0;
@@ -53,9 +45,9 @@
 .heroImage--rounded {
   justify-content: center;
 
-  div {
-    border-radius: var(--border-radius);
+  & > div {
     box-shadow: var(--shadow);
+    border-radius: var(--border-radius);
   }
 
   @media (min-width: 1024px) {

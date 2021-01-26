@@ -42,7 +42,7 @@ const PostList = (props) => {
 
   return (
     <section className={`posts-list`}>
-      {title && <h2>{title}</h2>}
+      {title && <h2 className='pb-4'>{title}</h2>}
       <div className={`card-grid`}>{pages}</div>
       {hasPosts && (
         <div className={`card-grid__load`}>
