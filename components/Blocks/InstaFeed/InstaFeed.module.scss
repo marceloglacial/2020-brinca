@@ -1,6 +1,15 @@
-.instaFeedGrid {
+.instaFeedContainer {
   padding-top: 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+
+  @media (min-width: 768px) {
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2rem;
+  }
 }
+
 .card {
   border-radius: var(--border-radius);
   overflow: hidden;
