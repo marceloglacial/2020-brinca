@@ -19,7 +19,6 @@ const Gallery = (props) => {
   });
 
   const modalImages = images.map((item) => {
-    console.log(item);
     return { source: item ? item.source_url : '' };
   });
 
