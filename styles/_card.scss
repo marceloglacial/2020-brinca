@@ -1,8 +1,12 @@
 .card {
   border: unset;
-  font-weight: 200;
   border-radius: 1rem;
   box-shadow: var(--shadow);
+  transition: transform 0.15s ease-in-out;
+
+  &:hover {
+    transform: scale(1.02);
+  }
 }
 
 .card-body {
@@ -11,7 +15,14 @@
 
 .card-title {
   font-weight: 700;
-  padding-bottom: 0.5rem;
+  padding-bottom: 0;
+}
+
+.card a.card-link {
+  color: var(--black);
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: 200;
 }
 
 .card-text {

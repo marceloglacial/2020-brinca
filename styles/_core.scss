@@ -5,6 +5,7 @@ body {
     font-size: 1.125rem;
   }
 }
+
 a {
   color: var(--green);
 
@@ -16,6 +17,14 @@ a {
     transition: all 0.3s ease-in-out;
     outline-color: var(--green);
     box-shadow: none;
+  }
+}
+
+section {
+  padding: 2rem 0;
+
+  @media (min-width: 768px) {
+    padding: 4rem 0;
   }
 }
 

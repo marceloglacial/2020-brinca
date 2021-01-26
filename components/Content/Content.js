@@ -24,20 +24,18 @@ const Content = (props) => {
           <title>Brinca 2020 {`- ${title.rendered}`}</title>
         </Head>
       )}
-      <article className={`${styles.content} pb-5`}>
+      <article className={`${styles.content}`}>
         {!frontpage && (
-          <header className='article__title' data-aos='fade-in'>
-            <h1 className={`bottomLine ${styles.contentTitle} mb-md-5`}>
+          <header data-aos='fade-in'>
+            <h1 className={`bottomLine ${styles.contentTitle}`}>
               {title.rendered}
             </h1>
           </header>
         )}
 
-        <section className={`article__content`}>
-          {blocks.map((block, index) => (
-            <Blocks {...block} key={index} />
-          ))}
-        </section>
+        {blocks.map((block, index) => (
+          <Blocks {...block} key={index} />
+        ))}
       </article>
     </>
   );
