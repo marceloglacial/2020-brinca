@@ -1,43 +1,62 @@
 import useGallery from 'hooks/useGallery';
 import parseTagFromString from 'functions/parseTagFromString';
-import Image from 'next/image';
-import Alert from 'components/Alert/Alert';
+import Carousel, { Modal, ModalGateway } from 'react-images';
+import GalleryImage from './components/GalleryImage';
+import { useState } from 'react';
 
 const Gallery = (props) => {
   const { attrs, innerHTML } = props;
   const { ids } = attrs;
   const galleryClass = parseTagFromString(innerHTML, 'figure').className;
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [selectedIndex, setSelectedIndex] = useState(0);
 
   const images = ids.map((id) => {
     const { mediaContent, isLoading, isError } = useGallery(id);
-
-    if (isLoading) return 'loading ...';
-    if (isError) return <Alert title='ERROR' />;
-
-    const { source_url, alt_text, media_details } = mediaContent;
-    const { width, height } = media_details;
-    return (
-      <li className='blocks-gallery-item' key={id} data-aos='fade-in'>
-        <figure>
-          <Image
-            src={source_url}
-            alt={alt_text}
-            data-id={id}
-            data-full-url={source_url}
-            data-link={source_url}
-            className={`wp-image-${id}`}
-            width={width}
-            height={height}
-          />
-        </figure>
-      </li>
-    );
+    if (isLoading) return null;
+    if (isError) return null;
+    return mediaContent;
   });
 
+  const modalImages = images.map((item) => {
+    console.log(item);
+    return { source: item ? item.source_url : '' };
+  });
+
+  const toggleModal = (e, index) => {
+    e.preventDefault();
+    setModalIsOpen(!modalIsOpen);
+    setSelectedIndex(index);
+  };
+
   return (
-    <figure className={galleryClass}>
-      <ul className='blocks-gallery-grid'>{images}</ul>
-    </figure>
+    <>
+      <ModalGateway>
+        {modalIsOpen ? (
+          <Modal onClose={(e) => toggleModal(e, 0)}>
+            <Carousel currentIndex={selectedIndex} views={modalImages} />
+          </Modal>
+        ) : null}
+      </ModalGateway>
+
+      <figure className={galleryClass}>
+        <ul className='blocks-gallery-grid'>
+          {images.map((item, index) => {
+            const imageProps = {
+              ...item,
+              index,
+              modalIsOpen,
+              setModalIsOpen,
+              selectedIndex,
+              setSelectedIndex,
+              toggleModal,
+            };
+
+            return <GalleryImage {...imageProps} key={index} />;
+          })}
+        </ul>
+      </figure>
+    </>
   );
 };
 export default Gallery;
