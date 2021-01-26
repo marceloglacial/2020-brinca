@@ -45,7 +45,7 @@
 .heroImage--rounded {
   justify-content: center;
 
-  div {
+  & > div {
     box-shadow: var(--shadow);
     border-radius: var(--border-radius);
   }
