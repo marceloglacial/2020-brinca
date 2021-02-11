@@ -1,3 +1,6 @@
+// Gallery Block needs to fetch each image
+// @see https://github.com/WordPress/gutenberg/issues/10994
+
 import useGallery from 'hooks/useGallery';
 import parseTagFromString from 'functions/parseTagFromString';
 import Carousel, { Modal, ModalGateway } from 'react-images';
@@ -5,10 +8,9 @@ import GalleryImage from './components/GalleryImage';
 import { useState } from 'react';
 
 const Gallery = (props) => {
-  return null;
   const { attrs, innerHTML } = props;
   const { ids } = attrs;
-  const galleryClass = parseTagFromString(innerHTML, 'figure').className;
+  const galleryClass = parseTagFromString(innerHTML, 'gallery').className;
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(0);
 

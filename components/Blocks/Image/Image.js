@@ -5,9 +5,10 @@ import styles from './Image.module.scss';
 const ImageCore = (props) => {
   const { attrs, innerHTML } = props;
   const { align, width, height } = attrs;
-  const image = parseTagFromString(innerHTML, 'img');
-  const caption = parseTagFromString(innerHTML, 'figcaption');
-  const link = parseTagFromString(innerHTML, 'a');
+  const image = parseTagFromString(innerHTML, 'image');
+  const imageSrc = image.src;
+  const imageAlt = image.alt;
+  const imageCaption = image.caption;
 
   const imageAlign = {
     left: 'float-left mr-3',
@@ -21,14 +22,14 @@ const ImageCore = (props) => {
         data-aos='fade-in'
       >
         <Image
-          src={image.src}
-          alt={image.alt}
+          src={imageSrc}
+          alt={imageAlt}
           width={width || 1440}
           height={height || 900}
         />
-        {caption && (
+        {imageCaption && (
           <figcaption className={styles['figure-caption']}>
-            {caption.innerHTML}
+            {imageCaption}
           </figcaption>
         )}
       </figure>

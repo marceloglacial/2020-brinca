@@ -23,7 +23,7 @@ const wordpressApiUrl = `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/wp-json/wp/v2`
 
 export async function getStaticProps() {
   // Get Posts
-  const postRes = await fetch(`${wordpressApiUrl}/posts/`);
+  const postRes = await fetch(`${wordpressApiUrl}/pages/`);
   const posts = await postRes.json();
 
   // Get Pages

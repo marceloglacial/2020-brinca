@@ -1,8 +1,14 @@
 import Layout from 'components/Layout/Layout';
 import Blocks from 'components/Blocks/Blocks';
+import { useRouter } from 'next/router';
 
 const Blog = (props) => {
   const { posts, pages } = props;
+  const router = useRouter();
+
+  if (router.isFallback) {
+    return <div>Loading...</div>;
+  }
   const { title } = pages[0];
 
   const blocks = pages[0].blocks.map((block, index) => {
@@ -36,7 +42,7 @@ export async function getStaticPaths() {
   const paths = pages.map((page) => ({
     params: { slug: page.slug },
   }));
-  return { paths, fallback: false };
+  return { paths, fallback: true };
 }
 
 export async function getStaticProps({ params }) {
