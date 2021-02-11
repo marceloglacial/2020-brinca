@@ -5,6 +5,7 @@ import GalleryImage from './components/GalleryImage';
 import { useState } from 'react';
 
 const Gallery = (props) => {
+  return null;
   const { attrs, innerHTML } = props;
   const { ids } = attrs;
   const galleryClass = parseTagFromString(innerHTML, 'figure').className;
