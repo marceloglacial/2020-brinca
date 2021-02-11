@@ -16,7 +16,7 @@ const Blog = (props) => {
   return (
     <Layout>
       <header data-aos='fade-in'>
-        <h1 className={`bottomLine`}>{title.rendered}</h1>
+        <h1 className={`content-title`}>{title.rendered}</h1>
       </header>
       {blocks}
     </Layout>
