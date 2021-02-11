@@ -10,9 +10,9 @@ const Card = (props) => {
     link,
     image,
     date,
-    showImage = 'no',
-    showDate = 'no',
-    showText = 'no',
+    showImage = 'yes',
+    showDate = 'yes',
+    showText = 'yes',
     type = '',
   } = props;
 
