@@ -1,15 +1,10 @@
-import useScript from 'hooks/useScript';
-import { facebook } from '../Embed.module.scss';
-
+import { FacebookProvider, Page } from 'react-facebook';
 const Facebook = (props) => {
-  useScript(
-    'facebook-container',
-    'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.2'
-  );
+  const token = '474208436910673|b2505ebd2cf7f6e91a11054b7c4e6f44&';
   return (
-    <div id='facebook-container' className={facebook}>
-      <div id='fb-post' className='fb-post' data-href={props.url} />
-    </div>
+    <FacebookProvider appId={token}>
+      <Page href='https://www.facebook.com/ottawa.brinca/' tabs='timeline' />
+    </FacebookProvider>
   );
 };
 export default Facebook;
