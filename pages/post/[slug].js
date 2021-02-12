@@ -2,16 +2,16 @@ import Layout from 'components/Layout/Layout';
 import Blocks from 'components/Blocks/Blocks';
 import { useRouter } from 'next/router';
 
-const Page = (props) => {
-  const { pages } = props;
+const Post = (props) => {
+  const { posts } = props;
   const router = useRouter();
 
   if (router.isFallback) {
     return <div>Loading...</div>;
   }
-  const { title } = pages[0];
+  const { title } = posts[0];
 
-  const blocks = pages[0].blocks.map((block, index) => {
+  const blocks = posts[0].blocks.map((block, index) => {
     return <Blocks {...block} key={index} />;
   });
 
@@ -33,25 +33,25 @@ const Page = (props) => {
 const wordpressApiUrl = `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/wp-json/wp/v2`;
 
 export async function getStaticPaths() {
-  const res = await fetch(`${wordpressApiUrl}/pages`);
-  const pages = await res.json();
-  const paths = pages.map((page) => ({
+  const res = await fetch(`${wordpressApiUrl}/posts`);
+  const posts = await res.json();
+  const paths = posts.map((page) => ({
     params: { slug: page.slug },
   }));
   return { paths, fallback: true };
 }
 
 export async function getStaticProps({ params }) {
-  const pageRes = await fetch(`${wordpressApiUrl}/pages?slug=${params.slug}`);
-  const pages = await pageRes.json();
+  const pageRes = await fetch(`${wordpressApiUrl}/posts?slug=${params.slug}`);
+  const posts = await pageRes.json();
 
   return {
     props: {
-      pages,
+      posts,
       params,
     },
     revalidate: 1,
   };
 }
 
-export default Page;
+export default Post;

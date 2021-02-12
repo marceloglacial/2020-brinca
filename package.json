@@ -15,8 +15,10 @@
   "devDependencies": {
     "aos": ">=2.3.4",
     "bootstrap": ">=4.5.0",
+    "html-react-parser": "^1.2.4",
     "htmlparser2": "^6.0.0",
     "postscribe": "^2.0.8",
+    "react-facebook": "^8.1.4",
     "react-html-parser": ">=2.0.2",
     "react-images": ">=1.1.7",
     "react-twitter-embed": ">=3.0.3",
