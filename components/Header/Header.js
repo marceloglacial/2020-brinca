@@ -26,8 +26,11 @@ const Header = (props) => {
               const { ID, title, slug } = item;
               return (
                 <li className='nav-item mx-3' key={ID}>
-                  <Link href={slug} key={ID}>
-                    <a className={`nav-link ${styles.topNavLink}`} href={slug}>
+                  <Link href={`/${slug}`} key={ID}>
+                    <a
+                      className={`nav-link ${styles.topNavLink}`}
+                      href={`/${slug}`}
+                    >
                       {title}
                     </a>
                   </Link>
