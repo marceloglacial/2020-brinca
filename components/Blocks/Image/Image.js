@@ -1,14 +1,18 @@
-import parseTagFromString from 'functions/parseTagFromString';
 import Image from 'next/image';
 import styles from './Image.module.scss';
+import useGallery from 'hooks/useGallery';
 
 const ImageCore = (props) => {
-  const { attrs, innerHTML } = props;
-  const { align, width, height } = attrs;
-  const image = parseTagFromString(innerHTML, 'image');
-  const imageSrc = image.src;
-  const imageAlt = image.alt;
-  const imageCaption = image.caption;
+  const { id, align } = props.attrs;
+  const { mediaContent: image, isLoading, isError } = useGallery(id);
+
+  if (isLoading) return 'loading ...';
+  if (isError) return 'Error!';
+
+  const { width, height } = image.media_details;
+  const imageSrc = image.source_url;
+  const imageAlt = image.alt_text;
+  const imageCaption = image.caption.rendered;
 
   const imageAlign = {
     left: 'float-left mr-3',
