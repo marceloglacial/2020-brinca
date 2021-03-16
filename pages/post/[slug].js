@@ -18,7 +18,10 @@ const Post = (props) => {
   return (
     <Layout>
       <header data-aos='fade-in'>
-        <h1 className={`content-title`}>{title.rendered}</h1>
+        <h1
+          className='content-title'
+          dangerouslySetInnerHTML={{ __html: title.rendered }}
+        />
       </header>
       {blocks}
     </Layout>

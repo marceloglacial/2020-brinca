@@ -82,12 +82,12 @@ const Form = (props) => {
       onSubmit={(e) => handleSubmition(e)}
     >
       {title && <h3>{title}</h3>}
-      {fields.map((field) => {
+      {fields.map((field, index) => {
         const fieldProps = {
           attributes: field,
           handleOnChange,
         };
-        return <FormField {...fieldProps} key={field.id} />;
+        return <FormField {...fieldProps} key={index} />;
       })}
       <input
         type='submit'
