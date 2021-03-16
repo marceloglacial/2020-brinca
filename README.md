@@ -1,6 +1,6 @@
 # Brinca's website (2020)
 
-Brazil-Canada Community Association's website. A headless WordPress application that uses WP Rest API and Next JS.
+Brazil-Canada Community Association's website. A headless WordPress application that uses WP Rest API and Next JS
 
 ## Live Demo
 
