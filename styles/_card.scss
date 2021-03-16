@@ -3,6 +3,7 @@
   border-radius: 1rem;
   box-shadow: var(--shadow);
   transition: transform 0.15s ease-in-out;
+  height: 100%;
 
   &:hover {
     transform: scale(1.02);
