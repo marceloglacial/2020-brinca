@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import usePosts from 'hooks/usePosts';
 
 const PostList = (props) => {
-  const per_page = 10;
+  const per_page = parseInt(props.per_page) || 6;
   const [offSet, setOffSet] = useState(0);
   const [pages, setPages] = useState([]);
   const [isLoadingPage, setIsLoadingPage] = useState(false);
