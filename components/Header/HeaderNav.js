@@ -36,7 +36,7 @@ const HeaderNav = (props) => {
               </a>
             </Link>
             {hasSubMenu && (
-              <ul className={styles.navbarSub}>
+              <ul className={styles.navbarSub} data-aos='fade-in'>
                 {child_items.map((child, index) => {
                   return (
                     <li className={`nav-item ${styles.navSubItem}`} key={index}>
