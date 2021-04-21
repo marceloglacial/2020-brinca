@@ -30,3 +30,18 @@
 .navBarButton {
   border: none;
 }
+
+.navItem {
+  position: relative;
+}
+
+.navbarSub {
+  position: absolute;
+  padding: 0;
+  list-style: none;
+}
+
+.navSubItem {
+  display: block;
+  white-space: nowrap;
+}
