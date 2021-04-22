@@ -21,17 +21,13 @@ const HeaderNav = (props) => {
         const hasSubMenu = child_items && isOpen;
         return (
           <li
-            className={`nav-item mx-3 ${styles.navItem}`}
+            className={`nav-item mx-2 ${styles.navItem}`}
             key={ID}
             onMouseOver={() => child_items && setIsOpen(true)}
             onMouseLeave={() => child_items && setIsOpen(false)}
           >
             <Link href={`/${slug}`} key={ID}>
-              <a
-                className={`nav-link ${styles.topNavLink}`}
-                href={`/${slug}`}
-                onClick={(e) => child_items && e.preventDefault()}
-              >
+              <a className={`nav-link ${styles.topNavLink}`} href={`/${slug}`}>
                 {title}
               </a>
             </Link>
