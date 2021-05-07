@@ -1,5 +1,6 @@
 import Layout from 'components/Layout/Layout';
 import Blocks from 'components/Blocks/Blocks';
+import { getData } from 'functions/getData';
 
 const Blog = (props) => {
   const { posts, pages } = props;
@@ -11,29 +12,27 @@ const Blog = (props) => {
     return <Blocks {...blockProps} key={index} />;
   });
 
-  return <Layout>{blocks}</Layout>;
+  return <Layout {...props}>{blocks}</Layout>;
 };
 
-//
-// Getting Data
-// @see https://nextjs.org/docs/basic-features/data-fetching#incremental-static-regeneration
-//
-
-const wordpressApiUrl = `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/wp-json/wp/v2`;
-
 export async function getStaticProps() {
-  // Get Posts
-  const postRes = await fetch(`${wordpressApiUrl}/pages/`);
-  const posts = await postRes.json();
-
-  // Get Pages
-  const pageRes = await fetch(`${wordpressApiUrl}/pages?slug=pagina-inicial`);
-  const pages = await pageRes.json();
-
+  const allData = (await getData()) || {};
+  const {
+    posts = [],
+    pages = [],
+    headerMenu = [],
+    footerMenu = [],
+    subscribeMenu = [],
+    socialMenu = [],
+  } = allData;
   return {
     props: {
       posts,
       pages,
+      headerMenu,
+      footerMenu,
+      subscribeMenu,
+      socialMenu,
     },
     revalidate: 1,
   };

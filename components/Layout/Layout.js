@@ -12,12 +12,12 @@ const Layout = (props) => {
         <meta name='keywords' content='description' />
         <link rel='icon' href='/favicon.ico' />
       </Head>
-      <Header />
+      <Header {...props} />
       <a className='skip-link' href='#main'>
         Skip to main
       </a>
       <Main>{props.children}</Main>
-      <Footer />
+      <Footer {...props} />
     </>
   );
 };
