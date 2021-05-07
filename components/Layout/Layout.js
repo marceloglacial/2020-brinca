@@ -4,9 +4,11 @@ import Footer from 'components/Footer/Footer';
 import Main from 'components/Main/Main';
 
 const Layout = (props) => {
+  const { pageTitle } = props;
   return (
     <>
       <Head>
+        {pageTitle && <title>Brinca - {pageTitle}</title>}
         <meta
           name='description'
           content='Sua comunidade Brasileira em Ottawa-Gatineau!'

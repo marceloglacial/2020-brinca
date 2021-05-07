@@ -1,8 +1,8 @@
-import Head from 'next/head';
 import Layout from 'components/Layout/Layout';
 import Blocks from 'components/Blocks/Blocks';
 import { useRouter } from 'next/router';
 import { getData } from 'functions/getData';
+import HtmlParser from 'react-html-parser';
 
 const Post = (props) => {
   const { post } = props;
@@ -11,22 +11,16 @@ const Post = (props) => {
   if (router.isFallback) {
     return <div>Loading...</div>;
   }
-  const { title } = post[0];
+  const title = HtmlParser(post[0].title.rendered);
 
   const blocks = post[0].blocks.map((block, index) => {
     return <Blocks {...block} key={index} />;
   });
 
   return (
-    <Layout {...props}>
-      <Head>
-        <title>Brinca - Evento: {title.rendered}</title>
-      </Head>
+    <Layout pageTitle={title} {...props}>
       <header data-aos='fade-in'>
-        <h1
-          className='content-title'
-          dangerouslySetInnerHTML={{ __html: title.rendered }}
-        />
+        <h1 className='content-title'>{title}</h1>
       </header>
       {blocks}
     </Layout>

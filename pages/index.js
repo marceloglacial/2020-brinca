@@ -13,7 +13,11 @@ const Blog = (props) => {
   });
 
   return (
-    <Layout {...props} frontpage>
+    <Layout
+      pageTitle={`Sua comunidade Brasileira em Ottawa-Gatineau!`}
+      {...props}
+      frontpage
+    >
       {blocks}
     </Layout>
   );
