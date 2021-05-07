@@ -1,4 +1,3 @@
-import useMenu from 'hooks/useMenu';
 import HeaderLoading from './HeaderLoading';
 import Alert from 'components/Alert/Alert';
 import Link from 'next/link';
@@ -6,11 +5,16 @@ import styles from './Header.module.scss';
 import { useState } from 'react';
 
 const HeaderNav = (props) => {
-  const { menuContent, isLoading, isError } = useMenu('header');
+  const menuContent = props.headerMenu;
+
+  const isError = menuContent === undefined ? true : false;
+  if (isError) return <Alert title='Data error' />;
+
+  const isLoading = menuContent.length === 0;
+  if (isLoading) return <HeaderLoading />;
+
   const [isOpen, setIsOpen] = useState(false);
 
-  if (isLoading) return <HeaderLoading />;
-  if (isError) return <Alert title='Data error' />;
   if (menuContent.code === 'not_found')
     return <Alert title={menuContent.message} />;
 
@@ -21,17 +25,13 @@ const HeaderNav = (props) => {
         const hasSubMenu = child_items && isOpen;
         return (
           <li
-            className={`nav-item mx-3 ${styles.navItem}`}
+            className={`nav-item mx-2 ${styles.navItem}`}
             key={ID}
             onMouseOver={() => child_items && setIsOpen(true)}
             onMouseLeave={() => child_items && setIsOpen(false)}
           >
             <Link href={`/${slug}`} key={ID}>
-              <a
-                className={`nav-link ${styles.topNavLink}`}
-                href={`/${slug}`}
-                onClick={(e) => child_items && e.preventDefault()}
-              >
+              <a className={`nav-link ${styles.topNavLink}`} href={`/${slug}`}>
                 {title}
               </a>
             </Link>

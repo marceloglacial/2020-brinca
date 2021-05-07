@@ -8,10 +8,14 @@ import FooterSocial from './FooterSocial';
 
 const Footer = (props) => {
   const year = new Date().getUTCFullYear();
-  const { menuContent, isLoading, isError } = useMenu('footer');
+  const menuContent = props.footerMenu;
 
+  const isError = menuContent === undefined ? true : false;
+  if (isError) return <Alert title='Data error' />;
+
+  const isLoading = menuContent.length === 0;
   if (isLoading) return <FooterLoading />;
-  if (isError) return <Alert title={`Data error`} />;
+
   if (menuContent.code === 'not_found')
     return <Alert title={menuContent.message} />;
 
@@ -37,8 +41,8 @@ const Footer = (props) => {
             const { ID, title, slug } = item;
             return (
               <li className={styles.menuLink} key={ID}>
-                <Link href={slug} key={ID}>
-                  <a href={slug}>{title}</a>
+                <Link href={`/${slug}`} key={ID}>
+                  <a href={`/${slug}`}>{title}</a>
                 </Link>
               </li>
             );
@@ -67,7 +71,7 @@ const Footer = (props) => {
           </li>
         </ul>
       </div>
-      <FooterSocial />
+      <FooterSocial {...props} />
     </footer>
   );
 };

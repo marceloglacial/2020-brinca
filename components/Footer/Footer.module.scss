@@ -83,6 +83,7 @@ ul li.footerLogo {
 ul li.menuLink {
   padding: 2rem 1rem 0.3rem 1rem;
   margin-bottom: 1.8rem;
+  position: relative;
 
   &:last-child {
     padding-right: 2rem;
@@ -169,4 +170,8 @@ ul li.menuLink {
   @media (min-width: 1023px) {
     width: unset;
   }
+}
+
+.navbarSub {
+  position: absolute;
 }

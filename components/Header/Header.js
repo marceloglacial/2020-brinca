@@ -12,7 +12,7 @@ const Header = (props) => {
         </div>
         <div className='collapse navbar-collapse'>
           <HeaderNav {...props} />
-          <MenuSubscribe />
+          <MenuSubscribe {...props} />
         </div>
       </div>
     </nav>

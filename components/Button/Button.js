@@ -2,9 +2,8 @@ import Link from 'next/link';
 
 const Button = (props) => {
   const { title, link, type, className, onClick } = props;
-  const domain = window.location.href;
   return (
-    <Link href={link || domain}>
+    <Link href={link}>
       <button
         className={`btn btn-${type || 'primary'} ${className || ''}`}
         onClick={onClick}

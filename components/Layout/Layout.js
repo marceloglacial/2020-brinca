@@ -4,20 +4,27 @@ import Footer from 'components/Footer/Footer';
 import Main from 'components/Main/Main';
 
 const Layout = (props) => {
+  const { pageTitle } = props;
   return (
     <>
       <Head>
-        <title>Brinca 2020 </title>
-        <meta name='description' content='Brinca 2020' />
-        <meta name='keywords' content='description' />
+        {pageTitle && <title>Brinca - {pageTitle}</title>}
+        <meta
+          name='description'
+          content='Sua comunidade Brasileira em Ottawa-Gatineau!'
+        />
+        <meta
+          name='keywords'
+          content='brinca, brazil, ottawa, gatineau, canada'
+        />
         <link rel='icon' href='/favicon.ico' />
       </Head>
-      <Header />
+      <Header {...props} />
       <a className='skip-link' href='#main'>
         Skip to main
       </a>
       <Main>{props.children}</Main>
-      <Footer />
+      <Footer {...props} />
     </>
   );
 };

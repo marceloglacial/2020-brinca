@@ -1,5 +1,10 @@
 .logo div {
-  width: 200px;
+  width: 175px;
+
+  @media (min-width: 375px) {
+    width: 200px;
+  }
+
   @media (min-width: 450px) {
     width: unset;
   }

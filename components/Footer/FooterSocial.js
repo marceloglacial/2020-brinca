@@ -1,14 +1,17 @@
-import useMenu from 'hooks/useMenu';
 import FooterLoading from './FooterLoading';
 import Alert from 'components/Alert/Alert';
 import Image from 'next/image';
 import { socialLink, socialMenu, socialList } from './Footer.module.scss';
 
 const FooterSocial = (props) => {
-  const { menuContent, isLoading, isError } = useMenu('social');
+  const menuContent = props.socialMenu;
 
+  const isError = menuContent === undefined ? true : false;
+  if (isError) return <Alert title='Data error' />;
+
+  const isLoading = menuContent.length === 0;
   if (isLoading) return <FooterLoading />;
-  if (isError) return <Alert title={`Data error`} />;
+
   if (menuContent.code === 'not_found')
     return <Alert title={menuContent.message} />;
 
