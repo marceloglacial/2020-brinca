@@ -21,7 +21,7 @@ const Content = (props) => {
     <>
       {!frontpage && (
         <Head>
-          <title>Brinca 2020 {`- ${title.rendered}`}</title>
+          <title>Brinca {`- ${title.rendered}`}</title>
         </Head>
       )}
       <article className={`${styles.content}`}>

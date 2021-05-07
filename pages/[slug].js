@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import Layout from 'components/Layout/Layout';
 import Blocks from 'components/Blocks/Blocks';
 import { useRouter } from 'next/router';
@@ -18,6 +19,9 @@ const Page = (props) => {
 
   return (
     <Layout {...props}>
+      <Head>
+        <title>Brinca - {title.rendered}</title>
+      </Head>
       <header data-aos='fade-in'>
         <h1
           className='content-title'

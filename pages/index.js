@@ -12,7 +12,11 @@ const Blog = (props) => {
     return <Blocks {...blockProps} key={index} />;
   });
 
-  return <Layout {...props}>{blocks}</Layout>;
+  return (
+    <Layout {...props} frontpage>
+      {blocks}
+    </Layout>
+  );
 };
 
 export async function getStaticProps() {

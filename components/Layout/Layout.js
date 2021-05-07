@@ -7,9 +7,14 @@ const Layout = (props) => {
   return (
     <>
       <Head>
-        <title>Brinca 2020 </title>
-        <meta name='description' content='Brinca 2020' />
-        <meta name='keywords' content='description' />
+        <meta
+          name='description'
+          content='Sua comunidade Brasileira em Ottawa-Gatineau!'
+        />
+        <meta
+          name='keywords'
+          content='brinca, brazil, ottawa, gatineau, canada'
+        />
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <Header {...props} />
