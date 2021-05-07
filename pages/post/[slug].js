@@ -1,22 +1,23 @@
 import Layout from 'components/Layout/Layout';
 import Blocks from 'components/Blocks/Blocks';
 import { useRouter } from 'next/router';
+import { getData } from 'functions/getData';
 
 const Post = (props) => {
-  const { posts } = props;
+  const { post } = props;
   const router = useRouter();
 
   if (router.isFallback) {
     return <div>Loading...</div>;
   }
-  const { title } = posts[0];
+  const { title } = post[0];
 
-  const blocks = posts[0].blocks.map((block, index) => {
+  const blocks = post[0].blocks.map((block, index) => {
     return <Blocks {...block} key={index} />;
   });
 
   return (
-    <Layout>
+    <Layout {...props}>
       <header data-aos='fade-in'>
         <h1
           className='content-title'
@@ -46,12 +47,23 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   const pageRes = await fetch(`${wordpressApiUrl}/posts?slug=${params.slug}`);
-  const posts = await pageRes.json();
+  const post = await pageRes.json();
+  const allData = (await getData()) || {};
+  const {
+    headerMenu = [],
+    footerMenu = [],
+    subscribeMenu = [],
+    socialMenu = [],
+  } = allData;
 
   return {
     props: {
-      posts,
+      post,
       params,
+      headerMenu,
+      footerMenu,
+      subscribeMenu,
+      socialMenu,
     },
     revalidate: 1,
   };

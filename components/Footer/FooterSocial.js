@@ -4,7 +4,6 @@ import Image from 'next/image';
 import { socialLink, socialMenu, socialList } from './Footer.module.scss';
 
 const FooterSocial = (props) => {
-  console.log(props);
   const menuContent = props.socialMenu;
 
   const isError = menuContent === undefined ? true : false;

@@ -41,8 +41,8 @@ const Footer = (props) => {
             const { ID, title, slug } = item;
             return (
               <li className={styles.menuLink} key={ID}>
-                <Link href={slug} key={ID}>
-                  <a href={slug}>{title}</a>
+                <Link href={`/${slug}`} key={ID}>
+                  <a href={`/${slug}`}>{title}</a>
                 </Link>
               </li>
             );
