@@ -1,13 +1,16 @@
-import useMenu from 'hooks/useMenu';
 import Alert from 'components/Alert/Alert';
-import Button from 'components/Button/Button';
 import getSlug from 'functions/getSlug';
+import Link from 'next/link';
 
 const MenuSubscribe = (props) => {
-  const { menuContent, isLoading, isError } = useMenu('subscribe');
+  const menuContent = props.subscribeMenu;
 
-  if (isLoading) return 'Loading ...';
-  if (isError) return 'Error!';
+  const isError = menuContent === undefined ? true : false;
+  if (isError) return <Alert title='Data error' />;
+
+  const isLoading = menuContent.length === 0;
+  if (isLoading) return <HeaderLoading />;
+
   if (menuContent.code === 'not_found')
     return <Alert title={menuContent.message} />;
 
@@ -17,12 +20,11 @@ const MenuSubscribe = (props) => {
         const { ID, title, url } = item;
         return (
           <li className='nav-item' key={ID}>
-            <Button
-              title={title}
-              type={'primary'}
-              link={getSlug(url)}
-              key={ID}
-            />
+            <Link href={`/${getSlug(url)}`}>
+              <a href={`/${getSlug(url)}`} className={`btn btn-primary`}>
+                {title}
+              </a>
+            </Link>
           </li>
         );
       })}
