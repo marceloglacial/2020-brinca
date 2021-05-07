@@ -48,6 +48,7 @@ export async function getStaticProps({ params }) {
   const page = await pageRes.json();
   const allData = (await getData()) || {};
   const {
+    pages = [],
     headerMenu = [],
     footerMenu = [],
     subscribeMenu = [],
@@ -57,6 +58,7 @@ export async function getStaticProps({ params }) {
   return {
     props: {
       page,
+      pages,
       params,
       headerMenu,
       footerMenu,

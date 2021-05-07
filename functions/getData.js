@@ -6,12 +6,18 @@
 export async function getData() {
   const wordpressApiUrl = `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/wp-json/wp/v2`;
 
+  // Get FrontPage
+  const frontPageRes = await fetch(
+    `${wordpressApiUrl}/pages?slug=pagina-inicial`
+  );
+  const frontPage = await frontPageRes.json();
+
   // Get Posts
-  const postRes = await fetch(`${wordpressApiUrl}/pages/`);
+  const postRes = await fetch(`${wordpressApiUrl}/posts`);
   const posts = await postRes.json();
 
   // Get Pages
-  const pageRes = await fetch(`${wordpressApiUrl}/pages?slug=pagina-inicial`);
+  const pageRes = await fetch(`${wordpressApiUrl}/pages`);
   const pages = await pageRes.json();
 
   // Get Menus
@@ -38,6 +44,7 @@ export async function getData() {
   return {
     posts,
     pages,
+    frontPage,
     headerMenu,
     footerMenu,
     subscribeMenu,

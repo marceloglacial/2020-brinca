@@ -3,8 +3,8 @@ import Blocks from 'components/Blocks/Blocks';
 import { getData } from 'functions/getData';
 
 const Blog = (props) => {
-  const { posts, pages } = props;
-  const blocks = pages[0].blocks.map((block, index) => {
+  const { posts, frontPage } = props;
+  const blocks = frontPage[0].blocks.map((block, index) => {
     const blockProps = {
       ...block,
       posts,
@@ -16,7 +16,6 @@ const Blog = (props) => {
     <Layout
       pageTitle={`Sua comunidade Brasileira em Ottawa-Gatineau!`}
       {...props}
-      frontpage
     >
       {blocks}
     </Layout>
@@ -26,8 +25,7 @@ const Blog = (props) => {
 export async function getStaticProps() {
   const allData = (await getData()) || {};
   const {
-    posts = [],
-    pages = [],
+    frontPage = [],
     headerMenu = [],
     footerMenu = [],
     subscribeMenu = [],
@@ -35,8 +33,7 @@ export async function getStaticProps() {
   } = allData;
   return {
     props: {
-      posts,
-      pages,
+      frontPage,
       headerMenu,
       footerMenu,
       subscribeMenu,
