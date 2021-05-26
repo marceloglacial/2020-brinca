@@ -13,7 +13,7 @@
     align-items: flex-start;
 
     .label {
-      font-weight: normal;
+      font-weight: 300;
     }
 
     .checkbox {
@@ -40,6 +40,10 @@
   .label {
     font-size: 1rem;
     font-weight: normal;
+  }
+
+  .checkbox {
+    margin: 0 0.5rem 0 0;
   }
 }
 
