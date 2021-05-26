@@ -1,14 +1,16 @@
 import useApi from 'hooks/useApi';
+import FormsField from './FormsField';
 
 const HsForms = (props) => {
   const { data, isLoading } = useApi('/api/hubspot/forms');
   if (isLoading) return 'loading ...';
 
-  const { name, fieldGroups, legalConsentOptions, displayOptions } = data;
-  const { communicationConsentText, communicationsCheckboxes } =
+  const { archived, name, fieldGroups, legalConsentOptions, displayOptions } =
+    data;
+  const { communicationConsentText, communicationsCheckboxes = false } =
     legalConsentOptions;
 
-  console.log(data);
+  if (archived) return null;
 
   return (
     <section className='form'>
@@ -16,39 +18,35 @@ const HsForms = (props) => {
         <h3>{name}</h3>
       </header>
       <form className='form'>
-        {fieldGroups.map((item, index) => {
-          const { label, required } = item.fields[0];
-          return (
-            <div className='form__group' key={index}>
-              <label className='label'>{label}:</label>
-              <input className='input' required={required} />
-            </div>
-          );
-        })}
-        <div className='form__consent'>
-          <label
-            className='label'
-            dangerouslySetInnerHTML={{
-              __html: communicationConsentText,
-            }}
-          />
-          {communicationsCheckboxes.map((item, index) => {
-            const { label, required } = item;
-            return (
-              <div className='form__group' key={index}>
-                <input
-                  type='checkbox'
-                  className='checkbox'
-                  id={`content__${index}`}
-                  required={required}
-                />
-                <label className='label' htmlFor={`content__${index}`}>
-                  {label}
-                </label>
-              </div>
-            );
-          })}
-        </div>
+        {fieldGroups.map((item, index) => (
+          <FormsField {...item.fields[0]} id={`form-id-${index}`} key={index} />
+        ))}
+        {communicationsCheckboxes && (
+          <div className='form-consent'>
+            <label
+              className='label'
+              dangerouslySetInnerHTML={{
+                __html: communicationConsentText,
+              }}
+            />
+            {communicationsCheckboxes.map((item, index) => {
+              const { label, required } = item;
+              return (
+                <div className='form__group' key={index}>
+                  <input
+                    type='checkbox'
+                    className='checkbox'
+                    id={`content__${index}`}
+                    required={required}
+                  />
+                  <label className='label' htmlFor={`content__${index}`}>
+                    {label}
+                  </label>
+                </div>
+              );
+            })}
+          </div>
+        )}
 
         <input
           type='submit'

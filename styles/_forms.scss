@@ -7,6 +7,40 @@
 
 .form__group {
   padding-bottom: 1.5rem;
+
+  &--checkbox {
+    display: flex;
+    align-items: flex-start;
+
+    .label {
+      font-weight: normal;
+    }
+
+    .checkbox {
+      margin-top: 0.25rem;
+    }
+  }
+
+  &--select {
+    position: relative;
+
+    &::before {
+      position: absolute;
+      bottom: 3rem;
+      right: 1rem;
+      display: flex;
+      align-items: center;
+      content: '\2304';
+      color: var(--green);
+    }
+  }
+}
+
+.form-consent {
+  .label {
+    font-size: 1rem;
+    font-weight: normal;
+  }
 }
 
 .label {
@@ -55,24 +89,8 @@
 .select {
   border-radius: var(--border-radius);
   border: solid 2px var(--green-soft);
-  padding: 0.5rem;
+  padding: 1rem;
   flex-grow: 1;
   width: 100%;
-}
-
-.form__consent {
-  label {
-    font-size: 1rem;
-    font-weight: normal;
-  }
-
-  .form__group {
-    display: flex;
-    align-items: center;
-
-    .label {
-      margin: 0;
-      font-weight: normal;
-    }
-  }
+  appearance: none;
 }

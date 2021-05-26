@@ -7,7 +7,7 @@ const handler = nc()
     const { slug } = req.query;
     const routes = {
       contacts: `crm/v3/objects/contacts`,
-      forms: `marketing/v3/forms/28b1f0ae-e05a-474e-8366-07be0ddb4ca3`,
+      forms: `marketing/v3/forms/be5b0da8-829d-4842-8f5c-19e82baee940`,
     };
 
     const response = await fetch(
