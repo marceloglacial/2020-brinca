@@ -5,19 +5,14 @@ import DropDown from 'components/Form/DropDown';
 
 const FormsField = (props) => {
   const { fieldType } = props;
-  const handleFieldUpdate = (e) => console.log(e);
-  const inputProps = {
-    ...props,
-    onChange: (e) => handleFieldUpdate(e.target.value),
-  };
 
   const inputType = {
-    single_checkbox: <CheckBox {...inputProps} />,
-    single_line_text: <Input {...inputProps} />,
-    email: <Input {...inputProps} />,
-    dropdown: <DropDown {...inputProps} />,
-    phone: <Input type={'tel'} {...inputProps} />,
-    multi_line_text: <TextArea {...inputProps} />,
+    single_checkbox: <CheckBox {...props} />,
+    single_line_text: <Input {...props} />,
+    email: <Input {...props} />,
+    dropdown: <DropDown {...props} />,
+    phone: <Input type={'tel'} {...props} />,
+    multi_line_text: <TextArea {...props} />,
   };
   return <>{inputType[fieldType]}</>;
 };
