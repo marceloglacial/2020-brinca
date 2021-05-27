@@ -16,13 +16,18 @@ const HsForms = (props) => {
 
   const handleFieldUpdate = (e, item) => {
     e.persist();
-    item.fields[0].defaultValue = e.target.value;
-    setFormData({
-      formType: 'hubspot',
-      name: 'string',
-      fieldGroups: [...fieldGroups, item],
-    });
+    const name = item.fields[0].name;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: e.target.value || e.target.checked,
+    }));
   };
+
+  const formatFormData = (formData) =>
+    Object.keys(formData).map(function (key) {
+      const value = formData[key];
+      return { name: key, value: value };
+    });
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -30,7 +35,11 @@ const HsForms = (props) => {
     myHeaders.append('Content-Type', 'application/json');
 
     const raw = JSON.stringify({
-      data: formData,
+      fields: [...formatFormData(formData)],
+      context: {
+        pageUri: 'www.brinca.ca',
+        pageName: 'Brinca Website',
+      },
     });
 
     const requestOptions = {
@@ -40,16 +49,19 @@ const HsForms = (props) => {
       redirect: 'follow',
     };
 
-    fetch(`/api/hubspot/forms/${slug}`, requestOptions)
+    fetch(
+      `https://api.hsforms.com/submissions/v3/integration/submit/${process.env.NEXT_PUBLIC_HUBSPOT_SITE}/${slug}`,
+      requestOptions
+    )
       .then((response) => {
         response.text();
-        console.log('Obrigado por enviar essa mensagem.');
+        console.log('deu bom');
       })
       .catch((error) => {
         console.log('error', error);
-        // handleServerResponse(false, 'Error!');
       });
   };
+
   return (
     <section className='form'>
       <header className='form__header'>
