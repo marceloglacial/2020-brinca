@@ -1,10 +1,13 @@
 import useApi from 'hooks/useApi';
 import { useState } from 'react';
 import FormsField from './FormsField';
+import FormWrapper from './FormWrapper';
 
 const HsForms = (props) => {
-  const { slug = 'be5b0da8-829d-4842-8f5c-19e82baee940', archived } = props;
+  // const { slug = 'be5b0da8-829d-4842-8f5c-19e82baee940', archived } = props;
+  const { slug = '28b1f0ae-e05a-474e-8366-07be0ddb4ca3', archived } = props;
   const [formData, setFormData] = useState({});
+  const [formStatus, setFormStatus] = useState(false);
   const { data, isLoading } = useApi(`/api/hubspot/forms/${slug}`);
 
   if (isLoading) return 'loading ...';
@@ -28,6 +31,8 @@ const HsForms = (props) => {
       const value = formData[key];
       return { name: key, value: value };
     });
+
+  // @see https://legacydocs.hubspot.com/docs/methods/forms/submit_form
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -54,62 +59,79 @@ const HsForms = (props) => {
       requestOptions
     )
       .then((response) => {
-        response.text();
-        console.log('deu bom');
+        response.status === 200 && setFormStatus(true);
       })
       .catch((error) => {
         console.log('error', error);
       });
   };
 
-  return (
-    <section className='form'>
-      <header className='form__header'>
-        <h3>{name}</h3>
-      </header>
-      <form className='form' onSubmit={(e) => handleSubmit(e)}>
-        {fieldGroups.map((item, index) => (
-          <FormsField
-            {...item.fields[0]}
-            id={`form-id-${index}`}
-            onChange={(e) => handleFieldUpdate(e, item)}
-            key={index}
-          />
-        ))}
-        {communicationsCheckboxes && (
-          <div className='form-consent'>
-            <label
-              className='label'
-              dangerouslySetInnerHTML={{
-                __html: communicationConsentText,
-              }}
-            />
-            {communicationsCheckboxes.map((item, index) => {
-              const { label, required } = item;
-              return (
-                <div className='form__group form__group--checkbox' key={index}>
-                  <input
-                    type='checkbox'
-                    className='checkbox'
-                    id={`content__${index}`}
-                    required={required}
-                  />
-                  <label className='label' htmlFor={`content__${index}`}>
-                    {label}
-                  </label>
-                </div>
-              );
-            })}
-          </div>
-        )}
+  const formProps = {
+    name,
+    handleSubmit,
+  };
 
-        <input
-          type='submit'
-          className='btn btn-secondary btn-form'
-          value={displayOptions.submitButtonText}
+  if (formStatus) {
+    return (
+      <FormWrapper {...formProps}>
+        <div
+          className='form-success'
+          dangerouslySetInnerHTML={{
+            __html: data.configuration.postSubmitAction.value,
+          }}
         />
-      </form>
-    </section>
-  );
+      </FormWrapper>
+    );
+  } else {
+    return (
+      <FormWrapper {...formProps}>
+        <form className='form' onSubmit={(e) => handleSubmit(e)}>
+          {fieldGroups.map((item, index) => (
+            <FormsField
+              {...item.fields[0]}
+              id={`form-id-${index}`}
+              onChange={(e) => handleFieldUpdate(e, item)}
+              key={index}
+            />
+          ))}
+          {communicationsCheckboxes && (
+            <div className='form-consent'>
+              <label
+                className='label'
+                dangerouslySetInnerHTML={{
+                  __html: communicationConsentText,
+                }}
+              />
+              {communicationsCheckboxes.map((item, index) => {
+                const { label, required } = item;
+                return (
+                  <div
+                    className='form__group form__group--checkbox'
+                    key={index}
+                  >
+                    <input
+                      type='checkbox'
+                      className='checkbox'
+                      id={`content__${index}`}
+                      required={required}
+                    />
+                    <label className='label' htmlFor={`content__${index}`}>
+                      {label}
+                    </label>
+                  </div>
+                );
+              })}
+            </div>
+          )}
+
+          <input
+            type='submit'
+            className='btn btn-secondary btn-form'
+            value={displayOptions.submitButtonText}
+          />
+        </form>
+      </FormWrapper>
+    );
+  }
 };
 export default HsForms;
