@@ -18,7 +18,6 @@ const Blog = (props) => {
       pageTitle={`Sua comunidade Brasileira em Ottawa-Gatineau!`}
       {...props}
     >
-      <HsForms {...props} />
       {blocks}
     </Layout>
   );

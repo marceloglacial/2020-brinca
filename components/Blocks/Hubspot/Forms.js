@@ -3,13 +3,14 @@ import { useState } from 'react';
 import FormsField from './FormsField';
 import FormWrapper from './FormWrapper';
 
-const HsForms = (props) => {
-  // const { slug = 'be5b0da8-829d-4842-8f5c-19e82baee940', archived } = props;
-  const { slug = '28b1f0ae-e05a-474e-8366-07be0ddb4ca3', archived } = props;
+const HubSpotForms = (props) => {
+  const { slug, archived } = props;
   const [formData, setFormData] = useState({});
   const [formStatus, setFormStatus] = useState(false);
   const [consent, setConsent] = useState({});
   const { data, isLoading } = useApi(`/api/hubspot/forms/${slug}`);
+
+  if (!slug) return null;
 
   if (isLoading) return 'loading ...';
   if (archived) return null;
@@ -41,8 +42,6 @@ const HsForms = (props) => {
     });
 
   // @see https://legacydocs.hubspot.com/docs/methods/forms/submit_form
-  console.log(consent);
-
   const handleSubmit = (e) => {
     e.preventDefault();
     const myHeaders = new Headers();
@@ -153,4 +152,4 @@ const HsForms = (props) => {
     );
   }
 };
-export default HsForms;
+export default HubSpotForms;
