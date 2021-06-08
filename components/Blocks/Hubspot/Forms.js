@@ -4,16 +4,14 @@ import FormsField from './FormsField';
 import FormWrapper from './FormWrapper';
 
 const HubSpotForms = (props) => {
-  const { slug, archived } = props;
+  const { formID } = props.attrs;
   const [formData, setFormData] = useState({});
   const [formStatus, setFormStatus] = useState(false);
   const [consent, setConsent] = useState({});
-  const { data, isLoading } = useApi(`/api/hubspot/forms/${slug}`);
+  const { data, isLoading } = useApi(`/api/hubspot/forms/${formID}`);
 
-  if (!slug) return null;
-
+  if (!formID) return null;
   if (isLoading) return 'loading ...';
-  if (archived) return null;
 
   const { name, fieldGroups, legalConsentOptions, displayOptions } = data;
   const { communicationConsentText, communicationsCheckboxes = false } =
