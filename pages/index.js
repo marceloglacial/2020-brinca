@@ -1,6 +1,7 @@
 import Layout from 'components/Layout/Layout';
 import Blocks from 'components/Blocks/Blocks';
 import { getData } from 'functions/getData';
+import HsForms from 'components/Blocks/Hubspot/Forms';
 
 const Blog = (props) => {
   const { posts, frontPage } = props;
