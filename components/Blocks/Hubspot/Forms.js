@@ -13,8 +13,6 @@ const HubSpotForms = (props) => {
   });
   const { data, isLoading } = useApi(`/api/hubspot/forms/${formID}`);
 
-  console.log(consent);
-
   if (!formID) return null;
   if (isLoading) return 'loading ...';
 
