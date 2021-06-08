@@ -7,8 +7,13 @@ const HubSpotForms = (props) => {
   const { formID } = props.attrs;
   const [formData, setFormData] = useState({});
   const [formStatus, setFormStatus] = useState(false);
-  const [consent, setConsent] = useState({});
+  const [consent, setConsent] = useState({
+    checked: false,
+    label: '',
+  });
   const { data, isLoading } = useApi(`/api/hubspot/forms/${formID}`);
+
+  console.log(consent);
 
   if (!formID) return null;
   if (isLoading) return 'loading ...';
@@ -65,6 +70,8 @@ const HubSpotForms = (props) => {
         },
       },
     });
+
+    console.log(raw);
 
     const requestOptions = {
       method: 'POST',

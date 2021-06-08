@@ -7,7 +7,7 @@ const CheckBox = (props) => {
         type={'checkbox'}
         name={name}
         className={'checkbox'}
-        defaultValue={value || ''}
+        defaultValue={value || false}
         required={required || false}
         onChange={(e) => onChange(e)}
       />
