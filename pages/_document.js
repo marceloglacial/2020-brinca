@@ -15,6 +15,13 @@ class MyDocument extends Document {
             content='CIvkus0lq2Y4Cq3fX0SD_ExCeDfeV7EXianwJMGqfh8'
             key='analytics'
           />
+          <script
+            type='text/javascript'
+            id='hs-script-loader'
+            async
+            defer
+            src='//js.hs-scripts.com/7882714.js'
+          />
         </Head>
         <body>
           <Main />

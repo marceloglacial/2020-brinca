@@ -6,9 +6,9 @@ import HtmlParser from 'react-html-parser';
 
 const Page = (props) => {
   const { page } = props;
-  const router = useRouter();
+  const { isFallback } = useRouter();
 
-  if (router.isFallback) {
+  if (isFallback) {
     return <div>Loading...</div>;
   }
   const title = HtmlParser(page[0].title.rendered);
@@ -40,7 +40,7 @@ export async function getStaticPaths() {
   const paths = pages.map((page) => ({
     params: { slug: page.slug },
   }));
-  return { paths, fallback: true };
+  return { paths, fallback: 'blocking' };
 }
 
 export async function getStaticProps({ params }) {
@@ -65,7 +65,7 @@ export async function getStaticProps({ params }) {
       subscribeMenu,
       socialMenu,
     },
-    revalidate: 1,
+    revalidate: 30,
   };
 }
 
