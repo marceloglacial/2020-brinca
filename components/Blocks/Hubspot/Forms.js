@@ -74,7 +74,7 @@ const HubSpotForms = (props) => {
     };
 
     fetch(
-      `https://api.hsforms.com/submissions/v3/integration/submit/${process.env.NEXT_PUBLIC_HUBSPOT_SITE}/${slug}`,
+      `https://api.hsforms.com/submissions/v3/integration/submit/${process.env.NEXT_PUBLIC_HUBSPOT_SITE}/${formID}`,
       requestOptions
     )
       .then((response) => {
