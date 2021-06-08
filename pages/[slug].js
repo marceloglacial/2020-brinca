@@ -40,7 +40,7 @@ export async function getStaticPaths() {
   const paths = pages.map((page) => ({
     params: { slug: page.slug },
   }));
-  return { paths, fallback: true };
+  return { paths, fallback: 'blocking' };
 }
 
 export async function getStaticProps({ params }) {
