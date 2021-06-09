@@ -5,7 +5,8 @@ import PostList from './PostList/PostList';
 import Form from './Form/Form';
 import Embed from './Embed/Embed';
 import InstaFeed from './InstaFeed/InstaFeed';
-import HubSpotForms from './Hubspot/Forms';
+import HubSpotForms from './Hubspot/Forms/Forms';
+import HubSpotCompanies from './Hubspot/Companies/Companies';
 import parse from 'html-react-parser';
 
 const BlocksView = (props) => {
@@ -18,6 +19,7 @@ const BlocksView = (props) => {
     'snow-blocks/instagram-feed': <InstaFeed {...attrs} />,
     'snow-blocks/forms': <Form {...props} />,
     'snow-blocks/hubspot-forms': <HubSpotForms {...props} />,
+    'snow-blocks/hubspot-companie': <HubSpotCompanies {...props} />,
     'core/image': <ImageCore {...props} />,
     'core/gallery': <Gallery {...props} />,
     'core/embed': <Embed {...props} />,

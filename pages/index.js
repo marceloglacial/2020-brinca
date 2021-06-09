@@ -1,6 +1,7 @@
 import Layout from 'components/Layout/Layout';
 import Blocks from 'components/Blocks/Blocks';
 import { getData } from 'functions/getData';
+import HubSpotCompanies from 'components/Blocks/Hubspot/Companies/Companies';
 
 const Blog = (props) => {
   const { posts, frontPage } = props;
@@ -17,6 +18,7 @@ const Blog = (props) => {
       pageTitle={`Sua comunidade Brasileira em Ottawa-Gatineau!`}
       {...props}
     >
+      <HubSpotCompanies {...props} />
       {blocks}
     </Layout>
   );

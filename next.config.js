@@ -2,7 +2,7 @@ module.exports = {
   // Target must be serverless
   target: 'serverless',
   images: {
-    domains: ['res.cloudinary.com', 'localhost'],
+    domains: ['res.cloudinary.com', 'localhost', 'cdn2.hubspot.net'],
   },
   async headers() {
     return [
