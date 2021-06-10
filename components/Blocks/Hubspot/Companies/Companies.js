@@ -25,8 +25,10 @@ const HubSpotCompanies = (props) => {
       <div className={`card-grid`}>
         {dataList.companies?.map((item) => {
           const { companyId, properties } = item;
+          console.log(item);
           const {
             name,
+            address,
             city,
             description,
             hs_avatar_filemanager_key: avatar,
@@ -34,7 +36,7 @@ const HubSpotCompanies = (props) => {
           const cardProps = {
             id: companyId,
             title: name?.value,
-            date: city?.value,
+            date: `${address?.value}, ${city?.value}`,
             excerpt: description?.value,
             link: '',
             image: {
