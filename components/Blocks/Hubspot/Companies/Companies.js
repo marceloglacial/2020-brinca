@@ -5,11 +5,28 @@ import CompaniesFilter from './CompaniesFilter';
 
 const HubSpotCompanies = (props) => {
   const [dataList, setDataList] = useState([]);
+  const [filters, setFilters] = useState([]);
   const { data, isLoading } = useApi(`/api/hubspot/companies/`);
 
   useEffect(() => {
     data && setDataList(data);
   }, [data]);
+
+  useEffect(() => {
+    if (!data) return false;
+    const updatedData = { ...data };
+    const updatedCompanies = [...updatedData.companies].filter((item) =>
+      filters.includes(item.properties.industry?.value)
+    );
+
+    updatedData.companies = updatedCompanies;
+
+    if (filters.length === 0) {
+      setDataList(data);
+    } else {
+      setDataList(updatedData);
+    }
+  }, [filters]);
 
   if (isLoading) return '...';
 
@@ -18,14 +35,19 @@ const HubSpotCompanies = (props) => {
     setOffset(data.offset);
   };
 
+  const filterProps = {
+    filters,
+    setFilters,
+  };
+
   return (
     <section className='container'>
       <h2>Companies</h2>
-      <CompaniesFilter {...data} />
+      <CompaniesFilter {...filterProps} />
       <div className={`card-grid`}>
-        {dataList.companies?.map((item) => {
+        {dataList?.companies?.length === 0 && <p>Nenhum item encontrado</p>}
+        {dataList?.companies?.map((item) => {
           const { companyId, properties } = item;
-          console.log(item);
           const {
             name,
             address,

@@ -1,4 +1,4 @@
-// @see https://legacydocs.hubspot.com/docs/methods/companies/
+// @see https://legacydocs.hubspot.com/docs/methods/companies/get_company
 
 import nc from 'next-connect';
 import cors from 'cors';

@@ -47,6 +47,20 @@
   }
 }
 
+.btn.btn-selected {
+  background: var(--green);
+  border-color: var(--green);
+  color: var(--white);
+  text-decoration: none;
+}
+
+.btn.btn-unselected {
+  background: var(--white);
+  border-color: var(--green);
+  color: var(--green);
+  text-decoration: none;
+}
+
 .btn.btn-link {
   padding: 0;
   color: var(--grey);
