@@ -4,8 +4,8 @@ import { useEffect, useState } from 'react';
 import CompaniesFilter from './CompaniesFilter';
 
 const HubSpotCompanies = (props) => {
-  const [dataList, setDataList] = useState([]);
   const [filters, setFilters] = useState([]);
+  const [dataList, setDataList] = useState({});
   const { data, isLoading } = useApi(`/api/hubspot/companies/`);
 
   useEffect(() => {
@@ -18,9 +18,7 @@ const HubSpotCompanies = (props) => {
     const updatedCompanies = [...updatedData.companies].filter((item) =>
       filters.includes(item.properties.industry?.value)
     );
-
     updatedData.companies = updatedCompanies;
-
     if (filters.length === 0) {
       setDataList(data);
     } else {
