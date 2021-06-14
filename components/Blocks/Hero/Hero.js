@@ -30,7 +30,10 @@ const Hero = (props) => {
         <div className={`col-12 col-lg-6 col-xl-5`}>
           <div className={styles.contentContainer}>
             <h2 className={styles.heroTitle}>{title}</h2>
-            <p className={styles.heroDescription}>{description}</p>
+            <div
+              className={styles.heroDescription}
+              dangerouslySetInnerHTML={{ __html: description }}
+            />
             {hasButton && (
               <div className={styles.heroButton}>
                 <Link href={getSlug(buttonLink)}>
