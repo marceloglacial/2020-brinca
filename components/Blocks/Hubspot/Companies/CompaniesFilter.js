@@ -6,7 +6,7 @@ const CompaniesFilter = (props) => {
 
   if (isLoading) return '...';
 
-  const { filters, setFilters } = props;
+  const { filters, setFilters, setOffset } = props;
   const hasFilter = (value) => filters.includes(value);
   const handleClick = (e, value) => {
     e.preventDefault();
@@ -22,6 +22,7 @@ const CompaniesFilter = (props) => {
   const handleReset = (e) => {
     e.preventDefault();
     setFilters([]);
+    setOffset('');
   };
 
   return (

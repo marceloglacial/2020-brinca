@@ -6,7 +6,10 @@ import CompaniesFilter from './CompaniesFilter';
 const HubSpotCompanies = (props) => {
   const [filters, setFilters] = useState([]);
   const [dataList, setDataList] = useState({});
-  const { data, isLoading } = useApi(`/api/hubspot/companies/`);
+  const [offset, setOffset] = useState('');
+  const { data, isLoading, isError } = useApi(
+    `/api/hubspot/companies/${offset}`
+  );
 
   useEffect(() => {
     data && setDataList(data);
@@ -27,6 +30,7 @@ const HubSpotCompanies = (props) => {
   }, [filters]);
 
   if (isLoading) return '...';
+  if (data.status === 'error' || isError) return 'error!';
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -36,6 +40,8 @@ const HubSpotCompanies = (props) => {
   const filterProps = {
     filters,
     setFilters,
+    offset,
+    setOffset,
   };
 
   return (
@@ -56,7 +62,9 @@ const HubSpotCompanies = (props) => {
           const cardProps = {
             id: companyId,
             title: name?.value,
-            date: `${address?.value}, ${city?.value}`,
+            date: `${address ? address.value : ''}${
+              city ? `, ${city.value}` : ''
+            }`,
             excerpt: description?.value,
             link: '',
             image: {
@@ -76,6 +84,20 @@ const HubSpotCompanies = (props) => {
             onClick={(e) => handleClick(e)}
           >
             {isLoading ? 'Carregando ...' : 'Ver Mais'}
+          </a>
+        </div>
+      )}
+      {offset && !data['has-more'] && (
+        <div className={`card-grid__load`}>
+          <a
+            href='#'
+            className={`btn btn-secondary`}
+            onClick={() => {
+              setOffset('');
+              setFilters([]);
+            }}
+          >
+            Mostrar todos
           </a>
         </div>
       )}
