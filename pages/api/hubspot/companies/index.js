@@ -6,7 +6,7 @@ import cors from 'cors';
 const handler = nc()
   .use(cors())
   .get(async (req, res) => {
-    const url = `https://api.hubapi.com/companies/v2/companies/?hapikey=${process.env.NEXT_PUBLIC_HUBSPOT}&limit=3`;
+    const url = `https://api.hubapi.com/companies/v2/companies/?hapikey=${process.env.NEXT_PUBLIC_HUBSPOT}`;
     const response = await fetch(url).then((res) => res.json());
     res.send(response);
   });

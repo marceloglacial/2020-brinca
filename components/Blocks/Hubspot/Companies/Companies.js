@@ -52,6 +52,7 @@ const HubSpotCompanies = (props) => {
         {dataList?.companies?.length === 0 && <p>Nenhum item encontrado</p>}
         {dataList?.companies?.map((item) => {
           const { companyId, properties } = item;
+          console.log(item);
           const {
             name,
             address,
