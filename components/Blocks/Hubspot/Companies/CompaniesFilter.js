@@ -2,7 +2,7 @@ import useApi from 'hooks/useApi';
 import styles from './CompaniesFilter.module.scss';
 
 const CompaniesFilter = (props) => {
-  const { data, isLoading } = useApi(`/api/hubspot/industries/`);
+  const { data, isLoading } = useApi(`/api/hubspot/industries`);
 
   if (isLoading) return '...';
 
