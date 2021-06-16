@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import styles from './Image.module.scss';
 import useGallery from 'hooks/useGallery';
-import HtmlParser from 'react-html-parser';
 
 const ImageCore = (props) => {
   const { id, align } = props.attrs;
@@ -13,7 +12,7 @@ const ImageCore = (props) => {
   const { width, height } = image.media_details;
   const imageSrc = image.source_url;
   const imageAlt = image.alt_text;
-  const imageCaption = HtmlParser(image.caption.rendered);
+  const imageCaption = image?.caption?.rendered;
 
   const imageAlign = {
     left: 'float-left mr-3',
@@ -33,9 +32,10 @@ const ImageCore = (props) => {
           height={height || 900}
         />
         {imageCaption && (
-          <figcaption className={styles['figure-caption']}>
-            {imageCaption}
-          </figcaption>
+          <figcaption
+            className={styles['figure-caption']}
+            dangerouslySetInnerHTML={{ __html: imageCaption }}
+          />
         )}
       </figure>
     </div>
