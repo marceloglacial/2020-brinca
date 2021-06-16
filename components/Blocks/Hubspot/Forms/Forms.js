@@ -69,8 +69,6 @@ const HubSpotForms = (props) => {
       },
     });
 
-    console.log(raw);
-
     const requestOptions = {
       method: 'POST',
       headers: myHeaders,

@@ -1,6 +1,7 @@
 import Card from 'components/Card/Card';
 import useApi from 'hooks/useApi';
 import { useEffect, useState } from 'react';
+import handleSearch from '../functions/handlSearch';
 import CompaniesFilter from './CompaniesFilter';
 
 const HubSpotCompanies = (props) => {
@@ -10,6 +11,7 @@ const HubSpotCompanies = (props) => {
   const { data, isLoading, isError } = useApi(
     `/api/hubspot/companies/${offset}`
   );
+  const hasFilters = filters.length > 0;
 
   useEffect(() => {
     data && setDataList(data);
@@ -27,6 +29,8 @@ const HubSpotCompanies = (props) => {
     } else {
       setDataList(updatedData);
     }
+
+    hasFilters && handleSearch(data, filters, setDataList);
   }, [filters]);
 
   if (isLoading) return '...';
@@ -52,7 +56,6 @@ const HubSpotCompanies = (props) => {
         {dataList?.companies?.length === 0 && <p>Nenhum item encontrado</p>}
         {dataList?.companies?.map((item) => {
           const { companyId, properties } = item;
-          console.log(item);
           const {
             name,
             address,
