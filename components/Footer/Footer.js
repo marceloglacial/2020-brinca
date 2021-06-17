@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import styles from './Footer.module.scss';
-import useMenu from 'hooks/useMenu';
 import FooterLoading from './FooterLoading';
 import Alert from 'components/Alert/Alert';
 import Image from 'next/image';
