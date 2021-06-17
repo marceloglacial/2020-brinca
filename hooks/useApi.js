@@ -7,6 +7,7 @@ const useApi = (url) => {
     data,
     isLoading: !error && !data,
     isError: error,
+    isLastPage: data?.data?.status,
   };
 };
 export default useApi;

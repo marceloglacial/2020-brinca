@@ -1,7 +1,7 @@
 // Gallery Block needs to fetch each image
 // @see https://github.com/WordPress/gutenberg/issues/10994
 
-import useGallery from 'hooks/useGallery';
+import useApi from 'hooks/useApi';
 import parseTagFromString from 'functions/parseTagFromString';
 import Carousel, { Modal, ModalGateway } from 'react-images';
 import GalleryImage from './components/GalleryImage';
@@ -15,7 +15,11 @@ const Gallery = (props) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
 
   const images = ids.map((id) => {
-    const { mediaContent, isLoading, isError } = useGallery(id);
+    const {
+      data: mediaContent,
+      isLoading,
+      isError,
+    } = useApi(`/api/media/${id}`);
     if (isLoading) return null;
     if (isError) return null;
     return mediaContent;
