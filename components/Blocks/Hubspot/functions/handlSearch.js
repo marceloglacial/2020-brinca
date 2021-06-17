@@ -1,4 +1,4 @@
-// @see https://web.postman.co/workspace/My-Workspace~16bf43ab-616a-418f-8552-34c48d2ef8c1/request/7121969-477fa5cf-da9c-40ed-95d1-00bd8f88df44
+// @see https://lunar-resonance-935024.postman.co/workspace/Brinca~cfb50980-5042-4a41-840c-51280b87a96d/overview
 //  @see https://developers.hubspot.com/docs/api/crm/companies
 
 const handleSearch = (data, filters) => {
@@ -7,7 +7,7 @@ const handleSearch = (data, filters) => {
       filters: [
         {
           operator: 'CONTAINS_TOKEN',
-          propertyName: 'industry',
+          propertyName: 'category',
           value: item,
         },
       ],
@@ -19,6 +19,13 @@ const handleSearch = (data, filters) => {
 
   const raw = JSON.stringify({
     filterGroups: [...bodyFilters],
+    properties: [
+      'name',
+      'description',
+      'address',
+      'city',
+      'hs_avatar_filemanager_key',
+    ],
   });
 
   const requestOptions = {
