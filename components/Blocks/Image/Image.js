@@ -1,10 +1,10 @@
 import Image from 'next/image';
 import styles from './Image.module.scss';
-import useGallery from 'hooks/useGallery';
+import useApi from 'hooks/useApi';
 
 const ImageCore = (props) => {
   const { id, align } = props.attrs;
-  const { mediaContent: image, isLoading, isError } = useGallery(id);
+  const { data: image, isLoading, isError } = useApi(`/api/media/${id}`);
 
   if (isLoading) return 'loading ...';
   if (isError) return 'Error!';
