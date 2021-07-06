@@ -12,7 +12,6 @@ const ImageCore = (props) => {
   const { width, height } = image.media_details;
   const imageSrc = image.source_url;
   const imageAlt = image.alt_text;
-  const imageCaption = image?.caption?.rendered;
 
   const imageAlign = {
     left: 'float-left mr-3',
@@ -31,12 +30,6 @@ const ImageCore = (props) => {
           width={width || 1440}
           height={height || 900}
         />
-        {imageCaption && (
-          <figcaption
-            className={styles['figure-caption']}
-            dangerouslySetInnerHTML={{ __html: imageCaption }}
-          />
-        )}
       </figure>
     </div>
   );
