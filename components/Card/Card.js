@@ -19,11 +19,8 @@ const Card = (props) => {
   return (
     <div data-aos='fade-up'>
       <div className={`card`} key={id}>
-        <Link href={type + '/' + getSlug(link).split('brinca/')[1]}>
-          <a
-            className={'card-link'}
-            href={type + '/' + getSlug(link).split('brinca/')[1]}
-          >
+        <Link href={type + '/' + getSlug(link)}>
+          <a className={'card-link'} href={type + '/' + getSlug(link)}>
             {showImage === 'yes' && (
               <div
                 className={`card-img-top ${!image && `card-img-top--empty`}`}

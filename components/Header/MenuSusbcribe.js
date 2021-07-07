@@ -20,11 +20,8 @@ const MenuSubscribe = (props) => {
         const { ID, title, url } = item;
         return (
           <li className='nav-item' key={ID}>
-            <Link href={`/${getSlug(url).split('brinca/')[1]}`}>
-              <a
-                href={`/${getSlug(url).split('brinca/')[1]}`}
-                className={`btn btn-primary`}
-              >
+            <Link href={`/${getSlug(url)}`}>
+              <a href={`/${getSlug(url)}`} className={`btn btn-primary`}>
                 {title}
               </a>
             </Link>
