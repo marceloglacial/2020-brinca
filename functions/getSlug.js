@@ -1,14 +1,10 @@
 const getSlug = (link) => {
+  const path = new URL(link).pathname;
+  const subPath = '/brinca/';
+
   if (!link.includes('http')) return '';
+  if (link.includes(subPath)) return path.split('/brinca/')[1];
 
-  const hasPort = new URL(link).port;
-
-  if (hasPort) {
-    const domain = new URL(link).host + '/';
-    return link.split(domain)[1];
-  } else {
-    const domain = new URL(link).hostname + '/';
-    return link.split(domain)[1];
-  }
+  return path;
 };
 export default getSlug;
