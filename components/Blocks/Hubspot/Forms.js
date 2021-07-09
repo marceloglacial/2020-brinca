@@ -138,9 +138,13 @@ const HubSpotForms = (props) => {
                     required={required}
                     onChange={(e) => handleConsent(e, label)}
                   />
-                  <label className='label' htmlFor={`content__${index}`}>
-                    {label}
-                  </label>
+                  <label
+                    className='label'
+                    htmlFor={`content__${index}`}
+                    dangerouslySetInnerHTML={{
+                      __html: label,
+                    }}
+                  />
                 </div>
               );
             })}
