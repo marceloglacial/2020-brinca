@@ -63,7 +63,7 @@ export async function getStaticProps({ params }) {
       subscribeMenu,
       socialMenu,
     },
-    revalidate: 1,
+    revalidate: 30,
   };
 }
 
