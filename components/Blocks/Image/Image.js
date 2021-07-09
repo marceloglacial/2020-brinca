@@ -6,8 +6,6 @@ const ImageCore = (props) => {
   const { id, align } = props.attrs;
   const { data: image, isLoading, isError } = useApi(`/api/media/${id}`);
 
-  console.log(props.innerHTML);
-
   if (isLoading) return 'loading ...';
   if (isError) return 'Error!';
 
