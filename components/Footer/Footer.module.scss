@@ -66,6 +66,10 @@ ul.menuNav {
   display: flex;
   margin: 0;
 
+  @media (min-width: 1023px) {
+    overflow-x: unset;
+  }
+
   li {
     display: inline-flex;
   }
