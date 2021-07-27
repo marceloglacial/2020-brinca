@@ -2,17 +2,16 @@
 // @see https://github.com/WordPress/gutenberg/issues/10994
 
 import useApi from 'hooks/useApi';
-import parseTagFromString from 'functions/parseTagFromString';
 import Carousel, { Modal, ModalGateway } from 'react-images';
 import GalleryImage from './components/GalleryImage';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const Gallery = (props) => {
   const { attrs, innerHTML } = props;
   const { ids } = attrs;
-  const galleryClass = parseTagFromString(innerHTML, 'gallery').className;
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(0);
+  const [galleryClassName, setGalleryClassName] = useState('');
 
   const images = ids.map((id) => {
     const {
@@ -35,6 +34,14 @@ const Gallery = (props) => {
     setSelectedIndex(index);
   };
 
+  useEffect(() => {
+    const gallery = document.createElement('div');
+    gallery.innerHTML = innerHTML;
+    document.querySelector('.gallery').appendChild(gallery);
+    setGalleryClassName(gallery.children[0].className);
+    document.querySelector('.gallery').removeChild(gallery);
+  }, []);
+
   return (
     <>
       <ModalGateway>
@@ -45,7 +52,7 @@ const Gallery = (props) => {
         ) : null}
       </ModalGateway>
 
-      <figure className={galleryClass}>
+      <figure className={`gallery ${galleryClassName}`}>
         <ul className='blocks-gallery-grid'>
           {images.map((item, index) => {
             const imageProps = {

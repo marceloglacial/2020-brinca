@@ -3,7 +3,6 @@ import { useEffect } from 'react';
 
 const Twitter = (props) => {
   const { url } = props;
-  console.log(props);
 
   if (!url) return null;
 
@@ -13,7 +12,6 @@ const Twitter = (props) => {
   useEffect(() => {
     const script = document.createElement('script');
     script.src = 'https://platform.twitter.com/widgets.js';
-
     document.getElementsByClassName(twitterTag)[0].appendChild(script);
   }, []);
 
