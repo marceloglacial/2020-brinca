@@ -6,7 +6,6 @@ import Form from './Form/Form';
 import Embed from './Embed/Embed';
 import InstaFeed from './InstaFeed/InstaFeed';
 import HubSpotForms from './Hubspot/Forms';
-import parse from 'html-react-parser';
 
 const BlocksView = (props) => {
   const { attrs, innerHTML, blockName } = props;
@@ -24,7 +23,11 @@ const BlocksView = (props) => {
   };
 
   if (!blockType[blockName])
-    return <div data-aos='fade-in'>{parse(innerHTML)}</div>;
+    return (
+      <div data-aos='fade-in'>
+        <div dangerouslySetInnerHTML={{ __html: innerHTML }} />
+      </div>
+    );
 
   return <div data-aos='fade-up'>{blockType[blockName]}</div>;
 };
