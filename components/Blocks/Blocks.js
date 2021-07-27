@@ -14,6 +14,7 @@ const BlocksView = (props) => {
   const blockType = {
     'snow-blocks/hero': <Hero {...attrs} />,
     'snow-blocks/postslist': <PostList {...attrs} />,
+    'snow-blocks/image': <ImageCore {...props} />,
     'snow-blocks/instagram-feed': <InstaFeed {...attrs} />,
     'snow-blocks/forms': <Form {...props} />,
     'snow-blocks/hubspot-forms': <HubSpotForms {...props} />,

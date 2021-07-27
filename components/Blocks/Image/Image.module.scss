@@ -1,46 +1,23 @@
 .figure {
   position: relative;
-  display: inline-flex;
+  display: flex;
+  justify-content: center;
 
   div {
     border-radius: var(--border-radius);
     box-shadow: var(--shadow);
   }
-
-  .figure-caption {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    padding: 20% 1rem 1rem 1rem;
-    color: var(--white);
-    text-align: left;
-    border-bottom-left-radius: var(--border-radius);
-    border-bottom-right-radius: var(--border-radius);
-    background: rgb(0, 0, 0);
-    background: linear-gradient(
-      0deg,
-      rgba(0, 0, 0, 1) 0%,
-      rgba(0, 0, 0, 0) 100%
-    );
-  }
 }
 
-.full {
-  position: relative;
-
-  .figure {
-    position: relative;
-    width: 100vw;
-    position: relative;
-    margin-left: -50vw;
-    left: 50%;
-
-    div,
-    img,
-    figcaption {
-      border-radius: 0;
-      width: 100%;
-      max-height: 90vh;
-    }
-  }
+.figureCaption {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 20% 1rem 1rem 1rem;
+  color: var(--white);
+  text-align: left;
+  border-bottom-left-radius: var(--border-radius);
+  border-bottom-right-radius: var(--border-radius);
+  background: rgb(0, 0, 0);
+  background: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%);
 }
