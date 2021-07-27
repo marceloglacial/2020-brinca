@@ -1,11 +1,10 @@
-import { getCaption } from 'functions/getCaption';
 import Iframe from './components/Iframe';
 import Twitter from './components/Twitter';
 
 const Embed = (props) => {
   const { innerHTML, attrs } = props;
   const { url, providerNameSlug: type } = attrs;
-  const caption = innerHTML && getCaption(innerHTML);
+  const caption = innerHTML?.includes('figcaption');
   const embeds = {
     soundcloud: <Iframe type={'soundcloud'} url={url} caption={caption} />,
     twitter: <Twitter url={url} caption={caption} />,

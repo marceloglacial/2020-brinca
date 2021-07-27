@@ -1,6 +1,6 @@
 {
   "name": "brinca-2020",
-  "version": "2.6.0",
+  "version": "2.7.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -16,13 +16,9 @@
     "aos": "^2.3.4",
     "bootstrap": "^4.6.0",
     "cors": "^2.8.5",
-    "html-react-parser": "^1.2.6",
-    "htmlparser2": "^6.1.0",
     "next-connect": "^0.10.1",
     "postscribe": "^2.0.8",
-    "react-html-parser": "^2.0.2",
     "react-images": "^1.2.0-beta.6",
-    "react-twitter-embed": "^3.0.3",
     "sass": "^1.32.11",
     "swr": "^0.5.6"
   }

@@ -2,7 +2,6 @@ import Layout from 'components/Layout/Layout';
 import Blocks from 'components/Blocks/Blocks';
 import { useRouter } from 'next/router';
 import { getData } from 'functions/getData';
-import HtmlParser from 'react-html-parser';
 
 const Page = (props) => {
   const { page } = props;
@@ -11,7 +10,7 @@ const Page = (props) => {
   if (isFallback) {
     return <div>Loading...</div>;
   }
-  const title = HtmlParser(page[0].title.rendered);
+  const title = page[0]?.title?.rendered;
 
   const blocks = page[0].blocks.map((block, index) => {
     return <Blocks {...block} key={index} />;
@@ -20,7 +19,10 @@ const Page = (props) => {
   return (
     <Layout pageTitle={title} {...props}>
       <header data-aos='fade-in'>
-        <h1 className='content-title'>{title}</h1>
+        <h1
+          className='content-title'
+          dangerouslySetInnerHTML={{ __html: title }}
+        />
       </header>
       {blocks}
     </Layout>

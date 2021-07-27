@@ -50,9 +50,6 @@ $spacing: 1rem;
 
 .twitter {
   margin: 0 auto;
-  border: solid 1px var(--grey-light);
-  border-radius: var(--border-radius);
-  overflow: hidden;
 
   @media (min-width: 768px) {
     max-width: 50%;
