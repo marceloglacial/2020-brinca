@@ -3,7 +3,6 @@ import styles from './Image.module.scss';
 
 const ImageCore = (props) => {
   const { src, alt, caption, width, height } = props.attrs;
-
   return (
     <figure className={`${styles.figure} mt-4 mb-5`} data-aos='fade-in'>
       <Image
