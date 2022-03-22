@@ -12,7 +12,7 @@ const Page = (props) => {
   }
   const title = page[0]?.title?.rendered;
 
-  const blocks = page[0].blocks.map((block, index) => {
+  const blocks = page[0].blockData.map((block, index) => {
     return <Blocks {...block} key={index} />;
   });
 

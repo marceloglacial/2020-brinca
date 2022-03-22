@@ -12,7 +12,7 @@ const Post = (props) => {
   }
   const title = post[0]?.title?.rendered;
 
-  const blocks = post[0].blocks.map((block, index) => {
+  const blocks = post[0].blockData.map((block, index) => {
     return <Blocks {...block} key={index} />;
   });
 
