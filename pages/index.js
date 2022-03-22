@@ -4,7 +4,7 @@ import { getData } from 'functions/getData';
 
 const Blog = (props) => {
   const { posts, frontPage } = props;
-  const blocks = frontPage[0].blocks.map((block, index) => {
+  const blocks = frontPage[0].blockData.map((block, index) => {
     const blockProps = {
       ...block,
       posts,
