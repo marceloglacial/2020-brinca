@@ -1,9 +1,10 @@
 import Layout from 'components/Layout/Layout';
 import Blocks from 'components/Blocks/Blocks';
 import { getData } from 'functions/getData';
+import getRecords from 'functions/getRecords';
 
 const Blog = (props) => {
-  const { posts, frontPage } = props;
+  const { posts, frontPage, members } = props;
   const blocks = frontPage[0].blockData.map((block, index) => {
     const blockProps = {
       ...block,
@@ -11,6 +12,7 @@ const Blog = (props) => {
     };
     return <Blocks {...blockProps} key={index} />;
   });
+  console.log('index', members);
 
   return (
     <Layout
@@ -23,6 +25,7 @@ const Blog = (props) => {
 };
 
 export async function getStaticProps() {
+  const members = (await getRecords()) || [];
   const allData = (await getData()) || {};
   const {
     frontPage = [],
@@ -38,7 +41,9 @@ export async function getStaticProps() {
       footerMenu,
       subscribeMenu,
       socialMenu,
+      members,
     },
+
     revalidate: 30,
   };
 }
