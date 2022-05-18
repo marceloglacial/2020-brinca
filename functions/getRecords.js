@@ -1,6 +1,6 @@
 const { google } = require('googleapis');
 // TODO: Move this to ENV
-const keys = require('../keys.json');
+const keys = require('../secrets.json');
 
 export default async function getRecords() {
   const scopes = ['https://www.googleapis.com/auth/spreadsheets'];
