@@ -17,9 +17,10 @@ export default async function getRecords() {
       return;
     } else {
       console.log('Connected!');
-      return getData(client);
     }
   });
+
+  return getData(client);
 }
 export async function getData(client) {
   const googleSheetApi = google.sheets({ version: 'v4', auth: client });
