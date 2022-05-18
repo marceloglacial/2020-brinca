@@ -2,6 +2,7 @@ import Layout from 'components/Layout/Layout';
 import Blocks from 'components/Blocks/Blocks';
 import { getData } from 'functions/getData';
 import getRecords from 'functions/getRecords';
+import formatRecords from 'functions/formatRecords';
 
 const Blog = (props) => {
   const { posts, frontPage, members } = props;
@@ -12,7 +13,8 @@ const Blog = (props) => {
     };
     return <Blocks {...blockProps} key={index} />;
   });
-  console.log('index', members);
+
+  console.log(formatRecords(members));
 
   return (
     <Layout

@@ -1,4 +1,5 @@
 const { google } = require('googleapis');
+// TODO: Move this to ENV
 const keys = require('../keys.json');
 
 export default async function getRecords() {
@@ -20,9 +21,10 @@ export default async function getRecords() {
     }
   });
 
-  return getData(client);
+  return await getData(client);
 }
-export async function getData(client) {
+
+async function getData(client) {
   const googleSheetApi = google.sheets({ version: 'v4', auth: client });
   const readOptions = {
     spreadsheetId: '14n8UmDvGP1aV0mbfBHh73YgsbmtMtVN82fvs2FsdJds',
