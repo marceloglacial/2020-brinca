@@ -27,7 +27,11 @@ const Blog = (props) => {
 };
 
 export async function getStaticProps() {
-  const members = (await getRecords()) || [];
+  const members =
+    (await getRecords({
+      spreadsheetId: '19RbFQdJZWygp-feLAmtWNK4KagWK6cHpNG_1ya2winM',
+      range: 'Companies!A1:AB',
+    })) || [];
   const allData = (await getData()) || {};
   const {
     frontPage = [],

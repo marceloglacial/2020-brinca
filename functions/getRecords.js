@@ -2,7 +2,7 @@ const { google } = require('googleapis');
 // TODO: Move this to ENV
 const keys = require('../secrets.json');
 
-export default async function getRecords() {
+export default async function getRecords(options) {
   const scopes = ['https://www.googleapis.com/auth/spreadsheets'];
 
   const client = new google.auth.JWT(
@@ -21,17 +21,12 @@ export default async function getRecords() {
     }
   });
 
-  return await getData(client);
+  return await getData(client, options);
 }
 
-async function getData(client) {
+async function getData(client, options) {
   const googleSheetApi = google.sheets({ version: 'v4', auth: client });
-  const readOptions = {
-    spreadsheetId: '14n8UmDvGP1aV0mbfBHh73YgsbmtMtVN82fvs2FsdJds',
-    range: '2022!A1:E5',
-  };
-
-  let dataFromSheet = await googleSheetApi.spreadsheets.values.get(readOptions);
+  let dataFromSheet = await googleSheetApi.spreadsheets.values.get(options);
   let allRecords = dataFromSheet.data.values;
   return allRecords;
 }
