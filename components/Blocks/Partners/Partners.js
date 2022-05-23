@@ -3,11 +3,23 @@ import getPartners from 'functions/getPartners';
 import BusinessCard from '../BusinessCard/BusinessCard';
 import randomArray from 'functions/ramdomArray';
 
+const getGold = (data) => {
+  const partners = getPartners(data);
+  return randomArray(partners.filter((item) => item.membership));
+};
+
+const getSilver = (data) => {
+  const partners = getPartners(data);
+  return randomArray(partners.filter((item) => !item.membership));
+};
+
 const Partners = (props) => {
+  const [partnersGold, setPartnersGold] = useState();
   const [partners, setPartners] = useState();
 
   useEffect(() => {
-    setPartners(randomArray(getPartners(props.data)));
+    setPartnersGold(getGold(props.data));
+    setPartners(getSilver(props.data));
   }, []);
 
   if (!partners) return <section>loading...</section>;
@@ -19,7 +31,10 @@ const Partners = (props) => {
       </div>
       <div className='partners__body'>
         <div className='grid grid-2'>
-          {partners.map((item) => (
+          {partnersGold?.map((item) => (
+            <BusinessCard key={item.id} {...item} />
+          ))}
+          {partners?.map((item) => (
             <BusinessCard key={item.id} {...item} />
           ))}
         </div>
