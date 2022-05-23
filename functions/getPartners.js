@@ -1,4 +1,4 @@
-const formatRecords = (records) => {
+const getPartners = (records) => {
   const header = records[0];
   const rows = records.slice(1).filter((item) => item[0]);
 
@@ -8,7 +8,11 @@ const formatRecords = (records) => {
     }, {});
   });
 
-  return formatedRecords;
+  const filteredRecords = formatedRecords.filter(
+    (item) => item.active === 'TRUE'
+  );
+
+  return filteredRecords;
 };
 
-export default formatRecords;
+export default getPartners;

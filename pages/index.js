@@ -2,10 +2,10 @@ import Layout from 'components/Layout/Layout';
 import Blocks from 'components/Blocks/Blocks';
 import { getData } from 'functions/getData';
 import getRecords from 'functions/getRecords';
-import formatRecords from 'functions/formatRecords';
+import Partners from 'components/Blocks/Partners/Partners';
 
 const Blog = (props) => {
-  const { posts, frontPage, members } = props;
+  const { posts, frontPage, partners } = props;
   const blocks = frontPage[0].blockData.map((block, index) => {
     const blockProps = {
       ...block,
@@ -14,20 +14,19 @@ const Blog = (props) => {
     return <Blocks {...blockProps} key={index} />;
   });
 
-  console.log(formatRecords(members));
-
   return (
     <Layout
       pageTitle={`Sua comunidade Brasileira em Ottawa-Gatineau!`}
       {...props}
     >
+      <Partners data={partners} />
       {blocks}
     </Layout>
   );
 };
 
 export async function getStaticProps() {
-  const members =
+  const partners =
     (await getRecords({
       spreadsheetId: '19RbFQdJZWygp-feLAmtWNK4KagWK6cHpNG_1ya2winM',
       range: 'Companies!A1:AB',
@@ -47,7 +46,7 @@ export async function getStaticProps() {
       footerMenu,
       subscribeMenu,
       socialMenu,
-      members,
+      partners,
     },
 
     revalidate: 30,

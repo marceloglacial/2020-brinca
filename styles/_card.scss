@@ -69,3 +69,39 @@
 .card .link-more {
   display: none;
 }
+
+.card--business {
+  border-radius: 0;
+
+  .card-img-top {
+    border-radius: 0;
+    height: unset;
+    margin: 0.5rem;
+
+    div,
+    img {
+      border-radius: 0;
+      background-color: white;
+      object-fit: contain;
+      height: unset;
+    }
+  }
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+
+    .card-img-top {
+      width: 150px;
+
+      img {
+        width: 150px;
+      }
+      overflow: hidden;
+      position: relative;
+    }
+
+    .card-body {
+      font-size: 1rem;
+    }
+  }
+}
