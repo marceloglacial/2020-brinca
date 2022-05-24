@@ -6,6 +6,8 @@ import BusinessCard from '../BusinessCard/BusinessCard';
 
 const Partners = (props) => {
   const { data } = props;
+  const initialGold = getGold(data);
+  const initialSilver = getSilver(data);
   const [partnersGold, setPartnersGold] = useState();
   const [partners, setPartners] = useState();
   const [categories, setCategories] = useState();
@@ -13,17 +15,17 @@ const Partners = (props) => {
 
   const handleFilter = () => {
     if (checked.length) {
-      setPartnersGold(filterData(getGold(data), checked));
-      setPartners(filterData(getSilver(data), checked));
+      setPartnersGold(filterData(initialGold, checked));
+      setPartners(filterData(initialSilver, checked));
     } else {
-      setPartnersGold(getGold(data));
-      setPartners(getSilver(data));
+      setPartnersGold(initialGold);
+      setPartners(initialSilver);
     }
   };
 
   useEffect(() => {
-    setPartnersGold(getGold(data));
-    setPartners(getSilver(data));
+    setPartnersGold(initialGold);
+    setPartners(initialSilver);
     setCategories(props.categories);
   }, []);
 
