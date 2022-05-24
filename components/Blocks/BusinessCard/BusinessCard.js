@@ -6,7 +6,7 @@ const BusinessCard = (props) => {
   return (
     <div className='card card--business'>
       <div className={`card-img-top ${!hasImage ? 'hidden' : ''}`}>
-        {hasImage && <Image src={image} layout='fill' />}
+        {hasImage && <Image src={image} width={150} height={150} />}
       </div>
       <div className='card-body'>
         <div className='card-title'>{title}</div>

@@ -1,0 +1,11 @@
+.partners {
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 4rem;
+
+    @media (min-width: 768px) {
+      grid-template-columns: 200px 1fr;
+    }
+  }
+}

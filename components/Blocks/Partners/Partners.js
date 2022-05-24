@@ -1,26 +1,31 @@
+import filterData from 'functions/filterData';
+import { getGold, getSilver } from 'functions/getPartners';
+import handleCheck from 'functions/handleCheck';
 import { useState, useEffect } from 'react';
-import getPartners from 'functions/getPartners';
 import BusinessCard from '../BusinessCard/BusinessCard';
-import randomArray from 'functions/ramdomArray';
-
-const getGold = (data) => {
-  const partners = getPartners(data);
-  return randomArray(partners.filter((item) => item.membership));
-};
-
-const getSilver = (data) => {
-  const partners = getPartners(data);
-  return randomArray(partners.filter((item) => !item.membership));
-};
 
 const Partners = (props) => {
+  const { data } = props;
   const [partnersGold, setPartnersGold] = useState();
   const [partners, setPartners] = useState();
+  const [categories, setCategories] = useState();
+  const [checked, setChecked] = useState([]);
+
+  const handleFilter = () => {
+    if (checked.length)
+      return setPartnersGold(filterData(getGold(data), checked));
+    return setPartnersGold(getGold(data));
+  };
 
   useEffect(() => {
-    setPartnersGold(getGold(props.data));
-    setPartners(getSilver(props.data));
+    setPartnersGold(getGold(data));
+    setPartners(getSilver(data));
+    setCategories(props.categories);
   }, []);
+
+  useEffect(() => {
+    handleFilter();
+  }, [checked, setChecked]);
 
   if (!partners) return <section>loading...</section>;
 
@@ -29,14 +34,36 @@ const Partners = (props) => {
       <div className='partners__header'>
         <h2>Parceiros</h2>
       </div>
-      <div className='partners__body'>
-        <div className='grid grid-2'>
-          {partnersGold?.map((item) => (
-            <BusinessCard key={item.id} {...item} />
-          ))}
-          {partners?.map((item) => (
-            <BusinessCard key={item.id} {...item} />
-          ))}
+      <div className='partners__grid'>
+        <div className='partners__filter'>
+          <form>
+            <fieldset>
+              <legend>Selecione as categorias</legend>
+              {categories.map((category, index) => (
+                <div key={index}>
+                  <input
+                    type='checkbox'
+                    id={`category-${index}`}
+                    name='categories'
+                    onChange={() =>
+                      setChecked(handleCheck(category[1], checked))
+                    }
+                  />
+                  <label htmlFor={`category-${index}`}>{category[1]}</label>
+                </div>
+              ))}
+            </fieldset>
+          </form>
+        </div>
+        <div className='partners__body'>
+          <div className='grid grid-2'>
+            {partnersGold?.map((item) => (
+              <BusinessCard key={item.id} {...item} />
+            ))}
+            {partners?.map((item) => (
+              <BusinessCard key={item.id} {...item} />
+            ))}
+          </div>
         </div>
       </div>
     </section>
