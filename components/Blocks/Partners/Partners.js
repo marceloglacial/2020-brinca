@@ -12,9 +12,13 @@ const Partners = (props) => {
   const [checked, setChecked] = useState([]);
 
   const handleFilter = () => {
-    if (checked.length)
-      return setPartnersGold(filterData(getGold(data), checked));
-    return setPartnersGold(getGold(data));
+    if (checked.length) {
+      setPartnersGold(filterData(getGold(data), checked));
+      setPartners(filterData(getSilver(data), checked));
+    } else {
+      setPartnersGold(getGold(data));
+      setPartners(getSilver(data));
+    }
   };
 
   useEffect(() => {
