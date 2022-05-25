@@ -1,8 +1,8 @@
 import filterData from 'functions/filterData';
 import { getGold, getSilver } from 'functions/getPartners';
-import handleCheck from 'functions/handleCheck';
 import { useState, useEffect } from 'react';
 import BusinessCard from '../BusinessCard/BusinessCard';
+import PartnersFilter from './PartnersFilter';
 
 const Partners = (props) => {
   const { data } = props;
@@ -35,42 +35,38 @@ const Partners = (props) => {
 
   if (!partners) return <section>loading...</section>;
 
+  const filtersProps = {
+    categories,
+    setCategories,
+  };
+
   return (
     <section className='partners'>
       <div className='partners__header'>
-        <h2>Parceiros</h2>
+        <h2 className='partners__title'>Parceiros</h2>
       </div>
-      <div className='partners__grid'>
-        <div className='partners__filter'>
-          <form>
-            <fieldset>
-              <legend>Selecione as categorias</legend>
-              {categories.map((category, index) => (
-                <div key={index}>
-                  <input
-                    type='checkbox'
-                    id={`category-${index}`}
-                    name='categories'
-                    onChange={() =>
-                      setChecked(handleCheck(category[1], checked))
-                    }
-                  />
-                  <label htmlFor={`category-${index}`}>{category[1]}</label>
-                </div>
+      <PartnersFilter {...filtersProps} />
+      <div className='partners__body'>
+        {partnersGold.length > 0 && (
+          <>
+            <h4>Membros</h4>
+            <div className='grid grid-2 mb-5'>
+              {partnersGold.map((item) => (
+                <BusinessCard key={item.id} {...item} />
               ))}
-            </fieldset>
-          </form>
-        </div>
-        <div className='partners__body'>
-          <div className='grid grid-2'>
-            {partnersGold?.map((item) => (
-              <BusinessCard key={item.id} {...item} />
-            ))}
-            {partners?.map((item) => (
-              <BusinessCard key={item.id} {...item} />
-            ))}
-          </div>
-        </div>
+            </div>
+          </>
+        )}
+        {partners.length > 0 && (
+          <>
+            <h4>Comunidade</h4>
+            <div className='grid grid-2'>
+              {partners.map((item) => (
+                <BusinessCard key={item.id} {...item} />
+              ))}
+            </div>
+          </>
+        )}
       </div>
     </section>
   );

@@ -1,11 +1,9 @@
 .partners {
-  &__grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 4rem;
+  &__filter {
+    // position: relative;
+  }
 
-    @media (min-width: 768px) {
-      grid-template-columns: 200px 1fr;
-    }
+  &__list {
+    // position: absolute;
   }
 }
