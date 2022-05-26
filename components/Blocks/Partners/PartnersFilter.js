@@ -1,20 +1,25 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import handleCheck from 'functions/handleCheck';
+import useOnClickOutside from 'hooks/useOnClickOutside';
 
 const PartnersFilter = ({ categories, checked, setChecked }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const hasCategories = categories?.length;
+  const hasItem = (item) => checked.includes(item);
+  const ref = useRef();
+  useOnClickOutside(ref, () => setIsOpen(false));
 
-  if (!categories?.length) return false;
+  if (!hasCategories) return false;
 
   return (
     <div className='partners__filter'>
       <div className='partners__filter-title'>Filtros</div>
-      <form className='partners__list'>
+      <form className='partners__list' ref={ref}>
         <fieldset className='partners__list-container'>
           <legend className='partners__list-title'>
             <button
               type='button'
-              className='btn btn--clear'
+              className={`btn btn--clear ${isOpen ? `link link--primary` : ''}`}
               onClick={() => setIsOpen(!isOpen)}
             >
               Categorias
@@ -22,10 +27,6 @@ const PartnersFilter = ({ categories, checked, setChecked }) => {
           </legend>
           {isOpen && (
             <div className='partners__list-items'>
-              <div className='partners__list-item' key={0}>
-                <input type='checkbox' id={`category-all`} name='categories' />
-                <label htmlFor={`category-all`}>Todas</label>
-              </div>
               {categories.map((category, index) => (
                 <div className='partners__list-item' key={index}>
                   <input
@@ -35,6 +36,7 @@ const PartnersFilter = ({ categories, checked, setChecked }) => {
                     onChange={() =>
                       setChecked(handleCheck(category[1], checked))
                     }
+                    defaultChecked={hasItem(category[1])}
                   />
                   <label htmlFor={`category-${index}`}>{category[1]}</label>
                 </div>

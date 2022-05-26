@@ -69,3 +69,13 @@ h4 {
     line-height: 3.5rem;
   }
 }
+
+.link--primary {
+  color: var(--green);
+  font-weight: 700;
+
+  &:focus,
+  &:active {
+    color: var(--green);
+  }
+}
