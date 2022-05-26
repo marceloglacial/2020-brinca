@@ -1,9 +1,67 @@
 .partners {
   &__filter {
-    // position: relative;
+    position: relative;
+    border: solid 2px var(--grey-light);
+    border-radius: 1rem;
+    padding: 0 1rem;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 1rem;
   }
 
-  &__list {
-    // position: absolute;
+  &__filter-title {
+    font-size: 1rem;
+    font-weight: 700;
+  }
+
+  &__list-container {
+    position: relative;
+  }
+
+  &__list-items {
+    position: absolute;
+    top: 0rem;
+    left: -1rem;
+    z-index: 10;
+    background-color: var(--white);
+    border: solid 2px var(--grey-light);
+    border-top: none;
+    border-radius: 1rem;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    padding: 0 1rem 1rem 1rem;
+    display: flex;
+    gap: 0.25rem;
+    flex-direction: column;
+  }
+
+  &__list-title {
+    display: flex;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+
+    button {
+      height: 3rem;
+
+      &:focus {
+        box-shadow: none;
+        color: var(--green);
+        font-weight: 700;
+      }
+    }
+  }
+
+  &__list-item {
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1rem;
+
+    label {
+      margin: 0;
+    }
   }
 }

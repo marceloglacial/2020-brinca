@@ -1,8 +1,8 @@
 import filterData from 'functions/filterData';
 import { getGold, getSilver } from 'functions/getPartners';
 import { useState, useEffect } from 'react';
-import BusinessCard from '../BusinessCard/BusinessCard';
 import PartnersFilter from './PartnersFilter';
+import PartnersGroup from './PartnersGroup';
 
 const Partners = (props) => {
   const { data } = props;
@@ -36,6 +36,8 @@ const Partners = (props) => {
   if (!partners) return <section>loading...</section>;
 
   const filtersProps = {
+    checked,
+    setChecked,
     categories,
     setCategories,
   };
@@ -47,26 +49,8 @@ const Partners = (props) => {
       </div>
       <PartnersFilter {...filtersProps} />
       <div className='partners__body'>
-        {partnersGold.length > 0 && (
-          <>
-            <h4>Membros</h4>
-            <div className='grid grid-2 mb-5'>
-              {partnersGold.map((item) => (
-                <BusinessCard key={item.id} {...item} />
-              ))}
-            </div>
-          </>
-        )}
-        {partners.length > 0 && (
-          <>
-            <h4>Comunidade</h4>
-            <div className='grid grid-2'>
-              {partners.map((item) => (
-                <BusinessCard key={item.id} {...item} />
-              ))}
-            </div>
-          </>
-        )}
+        <PartnersGroup title={'Membros'} partners={partnersGold} />
+        <PartnersGroup title={'Comunidade'} partners={partners} />
       </div>
     </section>
   );
