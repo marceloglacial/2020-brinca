@@ -1,7 +1,24 @@
 import Image from 'next/image';
 
 const BusinessCard = (props) => {
-  const { title, description, image, membership } = props;
+  const {
+    active,
+    title,
+    description,
+    image,
+    membership,
+    address,
+    category,
+    email,
+    facebook,
+    instagram,
+    phone,
+    website,
+    whatsapp,
+  } = props;
+
+  if (active !== 'TRUE') return false;
+
   const hasImage = image && membership;
   return (
     <div className='card card--business'>
