@@ -10,11 +10,11 @@ const PartnersTags = ({ tags, setTags }) => {
     <div className='partners__filter-tags'>
       {tags.map((item, index) => (
         <button
-          className='partners__filter-tag'
+          className='partners__filter-tag btn btn--clear'
           key={index}
           onClick={() => removeTag(item)}
         >
-          {item} X
+          {item} <span className='partners__filter-close'>X</span>
         </button>
       ))}
     </div>

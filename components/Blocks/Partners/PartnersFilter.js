@@ -25,9 +25,13 @@ const PartnersFilter = ({
 
   return (
     <div className='partners__filter'>
-      <div className='partners__filter-title'>{title}</div>
-      <PartnersFilterList {...categoriesProps} />
-      <PartnersTags {...tagsProps} />
+      <div className='partners__filter-header'>
+        <div className='partners__filter-title'>{title}</div>
+        <PartnersFilterList {...categoriesProps} />
+      </div>
+      <div className='partners__filter-body'>
+        <PartnersTags {...tagsProps} />
+      </div>
     </div>
   );
 };

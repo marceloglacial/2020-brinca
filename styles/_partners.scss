@@ -1,6 +1,6 @@
 .partners {
   font-size: 1rem;
-  &__filter {
+  &__filter-header {
     position: relative;
     border: solid 2px var(--grey-light);
     border-radius: 1rem;
@@ -64,6 +64,7 @@
 
   &__filter-tags {
     display: flex;
+    flex-wrap: wrap;
     gap: 0.5rem;
     margin-right: -0.5rem;
   }
@@ -75,14 +76,12 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+  }
 
-    &:first-child {
-      border-top-left-radius: 0.5rem;
-      border-bottom-left-radius: 0.5rem;
-    }
-    &:last-child {
-      border-top-right-radius: 0.5rem;
-      border-bottom-right-radius: 0.5rem;
-    }
+  &__filter-close {
+    font-size: 0.75rem;
+    margin-left: 0.5rem;
+    color: var(--green);
+    font-weight: 700;
   }
 }
