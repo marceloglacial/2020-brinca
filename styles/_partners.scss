@@ -1,5 +1,12 @@
 .partners {
-  font-size: 1rem;
+  font-size: 0.9rem;
+  @media (min-width: 768px) {
+    font-size: 1rem;
+  }
+
+  &__filter {
+    padding-bottom: 1rem;
+  }
   &__filter-header {
     position: relative;
     border: solid 2px var(--grey-light);
