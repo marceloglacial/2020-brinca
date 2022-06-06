@@ -3,13 +3,25 @@ import { getData } from 'functions/getData';
 import getRecords from 'functions/getRecords';
 import Partners from 'components/Blocks/Partners/Partners';
 import slugify from 'functions/slugfy';
+import PartnersContent from 'components/Blocks/Partners/PartnersContent';
+import PartnersTags from 'components/Blocks/Partners/PartnersTags';
 
 const ParceirosTag = (props) => {
   const { partners, categories, params } = props;
+  const partnersProps = {
+    data: partners,
+    filter: params.slug,
+    categories,
+  };
+  const tagsNames = categories.map((item) => item[1]);
 
   return (
     <Layout pageTitle={`Parceiros`} {...props}>
-      <Partners data={partners} filter={params.slug} categories={categories} />
+      <h2 className='partners__title'>Parceiros - Bancos</h2>
+      <Partners {...partnersProps} />
+      <PartnersTags tags={tagsNames} filter={params.slug} />
+      <h2 className='partners__title'>Quer fazer parte?</h2>
+      <PartnersContent />
     </Layout>
   );
 };

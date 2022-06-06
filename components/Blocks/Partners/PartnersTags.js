@@ -8,22 +8,29 @@ const PartnersTags = ({ tags, filter }) => {
   const hasTags = tags?.length > 0;
   if (!hasTags) return false;
 
+  const allClassName = !filter ? 'btn-primary' : 'btn-secondary';
+
   return (
-    <div className='partners__tags'>
+    <section className='partners__tags'>
       <div className='partners__title'>
         <h4>Categorias</h4>
       </div>
       <div className='d-flex justify-content-start flex-wrap gap'>
         <Link href={'/parceiros'}>
-          <a className={`btn btn-primary`}>Todas</a>
+          <a className={`btn btn--small ${allClassName}`}>Todas</a>
         </Link>
-        {tags.map((item, index) => (
-          <Link href={`/parceiros/${slugify(item)}`} key={index}>
-            <a className='btn btn-secondary'>{item}</a>
-          </Link>
-        ))}
+        {tags.map((item, index) => {
+          const tagClassName =
+            filter === slugify(item) ? 'btn-primary' : 'btn-secondary';
+
+          return (
+            <Link href={`/parceiros/${slugify(item)}`} key={index}>
+              <a className={`btn btn--small ${tagClassName}`}>{item}</a>
+            </Link>
+          );
+        })}
       </div>
-    </div>
+    </section>
   );
 };
 

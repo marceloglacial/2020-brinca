@@ -28,7 +28,7 @@ const BusinessCard = ({
     phone,
     website,
     whatsapp,
-    iconSize: `1.2rem`,
+    iconSize: `24px`,
   };
 
   return (
