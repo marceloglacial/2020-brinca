@@ -41,3 +41,15 @@
     grid-template-columns: 1fr 1fr 1fr;
   }
 }
+
+.gap {
+  gap: 1rem;
+
+  &--1 {
+    gap: 1rem;
+  }
+
+  &--2 {
+    gap: 2rem;
+  }
+}

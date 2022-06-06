@@ -1,5 +1,4 @@
 import Layout from 'components/Layout/Layout';
-import Blocks from 'components/Blocks/Blocks';
 import { getData } from 'functions/getData';
 import getRecords from 'functions/getRecords';
 import Partners from 'components/Blocks/Partners/Partners';

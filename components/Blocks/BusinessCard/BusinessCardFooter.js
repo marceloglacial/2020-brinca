@@ -1,4 +1,4 @@
-import getPhoneNumer from 'functions/getPhoneNumber';
+import getPhoneNumber from 'functions/getPhoneNumber';
 import getSocialLink from 'functions/getSocialLink';
 import { BsWhatsapp, BsFacebook, BsInstagram } from 'react-icons/bs';
 
@@ -24,7 +24,7 @@ const BusinessCardFooter = ({
         )}
         {phone && (
           <div className='card-phone'>
-            <a href={`tel:${getPhoneNumer(phone)}`}>{phone}</a>
+            <a href={`tel:${getPhoneNumber(phone)}`}>{phone}</a>
           </div>
         )}
         {website && (
@@ -37,7 +37,7 @@ const BusinessCardFooter = ({
         <div className='card-social'>
           {whatsapp && (
             <a
-              href={`https://wa.me/${getPhoneNumer(whatsapp)}`}
+              href={`https://wa.me/${getPhoneNumber(whatsapp)}`}
               target='_blank'
             >
               <BsWhatsapp className='card-icon' size={iconSize} />

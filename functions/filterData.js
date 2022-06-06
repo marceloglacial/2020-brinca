@@ -1,4 +1,7 @@
+import slugify from './slugfy';
+
 const filterData = (tableData, filters) => {
-  return tableData.filter((item) => [...filters].includes(item.category));
+  if (!filters) return tableData;
+  return tableData.filter((item) => filters.includes(slugify(item.category)));
 };
 export default filterData;
