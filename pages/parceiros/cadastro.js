@@ -33,7 +33,7 @@ const Parceiros = (props) => {
             anunciados nesta página.
           </h6>
         </div>
-        <form className='form pt-4'>
+        <form className='form pt-4' onSubmit={(e) => handleSubmit(e, formData)}>
           {fields.map((item, index) => (
             <FormField
               key={index}
@@ -46,7 +46,6 @@ const Parceiros = (props) => {
               type='submit'
               value={isLoading ? 'Enviando ...' : 'Enviar'}
               className={`btn btn-primary`}
-              onClick={(e) => handleSubmit(e, formData)}
               disabled={isLoading}
             />
           </div>
@@ -84,25 +83,28 @@ const fields = [
     id: 'id',
     label: 'Nome da Empresa',
     type: 'textfield',
-    validate: false,
+    validate: { required: true },
   },
   {
     id: 'category',
     label: 'Categoria',
     type: 'textfield',
     validate: false,
+    validate: { required: true },
   },
   {
     id: 'description',
     label: 'Descrição',
     type: 'textarea',
     validate: false,
+    validate: { required: true },
   },
   {
     id: 'description',
     label: 'Endereço',
     type: 'textfield',
     validate: false,
+    validate: { required: true },
   },
   {
     id: 'membership',
@@ -126,6 +128,7 @@ const fields = [
     id: 'website',
     label: 'Website',
     type: 'url',
+    placeholder: 'http://',
     validate: false,
   },
   {
@@ -147,6 +150,7 @@ const fields = [
     label: 'E-mail de contato',
     type: 'email',
     validate: false,
+    validate: { required: true },
   },
   {
     id: 'image',

@@ -8,6 +8,7 @@ const FormInput = (props) => {
     type,
     validate: { required },
     validation,
+    placeholder,
   } = attributes;
   const title = label;
   const validationType = validation && validation.type;
@@ -28,6 +29,7 @@ const FormInput = (props) => {
         name={title}
         className={input}
         onChange={(e) => handleOnChange(e, key)}
+        placeholder={placeholder}
         required={required}
       />
     </>
