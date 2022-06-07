@@ -3,10 +3,20 @@ import Layout from 'components/Layout/Layout';
 import { getData } from 'functions/getData';
 import FormField from 'components/Blocks/Form/components/FormField';
 import getRecords from 'functions/getRecords';
+
+// TODO: CLEAN CODE!!!
+
 const Parceiros = (props) => {
   const [formData, setFormData] = useState({ ...headers });
   const [status, setStatus] = useState();
   const [isLoading, setIsLoading] = useState(false);
+
+  const options = props.categories.map((item) => {
+    return {
+      value: item[1],
+      label: item[1],
+    };
+  });
 
   const fields = [
     {
@@ -18,8 +28,8 @@ const Parceiros = (props) => {
     {
       id: 'category',
       label: 'Categoria',
-      type: 'textfield',
-      answers: {},
+      type: 'dropdown',
+      options,
       validate: { required: false },
     },
     {
