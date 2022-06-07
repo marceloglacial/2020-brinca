@@ -30,7 +30,7 @@ export async function getStaticPaths() {
   const categories =
     (await getRecords({
       spreadsheetId: '19RbFQdJZWygp-feLAmtWNK4KagWK6cHpNG_1ya2winM',
-      range: 'Categories!A1:AB',
+      range: 'Categories',
     })) || [];
 
   const paths = categories.map((item) => ({
@@ -48,7 +48,7 @@ export async function getStaticProps({ params }) {
   const categories =
     (await getRecords({
       spreadsheetId: '19RbFQdJZWygp-feLAmtWNK4KagWK6cHpNG_1ya2winM',
-      range: 'Categories!A1:AB',
+      range: 'Categories',
     })) || [];
   const allData = (await getData()) || {};
   const {

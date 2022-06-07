@@ -37,7 +37,7 @@ export async function getStaticProps() {
   const categories =
     (await getRecords({
       spreadsheetId: '19RbFQdJZWygp-feLAmtWNK4KagWK6cHpNG_1ya2winM',
-      range: 'Categories!A1:AB',
+      range: 'Categories',
     })) || [];
   const allData = (await getData()) || {};
   const {
