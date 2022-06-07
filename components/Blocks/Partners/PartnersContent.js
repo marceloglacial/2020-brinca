@@ -7,8 +7,11 @@ const PartnersContent = (props) => {
         Aqui você encontra produtos e serviços de brasileiros para brasileiros
       </p>
       <p>
-        Quer ver sua empresa aqui também? Clique aqui para preencher o
-        formulário ou envie um e-mail para{' '}
+        Quer ver sua empresa aqui também?{' '}
+        <Link href='/parceiros/cadastro'>
+          Clique aqui para preencher o formulário
+        </Link>{' '}
+        ou envie um e-mail para{' '}
         <a href='mailto:business@brinca.ca'>business@brinca.ca</a> com logotipo,
         nome da empresa, endereço, telefone, e-mail, site e descrição de sua
         empresa e/ou serviço em uma frase, além do e-mail cadastrado como membro

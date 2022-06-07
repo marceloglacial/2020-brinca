@@ -9,6 +9,7 @@ const FormField = (props) => {
   const { type } = props.attributes;
   const fieldTypes = {
     textfield: <FormInput {...props} />,
+    file: <FormInput {...props} />,
     email: <FormInput {...props} />,
     phoneNumber: <FormInput {...props} />,
     url: <FormInput {...props} />,
