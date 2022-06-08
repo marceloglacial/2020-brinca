@@ -13,7 +13,7 @@ const Partners = (props) => {
   return (
     <section className='partners pt-0'>
       <div className='partners__body'>
-        <PartnersGroup title={'Membros'} partners={partnersGold} />
+        <PartnersGroup title={'Associados'} partners={partnersGold} />
         <PartnersGroup title={'Comunidade'} partners={partnersSilver} />
       </div>
     </section>
