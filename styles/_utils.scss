@@ -1,6 +1,11 @@
 //
 // Utils
 //
+
+.hidden {
+  display: none;
+}
+
 .rounded {
   border-radius: var(--border-radius);
 }
@@ -14,4 +19,37 @@
   -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
   overflow: hidden;
+}
+
+.grid {
+  display: grid;
+  gap: 2rem;
+}
+
+.grid--nogap {
+  gap: none;
+}
+
+@media (min-width: 768px) {
+  .grid-1 {
+    grid-template-columns: 1fr;
+  }
+  .grid-2 {
+    grid-template-columns: 1fr 1fr;
+  }
+  .grid-3 {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+.gap {
+  gap: 1rem;
+
+  &--1 {
+    gap: 1rem;
+  }
+
+  &--2 {
+    gap: 2rem;
+  }
 }

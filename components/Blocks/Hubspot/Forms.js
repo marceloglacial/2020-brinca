@@ -69,8 +69,6 @@ const HubSpotForms = (props) => {
       },
     });
 
-    console.log(raw);
-
     const requestOptions = {
       method: 'POST',
       headers: myHeaders,
@@ -87,7 +85,7 @@ const HubSpotForms = (props) => {
         response.status === 200 && setFormStatus(true);
       })
       .catch((error) => {
-        console.log('error', error);
+        console.error('error', error);
       });
   };
 

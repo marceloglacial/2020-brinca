@@ -1,0 +1,88 @@
+.partners {
+  &__filter {
+    padding-bottom: 1rem;
+    font-size: 1rem;
+  }
+
+  &__filter-header {
+    position: relative;
+    border: solid 2px var(--grey-light);
+    border-radius: 1rem;
+    padding: 0 1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  &__filter-title {
+    font-weight: 700;
+  }
+
+  &__list-container {
+    position: relative;
+  }
+
+  &__list-items {
+    position: absolute;
+    top: 0.25rem;
+    left: -1rem;
+    z-index: 10;
+    background-color: var(--white);
+    border: solid 2px var(--grey-light);
+    border-radius: 1rem;
+    padding: 1rem;
+    display: flex;
+    gap: 0.25rem;
+    flex-direction: column;
+  }
+
+  &__list-title {
+    display: flex;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+
+    button {
+      height: 3rem;
+
+      &:focus {
+        box-shadow: none;
+      }
+    }
+  }
+
+  &__list-item {
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    label {
+      margin: 0;
+    }
+  }
+
+  &__filter-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-right: -0.5rem;
+  }
+
+  &__filter-tag {
+    height: 100%;
+    background-color: var(--grey-clear);
+    padding: 0.25rem 1rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__filter-close {
+    font-size: 0.75rem;
+    margin-left: 0.5rem;
+    color: var(--green);
+    font-weight: 700;
+  }
+}
