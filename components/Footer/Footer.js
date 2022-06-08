@@ -37,11 +37,11 @@ const Footer = (props) => {
             </Link>
           </li>
           {menuContent.items.map((item) => {
-            const { ID, title, slug } = item;
+            const { ID, title, slug, url } = item;
             return (
               <li className={styles.menuLink} key={ID}>
-                <Link href={`/${slug}`} key={ID}>
-                  <a href={`/${slug}`}>{title}</a>
+                <Link href={`/${slug || url}`} key={ID}>
+                  <a href={`/${slug || url}`}>{title}</a>
                 </Link>
               </li>
             );
@@ -52,9 +52,7 @@ const Footer = (props) => {
         <ul
           className={`nav justify-content-center flex-column flex-md-row py-3 ${styles.copyrightMenu}`}
         >
-          <li className='nav-item' className='nav-link'>
-            Copyrights Brinca - {year}
-          </li>
+          <li className='nav-item nav-link'>Copyrights Brinca - {year}</li>
           <li className='nav-item'>
             <a href={`http://marceloglacial.com`} className='nav-link'>
               Developed by Marcelo Glacial
