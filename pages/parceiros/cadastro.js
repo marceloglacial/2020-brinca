@@ -43,7 +43,7 @@ const Parceiros = (props) => {
     }
     formFieldsData.append('upload_preset', 'brinca');
     const data = await fetch(
-      'https://api.cloudinary.com/v1_1/dw2wjwhuv/image/upload',
+      `${process.env.NEXT_PUBLIC_CLOUDINARY_API_URL}/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload`,
       {
         method: 'POST',
         body: formFieldsData,
@@ -147,7 +147,7 @@ const Parceiros = (props) => {
       label: 'E-mail de contato',
       type: 'email',
       validate: false,
-      validate: { required: false },
+      validate: { required: true },
     },
     {
       id: 'image',
