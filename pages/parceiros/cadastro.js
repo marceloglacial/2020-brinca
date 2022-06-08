@@ -65,6 +65,27 @@ const Parceiros = (props) => {
     } else {
       setStatus(false);
     }
+
+    // Send e-mail
+    const emailResponse = await fetch('https://api.staticforms.xyz/submit', {
+      method: 'POST',
+      body: JSON.stringify({
+        subject: 'Brinca - Cadastro de Parceiros',
+        honeypot: '',
+        replyTo: '@',
+        accessKey: process.env.NEXT_PUBLIC_FORM_KEY,
+        name: formData.title,
+        email: formData.email,
+        phone: formData.phone,
+      }),
+      headers: { 'Content-Type': 'application/json' },
+    });
+    const emailJson = await emailResponse.json();
+    if (emailJson.success) {
+      console.log('Enviado!');
+    } else {
+      console.error(emailJson.message);
+    }
   };
 
   // FIELDS
