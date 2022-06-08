@@ -23,6 +23,7 @@ const HeaderNav = (props) => {
       {menuContent.items.map((item) => {
         const { ID, title, slug, url, child_items } = item;
         const hasSubMenu = child_items && isOpen;
+        const link = slug ? `/${slug}` : url;
         return (
           <li
             className={`nav-item mx-2 ${styles.navItem}`}
@@ -30,23 +31,22 @@ const HeaderNav = (props) => {
             onMouseOver={() => child_items && setIsOpen(true)}
             onMouseLeave={() => child_items && setIsOpen(false)}
           >
-            <Link href={`/${slug || url}`} key={ID}>
-              <a
-                className={`nav-link ${styles.topNavLink}`}
-                href={`/${slug || url}`}
-              >
+            <Link href={link} key={ID}>
+              <a className={`nav-link ${styles.topNavLink}`} href={link}>
                 {title}
               </a>
             </Link>
             {hasSubMenu && (
               <ul className={styles.navbarSub} data-aos='fade-in'>
                 {child_items.map((child, index) => {
+                  const childLink = child.slug ? `/${child.slug}` : child.url;
+
                   return (
                     <li className={`nav-item ${styles.navSubItem}`} key={index}>
-                      <Link href={`/${child.slug || child.url}`} key={index}>
+                      <Link href={childLink} key={index}>
                         <a
                           className={`nav-link ${styles.topNavLink}`}
-                          href={`/${child.slug || child.url}`}
+                          href={childLink}
                         >
                           {child.title}
                         </a>

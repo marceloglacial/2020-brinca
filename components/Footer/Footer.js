@@ -38,10 +38,12 @@ const Footer = (props) => {
           </li>
           {menuContent.items.map((item) => {
             const { ID, title, slug, url } = item;
+            const link = slug ? `/${slug}` : url;
+
             return (
               <li className={styles.menuLink} key={ID}>
-                <Link href={`/${slug || url}`} key={ID}>
-                  <a href={`/${slug || url}`}>{title}</a>
+                <Link href={link} key={ID}>
+                  <a href={link}>{title}</a>
                 </Link>
               </li>
             );
