@@ -21,7 +21,7 @@ const HeaderNav = (props) => {
   return (
     <ul className='navbar-nav ml-auto'>
       {menuContent.items.map((item) => {
-        const { ID, title, slug, child_items } = item;
+        const { ID, title, slug, url, child_items } = item;
         const hasSubMenu = child_items && isOpen;
         return (
           <li
@@ -30,8 +30,11 @@ const HeaderNav = (props) => {
             onMouseOver={() => child_items && setIsOpen(true)}
             onMouseLeave={() => child_items && setIsOpen(false)}
           >
-            <Link href={`/${slug}`} key={ID}>
-              <a className={`nav-link ${styles.topNavLink}`} href={`/${slug}`}>
+            <Link href={`/${slug || url}`} key={ID}>
+              <a
+                className={`nav-link ${styles.topNavLink}`}
+                href={`/${slug || url}`}
+              >
                 {title}
               </a>
             </Link>
@@ -40,10 +43,10 @@ const HeaderNav = (props) => {
                 {child_items.map((child, index) => {
                   return (
                     <li className={`nav-item ${styles.navSubItem}`} key={index}>
-                      <Link href={`/${child.slug}`} key={index}>
+                      <Link href={`/${child.slug || child.url}`} key={index}>
                         <a
                           className={`nav-link ${styles.topNavLink}`}
-                          href={`/${child.slug}`}
+                          href={`/${child.slug || child.url}`}
                         >
                           {child.title}
                         </a>
