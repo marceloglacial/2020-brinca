@@ -67,7 +67,7 @@ const Form = (props) => {
         handleServerResponse(true, 'Obrigado por enviar essa mensagem.');
       })
       .catch((error) => {
-        console.log('error', error);
+        console.error('error', error);
         handleServerResponse(false, 'Error!');
       });
   };

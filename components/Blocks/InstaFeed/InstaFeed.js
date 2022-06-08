@@ -8,7 +8,7 @@ const InstaFeed = (props) => {
   const isThumbnail = imageType === 'thumbnail';
 
   if (isError) {
-    console.log(isError);
+    console.error(isError);
     return <p>Error!</p>;
   }
   if (isLoading) return <p>Loading ...</p>;
