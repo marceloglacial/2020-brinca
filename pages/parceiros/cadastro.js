@@ -10,7 +10,65 @@ const Parceiros = (props) => {
   const [formData, setFormData] = useState({ ...headers });
   const [status, setStatus] = useState();
   const [isLoading, setIsLoading] = useState(false);
+  const [imageSrc, setImageSrc] = useState();
 
+  // CHANGE
+  // ===================================
+  const handleOnChange = (e) => {
+    if (e.target.files) {
+      const reader = new FileReader();
+      reader.onload = function (onLoadEvent) {
+        setImageSrc(onLoadEvent.target.result);
+      };
+      reader.readAsDataURL(e.target.files[0]);
+    } else {
+      setFormData({ ...formData, [e.target.id]: e.target.value });
+    }
+  };
+
+  // SUBMIT
+  // ===================================
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsLoading(true);
+
+    // File Upload
+    const form = e.currentTarget;
+    const fileInput = Array.from(form.elements).find(
+      ({ name }) => name === 'file'
+    );
+    const formFieldsData = new FormData();
+    for (const file of fileInput.files) {
+      formFieldsData.append('file', file);
+    }
+    formFieldsData.append('upload_preset', 'brinca');
+    const data = await fetch(
+      'https://api.cloudinary.com/v1_1/dw2wjwhuv/image/upload',
+      {
+        method: 'POST',
+        body: formFieldsData,
+      }
+    ).then((r) => r.json());
+
+    // Form Submit
+    const rawResponse = await fetch('/api/submit', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ ...formData, image: data.secure_url }),
+    });
+    const content = await rawResponse.json();
+    if (content?.data?.updates?.updatedRows) {
+      setStatus(true);
+    } else {
+      setStatus(false);
+    }
+  };
+
+  // FIELDS
+  // ===================================
   const options = props.categories.map((item) => {
     return {
       value: item[1],
@@ -94,35 +152,15 @@ const Parceiros = (props) => {
     },
     {
       id: 'image',
+      name: 'file',
       label: 'Logo da empresa',
       type: 'file',
       validate: false,
     },
   ];
 
-  const handleOnChange = (e) =>
-    setFormData({ ...formData, [e.target.id]: e.target.value });
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setIsLoading(true);
-    const rawResponse = await fetch('/api/submit', {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(formData),
-    });
-    const content = await rawResponse.json();
-    if (content?.data?.updates?.updatedRows) {
-      setStatus(true);
-      setFormData({ ...headers });
-    } else {
-      setStatus(false);
-    }
-  };
-
+  // CONTENT
+  // ===================================
   const content = status ? (
     <div className='text-center'>
       <p>Seu cadastro foi efetuado com sucesso!</p>
@@ -154,6 +192,11 @@ const Parceiros = (props) => {
             handleOnChange={(e) => handleOnChange(e)}
           />
         ))}
+        {imageSrc && (
+          <div className='my-4'>
+            <img src={imageSrc} width={200} height={200} />
+          </div>
+        )}
         <div className='mt-4'>
           <input
             type='submit'
@@ -166,6 +209,8 @@ const Parceiros = (props) => {
     </>
   );
 
+  // RETURN
+  // ===================================
   return (
     <Layout pageTitle={`Parceiros`} {...props}>
       <section className='parceiros__form'>
