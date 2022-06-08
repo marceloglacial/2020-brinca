@@ -1,14 +1,13 @@
 const { google } = require('googleapis');
 // TODO: Move this to ENV
-const keys = require('../secrets.json');
 
 export default async function getRecords(options) {
   const scopes = ['https://www.googleapis.com/auth/spreadsheets'];
 
   const client = new google.auth.JWT(
-    keys.client_email,
+    process.env.GOOGLE_CLIENT_EMAIL,
     null,
-    keys.private_key,
+    process.env.GOOGLE_PRIVATE_KEY?.replace(/\\n/g, '\n'),
     scopes
   );
 
