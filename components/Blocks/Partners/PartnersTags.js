@@ -1,7 +1,7 @@
 // @see https://gist.github.com/codeguy/6684588
 // @TODO https://github.com/lovell/limax
 
-import slugify from 'functions/slugfy';
+import slugfy from 'functions/slugfy';
 import Link from 'next/link';
 
 const PartnersTags = ({ tags, filter }) => {
@@ -21,10 +21,10 @@ const PartnersTags = ({ tags, filter }) => {
         </Link>
         {tags.map((item, index) => {
           const tagClassName =
-            filter === slugify(item) ? 'btn-primary' : 'btn-secondary';
+            filter === slugfy(item) ? 'btn-primary' : 'btn-secondary';
 
           return (
-            <Link href={`/parceiros/${slugify(item)}`} key={index}>
+            <Link href={`/parceiros/${slugfy(item)}`} key={index}>
               <a className={`btn btn--small ${tagClassName}`}>{item}</a>
             </Link>
           );

@@ -1,4 +1,4 @@
-const slugify = (text) => {
+const slugfy = (text) => {
   return text
     .toString() // Cast to string (optional)
     .normalize('NFKD') // The normalize() using NFKD method returns the Unicode Normalization Form of a given string.
@@ -9,4 +9,4 @@ const slugify = (text) => {
     .replace(/\-\-+/g, '-') // Replace multiple - with single -
     .replace(/\-$/g, ''); // Remove trailing -
 };
-export default slugify;
+export default slugfy;
