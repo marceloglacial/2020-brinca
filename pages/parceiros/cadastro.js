@@ -51,7 +51,7 @@ const Parceiros = (props) => {
     ).then((r) => r.json());
 
     // Form Submit
-    const rawResponse = await fetch('/api/submit', {
+    const rawResponse = await fetch('/api/google/submit', {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -88,60 +88,59 @@ const Parceiros = (props) => {
       label: 'Categoria',
       type: 'dropdown',
       options,
-      validate: { required: false },
+      required: true,
     },
     {
       id: 'description',
       label: 'Descrição',
       type: 'textarea',
-      validate: false,
-      validate: { required: false },
+      validate: { required: true },
     },
     {
-      id: 'description',
+      id: 'address',
       label: 'Endereço',
       type: 'textfield',
       validate: false,
-      validate: { required: false },
+      validate: { required: true },
     },
     {
       id: 'membership',
       label: 'E-mail de membro',
       type: 'email',
-      validate: false,
+      validate: { required: false },
     },
     {
       id: 'phone',
       label: 'Telefone',
       type: 'phoneNumber',
-      validate: false,
+      validate: { required: true },
     },
     {
       id: 'whatsapp',
       label: 'Whatsapp',
       type: 'phoneNumber',
-      validate: false,
+      validate: { required: false },
     },
     {
       id: 'website',
       label: 'Website',
       type: 'url',
       placeholder: 'http://',
-      validate: false,
+      validate: { required: false },
     },
     {
       id: 'instagram',
       label: 'Instagram',
       type: 'textfield',
       placeholder: '@',
-      validate: false,
+      validate: { required: false },
     },
     {
       id: 'facebook',
       label: 'Facebook',
       type: 'textfield',
       placeholder: '@',
-      validate: false,
+      validate: { required: false },
     },
     {
       id: 'email',
@@ -155,7 +154,7 @@ const Parceiros = (props) => {
       name: 'file',
       label: 'Logo da empresa',
       type: 'file',
-      validate: false,
+      validate: { required: true },
     },
   ];
 

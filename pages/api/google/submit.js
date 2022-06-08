@@ -1,7 +1,7 @@
 // @see https://dev.to/solomon04/collect-form-submissions-with-nextjs-google-sheets-264j
 
 import { google } from 'googleapis';
-const keys = require('../../secrets.json');
+const keys = require('../../../secrets.json');
 
 export default async function handler(req, res) {
   const scopes = ['https://www.googleapis.com/auth/spreadsheets'];
@@ -30,7 +30,7 @@ async function getData(client, options, res) {
   const googleSheetApi = google.sheets({ version: 'v4', auth: client });
   const response = await googleSheetApi.spreadsheets.values.append({
     spreadsheetId: '19RbFQdJZWygp-feLAmtWNK4KagWK6cHpNG_1ya2winM',
-    range: 'Test',
+    range: 'Companies',
     valueInputOption: 'USER_ENTERED',
     requestBody: {
       values: options,
