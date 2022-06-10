@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import Layout from 'components/Layout/Layout';
 import { getData } from 'functions/getData';
 import FormField from 'components/Blocks/Form/components/FormField';
-import getRecords from 'functions/getRecords';
 
 // TODO: CLEAN CODE!!!
 
@@ -14,41 +13,23 @@ const Padrinhos = (props) => {
 
   // CHANGE
   // ===================================
-  // const handleOnChange = (e) => {
-  //   if (e.target.files) {
-  //     const reader = new FileReader();
-  //     reader.onload = function (onLoadEvent) {
-  //       setImageSrc(onLoadEvent.target.result);
-  //     };
-  //     reader.readAsDataURL(e.target.files[0]);
-  //   } else {
-  //     setFormData({ ...formData, [e.target.id]: e.target.value });
-  //   }
-  // };
+  const handleOnChange = (e) => {
+    if (e.target.files) {
+      const reader = new FileReader();
+      reader.onload = function (onLoadEvent) {
+        setImageSrc(onLoadEvent.target.result);
+      };
+      reader.readAsDataURL(e.target.files[0]);
+    } else {
+      setFormData({ ...formData, [e.target.id]: e.target.value });
+    }
+  };
 
   // SUBMIT
   // ===================================
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
-
-    // File Upload
-    // const form = e.currentTarget;
-    // const fileInput = Array.from(form.elements).find(
-    //   ({ name }) => name === 'file'
-    // );
-    // const formFieldsData = new FormData();
-    // for (const file of fileInput.files) {
-    //   formFieldsData.append('file', file);
-    // }
-    // formFieldsData.append('upload_preset', 'brinca');
-    // const data = await fetch(
-    //   `${process.env.NEXT_PUBLIC_CLOUDINARY_API_URL}/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload`,
-    //   {
-    //     method: 'POST',
-    //     body: formFieldsData,
-    //   }
-    // ).then((r) => r.json());
 
     // Form Submit
     const rawResponse = await fetch('/api/google/submit', {
@@ -89,12 +70,12 @@ const Padrinhos = (props) => {
 
   // FIELDS
   // ===================================
-  const options = props.padrinhos.map((item) => {
-    return {
-      value: item[1],
-      label: item[1],
-    };
-  });
+  // const options = props.padrinhos.map((item) => {
+  //   return {
+  //     value: item[1],
+  //     label: item[1],
+  //   };
+  // });
 
   const fields = [
     {
@@ -112,7 +93,7 @@ const Padrinhos = (props) => {
     },
     {
       id: 'in_canada_since',
-      label: 'Endereço',
+      label: 'No Canadá desde',
       type: 'textfield',
       placeholder: 'MM/YYYY',
       validate: { required: true },
@@ -193,12 +174,6 @@ const Padrinhos = (props) => {
 
 export async function getStaticProps() {
   const allData = (await getData()) || {};
-  const padrinhos =
-    (await getRecords({
-      spreadsheetId: '1mxfh4txJiC5cY-uHe7ND5YPCAzzFBP3gAne6vFN1fSY',
-      range: 'Padrinhos',
-    })) || [];
-
   const {
     headerMenu = [],
     footerMenu = [],
@@ -211,7 +186,6 @@ export async function getStaticProps() {
       footerMenu,
       subscribeMenu,
       socialMenu,
-      padrinhos,
     },
 
     revalidate: 30,

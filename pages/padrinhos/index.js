@@ -7,23 +7,23 @@ import PartnersContent from 'components/Blocks/Partners/PartnersContent';
 import PartnersTags from 'components/Blocks/Partners/PartnersTags';
 
 const Padrinhos = (props) => {
-  const { partners, categories } = props;
+  // const { partners, categories } = props;
   const [data, setData] = useState([]);
   const [tags, setTags] = useState([]);
 
-  useEffect(() => {
-    setData([...partners]);
-    setTags([...categories]);
-  }, []);
+  // useEffect(() => {
+  //   setData([...partners]);
+  //   setTags([...categories]);
+  // }, []);
 
-  const tagsNames = categories.map((item) => item[1]);
+  // const tagsNames = categories.map((item) => item[1]);
 
   return (
     <Layout pageTitle={`Padrinhos`} {...props}>
       <h2 className='partners__title'>Padrinhos</h2>
-      <PartnersContent />
-      <PartnersTags tags={tagsNames} />
-      <Partners data={data} categories={tags} />
+      {/* <PartnersContent /> */}
+      {/* <PartnersTags tags={tagsNames} /> */}
+      {/* <Partners data={data} categories={tags} /> */}
     </Layout>
   );
 };
@@ -31,13 +31,13 @@ const Padrinhos = (props) => {
 export async function getStaticProps() {
   const partners =
     (await getRecords({
-      spreadsheetId: '19RbFQdJZWygp-feLAmtWNK4KagWK6cHpNG_1ya2winM',
-      range: 'Companies!A1:AB',
+      spreadsheetId: '1mxfh4txJiC5cY-uHe7ND5YPCAzzFBP3gAne6vFN1fSY',
+      range: 'Padrinhos',
     })) || [];
   const categories =
     (await getRecords({
-      spreadsheetId: '19RbFQdJZWygp-feLAmtWNK4KagWK6cHpNG_1ya2winM',
-      range: 'Categories',
+      spreadsheetId: '1mxfh4txJiC5cY-uHe7ND5YPCAzzFBP3gAne6vFN1fSY',
+      range: 'Padrinhos',
     })) || [];
   const allData = (await getData()) || {};
   const {
@@ -52,8 +52,6 @@ export async function getStaticProps() {
       footerMenu,
       subscribeMenu,
       socialMenu,
-      partners,
-      categories,
     },
 
     revalidate: 30,
