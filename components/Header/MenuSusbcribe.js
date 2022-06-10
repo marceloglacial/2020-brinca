@@ -15,7 +15,7 @@ const MenuSubscribe = (props) => {
     return <Alert title={menuContent.message} />;
 
   return (
-    <ul className='navbar-nav ml-3'>
+    <ul className='navbar-nav ml-3 d-none d-xl-flex'>
       {menuContent.items.map((item) => {
         const { ID, title, url } = item;
         return (
