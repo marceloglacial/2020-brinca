@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import Layout from 'components/Layout/Layout';
 import { getData } from 'functions/getData';
 import FormField from 'components/Blocks/Form/components/FormField';
+import getRecords from 'functions/getRecords';
 
 // TODO: CLEAN CODE!!!
 
@@ -32,7 +33,7 @@ const Padrinhos = (props) => {
     setIsLoading(true);
 
     // Form Submit
-    const rawResponse = await fetch('/api/google/submit', {
+    const rawResponse = await fetch('/api/google/submitPadrinho', {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -54,7 +55,7 @@ const Padrinhos = (props) => {
         subject: 'Brinca - Cadastro de Padrinhos',
         honeypot: '',
         replyTo: '@',
-        accessKey: process.env.NEXT_PUBLIC_FORM_KEY,
+        accessKey: process.NEXT_PUBLIC_PADRINHOS_FORM_KEY,
         name: formData.full_name,
         email: formData.email,
       }),
@@ -70,12 +71,12 @@ const Padrinhos = (props) => {
 
   // FIELDS
   // ===================================
-  // const options = props.padrinhos.map((item) => {
-  //   return {
-  //     value: item[1],
-  //     label: item[1],
-  //   };
-  // });
+  const options = props.padrinhos.map((item) => {
+    return {
+      value: item[1],
+      label: item[1],
+    };
+  });
 
   const fields = [
     {
@@ -123,17 +124,15 @@ const Padrinhos = (props) => {
     </div>
   ) : (
     <>
-      <p>Quer ver sua empresa aqui também?</p>
+      <h5>Quero apadrinhar:</h5>
       <p>
-        Preencha o formulário abaixo ou envie um e-mail para{' '}
-        <a href='mailto:business@brinca.ca'>business@brinca.ca</a> com logotipo,
-        nome da empresa, endereço, telefone, e-mail, site e descrição de sua
-        empresa e/ou serviço em uma frase, além do e-mail cadastrado como membro
-        da BRINCA.
+        Para ser um padrinho ou madrinha, você precisa estar morando há pelo menos 3 anos no Canadá e ter disponibilidade e boa vontade para responder às mais diversas questões de famílias que estão chegando ou que chegaram recentemente em Ottawa e região.<br />
+        Você estará lidando com sonhos e ansiedades, então se você é do tipo que vê o WhatsApp a cada três dias, talvez essa não seja a melhor opção de voluntariado pra você.<br />
+        Preencha os dados abaixo e aguarde o nosso contato em breve!
       </p>
       <h6>
-        Atenção: A BRINCA não se responsabiliza por produtos ou serviços
-        anunciados nesta página.
+        - A BRINCA não se responsabiliza por nenhuma informação trocada entre os participantes, cabendo a nós apenas a facilitação do encontro entre compatriotas com interesses em comum.<br />
+        - É terminantemente proibida a venda de produtos ou oferecimento de serviços de qualquer espécie, sendo o apadrinhamento um trabalho estritamente voluntário.<br />
       </h6>
       <form className='form pt-4' onSubmit={(e) => handleSubmit(e, formData)}>
         {fields.map((item, index) => (
@@ -174,6 +173,11 @@ const Padrinhos = (props) => {
 
 export async function getStaticProps() {
   const allData = (await getData()) || {};
+  const padrinhos =
+    (await getRecords({
+      spreadsheetId: process.env.GOOGLE_SHEET_PADRINHO_ID,
+      range: 'Padrinhos',
+    })) || [];
   const {
     headerMenu = [],
     footerMenu = [],
@@ -186,6 +190,7 @@ export async function getStaticProps() {
       footerMenu,
       subscribeMenu,
       socialMenu,
+      padrinhos
     },
 
     revalidate: 30,
@@ -196,7 +201,7 @@ export default Padrinhos;
 
 // TODO: Make dynamic
 const headers = {
-  id: '',
+  Padrinho_id: `PAD-${Date.now()}`,
   full_name: '',
   email: '',
   in_canada_since: '',

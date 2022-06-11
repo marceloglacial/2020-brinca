@@ -29,7 +29,7 @@ async function getData(client, options, res) {
   const googleSheetApi = google.sheets({ version: 'v4', auth: client });
   const response = await googleSheetApi.spreadsheets.values.append({
     spreadsheetId: process.env.GOOGLE_SHEET_PADRINHO_ID,
-    range: 'Padrinhos!A1:AB',
+    range: 'Padrinhos',
     valueInputOption: 'USER_ENTERED',
     requestBody: {
       values: options,
