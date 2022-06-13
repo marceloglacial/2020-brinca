@@ -55,7 +55,7 @@ const Padrinhos = (props) => {
         subject: 'Brinca - Cadastro de Padrinhos',
         honeypot: '',
         replyTo: '@',
-        accessKey: process.NEXT_PUBLIC_FORM_KEY,
+        accessKey: process.env.NEXT_PUBLIC_FORM_KEY,
         name: formData.full_name,
         email: formData.email,
       }),
