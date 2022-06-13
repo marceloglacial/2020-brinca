@@ -201,7 +201,7 @@ export default Padrinhos;
 
 // TODO: Make dynamic
 const headers = {
-  Padrinho_id: '',
+  id: '',
   full_name: '',
   email: '',
   in_canada_since: '',
