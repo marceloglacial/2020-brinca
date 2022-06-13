@@ -10,7 +10,9 @@ const Header = (props) => {
         <div className={`navbar-brand mx-0 ${styles.brandLogo}`}>
           <Logo />
         </div>
-        <div className={`d-none d-xl-flex gap-1 align-items-center`}>
+        <div
+          className={`${headStyles.mobile} ${headStyles.tablet} ${headStyles.desktop}`}
+        >
           <HeaderNav {...props} />
           <MenuSubscribe {...props} />
         </div>
@@ -19,3 +21,9 @@ const Header = (props) => {
   );
 };
 export default Header;
+
+const headStyles = {
+  mobile: 'd-none',
+  tablet: '',
+  desktop: 'd-xl-flex gap-1 align-items-center',
+};
