@@ -19,14 +19,14 @@ const HeaderNav = (props) => {
     return <Alert title={menuContent.message} />;
 
   return (
-    <ul className='navbar-nav ml-auto'>
+    <ul className='navbar-nav ml-auto mr-3'>
       {menuContent.items.map((item) => {
         const { ID, title, slug, url, child_items } = item;
         const hasSubMenu = child_items && isOpen;
         const link = slug ? `/${slug}` : url;
         return (
           <li
-            className={`nav-item mx-2 ${styles.navItem}`}
+            className={`nav-item mx-1 ${styles.navItem}`}
             key={ID}
             onMouseOver={() => child_items && setIsOpen(true)}
             onMouseLeave={() => child_items && setIsOpen(false)}

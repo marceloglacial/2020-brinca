@@ -10,7 +10,7 @@ const Header = (props) => {
         <div className={`navbar-brand mx-0 ${styles.brandLogo}`}>
           <Logo />
         </div>
-        <div className='header__nav'>
+        <div className={`d-none d-xl-flex gap-1 align-items-center`}>
           <HeaderNav {...props} />
           <MenuSubscribe {...props} />
         </div>
