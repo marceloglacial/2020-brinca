@@ -95,8 +95,8 @@ const Padrinhos = (props) => {
     {
       id: 'in_canada_since',
       label: 'No Canadá desde',
-      type: 'textfield',
-      placeholder: 'MM/YYYY',
+      type: 'date',
+      placeholder: 'MM/DD/YYYY',
       validate: { required: true },
     },
     {
