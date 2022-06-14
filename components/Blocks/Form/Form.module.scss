@@ -21,6 +21,13 @@
   padding: 0.9rem 1rem;
   flex-grow: 1;
   width: 100%;
+  background: transparent;
+  [type='date'] {
+    -webkit-appearance: none;
+  }
+  &::-webkit-date-and-time-value {
+    height: 1.5rem;
+  }
 }
 
 .textarea {

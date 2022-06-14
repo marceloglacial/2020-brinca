@@ -19,6 +19,7 @@ const FormInput = (props) => {
     email: 'email',
     phoneNumber: 'tel',
     url: 'url',
+    date: 'date'
   };
 
   return (

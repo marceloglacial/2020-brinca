@@ -20,6 +20,7 @@ const FormField = (props) => {
     checkbox: <FormCheckbox {...props} />,
     menu: <FormSelect {...props} />,
     dropdown: <FormDropDown {...props} />,
+    date: <FormInput {...props} />
   };
   return (
     <div className={styles.formItem} data-aos='fade-in'>
