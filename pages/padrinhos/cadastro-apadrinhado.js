@@ -93,21 +93,21 @@ const Padrinhos = (props) => {
       validate: { required: true },
     },
     {
-      id: 'in_canada_since',
-      label: 'No Canadá desde',
+      id: 'expected_travel_date',
+      label: 'Data prevista da viagem',
       type: 'date',
       placeholder: 'yyyy/mm/dd',
       validate: { required: true },
     },
     {
-      id: 'children',
-      label: 'Tem filhos em idade escolar? Quantos e que idade?',
+      id: 'planning_to_stay',
+      label: 'Pretende ficar quanto tempo em Ottawa?',
       type: 'textfield',
       validate: { required: true },
     },
     {
       id: 'personal_profile',
-      label: 'Descreva brevemente seu perfil profissional e porque gostaria de ser padrinho/madrinha de um recém chegado',
+      label: 'Descreva brevemente sua família, seu status imigratório (estudante, PR, etc) e o que você espera de um padrinho',
       type: 'textarea',
       validate: { required: true },
     },
@@ -172,7 +172,7 @@ export async function getStaticProps() {
   const padrinhos =
     (await getRecords({
       spreadsheetId: process.env.GOOGLE_SHEET_PADRINHO_ID,
-      range: 'Padrinhos',
+      range: 'Apadrinhados',
     })) || [];
   const {
     headerMenu = [],
@@ -200,7 +200,7 @@ const headers = {
   id: '',
   full_name: '',
   email: '',
-  in_canada_since: '',
-  children: '',
+  expected_travel_date: '',
+  planning_to_stay: '',
   personal_profile: '',
 };
