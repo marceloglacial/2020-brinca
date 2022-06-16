@@ -2,7 +2,7 @@ import Layout from 'components/Layout/Layout'
 import Padrinho from 'components/Padrinho/Padrinho'
 import { getData } from 'functions/getData';
 
-const Apadrinhamento = (props) => {
+const Padrinhos = (props) => {
   const { headerMenu } = props
 
   return (
@@ -33,4 +33,4 @@ export async function getStaticProps() {
   };
 }
 
-export default Apadrinhamento
+export default Padrinhos
