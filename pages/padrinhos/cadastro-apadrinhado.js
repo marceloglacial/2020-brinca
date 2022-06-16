@@ -6,7 +6,7 @@ import getRecords from 'functions/getRecords';
 
 // TODO: CLEAN CODE!!!
 
-const Padrinhos = (props) => {
+const Apadrinhados = (props) => {
   const [formData, setFormData] = useState({ ...headers });
   const [status, setStatus] = useState();
   const [isLoading, setIsLoading] = useState(false);
@@ -71,7 +71,7 @@ const Padrinhos = (props) => {
 
   // FIELDS
   // ===================================
-  const options = props.padrinhos.map((item) => {
+  const options = props.apadrinhados.map((item) => {
     return {
       value: item[1],
       label: item[1],
@@ -158,7 +158,7 @@ const Padrinhos = (props) => {
   // RETURN
   // ===================================
   return (
-    <Layout pageTitle={`Padrinhos`} {...props}>
+    <Layout pageTitle={`Apadrinhados`} {...props}>
       <section className='parceiros__form'>
         <h2 className='partners__title'>Apadrinhados - Cadastro</h2>
         <div className='partners__body mb-4'>{content}</div>
@@ -169,7 +169,7 @@ const Padrinhos = (props) => {
 
 export async function getStaticProps() {
   const allData = (await getData()) || {};
-  const padrinhos =
+  const apadrinhados =
     (await getRecords({
       spreadsheetId: process.env.GOOGLE_SHEET_PADRINHO_ID,
       range: 'Apadrinhados',
@@ -186,14 +186,14 @@ export async function getStaticProps() {
       footerMenu,
       subscribeMenu,
       socialMenu,
-      padrinhos
+      apadrinhados
     },
 
     revalidate: 30,
   };
 }
 
-export default Padrinhos;
+export default Apadrinhados;
 
 // TODO: Make dynamic
 const headers = {
