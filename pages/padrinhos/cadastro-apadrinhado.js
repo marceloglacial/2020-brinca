@@ -52,7 +52,7 @@ const Padrinhos = (props) => {
     const emailResponse = await fetch('https://api.staticforms.xyz/submit', {
       method: 'POST',
       body: JSON.stringify({
-        subject: 'Brinca - Cadastro de Padrinhos',
+        subject: 'Brinca - Cadastro de Apadrinhados',
         honeypot: '',
         replyTo: '@',
         accessKey: process.env.NEXT_PUBLIC_FORM_KEY,
@@ -93,14 +93,14 @@ const Padrinhos = (props) => {
       validate: { required: true },
     },
     {
-      id: 'expected_travel_date',
+      id: 'expected_travel',
       label: 'Data prevista da viagem',
       type: 'date',
       placeholder: 'yyyy/mm/dd',
       validate: { required: true },
     },
     {
-      id: 'planning_to_stay',
+      id: 'planning_stay',
       label: 'Pretende ficar quanto tempo em Ottawa?',
       type: 'textfield',
       validate: { required: true },
@@ -200,7 +200,7 @@ const headers = {
   id: '',
   full_name: '',
   email: '',
-  expected_travel_date: '',
-  planning_to_stay: '',
+  expected_travel: '',
+  planning_stay: '',
   personal_profile: '',
 };
