@@ -1,4 +1,5 @@
 import Button from 'components/Button/Button'
+import Link from 'next/link'
 
 const Padrinho = (props) => {
   const { title } = props
@@ -13,8 +14,12 @@ const Padrinho = (props) => {
         <p>Para participar do nosso projeto é só clicar no link abaixo e fazer o seu cadastro, ou envie um e-mail para <a href="mailto:padrinho@brinca.ca?subject=Cadastro - Gostaria de ser Padrinho/Apadrinhado">padrinho@brinca.ca</a>. Este é um trabalho 100% voluntário e coordenado também por voluntários, portanto, você não precisa pagar nada.</p>
       </div>
       <div className={`text-center py-5`}>
-        <Button title={`Quero apadrinhar um recém chegado`} link={`/apadrinhar`} type={`primary`} className={`mb-3 mr-2`} />
-        <Button title={`Quero ser apadrinhado`} link={`/ser-apadrinhado`} type={`primary`} className={`mb-3`} />
+        <Link href={`/padrinhos/cadastro-padrinho`}>
+          <a className={`btn btn-primary font-weight-bold mb-3 mr-2`}>Quero apadrinhar um recém chegado</a>
+        </Link>
+        <Link href={`/padrinhos/cadastro-apadrinhado`}>
+          <a className={`btn btn-primary font-weight-bold mb-3`}>Quero ser apadrinhado</a>
+        </Link>
       </div>
     </section>
   )
