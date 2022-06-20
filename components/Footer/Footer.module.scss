@@ -31,13 +31,11 @@
 ul.menuNav {
   white-space: nowrap;
   width: 100%;
-  overflow-x: scroll;
   display: flex;
   flex-direction: column;
   margin: 0;
 
   @media (min-width: 1023px) {
-    overflow-x: unset;
     flex-direction: row;
   }
 
@@ -71,12 +69,10 @@ ul li.menuLink {
 
 .copyright {
   background-color: var(--grey-soft);
-  margin-bottom: 7rem;
   border-radius: var(--border-radius);
 
   @media (min-width: 1023px) {
     background-color: unset;
-    margin-bottom: 0;
   }
 }
 
