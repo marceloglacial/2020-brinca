@@ -4,19 +4,17 @@
   }
 }
 .footerNav {
-  width: calc(100% - 30px);
+  width: 100%;
   background: var(--green);
   text-align: center;
-  position: fixed;
-  bottom: 1rem;
-  left: 15px;
   border-radius: var(--border-radius);
-  z-index: 9999;
+  padding: 2rem;
+  margin-bottom: 1rem;
 
   @media (min-width: 1023px) {
-    position: static;
     padding: 1rem;
     width: unset;
+    margin-bottom: 0;
   }
 
   a {
@@ -28,35 +26,6 @@
       text-decoration: underline;
     }
   }
-
-  @media (max-width: 1021px) {
-    &::before {
-      content: '';
-      background: linear-gradient(90deg, rgba(#0e874e, 0) 0%, var(--green) 90%);
-      position: fixed;
-      right: 15px;
-      width: 2.5rem;
-      height: 4.1rem;
-      border-top-right-radius: var(--border-radius);
-      border-bottom-right-radius: var(--border-radius);
-    }
-    &::after {
-      content: '';
-      background: rgb(0, 0, 0);
-      background: linear-gradient(
-        270deg,
-        rgba(#0e874e, 0) 0%,
-        var(--green) 90%
-      );
-      position: fixed;
-      bottom: 1rem;
-      left: 15px;
-      width: 2.5rem;
-      height: 4.1rem;
-      border-top-left-radius: var(--border-radius);
-      border-bottom-left-radius: var(--border-radius);
-    }
-  }
 }
 
 ul.menuNav {
@@ -64,10 +33,12 @@ ul.menuNav {
   width: 100%;
   overflow-x: scroll;
   display: flex;
+  flex-direction: column;
   margin: 0;
 
   @media (min-width: 1023px) {
     overflow-x: unset;
+    flex-direction: row;
   }
 
   li {
@@ -76,28 +47,21 @@ ul.menuNav {
 }
 
 ul li.footerLogo {
-  display: none;
+  margin-left: auto;
+  margin-bottom: 1rem;
 
   @media (min-width: 1023px) {
     display: inline-flex;
     margin-bottom: 0.5rem;
+    margin-left: 0;
+    margin-right: auto;
   }
 }
 
 ul li.menuLink {
-  padding: 2rem 1rem 0.3rem 1rem;
-  margin-bottom: 1.8rem;
+  padding: 1.5rem 1rem 0.3rem 1rem;
+  margin-bottom: 0.5rem;
   position: relative;
-
-  &:last-child {
-    padding-right: 2rem;
-  }
-
-  @media (min-width: 768px) {
-    &:last-child {
-      padding-right: 0;
-    }
-  }
 
   @media (min-width: 1023px) {
     padding: 1rem;
