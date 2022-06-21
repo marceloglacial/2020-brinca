@@ -81,9 +81,11 @@ ul li.menuLink {
   color: var(--white);
   text-align: center;
   font-size: 1rem;
+  margin: 1rem;
 
   @media (min-width: 1023px) {
     color: var(--grey-soft);
+    margin: 0;
   }
 }
 
