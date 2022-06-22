@@ -1,8 +1,8 @@
 import Link from 'next/link';
 
-const PartnersContent = (props) => {
+const PartnersContent = () => {
   return (
-    <div className='partners__content'>
+    <div className='partners__content' data-aos='fade-in'>
       <p>
         Aqui você encontra produtos e serviços de brasileiros para brasileiros
       </p>

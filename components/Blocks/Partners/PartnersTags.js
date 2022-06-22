@@ -11,7 +11,7 @@ const PartnersTags = ({ tags, filter }) => {
   const allClassName = !filter ? 'btn-primary' : 'btn-secondary';
 
   return (
-    <section className='partners__tags'>
+    <section className='partners__tags' data-aos='fade-in'>
       <div className='partners__title'>
         <h4>Categorias</h4>
       </div>
