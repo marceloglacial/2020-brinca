@@ -1,0 +1,13 @@
+.ctaWrapper {
+  a {
+    margin-right: 0;
+    margin-bottom: 0.5rem;
+  }
+  @media (min-width: 1023px) {
+    margin-top: 2rem;
+
+    a {
+      margin-right: 0.5rem;
+    }
+  }
+}
