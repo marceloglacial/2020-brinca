@@ -1,6 +1,4 @@
-import Button from 'components/Button/Button'
 import Link from 'next/link'
-import styles from './Padrinho.module.scss'
 
 const Padrinho = (props) => {
   const { title } = props
@@ -14,12 +12,12 @@ const Padrinho = (props) => {
         <p>Queremos criar uma comunidade cada vez mais forte e unida, e acreditamos que esse link possa criar laços fortes entre as pessoas. Aquele que foi ajudado pode ser o que ajuda no futuro, e assim todos ganham.</p>
         <p>Para participar do nosso projeto é só clicar no link abaixo e fazer o seu cadastro, ou envie um e-mail para <a href="mailto:padrinho@brinca.ca?subject=Cadastro - Gostaria de ser Padrinho/Apadrinhado">padrinho@brinca.ca</a>. Este é um trabalho 100% voluntário e coordenado também por voluntários, portanto, você não precisa pagar nada.</p>
       </div>
-      <div className={`${styles.ctaWrapper} text-center`}>
+      <div className={`text-center`}>
         <Link href={`/padrinhos/cadastro-padrinho`}>
-          <a className={`btn btn-primary font-weight-bold`}>Quero apadrinhar um recém chegado</a>
+          <a className={`btn btn-primary font-weight-bold mt-2`}>Quero apadrinhar um recém chegado</a>
         </Link>
         <Link href={`/padrinhos/cadastro-apadrinhado`}>
-          <a className={`btn btn-primary font-weight-bold`}>Quero ser apadrinhado</a>
+          <a className={`btn btn-primary font-weight-bold ml-sm-2 mt-2`}>Quero ser apadrinhado</a>
         </Link>
       </div>
     </section>
