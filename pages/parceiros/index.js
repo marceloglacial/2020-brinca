@@ -20,7 +20,7 @@ const Parceiros = (props) => {
 
   return (
     <Layout pageTitle={`Parceiros`} {...props}>
-      <h2 className='partners__title'>Parceiros</h2>
+      <h1 className='content-title'>Parceiros</h1>
       <PartnersContent />
       <PartnersTags tags={tagsNames} />
       <Partners data={data} categories={tags} />

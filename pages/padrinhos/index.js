@@ -4,10 +4,17 @@ import { getData } from 'functions/getData';
 
 const Apadrinhamento = (props) => {
   const { headerMenu } = props
+  const { title } = headerMenu?.items[2] || ''
 
   return (
-    <Layout pageTitle={`Torne-se um Padrinho`} {...props}>
-      <Padrinho title={`Apadrinhe um recém-chegado ao Canada!`} />
+    <Layout pageTitle={title} {...props}>
+      <header data-aos='fade-in'>
+        <h1
+          className='content-title'
+          dangerouslySetInnerHTML={{ __html: title }}
+        />
+      </header>
+      <Padrinho />
     </Layout>
   )
 }
