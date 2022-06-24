@@ -159,9 +159,11 @@ const Apadrinhados = (props) => {
   // ===================================
   return (
     <Layout pageTitle={`Apadrinhados`} {...props}>
-      <section className='parceiros__form'>
-        <h2 className='partners__title'>Apadrinhados - Cadastro</h2>
-        <div className='partners__body mb-4'>{content}</div>
+      <header data-aos='fade-in'>
+        <h1 className='content-title'>Apadrinhados - Cadastro</h1>
+      </header>
+      <section className='parceiros__form pt-0'>
+        <div className='partners__body'>{content}</div>
       </section>
     </Layout>
   );

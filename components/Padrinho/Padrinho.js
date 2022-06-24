@@ -3,7 +3,7 @@ import Link from 'next/link'
 const Padrinho = (props) => {
 
   return (
-    <div className="padrinho">
+    <section className="padrinho pt-0">
       <div className="padrinho__content">
         <h4 className="text-center">Apadrinhe um recém-chegado ao Canada!</h4>
         <p>Todos nós, que vivemos em um novo país, certamente fomos ajudados por alguém em algum momento da nossa chegada. São muitos os desafios, desde burocracias como carteira de habilitação, cartão de saúde até coisas mais simples, como escolher marca de sabão no supermercado. Temos que aprender tudo novamente e o choque cultural pode ser amenizado quando encontramos compatriotas dispostos a nos ajudar nesse processo.</p>
@@ -19,7 +19,7 @@ const Padrinho = (props) => {
           <a className={`btn btn-primary font-weight-bold ml-sm-2 mt-2`}>Quero ser apadrinhado</a>
         </Link>
       </div>
-    </div>
+    </section>
   )
 }
 

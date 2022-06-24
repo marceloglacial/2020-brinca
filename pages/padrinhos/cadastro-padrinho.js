@@ -163,9 +163,11 @@ const Padrinhos = (props) => {
   // ===================================
   return (
     <Layout pageTitle={`Padrinhos`} {...props}>
-      <section className='parceiros__form'>
-        <h2 className='partners__title'>Padrinhos - Cadastro</h2>
-        <div className='partners__body mb-4'>{content}</div>
+      <header data-aos='fade-in'>
+        <h1 className='content-title'>Padrinhos - Cadastro</h1>
+      </header>
+      <section className='parceiros__form pt-0'>
+        <div className='partners__body'>{content}</div>
       </section>
     </Layout>
   );
