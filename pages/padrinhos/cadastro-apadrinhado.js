@@ -93,6 +93,12 @@ const Apadrinhados = (props) => {
       validate: { required: true },
     },
     {
+      id: 'phone',
+      label: 'Telefone',
+      type: 'phoneNumber',
+      validate: { required: true },
+    },
+    {
       id: 'expected_travel',
       label: 'Data prevista da viagem',
       type: 'date',
@@ -200,6 +206,7 @@ const headers = {
   id: '',
   full_name: '',
   email: '',
+  phone: '',
   expected_travel: '',
   planning_stay: '',
   personal_profile: '',
