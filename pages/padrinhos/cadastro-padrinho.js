@@ -93,6 +93,12 @@ const Padrinhos = (props) => {
       validate: { required: true },
     },
     {
+      id: 'phone',
+      label: 'Telefone',
+      type: 'phoneNumber',
+      validate: { required: true },
+    },
+    {
       id: 'in_canada_since',
       label: 'No Canadá desde',
       type: 'date',
@@ -204,6 +210,7 @@ const headers = {
   id: '',
   full_name: '',
   email: '',
+  phone: '',
   in_canada_since: '',
   children: '',
   personal_profile: '',
