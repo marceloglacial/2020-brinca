@@ -36,6 +36,9 @@ const Footer = (props) => {
               </a>
             </Link>
           </li>
+          <li className={`m-auto flex-grow-1`}>
+            <FooterSocial {...props} />
+          </li>
           {menuContent.items.map((item) => {
             const { ID, title, slug, url } = item;
             const link = slug ? `/${slug}` : url;
@@ -70,7 +73,6 @@ const Footer = (props) => {
           </li>
         </ul>
       </div>
-      <FooterSocial {...props} />
     </footer>
   );
 };
