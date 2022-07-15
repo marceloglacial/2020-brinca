@@ -2,10 +2,10 @@
   width: 175px;
 
   @media (min-width: 375px) {
-    width: 200px;
+    width: 180px
   }
 
-  @media (min-width: 450px) {
+  @media (min-width: 1200px) {
     width: unset;
   }
 }

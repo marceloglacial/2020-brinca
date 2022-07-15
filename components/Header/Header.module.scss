@@ -33,6 +33,13 @@
 
 .navItem {
   position: relative;
+  font-size: 0.99rem;
+}
+
+@media (min-width: 1200px) {
+  .navItem {
+    font-size: 1.125rem;
+  }
 }
 
 .navbarSub {
