@@ -22,6 +22,12 @@
     transition: width 0.1s ease-in-out;
   }
 
+  @media (max-width: 991px) {
+    &:after {
+      background: var(--white);
+    }
+  }
+
   &:hover:after {
     width: calc(100% - 1rem);
   }
@@ -122,6 +128,7 @@
 
   &__subscribe {
     @media (max-width: 991px) {
+      margin-left: 0 !important;
       position: absolute;
       bottom: 10%;
       left: 50%;
@@ -143,13 +150,10 @@
       &:link,
       &:visited {
       display: inline-block;
-      font-size: 1rem;
-      padding: 1rem 3.5rem;
+      font-size: 2rem;
+      padding: 1rem;
       color: var(--white);
-      text-transform: uppercase;
       text-decoration: none;
-      background-image: linear-gradient(120deg,  transparent 0%, transparent 50%, var(--white) 50%);
-      background-size: 220%;
       transition: all .3s;
 
         span {
@@ -161,8 +165,7 @@
       &:hover,
       &:active {
         background-position: 100%;
-        color: var(--green);
-        transform: translateX(1rem);
+        color: var(--white);
       }
     }
 
