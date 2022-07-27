@@ -61,47 +61,52 @@
   }
 
   &__button {
-    // this bottun must cover the background circle bellow
-    height: 5rem;
-    width: 5rem;
-    border-radius: 50%;
-    position: absolute;
-    top: -1rem;
-    right: 0;
-    background-color: var(--green);
-    z-index: 2000;
-    box-shadow: 0 1rem 3rem rgba(var(--black), .1);
-
-    // toggle lines
-    text-align: center;
-    cursor: pointer;
+    @media (max-width: 991px) {
+      height: 5rem;
+      width: 5rem;
+      border-radius: 50%;
+      position: absolute;
+      top: 0;
+      right: 0;
+      background-color: var(--green);
+      z-index: 2000;
+      box-shadow: 0 1rem 3rem rgba(var(--black), .1);
+      text-align: center;
+      cursor: pointer;
+    }
 
   }
 
   &__background {
-    height: 4rem;
-    width: 4rem;
-    border-radius: 50%;
-    position: absolute;
-    top: -0.5rem;
-    right: 1rem;
-    background-image: radial-gradient(var(--green), var(--green));
-    z-index: 1000;
-    transition: transform .3s;
-    // transform: scale(80);
+    @media (max-width: 991px) {
+      height: 4rem;
+      width: 4rem;
+      border-radius: 50%;
+      position: absolute;
+      top: 0;
+      right: 0.5rem;
+      background-image: radial-gradient(var(--green), var(--green));
+      z-index: 1000;
+      transition: transform .3s;
+      // transform: scale(80);
+    }
+
   }
 
   &__nav {
-    height: 100vh;
-    // width: 100%;
-    position: fixed;
-    top: 0;
-    right: 0;
-    z-index: 1500;
-    opacity: 0;
-    width: 0;
-    // display: none;
-    transition: all .3s;
+    @media (max-width: 991px) {
+      height: 100vh;
+      // width: 100%;
+      position: fixed;
+      top: 0;
+      right: 0;
+      z-index: 1500;
+      opacity: 0;
+      width: 0;
+      // display: none;
+      transition: all .3s;
+    }
+
 
   }
 
@@ -154,7 +159,7 @@
 
   // FUNCTIONALITY
   &__checkbox:checked ~ &__background {
-    transform: scale(80);
+    transform: scale(200);
 
   }
 
