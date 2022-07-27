@@ -88,22 +88,21 @@
       background-image: radial-gradient(var(--green), var(--green));
       z-index: 1000;
       transition: transform .3s;
-      // transform: scale(80);
     }
 
   }
 
   &__nav {
     @media (max-width: 991px) {
+      display: flex;
+      flex-direction: column;
       height: 100vh;
-      // width: 100%;
       position: fixed;
       top: 0;
       right: 0;
       z-index: 1500;
       opacity: 0;
       width: 0;
-      // display: none;
       transition: all .3s;
     }
 
@@ -111,48 +110,60 @@
   }
 
   &__list {
-    // the ul must be at the center of the screen
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    list-style: none;
-    text-align: center;
+    @media (max-width: 991px) {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      list-style: none;
+      text-align: center;
+    }
+  }
 
+  &__subscribe {
+    @media (max-width: 991px) {
+      position: absolute;
+      bottom: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+      list-style: none;
+      text-align: center;
+    }
   }
 
   &__item {
-    margin: 1rem;
+    @media (max-width: 991px) {
+      margin: 0.5rem 0;
+    }
 
   }
 
   &__link {
+    @media (max-width: 991px) {
+      &:link,
+      &:visited {
+      display: inline-block;
+      font-size: 1rem;
+      padding: 1rem 3.5rem;
+      color: var(--white);
+      text-transform: uppercase;
+      text-decoration: none;
+      background-image: linear-gradient(120deg,  transparent 0%, transparent 50%, var(--white) 50%);
+      background-size: 220%;
+      transition: all .3s;
 
-    &:link,
-    &:visited {
-    display: inline-block;
-    font-size: 3rem;
-    font-weight: 300;
-    padding: 1rem 3.5rem;
-    color: var(--white);
-    text-transform: uppercase;
-    text-decoration: none;
-    background-image: linear-gradient(120deg,  transparent 0%, transparent 50%, var(--white) 50%);
-    // trick
-    background-size: 220%;
-    transition: all .4s;
-
-      span {
-        display: inline-block;
-        margin-right: 1.5rem;
+        span {
+          display: inline-block;
+          margin-right: 1.5rem;
+        }
       }
-    }
 
-    &:hover,
-    &:active {
-      background-position: 100%;
-      color: var(--green);
-      transform: translateX(1rem);
+      &:hover,
+      &:active {
+        background-position: 100%;
+        color: var(--green);
+        transform: translateX(1rem);
+      }
     }
 
   }
@@ -160,7 +171,6 @@
   // FUNCTIONALITY
   &__checkbox:checked ~ &__background {
     transform: scale(200);
-
   }
 
   &__checkbox:checked ~ &__nav {

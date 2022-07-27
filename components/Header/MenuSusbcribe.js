@@ -1,6 +1,7 @@
 import Alert from 'components/Alert/Alert';
 import getSlug from 'functions/getSlug';
 import Link from 'next/link';
+import styles from './Header.module.scss';
 
 const MenuSubscribe = (props) => {
   const menuContent = props.subscribeMenu;
@@ -15,13 +16,13 @@ const MenuSubscribe = (props) => {
     return <Alert title={menuContent.message} />;
 
   return (
-    <ul className='navbar-nav ml-3'>
+    <ul className={`navbar-nav ml-3 ${styles.navigation__subscribe}`}>
       {menuContent.items.map((item) => {
         const { ID, title, url } = item;
         return (
-          <li className='nav-item' key={ID}>
+          <li className={`nav-item ${styles.navigation__item}`} key={ID}>
             <Link href={`/${getSlug(url)}`}>
-              <a href={`/${getSlug(url)}`} className={`btn btn-primary`}>
+              <a href={`/${getSlug(url)}`} className={`btn btn-primary ${styles.navigation__link}`}>
                 {title}
               </a>
             </Link>

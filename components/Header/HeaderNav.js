@@ -19,7 +19,7 @@ const HeaderNav = (props) => {
     return <Alert title={menuContent.message} />;
 
   return (
-    <ul className='navbar-nav ml-auto'>
+    <ul className={`navbar-nav ml-auto ${styles.navigation__list}`}>
       {menuContent.items.map((item) => {
         const { ID, title, slug, url, child_items } = item;
         const hasSubMenu = child_items && isOpen;
@@ -27,13 +27,13 @@ const HeaderNav = (props) => {
         const link = slug ? `/${slug}` : url;
         return (
           <li
-            className={`nav-item mx-2 ${styles.navItem}`}
+            className={`nav-item mx-2 ${styles.navItem} ${styles.navigation__item}`}
             key={ID}
             onMouseOver={() => child_items && setIsOpen(true)}
             onMouseLeave={() => child_items && setIsOpen(false)}
           >
             <Link href={link} key={ID}>
-              <a className={`nav-link ${styles.topNavLink}`} href={link}>
+              <a className={`nav-link ${styles.topNavLink} ${styles.navigation__link}`} href={link}>
                 {title}
               </a>
             </Link>
