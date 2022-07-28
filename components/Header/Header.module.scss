@@ -3,6 +3,9 @@
   @media (min-width: 768px) {
     padding: 2.5rem 0 0 0;
   }
+  @media (max-width: 767px) {
+    padding-top: 15px;
+  }
 }
 .topNavLink {
   color: var(--black);
@@ -68,8 +71,8 @@
 
   &__button {
     @media (max-width: 991px) {
-      height: 5rem;
-      width: 5rem;
+      height: 4rem;
+      width: 4rem;
       border-radius: 50%;
       position: absolute;
       top: 0;
@@ -85,8 +88,8 @@
 
   &__background {
     @media (max-width: 991px) {
-      height: 4rem;
-      width: 4rem;
+      height: 3rem;
+      width: 3rem;
       border-radius: 50%;
       position: absolute;
       top: 0;
@@ -181,7 +184,7 @@
   // ICON
   &__icon {
     position: relative;
-    margin-top: 2.5rem;
+    margin-top: 2rem;
     &,
     &::before,
     &::after {
