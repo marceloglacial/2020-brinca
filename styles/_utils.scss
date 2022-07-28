@@ -53,3 +53,14 @@
     gap: 2rem;
   }
 }
+
+// Image
+
+.brinca-image {
+  overflow: hidden;
+  object-fit: cover;
+  box-shadow: var(--shadow);
+  border-radius: var(--border-radius);
+  margin: 0;
+  padding: 0;
+}
