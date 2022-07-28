@@ -9,7 +9,7 @@ const GalleryImage = (props) => {
   return (
     <li className='blocks-gallery-item' key={id} data-aos='fade-in'>
       <a href='#' onClick={(e) => toggleModal(e, index)}>
-        <figure>
+        <figure className='brinca-image'>
           <Image
             src={source_url}
             alt={alt_text}
@@ -17,8 +17,8 @@ const GalleryImage = (props) => {
             data-full-url={source_url}
             data-link={source_url}
             className={`wp-image-${id}`}
-            width={width}
-            height={height}
+            width={300}
+            height={300}
           />
         </figure>
       </a>
