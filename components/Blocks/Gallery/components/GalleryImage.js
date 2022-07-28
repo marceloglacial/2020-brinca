@@ -17,6 +17,7 @@ const GalleryImage = (props) => {
             data-full-url={source_url}
             data-link={source_url}
             className={`wp-image-${id}`}
+            layout='responsive'
             width={300}
             height={300}
           />
