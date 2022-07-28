@@ -111,8 +111,6 @@
       width: 0;
       transition: all .3s;
     }
-
-
   }
 
   &__list {
@@ -150,7 +148,6 @@
       &:link,
       &:visited {
       display: inline-block;
-      font-size: 2rem;
       padding: 1rem;
       color: var(--white);
       text-decoration: none;
@@ -177,7 +174,6 @@
   }
 
   &__checkbox:checked ~ &__nav {
-    // display: initial;
     opacity: 1;
     width: 100%;
   }
@@ -220,6 +216,7 @@
 
   // hide the line of the middle
   &__checkbox:checked + &__button &__icon {
+    position: fixed;
     background-color: transparent;
   }
 
