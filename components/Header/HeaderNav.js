@@ -23,7 +23,6 @@ const HeaderNav = (props) => {
       {menuContent.items.map((item) => {
         const { ID, title, slug, url, child_items } = item;
         const hasSubMenu = child_items && isOpen;
-        console.log(hasSubMenu)
         const link = slug ? `/${slug}` : url;
         return (
           <li
