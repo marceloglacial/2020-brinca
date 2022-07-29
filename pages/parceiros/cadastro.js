@@ -234,7 +234,7 @@ const Parceiros = (props) => {
   return (
     <Layout pageTitle={`Parceiros`} {...props}>
       <section className='parceiros__form'>
-        <h2 className='partners__title'>Parceiros - Cadastro</h2>
+        <h1 className='content-title'>Parceiros - Cadastro</h1>
         <div className='parteners__body mb-4'>{content}</div>
       </section>
     </Layout>

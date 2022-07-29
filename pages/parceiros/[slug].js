@@ -22,7 +22,9 @@ const ParceirosTag = (props) => {
 
   return (
     <Layout pageTitle={`Parceiros`} {...props}>
-      <h2 className='partners__title'>Parceiros - {subTitle}</h2>
+      <header data-aos='fade-in'>
+        <h1 className='content-title'>Parceiros - {subTitle}</h1>
+      </header>
       <Partners {...partnersProps} />
       <PartnersTags tags={tagsNames} filter={params.slug} />
       <h2 className='partners__title'>Quer fazer parte?</h2>

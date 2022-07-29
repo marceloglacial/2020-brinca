@@ -7,13 +7,13 @@ import GalleryImage from './components/GalleryImage';
 import { useEffect, useState } from 'react';
 
 const Gallery = (props) => {
-  const { attrs, innerHTML } = props;
-  const { ids } = attrs;
+  const { innerBlocks, innerHTML } = props;
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [galleryClassName, setGalleryClassName] = useState('');
+  const ids = innerBlocks?.map((item) => item.attrs.id);
 
-  const images = ids.map((id) => {
+  const images = ids?.map((id) => {
     const {
       data: mediaContent,
       isLoading,
@@ -24,7 +24,7 @@ const Gallery = (props) => {
     return mediaContent;
   });
 
-  const modalImages = images.map((item) => {
+  const modalImages = images?.map((item) => {
     return { source: item ? item.source_url : '' };
   });
 
@@ -54,7 +54,7 @@ const Gallery = (props) => {
 
       <figure className={`gallery ${galleryClassName}`}>
         <ul className='blocks-gallery-grid'>
-          {images.map((item, index) => {
+          {images?.map((item, index) => {
             const imageProps = {
               ...item,
               index,

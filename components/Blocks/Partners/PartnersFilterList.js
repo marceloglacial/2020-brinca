@@ -17,7 +17,7 @@ const PartnersFilterList = ({
   useOnClickOutside(ref, () => setIsOpen(false));
 
   return (
-    <form className='partners__list' ref={ref}>
+    <form className='partners__list' ref={ref} data-aos='fade-in'>
       <fieldset className='partners__list-container'>
         <legend className='partners__list-title'>
           <button

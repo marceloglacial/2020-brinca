@@ -93,6 +93,12 @@ const Padrinhos = (props) => {
       validate: { required: true },
     },
     {
+      id: 'phone',
+      label: 'Telefone',
+      type: 'phoneNumber',
+      validate: { required: true },
+    },
+    {
       id: 'in_canada_since',
       label: 'No Canadá desde',
       type: 'date',
@@ -163,9 +169,11 @@ const Padrinhos = (props) => {
   // ===================================
   return (
     <Layout pageTitle={`Padrinhos`} {...props}>
-      <section className='parceiros__form'>
-        <h2 className='partners__title'>Padrinhos - Cadastro</h2>
-        <div className='partners__body mb-4'>{content}</div>
+      <header data-aos='fade-in'>
+        <h1 className='content-title'>Padrinhos - Cadastro</h1>
+      </header>
+      <section className='parceiros__form pt-0'>
+        <div className='partners__body'>{content}</div>
       </section>
     </Layout>
   );
@@ -204,6 +212,7 @@ const headers = {
   id: '',
   full_name: '',
   email: '',
+  phone: '',
   in_canada_since: '',
   children: '',
   personal_profile: '',
