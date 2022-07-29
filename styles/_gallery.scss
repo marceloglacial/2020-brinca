@@ -16,22 +16,25 @@
 
   @media (min-width: 1024px) {
     &.columns-2 .blocks-gallery-grid {
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(2, 1fr);
     }
     &.columns-3 .blocks-gallery-grid {
-      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-columns: repeat(3, 1fr);
     }
     &.columns-4 .blocks-gallery-grid {
-      grid-template-columns: 1fr 1fr 1fr 1fr;
+      grid-template-columns: repeat(4, 1fr);
     }
     &.columns-5 .blocks-gallery-grid {
-      grid-template-columns: 1fr 1fr 1fr 1fr;
+      grid-template-columns: repeat(5, 1fr);
     }
     &.columns-6 .blocks-gallery-grid {
-      grid-template-columns: 1fr 1fr 1fr 1fr;
+      grid-template-columns: repeat(6, 1fr);
     }
     &.columns-7 .blocks-gallery-grid {
-      width: 14.28571%;
+      grid-template-columns: repeat(7, 1fr);
+    }
+    &.columns-8 .blocks-gallery-grid {
+      grid-template-columns: repeat(8, 1fr);
     }
     &.columns-8 .blocks-gallery-grid {
       width: 12.5%;
