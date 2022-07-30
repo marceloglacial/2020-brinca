@@ -22,7 +22,7 @@ const MenuSubscribe = (props) => {
         return (
           <li className={`nav-item ${styles.navigation__item}`} key={ID}>
             <Link href={`/${getSlug(url)}`}>
-              <a href={`/${getSlug(url)}`} className={`btn btn-primary ${styles.navigation__link}`}>
+              <a href={`/${getSlug(url)}`} className={`btn btn-primary ${styles.topNavLink} ${styles.topNavLinkBtn} ${styles.navigation__link}`}>
                 {title}
               </a>
             </Link>

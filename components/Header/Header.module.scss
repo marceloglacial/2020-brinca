@@ -41,6 +41,18 @@
 
   &:hover:after {
     width: calc(100% - 1rem);
+
+    @media (max-width: 991px) {
+      width: calc(100% - 2rem);
+    }
+  }
+}
+
+.topNavLinkBtn {
+  @media (min-width: 991px) {
+    &:hover:after {
+      width: 0;
+    }
   }
 }
 
@@ -158,6 +170,8 @@
     @media (max-width: 991px) {
       &:link,
       &:visited {
+      font-size: 1rem !important;
+      font-weight: normal !important;
       display: inline-block;
       padding: 1rem;
       color: var(--white);
@@ -172,8 +186,10 @@
 
       &:hover,
       &:active {
+        background-color: none !important;
+        background: none !important;
         background-position: 100%;
-        color: var(--white);
+        color: var(--white) !important;
       }
     }
 
