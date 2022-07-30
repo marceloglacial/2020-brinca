@@ -24,7 +24,7 @@ const Footer = (props) => {
         <ul
           className={`container align-items-center justify-content-sm-center ${styles.menuNav}`}
         >
-          <li className={`mr-auto ${styles.footerLogo}`}>
+          <li className={`mx-auto ${styles.footerLogo}`}>
             <Link href='/'>
               <a href='/'>
                 <Image
@@ -57,7 +57,7 @@ const Footer = (props) => {
         <ul
           className={`nav justify-content-center flex-column flex-md-row py-3 ${styles.copyrightMenu}`}
         >
-          <li className='nav-item nav-link'>Copyrights Brinca - {year}</li>
+          <li className='nav-item p-2'>Copyrights Brinca - {year}</li>
           <li className='nav-item'>
             <a href={`http://marceloglacial.com`} className='nav-link'>
               Developed by Marcelo Glacial
