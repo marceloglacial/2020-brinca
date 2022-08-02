@@ -91,8 +91,9 @@
 
   &__button {
     @media (max-width: 991px) {
-      height: 4rem;
-      width: 4rem;
+      margin-top: 0.75rem;
+      height: 3.5rem;
+      width: 3.5rem;
       border-radius: 50%;
       position: absolute;
       top: 0;
@@ -108,11 +109,11 @@
 
   &__background {
     @media (max-width: 991px) {
-      height: 3rem;
-      width: 3rem;
+      height: 2rem;
+      width: 2rem;
       border-radius: 50%;
       position: absolute;
-      top: 0;
+      top: 1rem;
       right: 0.5rem;
       background-image: radial-gradient(var(--green), var(--green));
       z-index: 1000;
@@ -138,24 +139,13 @@
 
   &__list {
     @media (max-width: 991px) {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      list-style: none;
-      text-align: center;
+      // none
     }
   }
 
   &__subscribe {
     @media (max-width: 991px) {
-      margin-left: 0 !important;
-      position: absolute;
-      bottom: 10%;
-      left: 50%;
-      transform: translateX(-50%);
-      list-style: none;
-      text-align: center;
+    //  none
     }
   }
 
@@ -208,11 +198,11 @@
   // ICON
   &__icon {
     position: relative;
-    margin-top: 2rem;
+    margin-top: 1.75rem;
     &,
     &::before,
     &::after {
-      width: 2rem;
+      width: 1.7rem;
       height: 2px;
       background-color: var(--white);
       display: inline-block;
@@ -255,5 +245,19 @@
   &__checkbox:checked + &__button &__icon::after {
     top: 0;
     transform: rotate(-225deg);
+  }
+}
+
+.listsWrap {
+  display: flex;
+  align-items: center;
+  @media (max-width: 991px) {
+    flex-direction: column;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    list-style: none;
+    text-align: center;
   }
 }

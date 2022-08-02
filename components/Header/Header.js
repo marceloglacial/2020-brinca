@@ -16,11 +16,13 @@ const Header = (props) => {
         </label>
         <div className={`${styles.navigation__background}`}>&nbsp;</div>
         <nav className={`navbar navbar-expand-lg ${styles.navigation__nav}`}>
-          <HeaderNav {...props} />
-          <MenuSubscribe {...props} />
+          <div className={`${styles.listsWrap}`} >
+            <HeaderNav {...props} />
+            <MenuSubscribe {...props} />
+          </div>
         </nav>
-      </div>
-    </div>
+      </div >
+    </div >
   );
 };
 export default Header;
