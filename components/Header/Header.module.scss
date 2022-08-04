@@ -3,7 +3,18 @@
   @media (min-width: 768px) {
     padding: 2.5rem 0 0 0;
   }
+  @media (max-width: 767px) {
+    padding-top: 15px;
+  }
 }
+
+.brandLogo {
+  width: 180px;
+  @media (min-width: 1200px) {
+    width: unset;
+  }
+}
+
 .topNavLink {
   color: var(--black);
   position: relative;
@@ -22,8 +33,26 @@
     transition: width 0.1s ease-in-out;
   }
 
+  @media (max-width: 991px) {
+    &:after {
+      background: var(--white);
+    }
+  }
+
   &:hover:after {
     width: calc(100% - 1rem);
+
+    @media (max-width: 991px) {
+      width: calc(100% - 2rem);
+    }
+  }
+}
+
+.topNavLinkBtn {
+  @media (min-width: 991px) {
+    &:hover:after {
+      width: 0;
+    }
   }
 }
 
@@ -33,6 +62,13 @@
 
 .navItem {
   position: relative;
+  font-size: 0.99rem;
+}
+
+@media (min-width: 1200px) {
+  .navItem {
+    font-size: 1.125rem;
+  }
 }
 
 .navbarSub {
@@ -44,4 +80,186 @@
 .navSubItem {
   display: block;
   white-space: nowrap;
+}
+
+.navigation {
+  position: relative;
+
+  &__checkbox {
+    display: none;
+  }
+
+  &__button {
+    @media (max-width: 991px) {
+      // margin-top: 0.75rem;
+      height: 2.5rem;
+      width: 2.5rem;
+      border-radius: 50%;
+      position: absolute;
+      top: 0;
+      right: 0;
+      background-color: var(--green);
+      z-index: 2000;
+      box-shadow: 0 1rem 3rem rgba(var(--black), .1);
+      text-align: center;
+      cursor: pointer;
+    }
+
+  }
+
+  &__background {
+    @media (max-width: 991px) {
+      height: 1rem;
+      width: 1rem;
+      border-radius: 50%;
+      position: absolute;
+      top: 0.5rem;
+      right: 0.5rem;
+      background-image: radial-gradient(var(--green), var(--green));
+      z-index: 1000;
+      transition: transform .3s;
+    }
+
+  }
+
+  &__nav {
+    @media (max-width: 991px) {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      position: fixed;
+      top: 0;
+      right: 0;
+      z-index: 1500;
+      opacity: 0;
+      width: 0;
+      transition: all .3s;
+    }
+  }
+
+  &__list {
+    @media (max-width: 991px) {
+      // none
+    }
+  }
+
+  &__subscribe {
+    @media (max-width: 991px) {
+    //  none
+    }
+  }
+
+  &__item {
+    @media (max-width: 991px) {
+      margin: 0.5rem 0;
+    }
+
+  }
+
+  &__link {
+    @media (max-width: 991px) {
+      &:link,
+      &:visited {
+      font-size: 1rem !important;
+      font-weight: normal !important;
+      display: inline-block;
+      padding: 1rem;
+      color: var(--white);
+      text-decoration: none;
+      transition: all .3s;
+
+        span {
+          display: inline-block;
+          margin-right: 1.5rem;
+        }
+      }
+
+      &:hover,
+      &:active {
+        background-color: none !important;
+        background: none !important;
+        background-position: 100%;
+        color: var(--white) !important;
+      }
+    }
+
+  }
+
+  // FUNCTIONALITY
+  &__checkbox:checked ~ &__background {
+    transform: scale(200);
+  }
+
+  &__checkbox:checked ~ &__nav {
+    opacity: 1;
+    width: 100%;
+  }
+
+  // ICON
+  &__icon {
+    position: relative;
+    margin-top: 1.2rem;
+    &,
+    &::before,
+    &::after {
+      width: 1rem;
+      height: 2px;
+      background-color: var(--white);
+      display: inline-block;
+    }
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      transition: all .5s;
+    }
+    &::before {
+      top: -0.3rem;
+    }
+    &::after {
+      top: 0.3rem;
+    }
+
+  }
+
+  &__button:hover &__icon::before {
+    top: -0.35rem;
+  }
+  &__button:hover &__icon::after {
+    top: 0.35rem;
+  }
+
+  // hide the line of the middle
+  &__checkbox:checked + &__button &__icon {
+    top: 1rem;
+    right: 1.5rem;
+    position: fixed;
+    background-color: transparent;
+  }
+
+  &__checkbox:checked + &__button &__icon::before {
+    top: 0;
+    transform: rotate(225deg);
+  }
+
+  &__checkbox:checked + &__button &__icon::after {
+    top: 0;
+    transform: rotate(-225deg);
+  }
+}
+
+.listsWrap {
+  display: flex;
+  align-items: center;
+  @media (max-width: 991px) {
+    flex-direction: column;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    list-style: none;
+    text-align: center;
+  }
 }
