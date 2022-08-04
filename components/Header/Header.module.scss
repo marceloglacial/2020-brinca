@@ -91,9 +91,9 @@
 
   &__button {
     @media (max-width: 991px) {
-      margin-top: 0.75rem;
-      height: 3.5rem;
-      width: 3.5rem;
+      // margin-top: 0.75rem;
+      height: 2.5rem;
+      width: 2.5rem;
       border-radius: 50%;
       position: absolute;
       top: 0;
@@ -109,11 +109,11 @@
 
   &__background {
     @media (max-width: 991px) {
-      height: 2rem;
-      width: 2rem;
+      height: 1rem;
+      width: 1rem;
       border-radius: 50%;
       position: absolute;
-      top: 1rem;
+      top: 0.5rem;
       right: 0.5rem;
       background-image: radial-gradient(var(--green), var(--green));
       z-index: 1000;
@@ -198,11 +198,11 @@
   // ICON
   &__icon {
     position: relative;
-    margin-top: 1.75rem;
+    margin-top: 1.2rem;
     &,
     &::before,
     &::after {
-      width: 1.7rem;
+      width: 1rem;
       height: 2px;
       background-color: var(--white);
       display: inline-block;
@@ -216,23 +216,25 @@
       transition: all .5s;
     }
     &::before {
-      top: -0.6rem;
+      top: -0.3rem;
     }
     &::after {
-      top: 0.6rem;
+      top: 0.3rem;
     }
 
   }
 
   &__button:hover &__icon::before {
-    top: -0.7rem;
+    top: -0.35rem;
   }
   &__button:hover &__icon::after {
-    top: 0.7rem;
+    top: 0.35rem;
   }
 
   // hide the line of the middle
   &__checkbox:checked + &__button &__icon {
+    top: 1rem;
+    right: 1.5rem;
     position: fixed;
     background-color: transparent;
   }
