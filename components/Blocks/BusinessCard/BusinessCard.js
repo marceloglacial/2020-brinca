@@ -35,7 +35,7 @@ const BusinessCard = ({
     <div className='card card--business'>
       <div className='card-body'>
         <div className={`card-img-top ${!hasImage ? 'hidden' : ''}`}>
-          {hasImage && <Image src={image} width={130} height={100} />}
+          {hasImage && <Image src={image} layout='fill' />}
         </div>
         <div className='card-info'>
           <div className='card-title'>{title}</div>

@@ -76,50 +76,58 @@
   display: grid;
   gap: 1rem;
   padding: 1.5rem;
-  font-size: 0.9rem;
+  text-align: center;
+  font-size: 1rem;
 
   @media (min-width: 768px) {
-    font-size: 1rem;
+    text-align: unset;
   }
 
   .card-body {
     padding: 0;
-    display: flex;
     gap: 1rem;
+
+    @media (min-width: 768px) {
+      display: flex;
+    }
   }
 
   .card-title {
     margin: 0;
+    font-size: 1.2rem;
+    padding: 0;
   }
 
   .card-img-top {
-    border-radius: 0;
-    padding: 0;
-    width: fit-content;
     background-color: unset;
+    position: relative;
+    margin-bottom: 1rem;
+    min-width: 320px;
+    max-width: 320px;
+    height: 120px;
+    border-radius: unset;
 
-    div,
     img {
-      border-radius: 0;
-      background-color: white;
       object-fit: contain;
-      width: 80px;
-      height: 80px;
     }
 
     @media (min-width: 768px) {
-      div,
-      img {
-        width: unset;
-        height: unset;
-      }
+      min-width: 150px;
+      max-width: 150px;
+      height: unset;
+      margin-bottom: unset;
     }
   }
 
   .card-social {
     padding-top: 1rem;
     display: flex;
+    justify-content: center;
     gap: 0.5rem;
+
+    @media (min-width: 768px) {
+      justify-content: unset;
+    }
   }
 
   .card-icon {
