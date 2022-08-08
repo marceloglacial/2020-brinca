@@ -17,6 +17,11 @@ const Hero = (props) => {
   } = props;
   const { alt } = image || {};
 
+  const isRounded = imageStyle ? `rounded shadow-lg` : '';
+  const isReversed = imagePosition === 'left';
+  const heroContainerStyles = isReversed ? `flex-row-reverse` : '';
+  const heroContentStyles = isReversed ? `ps-4` : ``;
+
   if (!imageUrl)
     return (
       <div className='alert alert-danger' role='alert'>
@@ -26,9 +31,11 @@ const Hero = (props) => {
 
   return (
     <section className={`hero  ${styles.heroContainer}`}>
-      <div className={`row ${imagePosition === 'left' && `flex-row-reverse`}`}>
-        <div className={`col-12 col-lg-6 col-xl-5`}>
-          <div className={styles.contentContainer}>
+      <div className={`hero__container row ${heroContainerStyles}`}>
+        <div className={`hero__content col-12 col-lg-6 col-xl-6`}>
+          <div
+            className={`hero__content-container ${styles.contentContainer} ${heroContentStyles}`}
+          >
             <h2 className={styles.heroTitle}>{title}</h2>
             <div
               className={styles.heroDescription}
@@ -45,18 +52,15 @@ const Hero = (props) => {
             )}
           </div>
         </div>
-        <div className={`col-12 col-lg-6 col-xl-7`}>
-          <div
-            className={`${styles.imageContainer} ${
-              styles[`heroImage--${imageStyle}`]
-            }`}
-          >
+        <div className={`col-12 col-lg-6 col-xl-6`}>
+          <div className={`image__container ${isRounded}`}>
             <Image
               src={imageUrl}
               alt={alt ? alt : 'Hero Image'}
+              layout='responsive'
               width={615}
               height={465}
-              className={`${imageStyle} ${styles.heroImage}`}
+              className={imageStyle}
             />
           </div>
         </div>
