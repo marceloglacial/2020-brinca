@@ -96,15 +96,14 @@
       width: 2.5rem;
       border-radius: 50%;
       position: absolute;
-      top: 0;
-      right: 0;
+      top: 0.75rem;
+      right: 0.5rem;
       background-color: var(--green);
       z-index: 2000;
-      box-shadow: 0 1rem 3rem rgba(var(--black), .1);
+      box-shadow: 0 1rem 3rem rgba(var(--black), 0.1);
       text-align: center;
       cursor: pointer;
     }
-
   }
 
   &__background {
@@ -113,13 +112,12 @@
       width: 1rem;
       border-radius: 50%;
       position: absolute;
-      top: 0.5rem;
-      right: 0.5rem;
+      top: 1.5rem;
+      right: 1.5rem;
       background-image: radial-gradient(var(--green), var(--green));
       z-index: 1000;
-      transition: transform .3s;
+      transition: transform 0.3s;
     }
-
   }
 
   &__nav {
@@ -133,7 +131,7 @@
       z-index: 1500;
       opacity: 0;
       width: 0;
-      transition: all .3s;
+      transition: all 0.3s;
     }
   }
 
@@ -145,7 +143,7 @@
 
   &__subscribe {
     @media (max-width: 991px) {
-    //  none
+      //  none
     }
   }
 
@@ -153,20 +151,19 @@
     @media (max-width: 991px) {
       margin: 0.5rem 0;
     }
-
   }
 
   &__link {
     @media (max-width: 991px) {
       &:link,
       &:visited {
-      font-size: 1rem !important;
-      font-weight: normal !important;
-      display: inline-block;
-      padding: 1rem;
-      color: var(--white);
-      text-decoration: none;
-      transition: all .3s;
+        font-size: 1rem !important;
+        font-weight: normal !important;
+        display: inline-block;
+        padding: 1rem;
+        color: var(--white);
+        text-decoration: none;
+        transition: all 0.3s;
 
         span {
           display: inline-block;
@@ -182,7 +179,6 @@
         color: var(--white) !important;
       }
     }
-
   }
 
   // FUNCTIONALITY
@@ -210,10 +206,10 @@
 
     &::before,
     &::after {
-      content: "";
+      content: '';
       position: absolute;
       left: 0;
-      transition: all .5s;
+      transition: all 0.5s;
     }
     &::before {
       top: -0.3rem;
@@ -221,7 +217,6 @@
     &::after {
       top: 0.3rem;
     }
-
   }
 
   &__button:hover &__icon::before {
