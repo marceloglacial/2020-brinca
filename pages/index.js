@@ -1,47 +1,31 @@
 import Layout from 'components/Layout/Layout';
 import Blocks from 'components/Blocks/Blocks';
-import { getData } from 'functions/getData';
+import { getContentful } from 'functions/getContentful';
 
-const Blog = (props) => {
-  const { posts, frontPage } = props;
-  const blocks = frontPage[0].blockData.map((block, index) => {
-    const blockProps = {
-      ...block,
-      posts,
-    };
-    return <Blocks {...blockProps} key={index} />;
-  });
-
+const Home = ({ navigation, blocks, events }) => {
+  console.log(events);
   return (
     <Layout
       pageTitle={`Sua comunidade Brasileira em Ottawa-Gatineau!`}
-      {...props}
+      navigation={navigation}
     >
-      {blocks}
+      {blocks?.map((block) => (
+        <Blocks {...block} key={block.id} />
+      ))}
     </Layout>
   );
 };
 
 export async function getStaticProps() {
-  const allData = (await getData()) || {};
-  const {
-    frontPage = [],
-    headerMenu = [],
-    footerMenu = [],
-    subscribeMenu = [],
-    socialMenu = [],
-  } = allData;
+  const events = await getContentful('eventos');
   return {
     props: {
-      frontPage,
-      headerMenu,
-      footerMenu,
-      subscribeMenu,
-      socialMenu,
+      blocks: [],
+      navigation: [],
+      events,
     },
-
     revalidate: 30,
   };
 }
 
-export default Blog;
+export default Home;
