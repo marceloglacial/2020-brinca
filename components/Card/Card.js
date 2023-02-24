@@ -1,4 +1,3 @@
-import getSlug from 'functions/getSlug';
 import Link from 'next/link';
 import CardImage from './CardImage';
 
@@ -7,7 +6,7 @@ const Card = (props) => {
     id,
     title,
     excerpt,
-    link,
+    link = '',
     image,
     date,
     showImage = 'yes',
@@ -19,8 +18,8 @@ const Card = (props) => {
   return (
     <div data-aos='fade-up'>
       <div className={`card`} key={id}>
-        <Link href={type + '/' + getSlug(link)}>
-          <a className={'card-link'} href={type + '/' + getSlug(link)}>
+        <Link href={link}>
+          <a className={'card-link'} href={link}>
             {showImage === 'yes' && (
               <div
                 className={`card-img-top ${!image && `card-img-top--empty`}`}

@@ -1,28 +1,27 @@
 import Layout from 'components/Layout/Layout';
 import Blocks from 'components/Blocks/Blocks';
-import { getContentful } from 'functions/getContentful';
+import { getHomePageData } from 'functions/getHomepageData';
+import useApi from 'hooks/useApi';
 
-const Home = ({ navigation, blocks, events }) => {
-  console.log(events);
+const Home = ({ navigation, blocks }) => {
   return (
     <Layout
       pageTitle={`Sua comunidade Brasileira em Ottawa-Gatineau!`}
       navigation={navigation}
     >
-      {blocks?.map((block) => (
-        <Blocks {...block} key={block.id} />
+      {blocks?.map((block, index) => (
+        <Blocks {...block} id={index} key={index} />
       ))}
     </Layout>
   );
 };
 
 export async function getStaticProps() {
-  const events = await getContentful('eventos');
+  const blocks = await getHomePageData();
   return {
     props: {
-      blocks: [],
+      blocks,
       navigation: [],
-      events,
     },
     revalidate: 30,
   };

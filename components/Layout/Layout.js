@@ -8,7 +8,7 @@ const Layout = (props) => {
   return (
     <>
       <Head>
-        {pageTitle && <title>Brinca - {pageTitle}</title>}
+        <title>Brinca {pageTitle && `- ${pageTitle}`}</title>
         <meta
           name='description'
           content='Sua comunidade Brasileira em Ottawa-Gatineau!'

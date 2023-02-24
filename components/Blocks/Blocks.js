@@ -8,7 +8,6 @@ import InstaFeed from './InstaFeed/InstaFeed';
 import HubSpotForms from './Hubspot/Forms';
 
 const Blocks = (props) => {
-  console.log(props);
   const blockType = {
     hero: <Hero {...props} />,
     postslist: <PostList {...props} />,
@@ -20,6 +19,6 @@ const Blocks = (props) => {
     gallery: <Gallery {...props} />,
     embed: <Embed {...props} />,
   };
-  return <div data-aos='fade-up'>{blockType.type}</div>;
+  return <div data-aos='fade-up'>{blockType[props.type]}</div>;
 };
 export default Blocks;
