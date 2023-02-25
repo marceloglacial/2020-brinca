@@ -1,18 +1,26 @@
 export const getHomePageData = async () => {
   const results = await fetch(
-    'http://localhost:1337/api/homepage?populate=frontpage.image,frontpage.button'
+    `${process.env.NEXT_PUBLIC_API_URL}/homepage?populate=frontpage.image,frontpage.button`
   );
   const blocks = await results.json();
 
   const allBlocks = blocks.data.attributes.frontpage.map((block) => {
     const blockName = getComponentType(block);
     const componentType = {
+      'content-list': getContentList(block),
       hero: getHero(block),
-      'content-list': getHero(block),
     };
     return componentType[blockName];
   });
   return allBlocks;
+};
+
+const getContentList = (props) => {
+  return {
+    ...props,
+    contentType: props.type,
+    type: getComponentType(props),
+  };
 };
 
 const getHero = (props) => {
@@ -22,11 +30,11 @@ const getHero = (props) => {
     type: getComponentType(props),
     title,
     description,
-    imageUrl: image.data.attributes.url,
-    image: image.data.attributes,
+    imageUrl: image?.data.attributes.url,
+    image: image?.data.attributes,
     hasButton: button,
-    buttonText: button.text,
-    buttonLink: button.href,
+    buttonText: button?.text,
+    buttonLink: button?.href,
     imagePosition: id % 2 ? 'right' : 'left',
     isRounded,
   };

@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import CardImage from './CardImage';
 
@@ -12,7 +13,6 @@ const Card = (props) => {
     showImage = 'yes',
     showDate = 'yes',
     showText = 'yes',
-    type = '',
   } = props;
 
   return (
@@ -20,11 +20,17 @@ const Card = (props) => {
       <div className={`card`} key={id}>
         <Link href={link}>
           <a className={'card-link'} href={link}>
-            {showImage === 'yes' && (
+            {showImage === 'yes' && image && (
               <div
                 className={`card-img-top ${!image && `card-img-top--empty`}`}
               >
-                <CardImage {...image} />
+                <Image
+                  src={image.url}
+                  alt={image.alt}
+                  height={200}
+                  width={300}
+                  layout='responsive'
+                />
               </div>
             )}
             <div className='card-body'>

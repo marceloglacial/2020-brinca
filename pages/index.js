@@ -1,7 +1,6 @@
 import Layout from 'components/Layout/Layout';
 import Blocks from 'components/Blocks/Blocks';
 import { getHomePageData } from 'functions/getHomepageData';
-import useApi from 'hooks/useApi';
 
 const Home = ({ navigation, blocks }) => {
   return (
