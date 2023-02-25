@@ -1,5 +1,5 @@
 export const getPages = (data, contentType) =>
-  data?.data.map((page) => {
+  data?.data?.map((page) => {
     const { title, slug, thumbnail, date } = page.attributes;
     return {
       id: page.id,

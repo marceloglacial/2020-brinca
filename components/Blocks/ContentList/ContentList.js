@@ -1,13 +1,14 @@
 import Alert from 'components/Alert/Alert';
 import Card from 'components/Card/Card';
-import useContentList from 'hooks/useContentList';
+import useContent from 'hooks/useContent';
 
 const ContentList = (props) => {
   const { title, contentType } = props;
-  const { data: cards, isLoading, isError } = useContentList(contentType);
+  const { data: cards, isLoading, isError } = useContent(contentType);
 
   if (isLoading) return <p>...</p>;
-  if (isError) return <Alert title='Error loading data' />;
+  if (isError)
+    return <Alert title='Error loading Content' error={isError.message} />;
 
   return (
     <div className='content-list'>
