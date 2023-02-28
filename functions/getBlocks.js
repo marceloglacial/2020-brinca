@@ -6,11 +6,26 @@ export const getBlocks = (data) => {
       'text-editor': getTextEditor(block),
       hero: getHero(block),
       hubspot: getHubspot(block),
+      gallery: getGallery(block),
     };
     return componentType[blockName] || null;
   });
 
   return allBlocks;
+};
+
+const getGallery = (props) => {
+  return {
+    id: props.id,
+    title: props.title,
+    images: props.photos?.data.map((photo) => {
+      return {
+        id: photo.id,
+        ...photo.attributes,
+      };
+    }),
+    type: getComponentType(props),
+  };
 };
 
 const getHubspot = (props) => {
