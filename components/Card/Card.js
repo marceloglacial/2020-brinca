@@ -38,7 +38,7 @@ const Card = (props) => {
                 className='card-title'
                 dangerouslySetInnerHTML={{ __html: title }}
               />
-              {showText === 'yes' && (
+              {showText === 'yes' && excerpt && (
                 <div
                   className='card-text'
                   dangerouslySetInnerHTML={{ __html: excerpt }}

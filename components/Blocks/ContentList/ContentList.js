@@ -1,10 +1,10 @@
 import Alert from 'components/Alert/Alert';
 import Card from 'components/Card/Card';
-import useContent from 'hooks/useContent';
+import useContentList from 'hooks/useContentList';
 
 const ContentList = (props) => {
   const { title, contentType } = props;
-  const { data: cards, isLoading, isError } = useContent(contentType);
+  const { data: cards, isLoading, isError } = useContentList(contentType);
 
   if (isLoading) return <p>...</p>;
   if (isError)
@@ -14,9 +14,12 @@ const ContentList = (props) => {
     <div className='content-list'>
       {title && <h2 className='pb-4'>{title}</h2>}
       <div className={`card-grid`}>
-        {cards.map((card, index) => (
-          <Card {...card} key={index} />
-        ))}
+        {cards.map((card, index) => {
+          const link = `${contentType === 'pages' ? '' : `/${contentType}`}/${
+            card.link
+          }`;
+          return <Card {...card} link={link} key={index} />;
+        })}
       </div>
     </div>
   );

@@ -1,11 +1,22 @@
-export const getPages = (data, contentType) =>
-  data?.data?.map((page) => {
-    const { title, slug, thumbnail, date } = page.attributes;
-    return {
-      id: page.id,
-      title: title,
-      link: `/${contentType}/${slug}`,
-      image: thumbnail?.data?.attributes,
-      date,
-    };
-  });
+import { getBlocks } from './getBlocks';
+
+export const getPages = async () => {
+  const results = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/pages?populate=content,thumbnail`
+  );
+  const pages = await results.json();
+  return pages?.data;
+};
+
+export const getSinglePage = async (pageId) => {
+  const results = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/pages/${pageId}?populate=content.photos,content.buttons,content.image,thumbnail`
+  );
+  const page = await results.json();
+  const pageAttributes = page.data.attributes;
+  return {
+    id: page.data.id,
+    title: pageAttributes.title,
+    blocks: getBlocks(pageAttributes.content),
+  };
+};

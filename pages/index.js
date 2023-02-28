@@ -1,13 +1,11 @@
 import Layout from 'components/Layout/Layout';
 import Blocks from 'components/Blocks/Blocks';
-import { getHomePageData } from 'functions/getHomepageData';
+import { getHomePage } from 'functions/getHomepage';
 
-const Home = ({ navigation, blocks }) => {
+const Home = ({ navigation, pageData }) => {
+  const { blocks } = pageData;
   return (
-    <Layout
-      pageTitle={`Sua comunidade Brasileira em Ottawa-Gatineau!`}
-      navigation={navigation}
-    >
+    <Layout navigation={navigation}>
       {blocks?.map((block, index) => (
         <Blocks {...block} id={index} key={index} />
       ))}
@@ -16,10 +14,10 @@ const Home = ({ navigation, blocks }) => {
 };
 
 export async function getStaticProps() {
-  const blocks = await getHomePageData();
+  const pageData = await getHomePage();
   return {
     props: {
-      blocks,
+      pageData: pageData,
       navigation: [],
     },
     revalidate: 30,

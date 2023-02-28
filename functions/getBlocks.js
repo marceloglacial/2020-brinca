@@ -1,18 +1,21 @@
-export const getHomePageData = async () => {
-  const results = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/homepage?populate=frontpage.image,frontpage.button`
-  );
-  const blocks = await results.json();
-
-  const allBlocks = blocks.data.attributes.frontpage.map((block) => {
+export const getBlocks = (data) => {
+  const allBlocks = data?.map((block) => {
     const blockName = getComponentType(block);
     const componentType = {
       'content-list': getContentList(block),
+      'text-editor': getTextEditor(block),
       hero: getHero(block),
     };
     return componentType[blockName];
   });
   return allBlocks;
+};
+
+const getTextEditor = (props) => {
+  return {
+    ...props,
+    type: getComponentType(props),
+  };
 };
 
 const getContentList = (props) => {

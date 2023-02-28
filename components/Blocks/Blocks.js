@@ -7,11 +7,14 @@ import Embed from './Embed/Embed';
 import InstaFeed from './InstaFeed/InstaFeed';
 import HubSpotForms from './Hubspot/Forms';
 import ContentList from './ContentList/ContentList';
+import DOMPurify from 'isomorphic-dompurify';
+import TextEditor from './TextEditor/TextEditor';
 
 const Blocks = (props) => {
   const blockType = {
     hero: <Hero {...props} />,
     'content-list': <ContentList {...props} />,
+    'text-editor': <TextEditor {...props} />,
     postslist: <PostList {...props} />,
     image: <ImageCore {...props} />,
     'instagram-feed': <InstaFeed {...props} />,

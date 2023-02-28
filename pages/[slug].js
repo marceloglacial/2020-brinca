@@ -1,71 +1,31 @@
 import Layout from 'components/Layout/Layout';
 import Blocks from 'components/Blocks/Blocks';
-import { useRouter } from 'next/router';
-import { getData } from 'functions/getData';
+import { getPages, getSinglePage } from 'functions/getPages';
 
-const Page = (props) => {
-  const { page } = props;
-  const { isFallback } = useRouter();
-
-  if (isFallback) {
-    return <div>Loading...</div>;
-  }
-  const title = page[0]?.title?.rendered;
-
-  const blocks = page[0].blockData.map((block, index) => {
-    return <Blocks {...block} key={index} />;
-  });
-
+const Page = ({ navigation, pageData }) => {
+  const { title, blocks } = pageData;
   return (
-    <Layout pageTitle={title} {...props}>
-      <header data-aos='fade-in'>
-        <h1
-          className='content-title'
-          dangerouslySetInnerHTML={{ __html: title }}
-        />
-      </header>
-      {blocks}
+    <Layout pageTitle={title} navigation={navigation}>
+      {blocks?.map((block, index) => (
+        <Blocks {...block} id={index} key={index} />
+      ))}
     </Layout>
   );
 };
 
-//
-// Getting Data
-// @see https://nextjs.org/docs/basic-features/data-fetching#incremental-static-regeneration
-//
-
-const wordpressApiUrl = `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/wp-json/wp/v2`;
-
 export async function getStaticPaths() {
-  const res = await fetch(`${wordpressApiUrl}/pages`);
-  const pages = await res.json();
-  const paths = pages.map((page) => ({
-    params: { slug: page.slug },
+  const allPages = await getPages();
+  const paths = allPages.map((page) => ({
+    params: { slug: page.attributes.slug },
   }));
   return { paths, fallback: 'blocking' };
 }
-
 export async function getStaticProps({ params }) {
-  const pageRes = await fetch(`${wordpressApiUrl}/pages?slug=${params.slug}`);
-  const page = await pageRes.json();
-  const allData = (await getData()) || {};
-  const {
-    pages = [],
-    headerMenu = [],
-    footerMenu = [],
-    subscribeMenu = [],
-    socialMenu = [],
-  } = allData;
-
+  const pageData = await getSinglePage(params.slug);
   return {
     props: {
-      page,
-      pages,
-      params,
-      headerMenu,
-      footerMenu,
-      subscribeMenu,
-      socialMenu,
+      pageData: pageData,
+      navigation: [],
     },
     revalidate: 30,
   };

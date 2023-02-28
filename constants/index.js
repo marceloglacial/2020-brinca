@@ -1,2 +1,2 @@
-export const API_URL_PAGES = `${process.env.NEXT_PUBLIC_API_URL}/pages?populate=content,thumbnail`;
-export const API_URL_EVENTS = `${process.env.NEXT_PUBLIC_API_URL}/events?populate=content,thumbnail`;
+export const API_PAGES_PARAMS = `pages?populate=content,thumbnail`;
+export const API_EVENTS_PARAMS = `events?populate=content,thumbnail`;
