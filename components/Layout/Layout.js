@@ -34,7 +34,7 @@ const Layout = (props) => {
         Skip to main
       </a>
       <Main>{props.children}</Main>
-      <Footer {...props} />
+      {/* <Footer {...props} /> */}
     </>
   );
 };
