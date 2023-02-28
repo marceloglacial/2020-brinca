@@ -9,7 +9,7 @@ const handler = nc()
       `https://api.hubapi.com/marketing/v3/forms/${slug}?limit=100`,
       {
         headers: {
-          Authorization: `Bearer ${process.env.NEXT_PUBLIC_HUBSPOT}`,
+          Authorization: `Bearer ${process.env.NEXT_PUBLIC_HUBSPOT_APP}`,
           'Content-Type': 'application/json',
         },
       }
