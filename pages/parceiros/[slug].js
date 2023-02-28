@@ -7,6 +7,7 @@ import PartnersContent from 'components/Blocks/Partners/PartnersContent';
 import PartnersTags from 'components/Blocks/Partners/PartnersTags';
 import { getGold, getSilver } from 'functions/getPartners';
 import filterData from 'functions/filterData';
+import { getNavigation } from 'functions/getNavigation';
 
 const ParceirosTag = (props) => {
   const { partners, categories, params } = props;
@@ -21,7 +22,7 @@ const ParceirosTag = (props) => {
   const subTitle = filterData(data, params.slug)[0]?.category;
 
   return (
-    <Layout pageTitle={`Parceiros`} {...props}>
+    <Layout pageTitle={`Parceiros`} navigation={props.navigation}>
       <header data-aos='fade-in'>
         <h1 className='content-title'>Parceiros - {subTitle}</h1>
       </header>
@@ -57,19 +58,10 @@ export async function getStaticProps({ params }) {
       spreadsheetId: '19RbFQdJZWygp-feLAmtWNK4KagWK6cHpNG_1ya2winM',
       range: 'Categories',
     })) || [];
-  const allData = (await getData()) || {};
-  const {
-    headerMenu = [],
-    footerMenu = [],
-    subscribeMenu = [],
-    socialMenu = [],
-  } = allData;
+  const navigation = await getNavigation();
   return {
     props: {
-      headerMenu,
-      footerMenu,
-      subscribeMenu,
-      socialMenu,
+      navigation,
       partners,
       categories,
       params,
