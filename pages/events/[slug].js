@@ -17,8 +17,8 @@ const Event = ({ navigation, pageData }) => {
 
 export async function getStaticPaths() {
   const allEvents = await getEvents();
-  const paths = allEvents.map((event) => ({
-    params: { slug: event.attributes.slug },
+  const paths = allEvents?.map((event) => ({
+    params: { slug: event?.attributes?.slug },
   }));
   return { paths, fallback: 'blocking' };
 }

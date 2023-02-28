@@ -5,8 +5,8 @@ export const getHomePage = async () => {
     `${process.env.NEXT_PUBLIC_API_URL}/homepage?populate=frontpage.image,frontpage.button`
   );
   const page = await results.json();
-  const pageAttributes = page.data.attributes;
+  const pageAttributes = page?.data?.attributes;
   return {
-    blocks: getBlocks(pageAttributes.frontpage),
+    blocks: getBlocks(pageAttributes?.frontpage) || [],
   };
 };

@@ -14,10 +14,11 @@ export const getSingleEvent = async (eventId) => {
     `${process.env.NEXT_PUBLIC_API_URL}/events/${eventId}?${API_BLOCKS}`
   );
   const event = await results.json();
-  const eventAttributes = event.data.attributes;
+  if (!event.data) return {};
+  const eventAttributes = event?.data?.attributes;
   return {
-    id: event.data.id,
-    title: eventAttributes.title,
-    blocks: getBlocks(eventAttributes.content),
+    id: event?.data?.id,
+    title: eventAttributes?.title,
+    blocks: getBlocks(eventAttributes?.content) || [],
   };
 };

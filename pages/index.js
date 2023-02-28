@@ -5,6 +5,7 @@ import { getNavigation } from 'functions/getNavigation';
 
 const Home = ({ navigation, pageData }) => {
   const { blocks } = pageData;
+
   return (
     <Layout navigation={navigation}>
       {blocks?.map((block, index) => (
@@ -19,7 +20,7 @@ export async function getStaticProps() {
   const navigation = await getNavigation();
   return {
     props: {
-      pageData: pageData,
+      pageData,
       navigation,
     },
     revalidate: 30,

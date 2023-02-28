@@ -14,10 +14,11 @@ export const getSinglePage = async (pageId) => {
     `${process.env.NEXT_PUBLIC_API_URL}/pages/${pageId}?${API_BLOCKS}`
   );
   const page = await results.json();
-  const pageAttributes = page.data.attributes;
+  if (!page.data) return {};
+  const pageAttributes = page?.data?.attributes;
   return {
-    id: page.data.id,
-    title: pageAttributes.title,
-    blocks: getBlocks(pageAttributes.content),
+    id: page?.data.id,
+    title: pageAttributes?.title,
+    blocks: getBlocks(pageAttributes?.content),
   };
 };
