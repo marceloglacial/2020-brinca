@@ -5,11 +5,22 @@ export const getBlocks = (data) => {
       'content-list': getContentList(block),
       'text-editor': getTextEditor(block),
       hero: getHero(block),
+      hubspot: getHubspot(block),
     };
     return componentType[blockName] || null;
   });
 
   return allBlocks;
+};
+
+const getHubspot = (props) => {
+  return {
+    ...props,
+    attrs: {
+      formID: props.formId,
+    },
+    type: getComponentType(props),
+  };
 };
 
 const getTextEditor = (props) => {

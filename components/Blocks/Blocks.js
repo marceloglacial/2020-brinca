@@ -7,7 +7,6 @@ import Embed from './Embed/Embed';
 import InstaFeed from './InstaFeed/InstaFeed';
 import HubSpotForms from './Hubspot/Forms';
 import ContentList from './ContentList/ContentList';
-import DOMPurify from 'isomorphic-dompurify';
 import TextEditor from './TextEditor/TextEditor';
 
 const Blocks = (props) => {
@@ -19,7 +18,7 @@ const Blocks = (props) => {
     image: <ImageCore {...props} />,
     'instagram-feed': <InstaFeed {...props} />,
     forms: <Form {...props} />,
-    'hubspot-forms': <HubSpotForms {...props} />,
+    hubspot: <HubSpotForms {...props} />,
     image: <ImageCore {...props} />,
     gallery: <Gallery {...props} />,
     embed: <Embed {...props} />,

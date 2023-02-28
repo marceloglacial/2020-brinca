@@ -1,3 +1,4 @@
+import Alert from 'components/Alert/Alert';
 import useApi from 'hooks/useApi';
 import { useState } from 'react';
 import FormsField from './FormsField';
@@ -15,6 +16,8 @@ const HubSpotForms = (props) => {
 
   if (!formID) return null;
   if (isLoading) return 'loading ...';
+  if (data.status === 'error')
+    return <Alert title='Error' error={data.message} />;
 
   const { name, fieldGroups, legalConsentOptions, displayOptions } = data;
   const { communicationConsentText, communicationsCheckboxes = false } =
