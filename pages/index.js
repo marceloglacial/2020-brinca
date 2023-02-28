@@ -1,6 +1,7 @@
 import Layout from 'components/Layout/Layout';
 import Blocks from 'components/Blocks/Blocks';
 import { getHomePage } from 'functions/getHomepage';
+import { getNavigation } from 'functions/getNavigation';
 
 const Home = ({ navigation, pageData }) => {
   const { blocks } = pageData;
@@ -15,10 +16,11 @@ const Home = ({ navigation, pageData }) => {
 
 export async function getStaticProps() {
   const pageData = await getHomePage();
+  const navigation = await getNavigation();
   return {
     props: {
       pageData: pageData,
-      navigation: [],
+      navigation,
     },
     revalidate: 30,
   };

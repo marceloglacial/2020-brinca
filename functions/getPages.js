@@ -1,8 +1,9 @@
+import { API_BLOCKS, API_PAGES_PARAMS } from '../constants';
 import { getBlocks } from './getBlocks';
 
 export const getPages = async () => {
   const results = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/pages?populate=content,thumbnail`
+    `${process.env.NEXT_PUBLIC_API_URL}/${API_PAGES_PARAMS}`
   );
   const pages = await results.json();
   return pages?.data;
@@ -10,7 +11,7 @@ export const getPages = async () => {
 
 export const getSinglePage = async (pageId) => {
   const results = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/pages/${pageId}?populate=content.photos,content.buttons,content.image,thumbnail`
+    `${process.env.NEXT_PUBLIC_API_URL}/pages/${pageId}?${API_BLOCKS}`
   );
   const page = await results.json();
   const pageAttributes = page.data.attributes;

@@ -1,6 +1,7 @@
 import Layout from 'components/Layout/Layout';
 import Blocks from 'components/Blocks/Blocks';
 import { getPages, getSinglePage } from 'functions/getPages';
+import { getNavigation } from 'functions/getNavigation';
 
 const Page = ({ navigation, pageData }) => {
   const { title, blocks } = pageData;
@@ -23,10 +24,12 @@ export async function getStaticPaths() {
 }
 export async function getStaticProps({ params }) {
   const pageData = await getSinglePage(params.slug);
+  const navigation = await getNavigation();
+
   return {
     props: {
       pageData: pageData,
-      navigation: [],
+      navigation,
     },
     revalidate: 30,
   };
