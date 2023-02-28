@@ -1,8 +1,8 @@
 import Layout from 'components/Layout/Layout';
 import Blocks from 'components/Blocks/Blocks';
-import { getPages, getSinglePage } from 'functions/getPages';
+import { getEvents, getSingleEvent } from 'functions/getEvents';
 
-const Page = ({ navigation, pageData }) => {
+const Event = ({ navigation, pageData }) => {
   const { title, blocks } = pageData;
   return (
     <Layout pageTitle={title} navigation={navigation}>
@@ -15,14 +15,14 @@ const Page = ({ navigation, pageData }) => {
 };
 
 export async function getStaticPaths() {
-  const allPages = await getPages();
-  const paths = allPages.map((page) => ({
-    params: { slug: page.attributes.slug },
+  const allEvents = await getEvents();
+  const paths = allEvents.map((event) => ({
+    params: { slug: event.attributes.slug },
   }));
   return { paths, fallback: 'blocking' };
 }
 export async function getStaticProps({ params }) {
-  const pageData = await getSinglePage(params.slug);
+  const pageData = await getSingleEvent(params.slug);
   return {
     props: {
       pageData: pageData,
@@ -32,4 +32,4 @@ export async function getStaticProps({ params }) {
   };
 }
 
-export default Page;
+export default Event;

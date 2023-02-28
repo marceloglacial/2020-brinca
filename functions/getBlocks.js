@@ -6,8 +6,9 @@ export const getBlocks = (data) => {
       'text-editor': getTextEditor(block),
       hero: getHero(block),
     };
-    return componentType[blockName];
+    return componentType[blockName] || null;
   });
+
   return allBlocks;
 };
 
