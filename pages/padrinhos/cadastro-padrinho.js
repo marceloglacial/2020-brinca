@@ -3,6 +3,7 @@ import Layout from 'components/Layout/Layout';
 import { getData } from 'functions/getData';
 import FormField from 'components/Blocks/Form/components/FormField';
 import getRecords from 'functions/getRecords';
+import { getNavigation } from 'functions/getNavigation';
 
 // TODO: CLEAN CODE!!!
 
@@ -113,7 +114,8 @@ const Padrinhos = (props) => {
     },
     {
       id: 'personal_profile',
-      label: 'Descreva brevemente seu perfil profissional e porque gostaria de ser padrinho/madrinha de um recém chegado',
+      label:
+        'Descreva brevemente seu perfil profissional e porque gostaria de ser padrinho/madrinha de um recém chegado',
       type: 'textarea',
       validate: { required: true },
     },
@@ -124,21 +126,32 @@ const Padrinhos = (props) => {
   const content = status ? (
     <div className='text-center'>
       <p>Obrigado pelo seu cadastro.</p>
-      <p>
-        Entraremos em contato em breve.
-      </p>
+      <p>Entraremos em contato em breve.</p>
     </div>
   ) : (
     <>
       <h5>Quero apadrinhar:</h5>
       <p>
-        Para ser um padrinho ou madrinha, você precisa estar morando há pelo menos 3 anos no Canadá e ter disponibilidade e boa vontade para responder às mais diversas questões de famílias que estão chegando ou que chegaram recentemente em Ottawa e região.<br />
-        Você estará lidando com sonhos e ansiedades, então se você é do tipo que vê o WhatsApp a cada três dias, talvez essa não seja a melhor opção de voluntariado pra você.<br />
+        Para ser um padrinho ou madrinha, você precisa estar morando há pelo
+        menos 3 anos no Canadá e ter disponibilidade e boa vontade para
+        responder às mais diversas questões de famílias que estão chegando ou
+        que chegaram recentemente em Ottawa e região.
+        <br />
+        Você estará lidando com sonhos e ansiedades, então se você é do tipo que
+        vê o WhatsApp a cada três dias, talvez essa não seja a melhor opção de
+        voluntariado pra você.
+        <br />
         Preencha os dados abaixo e aguarde o nosso contato em breve!
       </p>
       <h6>
-        - A BRINCA não se responsabiliza por nenhuma informação trocada entre os participantes, cabendo a nós apenas a facilitação do encontro entre compatriotas com interesses em comum.<br />
-        - É terminantemente proibida a venda de produtos ou oferecimento de serviços de qualquer espécie, sendo o apadrinhamento um trabalho estritamente voluntário.<br />
+        - A BRINCA não se responsabiliza por nenhuma informação trocada entre os
+        participantes, cabendo a nós apenas a facilitação do encontro entre
+        compatriotas com interesses em comum.
+        <br />
+        - É terminantemente proibida a venda de produtos ou oferecimento de
+        serviços de qualquer espécie, sendo o apadrinhamento um trabalho
+        estritamente voluntário.
+        <br />
       </h6>
       <form className='form pt-4' onSubmit={(e) => handleSubmit(e, formData)}>
         {fields.map((item, index) => (
@@ -168,7 +181,7 @@ const Padrinhos = (props) => {
   // RETURN
   // ===================================
   return (
-    <Layout pageTitle={`Padrinhos`} {...props}>
+    <Layout pageTitle={`Padrinhos`} navigation={props.navigation}>
       <header data-aos='fade-in'>
         <h1 className='content-title'>Padrinhos - Cadastro</h1>
       </header>
@@ -180,25 +193,16 @@ const Padrinhos = (props) => {
 };
 
 export async function getStaticProps() {
-  const allData = (await getData()) || {};
+  const navigation = await getNavigation();
   const padrinhos =
     (await getRecords({
       spreadsheetId: process.env.GOOGLE_SHEET_PADRINHO_ID,
       range: 'Padrinhos',
     })) || [];
-  const {
-    headerMenu = [],
-    footerMenu = [],
-    subscribeMenu = [],
-    socialMenu = [],
-  } = allData;
   return {
     props: {
-      headerMenu,
-      footerMenu,
-      subscribeMenu,
-      socialMenu,
-      padrinhos
+      navigation,
+      padrinhos,
     },
 
     revalidate: 30,
