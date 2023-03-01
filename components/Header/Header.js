@@ -24,7 +24,7 @@ const Header = (props) => {
         <nav className={`navbar navbar-expand-lg ${styles.navigation__nav}`}>
           <div className={`${styles.listsWrap}`}>
             <HeaderNav {...props} />
-            <MenuSubscribe {...props} />
+            {/* <MenuSubscribe {...props} /> */}
           </div>
         </nav>
       </div>

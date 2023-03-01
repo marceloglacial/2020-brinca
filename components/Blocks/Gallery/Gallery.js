@@ -1,31 +1,17 @@
 // Gallery Block needs to fetch each image
 // @see https://github.com/WordPress/gutenberg/issues/10994
 
-import useApi from 'hooks/useApi';
 import Carousel, { Modal, ModalGateway } from 'react-images';
 import GalleryImage from './components/GalleryImage';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 const Gallery = (props) => {
-  const { innerBlocks, innerHTML } = props;
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(0);
-  const [galleryClassName, setGalleryClassName] = useState('');
-  const ids = innerBlocks?.map((item) => item.attrs.id);
-
-  const images = ids?.map((id) => {
-    const {
-      data: mediaContent,
-      isLoading,
-      isError,
-    } = useApi(`/api/media/${id}`);
-    if (isLoading) return null;
-    if (isError) return null;
-    return mediaContent;
-  });
+  const { images, title } = props;
 
   const modalImages = images?.map((item) => {
-    return { source: item ? item.source_url : '' };
+    return { source: item ? item.url : '' };
   });
 
   const toggleModal = (e, index) => {
@@ -34,16 +20,9 @@ const Gallery = (props) => {
     setSelectedIndex(index);
   };
 
-  useEffect(() => {
-    const gallery = document.createElement('div');
-    gallery.innerHTML = innerHTML;
-    document.querySelector('.gallery').appendChild(gallery);
-    setGalleryClassName(gallery.children[0].className);
-    document.querySelector('.gallery').removeChild(gallery);
-  }, []);
-
   return (
-    <>
+    <div className='wp-block-gallery columns-4'>
+      {title && <h3>{title}</h3>}
       <ModalGateway>
         {modalIsOpen ? (
           <Modal onClose={(e) => toggleModal(e, 0)}>
@@ -52,7 +31,7 @@ const Gallery = (props) => {
         ) : null}
       </ModalGateway>
 
-      <figure className={`gallery ${galleryClassName}`}>
+      <figure className={`gallery`}>
         <ul className='blocks-gallery-grid'>
           {images?.map((item, index) => {
             const imageProps = {
@@ -69,7 +48,7 @@ const Gallery = (props) => {
           })}
         </ul>
       </figure>
-    </>
+    </div>
   );
 };
 export default Gallery;

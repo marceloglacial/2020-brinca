@@ -1,43 +1,28 @@
-import Layout from 'components/Layout/Layout'
-import Padrinho from 'components/Padrinho/Padrinho'
-import { getData } from 'functions/getData';
+import Layout from 'components/Layout/Layout';
+import Padrinho from 'components/Padrinho/Padrinho';
+import { getHomePage } from 'functions/getHomepage';
+import { getNavigation } from 'functions/getNavigation';
 
 const Apadrinhamento = (props) => {
-  const { headerMenu } = props
-  const { title } = headerMenu?.items[2] || ''
-
+  const { navigation } = props;
   return (
-    <Layout pageTitle={title} {...props}>
+    <Layout navigation={navigation}>
       <header data-aos='fade-in'>
-        <h1
-          className='content-title'
-          dangerouslySetInnerHTML={{ __html: title }}
-        />
+        <h1 className='content-title'>Padrinhos</h1>
       </header>
       <Padrinho />
     </Layout>
-  )
-}
+  );
+};
 
 export async function getStaticProps() {
-  const allData = (await getData()) || {};
-  const {
-    frontPage = [],
-    headerMenu = [],
-    footerMenu = [],
-    subscribeMenu = [],
-    socialMenu = [],
-  } = allData;
+  const navigation = await getNavigation();
   return {
     props: {
-      frontPage,
-      headerMenu,
-      footerMenu,
-      subscribeMenu,
-      socialMenu,
+      navigation,
     },
     revalidate: 30,
   };
 }
 
-export default Apadrinhamento
+export default Apadrinhamento;

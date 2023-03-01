@@ -3,6 +3,7 @@ import Layout from 'components/Layout/Layout';
 import { getData } from 'functions/getData';
 import FormField from 'components/Blocks/Form/components/FormField';
 import getRecords from 'functions/getRecords';
+import { getNavigation } from 'functions/getNavigation';
 
 // TODO: CLEAN CODE!!!
 
@@ -113,7 +114,8 @@ const Apadrinhados = (props) => {
     },
     {
       id: 'personal_profile',
-      label: 'Descreva brevemente sua família, seu status imigratório (estudante, PR, etc) e o que você espera de um padrinho',
+      label:
+        'Descreva brevemente sua família, seu status imigratório (estudante, PR, etc) e o que você espera de um padrinho',
       type: 'textarea',
       validate: { required: true },
     },
@@ -124,17 +126,28 @@ const Apadrinhados = (props) => {
   const content = status ? (
     <div className='text-center'>
       <p>Obrigado pelo seu cadastro.</p>
-      <p>
-        Entraremos em contato em breve.
-      </p>
+      <p>Entraremos em contato em breve.</p>
     </div>
   ) : (
     <>
       <h5>Quero ser apadrinhado:</h5>
-      <p>Você está migrando para o Canada e está cheio de dúvidas e incertezas? Pois saiba que todos nós já passamos por isso. Para participar do nosso programa de apadrinhamento você precisa estar vindo para Ottawa nos próximos 6 meses, com intenção de permanecer por aqui por pelo menos 6 meses. Preencha o cadastro abaixo e faremos o máximo para encontrar alguém com seu perfil e disposto a te ajudar.</p>
+      <p>
+        Você está migrando para o Canada e está cheio de dúvidas e incertezas?
+        Pois saiba que todos nós já passamos por isso. Para participar do nosso
+        programa de apadrinhamento você precisa estar vindo para Ottawa nos
+        próximos 6 meses, com intenção de permanecer por aqui por pelo menos 6
+        meses. Preencha o cadastro abaixo e faremos o máximo para encontrar
+        alguém com seu perfil e disposto a te ajudar.
+      </p>
       <h6>
-        - A BRINCA não se responsabiliza por nenhuma informação trocada entre os participantes, cabendo a nós apenas a facilitação do encontro entre compatriotas com interesses em comum.<br />
-        - É terminantemente proibida a venda de produtos ou oferecimento de serviços de qualquer espécie, sendo o apadrinhamento um trabalho estritamente voluntário.<br />
+        - A BRINCA não se responsabiliza por nenhuma informação trocada entre os
+        participantes, cabendo a nós apenas a facilitação do encontro entre
+        compatriotas com interesses em comum.
+        <br />
+        - É terminantemente proibida a venda de produtos ou oferecimento de
+        serviços de qualquer espécie, sendo o apadrinhamento um trabalho
+        estritamente voluntário.
+        <br />
       </h6>
       <form className='form pt-4' onSubmit={(e) => handleSubmit(e, formData)}>
         {fields.map((item, index) => (
@@ -164,7 +177,7 @@ const Apadrinhados = (props) => {
   // RETURN
   // ===================================
   return (
-    <Layout pageTitle={`Apadrinhados`} {...props}>
+    <Layout pageTitle={`Apadrinhados`} navigation={props.navigation}>
       <header data-aos='fade-in'>
         <h1 className='content-title'>Apadrinhados - Cadastro</h1>
       </header>
@@ -176,25 +189,16 @@ const Apadrinhados = (props) => {
 };
 
 export async function getStaticProps() {
-  const allData = (await getData()) || {};
+  const navigation = await getNavigation();
   const apadrinhados =
     (await getRecords({
       spreadsheetId: process.env.GOOGLE_SHEET_PADRINHO_ID,
       range: 'Apadrinhados',
     })) || [];
-  const {
-    headerMenu = [],
-    footerMenu = [],
-    subscribeMenu = [],
-    socialMenu = [],
-  } = allData;
   return {
     props: {
-      headerMenu,
-      footerMenu,
-      subscribeMenu,
-      socialMenu,
-      apadrinhados
+      navigation,
+      apadrinhados,
     },
 
     revalidate: 30,

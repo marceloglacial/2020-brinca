@@ -6,30 +6,23 @@ import Form from './Form/Form';
 import Embed from './Embed/Embed';
 import InstaFeed from './InstaFeed/InstaFeed';
 import HubSpotForms from './Hubspot/Forms';
+import ContentList from './ContentList/ContentList';
+import TextEditor from './TextEditor/TextEditor';
 
-const BlocksView = (props) => {
-  const { attrs, innerHTML, blockName } = props;
-  if (blockName === null) return false;
-
+const Blocks = (props) => {
   const blockType = {
-    'snow-blocks/hero': <Hero {...attrs} />,
-    'snow-blocks/postslist': <PostList {...attrs} />,
-    'snow-blocks/image': <ImageCore {...props} />,
-    'snow-blocks/instagram-feed': <InstaFeed {...attrs} />,
-    'snow-blocks/forms': <Form {...props} />,
-    'snow-blocks/hubspot-forms': <HubSpotForms {...props} />,
-    'core/image': <ImageCore {...props} />,
-    'core/gallery': <Gallery {...props} />,
-    'core/embed': <Embed {...props} />,
+    hero: <Hero {...props} />,
+    'content-list': <ContentList {...props} />,
+    'text-editor': <TextEditor {...props} />,
+    postslist: <PostList {...props} />,
+    image: <ImageCore {...props} />,
+    'instagram-feed': <InstaFeed {...props} />,
+    forms: <Form {...props} />,
+    hubspot: <HubSpotForms {...props} />,
+    image: <ImageCore {...props} />,
+    gallery: <Gallery {...props} />,
+    embed: <Embed {...props} />,
   };
-
-  if (!blockType[blockName])
-    return (
-      <div data-aos='fade-in'>
-        <div dangerouslySetInnerHTML={{ __html: innerHTML }} />
-      </div>
-    );
-
-  return <div data-aos='fade-up'>{blockType[blockName]}</div>;
+  return <div data-aos='fade-up'>{blockType[props.type]}</div>;
 };
-export default BlocksView;
+export default Blocks;

@@ -1,6 +1,6 @@
 {
   "name": "brinca-2020",
-  "version": "2.12.0",
+  "version": "3.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -9,7 +9,9 @@
   },
   "dependencies": {
     "cloudinary": "^1.30.0",
+    "contentful": "^9.3.3",
     "googleapis": "^105.0.0",
+    "isomorphic-dompurify": "^1.0.0",
     "next": "^12.2.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"

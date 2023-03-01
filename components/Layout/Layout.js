@@ -4,11 +4,21 @@ import Footer from 'components/Footer/Footer';
 import Main from 'components/Main/Main';
 
 const Layout = (props) => {
-  const { pageTitle } = props;
+  const { pageTitle, navigation } = props;
+  const headerMenu = {
+    items: navigation.map((item) => {
+      return {
+        id: item.id,
+        title: item.text,
+        url: item.value,
+      };
+    }),
+  };
+
   return (
     <>
       <Head>
-        {pageTitle && <title>Brinca - {pageTitle}</title>}
+        <title>Brinca {pageTitle && `- ${pageTitle}`}</title>
         <meta
           name='description'
           content='Sua comunidade Brasileira em Ottawa-Gatineau!'
@@ -19,12 +29,12 @@ const Layout = (props) => {
         />
         <link rel='icon' href='/favicon.ico' />
       </Head>
-      <Header {...props} />
+      <Header headerMenu={headerMenu} />
       <a className='skip-link' href='#main'>
         Skip to main
       </a>
       <Main>{props.children}</Main>
-      <Footer {...props} />
+      {/* <Footer {...props} /> */}
     </>
   );
 };
