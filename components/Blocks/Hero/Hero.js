@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import styles from './Hero.module.scss';
-import getSlug from 'functions/getSlug';
 import Link from 'next/link';
 
 const Hero = (props) => {
@@ -13,11 +12,11 @@ const Hero = (props) => {
     buttonText,
     buttonLink,
     imagePosition,
-    imageStyle,
+    isRounded,
   } = props;
   const { alt } = image || {};
 
-  const isRounded = imageStyle ? `rounded shadow-lg` : '';
+  const roundedStyles = isRounded ? `rounded shadow-lg overflow-hidden` : '';
   const isReversed = imagePosition === 'left';
   const heroContainerStyles = isReversed ? `flex-row-reverse` : '';
   const heroContentStyles = isReversed ? `ps-4` : ``;
@@ -43,8 +42,8 @@ const Hero = (props) => {
             />
             {hasButton && (
               <div className={styles.heroButton}>
-                <Link href={getSlug(buttonLink)}>
-                  <a href={getSlug(buttonLink)} className={`btn btn-secondary`}>
+                <Link href={buttonLink}>
+                  <a href={buttonLink} className={`btn btn-secondary`}>
                     {buttonText}
                   </a>
                 </Link>
@@ -53,14 +52,13 @@ const Hero = (props) => {
           </div>
         </div>
         <div className={`col-12 col-lg-6 col-xl-6`}>
-          <div className={`image__container ${isRounded}`}>
+          <div className={`image__container ${roundedStyles}`}>
             <Image
               src={imageUrl}
               alt={alt ? alt : 'Hero Image'}
               layout='responsive'
               width={615}
               height={465}
-              className={imageStyle}
             />
           </div>
         </div>

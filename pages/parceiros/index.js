@@ -5,6 +5,7 @@ import getRecords from 'functions/getRecords';
 import Partners from 'components/Blocks/Partners/Partners';
 import PartnersContent from 'components/Blocks/Partners/PartnersContent';
 import PartnersTags from 'components/Blocks/Partners/PartnersTags';
+import { getNavigation } from 'functions/getNavigation';
 
 const Parceiros = (props) => {
   const { partners, categories } = props;
@@ -19,7 +20,7 @@ const Parceiros = (props) => {
   const tagsNames = categories.map((item) => item[1]);
 
   return (
-    <Layout pageTitle={`Parceiros`} {...props}>
+    <Layout pageTitle={`Parceiros`} navigation={props.navigation}>
       <h1 className='content-title'>Parceiros</h1>
       <PartnersContent />
       <PartnersTags tags={tagsNames} />
@@ -39,19 +40,10 @@ export async function getStaticProps() {
       spreadsheetId: '19RbFQdJZWygp-feLAmtWNK4KagWK6cHpNG_1ya2winM',
       range: 'Categories',
     })) || [];
-  const allData = (await getData()) || {};
-  const {
-    headerMenu = [],
-    footerMenu = [],
-    subscribeMenu = [],
-    socialMenu = [],
-  } = allData;
+  const navigation = await getNavigation();
   return {
     props: {
-      headerMenu,
-      footerMenu,
-      subscribeMenu,
-      socialMenu,
+      navigation,
       partners,
       categories,
     },

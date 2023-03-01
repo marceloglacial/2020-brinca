@@ -32,7 +32,10 @@ const HeaderNav = (props) => {
             onMouseLeave={() => child_items && setIsOpen(false)}
           >
             <Link href={link} key={ID}>
-              <a className={`nav-link ${styles.topNavLink} ${styles.navigation__link}`} href={link}>
+              <a
+                className={`nav-link ${styles.topNavLink} ${styles.navigation__link}`}
+                href={link}
+              >
                 {title}
               </a>
             </Link>

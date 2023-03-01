@@ -3,6 +3,7 @@ import Layout from 'components/Layout/Layout';
 import { getData } from 'functions/getData';
 import FormField from 'components/Blocks/Form/components/FormField';
 import getRecords from 'functions/getRecords';
+import { getNavigation } from 'functions/getNavigation';
 
 // TODO: CLEAN CODE!!!
 
@@ -232,7 +233,7 @@ const Parceiros = (props) => {
   // RETURN
   // ===================================
   return (
-    <Layout pageTitle={`Parceiros`} {...props}>
+    <Layout pageTitle={`Parceiros`} navigation={props.navigation}>
       <section className='parceiros__form'>
         <h1 className='content-title'>Parceiros - Cadastro</h1>
         <div className='parteners__body mb-4'>{content}</div>
@@ -242,25 +243,16 @@ const Parceiros = (props) => {
 };
 
 export async function getStaticProps() {
-  const allData = (await getData()) || {};
+  const navigation = await getNavigation();
   const categories =
     (await getRecords({
       spreadsheetId: '19RbFQdJZWygp-feLAmtWNK4KagWK6cHpNG_1ya2winM',
       range: 'Categories',
     })) || [];
 
-  const {
-    headerMenu = [],
-    footerMenu = [],
-    subscribeMenu = [],
-    socialMenu = [],
-  } = allData;
   return {
     props: {
-      headerMenu,
-      footerMenu,
-      subscribeMenu,
-      socialMenu,
+      navigation,
       categories,
     },
 
