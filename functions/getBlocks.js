@@ -7,11 +7,19 @@ export const getBlocks = (data) => {
       hero: getHero(block),
       hubspot: getHubspot(block),
       gallery: getGallery(block),
+      embed: getEmbed(block),
     };
     return componentType[blockName] || null;
   });
 
   return allBlocks;
+};
+
+const getEmbed = (props) => {
+  return {
+    ...props,
+    type: getComponentType(props),
+  };
 };
 
 const getGallery = (props) => {
