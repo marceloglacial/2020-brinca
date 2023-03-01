@@ -4,9 +4,8 @@ Brazil-Canada Community Association's website. A headless WordPress application 
 
 ## Live Demo
 
-- <a href='https://brinca-2021.herokuapp.com/'>Back-end (WordPress)</a>
+- <a href='https://brinca-cms-strapi.fly.dev/admin/'>Back-end (Strapi)</a>
 - <a href='https://brinca2020.vercel.app/'>Front-end (Next)</a>
-
 
 ## Stack
 
@@ -16,8 +15,7 @@ Brazil-Canada Community Association's website. A headless WordPress application 
   - <a href='https://swr.vercel.app/'>SWR data fetching</a>
   - <a href='https://github.com/css-modules/css-modules'>CSS Modules</a>
 - Back-end
-  - <a href='https://wordpress.org/'>WordPress</a>
-  - <a href='https://wordpress.org/gutenberg/'>Gutenberg Blocks</a>
+  - <a href='https://strapi.io'>Strapi</a>
 - CI/CD
   - <a href='https://vercel.com/'>Vercel</a>
 
@@ -25,44 +23,29 @@ Brazil-Canada Community Association's website. A headless WordPress application 
 
 ### 1. Install NPM packages:
 
-`yarn install` 
+```shell
+yarn install
+```
 
-
-### 2. Set local env file 
+### 2. Set local env file
 
 1. Rename `.env.example` to `.env.local`
-2. Change `NEXT_PUBLIC_WORDPRESS_URL` to your local WordPress address. E.G.: `http://localhost:8080`
-
+2. Update env values
 
 ### 3. Run development environment
 
-`yarn run dev`
-
-### 4. Setup WordPress
-
-#### 4.1. REST API
-
-Please be sure your permalink settings is set to `Post name`.
-
-#### 4.2. Front Page
-
-Please be sure your front page is set on `Settings > Reading > Your homepage displays`
-
-#### 4.3. Must-use plugins:
-
-- <a href='http://joebr.io/'>WP Headless</a>
-- <a href='https://www.yikesplugins.com/'>WP REST API Controller</a>
-- <a href='https://thebatclaud.io/'>WP-REST-API V2 Menus</a>
-- <a href='http://www.danielauener.com/wordpress-rest-api-extensions-for-going-headless-wp/'>WUXT Headless WordPress API Extensions</a>
-
-#### 4.4.Wordpress required Configuration
-
-Make sure <a href='https://thebatclaud.io/'>WP-REST-API V2 Menus</a> is installed.
-
-- Create a menu called: 'Header'
-- Create a menu called 'Footer'
-- Define a Front page
+```
+yarn dev
+```
 
 ## How to Build
 
-`yarn run build`
+```shell
+yarn build
+```
+
+and
+
+```shell
+yarn start
+```
