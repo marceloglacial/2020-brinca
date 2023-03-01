@@ -1,9 +1,11 @@
 import Logo from 'components/Logo/Logo';
-import MenuSubscribe from './MenuSusbcribe';
 import HeaderNav from './HeaderNav';
 import styles from './Header.module.scss';
+import { useState } from 'react';
+import HeaderNavButton from './HeaderNavButton';
 
 const Header = (props) => {
+  const [isOpen, setIsOpen] = useState(false);
   return (
     <div
       className={`container d-flex justify-content-between ${styles.navbarContainer}`}
@@ -12,20 +14,21 @@ const Header = (props) => {
         <Logo />
       </div>
       <div className={`d-flex ${styles.navigation}`}>
-        <input
-          type='checkbox'
-          className={`${styles.navigation__checkbox}`}
-          id='nav__toggle'
-        />
-        <label htmlFor='nav__toggle' className={`${styles.navigation__button}`}>
-          <span className={`${styles.navigation__icon}`}>&nbsp;</span>
-        </label>
-        <div className={`${styles.navigation__background}`}>&nbsp;</div>
-        <nav className={`navbar navbar-expand-lg ${styles.navigation__nav}`}>
-          <div className={`${styles.listsWrap}`}>
-            <HeaderNav {...props} />
-            {/* <MenuSubscribe {...props} /> */}
-          </div>
+        <div
+          className={`${styles.navigationButton} ${
+            isOpen && styles.navigationButtonIsOpen
+          }`}
+          onClick={() => setIsOpen(!isOpen)}
+        >
+          {isOpen ? `Close` : <HeaderNavButton />}
+        </div>
+        <nav
+          className={`navbar navbar-expand-lg ${styles.navigationNav} ${
+            isOpen && styles.navigationNavIsOpen
+          }`}
+          onClick={() => setIsOpen(false)}
+        >
+          <HeaderNav {...props} />
         </nav>
       </div>
     </div>
