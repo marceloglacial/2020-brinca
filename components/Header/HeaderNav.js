@@ -19,7 +19,7 @@ const HeaderNav = (props) => {
     return <Alert title={menuContent.message} />;
 
   return (
-    <ul className={`navbar-nav ml-auto ${styles.navigation__list}`}>
+    <ul className={`navbar-nav ml-auto ${styles.navigationList}`}>
       {menuContent.items.map((item) => {
         const { ID, title, slug, url, child_items } = item;
         const hasSubMenu = child_items && isOpen;
