@@ -1,5 +1,7 @@
 .footer {
+  padding-top: 1rem;
   @media (min-width: 1023px) {
+    padding-top: 3rem;
     position: relative;
   }
 }
@@ -46,8 +48,7 @@ ul.menuNav {
 }
 
 ul li.footerLogo {
-  margin-left: auto;
-  margin-bottom: 1rem;
+  margin: 0 auto 1rem auto;
 
   @media (min-width: 1023px) {
     display: inline-flex;
