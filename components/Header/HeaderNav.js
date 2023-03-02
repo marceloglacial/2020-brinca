@@ -20,18 +20,18 @@ const HeaderNav = (props) => {
 
   return (
     <ul className={`navbar-nav ml-auto ${styles.navigationList}`}>
-      {menuContent.items.map((item) => {
+      {menuContent.items.map((item, index) => {
         const { ID, title, slug, url, child_items } = item;
         const hasSubMenu = child_items && isOpen;
         const link = slug ? `/${slug}` : url;
         return (
           <li
             className={`nav-item mx-2 ${styles.navItem} ${styles.navigation__item}`}
-            key={ID}
+            key={index}
             onMouseOver={() => child_items && setIsOpen(true)}
             onMouseLeave={() => child_items && setIsOpen(false)}
           >
-            <Link href={link} key={ID}>
+            <Link href={link}>
               <a
                 className={`nav-link ${styles.topNavLink} ${styles.navigation__link}`}
                 href={link}

@@ -6,9 +6,9 @@ import Main from 'components/Main/Main';
 const Layout = (props) => {
   const { pageTitle, navigation } = props;
   const headerMenu = {
-    items: navigation.map((item) => {
+    items: navigation.map((item, index) => {
       return {
-        id: item.id,
+        id: index,
         title: item.text,
         url: item.value,
       };
@@ -34,7 +34,7 @@ const Layout = (props) => {
         Skip to main
       </a>
       <Main>{props.children}</Main>
-      {/* <Footer {...props} /> */}
+      <Footer navigation={headerMenu} />
     </>
   );
 };

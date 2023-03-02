@@ -1,30 +1,18 @@
 import Link from 'next/link';
 import styles from './Footer.module.scss';
-import FooterLoading from './FooterLoading';
-import Alert from 'components/Alert/Alert';
 import Image from 'next/image';
-import FooterSocial from './FooterSocial';
+import { CMS_ADMIN_URL } from '../../constants';
 
 const Footer = (props) => {
   const year = new Date().getUTCFullYear();
-  const menuContent = props.footerMenu;
-
-  const isError = menuContent === undefined ? true : false;
-  if (isError) return <Alert title='Data error' />;
-
-  const isLoading = menuContent.length === 0;
-  if (isLoading) return <FooterLoading />;
-
-  if (menuContent.code === 'not_found')
-    return <Alert title={menuContent.message} />;
-
+  const { navigation } = props;
   return (
     <footer className={`${styles.footer} container`}>
       <div className={`${styles.footerNav}`}>
         <ul
           className={`container align-items-center justify-content-sm-center ${styles.menuNav}`}
         >
-          <li className={`mx-auto ${styles.footerLogo}`}>
+          <li className={`${styles.footerLogo}`}>
             <Link href='/'>
               <a href='/'>
                 <Image
@@ -36,16 +24,13 @@ const Footer = (props) => {
               </a>
             </Link>
           </li>
-          <li className={`m-auto flex-grow-1`}>
-            <FooterSocial {...props} />
-          </li>
-          {menuContent.items.map((item) => {
-            const { ID, title, slug, url } = item;
+          {navigation?.items?.map((item) => {
+            const { id, title, slug, url } = item;
             const link = slug ? `/${slug}` : url;
 
             return (
-              <li className={styles.menuLink} key={ID}>
-                <Link href={link} key={ID}>
+              <li className={styles.menuLink} key={id}>
+                <Link href={link}>
                   <a href={link}>{title}</a>
                 </Link>
               </li>
@@ -64,10 +49,7 @@ const Footer = (props) => {
             </a>
           </li>
           <li className='nav-item'>
-            <a
-              href={`${process.env.NEXT_PUBLIC_WORDPRESS_URL}/wp-admin`}
-              className='nav-link'
-            >
+            <a href={CMS_ADMIN_URL} className='nav-link'>
               User Login
             </a>
           </li>
