@@ -2,6 +2,7 @@ import Layout from 'components/Layout/Layout';
 import Blocks from 'components/Blocks/Blocks';
 import { getEvents, getSingleEvent } from 'functions/getEvents';
 import { getNavigation } from 'functions/getNavigation';
+import CloudinaryGallery from 'components/Blocks/CloudinaryGallery/CloudinaryGallery';
 
 const Event = ({ navigation, pageData }) => {
   const { title, blocks } = pageData;
@@ -11,6 +12,7 @@ const Event = ({ navigation, pageData }) => {
       {blocks?.map((block, index) => (
         <Blocks {...block} id={index} key={index} />
       ))}
+      <CloudinaryGallery />
     </Layout>
   );
 };
