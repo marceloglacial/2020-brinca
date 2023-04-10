@@ -19,8 +19,6 @@ const handler = nc()
       }
     ).then((res) => res.json());
 
-    if (!response) return res.send([]);
-
     if (response.error) return res.send(response);
 
     res.send(

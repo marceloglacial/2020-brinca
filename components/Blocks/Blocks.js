@@ -11,7 +11,6 @@ import TextEditor from './TextEditor/TextEditor';
 import CloudinaryGallery from './CloudinaryGallery/CloudinaryGallery';
 
 const Blocks = (props) => {
-  console.log(props);
   const blockType = {
     hero: <Hero {...props} />,
     'content-list': <ContentList {...props} />,
