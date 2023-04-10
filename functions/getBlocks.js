@@ -4,6 +4,7 @@ export const getBlocks = (data) => {
     const componentType = {
       'content-list': getContentList(block),
       'text-editor': getTextEditor(block),
+      'cloudinary-folder': getCloudinaryFolder(block),
       hero: getHero(block),
       hubspot: getHubspot(block),
       gallery: getGallery(block),
@@ -16,6 +17,12 @@ export const getBlocks = (data) => {
 };
 
 const getEmbed = (props) => {
+  return {
+    ...props,
+    type: getComponentType(props),
+  };
+};
+const getCloudinaryFolder = (props) => {
   return {
     ...props,
     type: getComponentType(props),

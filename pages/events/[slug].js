@@ -12,7 +12,6 @@ const Event = ({ navigation, pageData }) => {
       {blocks?.map((block, index) => (
         <Blocks {...block} id={index} key={index} />
       ))}
-      <CloudinaryGallery />
     </Layout>
   );
 };

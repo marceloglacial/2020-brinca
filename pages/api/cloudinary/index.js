@@ -10,7 +10,7 @@ const handler = nc()
     const auth = 'Basic ' + btoa(apiKey + ':' + apiSecret);
 
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_CLOUDINARY_API_URL}/${cloudName}/resources/image/upload?prefix=${req.query.folder}`,
+      `${process.env.NEXT_PUBLIC_CLOUDINARY_API_URL}/${cloudName}/resources/image/upload?prefix=${req.query.folder}/&max_results=500`,
       {
         headers: {
           Authorization: auth,
@@ -18,7 +18,23 @@ const handler = nc()
         },
       }
     ).then((res) => res.json());
-    res.send(response.resources);
+
+    if (!response) return res.send([]);
+
+    if (response.error) return res.send(response);
+
+    res.send(
+      response.resources.map((item) => {
+        return {
+          id: item.asset_id,
+          index: item.asset_id,
+          url: item.url,
+          width: item.width,
+          height: item.height,
+          alternativeText: 'Photo',
+        };
+      })
+    );
   });
 
 export default handler;
