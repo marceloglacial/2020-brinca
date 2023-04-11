@@ -6,7 +6,7 @@ const GalleryImage = (props) => {
   return (
     <li className='blocks-gallery-item' key={id} data-aos='fade-in'>
       <a href='#' onClick={(e) => toggleModal(e, index)}>
-        <figure className='brinca-image'>
+        <figure className='brinca-image image-loading'>
           <Image
             src={url}
             alt={alternativeText}
