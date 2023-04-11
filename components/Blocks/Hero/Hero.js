@@ -4,6 +4,7 @@ import Link from 'next/link';
 
 const Hero = (props) => {
   const {
+    id,
     title,
     description,
     imageUrl,
@@ -16,8 +17,10 @@ const Hero = (props) => {
   } = props;
   const { alt } = image || {};
 
+  console.log(props);
+
   const roundedStyles = isRounded ? `rounded shadow-lg overflow-hidden` : '';
-  const isReversed = imagePosition === 'left';
+  const isReversed = id % 2;
   const heroContainerStyles = isReversed ? `flex-row-reverse` : '';
   const heroContentStyles = isReversed ? `ps-4` : ``;
 
