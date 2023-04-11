@@ -17,8 +17,6 @@ const Hero = (props) => {
   } = props;
   const { alt } = image || {};
 
-  console.log(props);
-
   const roundedStyles = isRounded ? `rounded shadow-lg overflow-hidden` : '';
   const isReversed = id % 2;
   const heroContainerStyles = isReversed ? `flex-row-reverse` : '';
