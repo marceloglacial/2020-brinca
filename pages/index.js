@@ -2,6 +2,7 @@ import Layout from 'components/Layout/Layout';
 import Blocks from 'components/Blocks/Blocks';
 import { getHomePage } from 'functions/getHomepage';
 import { getNavigation } from 'functions/getNavigation';
+import Button from 'components/Button/Button';
 
 const Home = ({ navigation, pageData }) => {
   const { blocks } = pageData;
@@ -11,6 +12,9 @@ const Home = ({ navigation, pageData }) => {
       {blocks?.map((block, index) => (
         <Blocks {...block} id={index} key={index} />
       ))}
+      <div className='centered pt-6'>
+        <Button title={'Veja todos os eventos'} link={'/eventos'} />
+      </div>
     </Layout>
   );
 };

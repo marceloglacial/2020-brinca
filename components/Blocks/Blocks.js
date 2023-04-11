@@ -8,12 +8,14 @@ import InstaFeed from './InstaFeed/InstaFeed';
 import HubSpotForms from './Hubspot/Forms';
 import ContentList from './ContentList/ContentList';
 import TextEditor from './TextEditor/TextEditor';
+import CloudinaryGallery from './CloudinaryGallery/CloudinaryGallery';
 
 const Blocks = (props) => {
   const blockType = {
     hero: <Hero {...props} />,
     'content-list': <ContentList {...props} />,
     'text-editor': <TextEditor {...props} />,
+    'cloudinary-folder': <CloudinaryGallery {...props} />,
     postslist: <PostList {...props} />,
     image: <ImageCore {...props} />,
     'instagram-feed': <InstaFeed {...props} />,

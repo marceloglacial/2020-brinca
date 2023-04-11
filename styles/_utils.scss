@@ -64,3 +64,13 @@
   margin: 0;
   padding: 0;
 }
+
+.centered {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pt-6 {
+  padding-top: 3rem;
+}
