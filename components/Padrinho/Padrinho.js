@@ -31,8 +31,8 @@ const Padrinho = (props) => {
         <p>
           Para participar do nosso projeto é só clicar no link abaixo e fazer o
           seu cadastro, ou envie um e-mail para{' '}
-          <a href='mailto:padrinho@brinca.ca?subject=Cadastro - Gostaria de ser Padrinho/Apadrinhado'>
-            padrinho@brinca.ca
+          <a href='mailto:info@brinca.ca?subject=Cadastro - Gostaria de ser Padrinho/Apadrinhado'>
+            info@brinca.ca
           </a>
           . Este é um trabalho 100% voluntário e coordenado também por
           voluntários, portanto, você não precisa pagar nada.

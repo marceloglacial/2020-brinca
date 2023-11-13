@@ -12,10 +12,10 @@ const PartnersContent = () => {
           Clique aqui para preencher o formulário
         </Link>{' '}
         ou envie um e-mail para{' '}
-        <a href='mailto:business@brinca.ca'>business@brinca.ca</a> com logotipo,
-        nome da empresa, endereço, telefone, e-mail, site e descrição de sua
-        empresa e/ou serviço em uma frase, além do e-mail cadastrado como membro
-        da BRINCA.
+        <a href='mailto:info@brinca.ca'>info@brinca.ca</a> com logotipo, nome da
+        empresa, endereço, telefone, e-mail, site e descrição de sua empresa
+        e/ou serviço em uma frase, além do e-mail cadastrado como membro da
+        BRINCA.
       </p>
       <h6>
         Atenção: A BRINCA não se responsabiliza por produtos ou serviços
