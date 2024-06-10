@@ -58,8 +58,8 @@ const Hero = (props) => {
               src={imageUrl}
               alt={alt ? alt : 'Hero Image'}
               layout='responsive'
-              width={615}
-              height={465}
+              width={480}
+              height={480}
             />
           </div>
         </div>
