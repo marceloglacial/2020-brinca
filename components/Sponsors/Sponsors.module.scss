@@ -1,26 +1,38 @@
 .content {
   position: relative;
-  height: 10rem;
   width: 100%;
   background-color: #f1f1f1;
   border-radius: 1rem;
   padding: 1rem;
   display: flex;
+  gap: 1rem;
   justify-content: space-evenly;
+  flex-wrap: wrap;
 }
 
 .title {
   position: relative;
   font-weight: bold;
   padding-bottom: 0.5rem;
+  text-align: center;
+
+  @media (min-width: 1024px) {
+    text-align: left;
+  }
 }
 
 .logo {
   position: relative;
-  width: 240px;
-  height: 100%;
+  width: 140px;
+  height: 8rem;
+
   border-radius: 0.5rem;
   overflow: hidden;
+
+  @media (min-width: 1024px) {
+    width: 240px;
+    height: 10rem;
+  }
 
   img {
     object-fit: contain;
