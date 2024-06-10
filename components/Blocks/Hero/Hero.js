@@ -19,7 +19,7 @@ const Hero = (props) => {
 
   const roundedStyles = isRounded ? `rounded shadow-lg overflow-hidden` : '';
   const isReversed = id % 2;
-  const heroContainerStyles = isReversed ? `flex-row-reverse` : '';
+  const heroContainerStyles = isReversed ? styles.heroContainerReverse : '';
   const heroContentStyles = isReversed ? `ps-4` : ``;
 
   if (!imageUrl)
@@ -30,39 +30,35 @@ const Hero = (props) => {
     );
 
   return (
-    <section className={`hero  ${styles.heroContainer}`}>
-      <div className={`hero__container row ${heroContainerStyles}`}>
-        <div className={`hero__content col-12 col-lg-6 col-xl-6`}>
+    <section className={`hero  ${styles.heroContainer} ${heroContainerStyles}`}>
+      <div className={`hero__content`}>
+        <div
+          className={`hero__content-container ${styles.contentContainer} ${heroContentStyles}`}
+        >
+          <h2 className={styles.heroTitle}>{title}</h2>
           <div
-            className={`hero__content-container ${styles.contentContainer} ${heroContentStyles}`}
-          >
-            <h2 className={styles.heroTitle}>{title}</h2>
-            <div
-              className={styles.heroDescription}
-              dangerouslySetInnerHTML={{ __html: description }}
-            />
-            {hasButton && (
-              <div className={styles.heroButton}>
-                <Link href={buttonLink}>
-                  <a href={buttonLink} className={`btn btn-secondary`}>
-                    {buttonText}
-                  </a>
-                </Link>
-              </div>
-            )}
-          </div>
+            className={styles.heroDescription}
+            dangerouslySetInnerHTML={{ __html: description }}
+          />
+          {hasButton && (
+            <div className={styles.heroButton}>
+              <Link href={buttonLink}>
+                <a href={buttonLink} className={`btn btn-secondary`}>
+                  {buttonText}
+                </a>
+              </Link>
+            </div>
+          )}
         </div>
-        <div className={`col-12 col-lg-6 col-xl-6`}>
-          <div className={`image__container ${roundedStyles}`}>
-            <Image
-              src={imageUrl}
-              alt={alt ? alt : 'Hero Image'}
-              layout='responsive'
-              width={480}
-              height={480}
-            />
-          </div>
-        </div>
+      </div>
+      <div className={`${styles.imageContainer} ${roundedStyles}`}>
+        <Image
+          src={imageUrl}
+          alt={alt ? alt : 'Hero Image'}
+          layout='fill'
+          width={480}
+          height={480}
+        />
       </div>
     </section>
   );

@@ -1,0 +1,28 @@
+.content {
+  position: relative;
+  height: 10rem;
+  width: 100%;
+  background-color: #f1f1f1;
+  border-radius: 1rem;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.title {
+  position: relative;
+  font-weight: bold;
+  padding-bottom: 0.5rem;
+}
+
+.logo {
+  position: relative;
+  width: 240px;
+  height: 100%;
+  border-radius: 0.5rem;
+  overflow: hidden;
+
+  img {
+    object-fit: contain;
+  }
+}
