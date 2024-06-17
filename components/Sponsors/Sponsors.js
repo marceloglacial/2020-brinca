@@ -27,7 +27,7 @@ const Sponsors = () => {
             />
           </a>
         </div>
-        <div className={styles.logo}>
+        {/* <div className={styles.logo}>
           <a
             href='https://www.britanniavillagedentalcentre.com/'
             target='_blank'
@@ -45,7 +45,7 @@ const Sponsors = () => {
               layout='fill'
             />
           </a>
-        </div>
+        </div> */}
       </div>
     </div>
   );
