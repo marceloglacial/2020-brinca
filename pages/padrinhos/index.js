@@ -1,6 +1,5 @@
 import Layout from 'components/Layout/Layout';
 import Padrinho from 'components/Padrinho/Padrinho';
-import { getHomePage } from 'functions/getHomepage';
 import { getNavigation } from 'functions/getNavigation';
 
 const Apadrinhamento = (props) => {
