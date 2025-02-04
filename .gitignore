@@ -39,3 +39,4 @@ secrets.json
 
 # envs
 .env
+.env*.local
