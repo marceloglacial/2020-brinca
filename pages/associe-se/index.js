@@ -24,34 +24,16 @@ const AssocieSe = (props) => {
             residentes no mesmo endereço)
           </li>
           <li>Membership Individual: CAD$25</li>
-          <li>
-            Membership Sênior (65+): CAD$20 (para duas pessoas com 65 anos ou
-            mais, residentes no mesmo endereço)
-          </li>
-          <li>
-            Membership Estudantil: CAD$15 (para um estudante em período
-            integral)
-          </li>
-          Importante: As assinaturas são válidas por um ano a partir da data da
-          compra. Valores de Renovação:
-          <li>
-            Membership Familiar: CAD$20 (cobre todos os membros da família
-            residentes no mesmo endereço)
-          </li>
-          <li>Membership Individual: CAD$10</li>
-          <li>
-            Membership Sênior (65+): CAD$10 (para duas pessoas com 65 anos ou
-            mais, residentes no mesmo endereço)
-          </li>
-          <li>
-            Membership Estudantil: CAD$8 (para um estudante em período integral)
-          </li>
         </ul>
         <p>
-          Junte-se Hoje! Tornar-se membro da BRINCA é fácil! Basta clicar no
-          link abaixo, preencher o formulário e concluir seu pagamento seguro
-          via Zeffy.
+          Tornar-se membro da BRINCA é fácil! Basta clicar no link abaixo,
+          preencher o formulário e concluir seu pagamento seguro via Zeffy.
         </p>
+        <p>
+          <strong>ATENÇÃO:</strong> A BRINCA utiliza a plataforma gratuita
+          Zeffy, que solicita uma contribuição opicional ao final da sua compra.
+        </p>
+        <br />
         <p className='text-center'>
           <a
             href='https://www.zeffy.com/en-CA/ticketing/brazil-canada-commnity-association-memberships--2025'
