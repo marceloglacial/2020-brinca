@@ -23,7 +23,7 @@ const AssocieSe = (props) => {
             Membership Familiar: CAD$30 (cobre todos os membros da família
             residentes no mesmo endereço)
           </li>
-          <li>Membership Individual: CAD$25</li>
+          <li>Membership Individual: CAD$20</li>
         </ul>
         <p>
           Tornar-se membro da BRINCA é fácil! Basta clicar no link abaixo,
