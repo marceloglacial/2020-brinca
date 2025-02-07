@@ -11,12 +11,12 @@ const AssocieSe = (props) => {
       <section className='padrinho pt-0'>
         <p>
           Junte-se à BRINCA e ajude-nos a fazer a diferença! Sua associação nos
-          ajuda a continuar com as tivividades que desenvolvemos anualment para
-          a comunidade brasileira de Ottawa-Gatineau
+          ajuda a continuar com as ativividades que desenvolvemos anualmente
+          para a comunidade brasileira de Ottawa-Gatineau
         </p>
         <h4 className='text-center'>Opções e Valores de Assinatura</h4>
         <p>
-          Abaixo as opções de “membership” para se adequar às suas necessidades:
+          Abaixo as opções de “membership” para se adequar as suas necessidades:
         </p>
         <ul>
           <li>
