@@ -4,48 +4,38 @@ import styles from './Sponsors.module.scss';
 const Sponsors = () => {
   return (
     <div className={styles.container}>
-      <div className={styles.title}>
-        {new Date().getFullYear()} Diamond Sponsors
-      </div>
+      <div className={styles.title}>{new Date().getFullYear()} Sponsors</div>
       <div className={styles.content}>
         <div className={styles.logo}>
-          <a
-            href='https://www.instagram.com/ottawabrazilrealestategroup/'
-            target='_blank'
-          >
-            <Image
-              src={`https://res.cloudinary.com/brinca/image/upload/v1717987646/sponsors/OttawaBrazilRealEstateGroup-removebg-preview_jm4q6g.png`}
-              layout='fill'
-            />
-          </a>
+          <Image
+            src={`https://res.cloudinary.com/brinca/image/upload/v1717987646/sponsors/OttawaBrazilRealEstateGroup-removebg-preview_jm4q6g.png`}
+            layout='fill'
+          />
         </div>
         <div className={styles.logo}>
-          <a href='https://www.bmo.com/en-ca/main/personal/' target='_blank'>
-            <Image
-              src={`https://res.cloudinary.com/brinca/image/upload/v1717984776/sponsors/ppcn1zpomodwxluq9wik.jpg`}
-              layout='fill'
-            />
-          </a>
-        </div>
-        {/* <div className={styles.logo}>
-          <a
-            href='https://www.britanniavillagedentalcentre.com/'
-            target='_blank'
-          >
-            <Image
-              src={`https://res.cloudinary.com/brinca/image/upload/v1717984776/sponsors/chvucmjvkawvzamhlehm.png`}
-              layout='fill'
-            />
-          </a>
+          <Image
+            src={`https://res.cloudinary.com/brinca/image/upload/v1739760061/Screenshot_2025-02-16_at_9.40.56_PM_oyonuu.png`}
+            layout='fill'
+          />
         </div>
         <div className={styles.logo}>
-          <a href='https://horizonsdentalcare.ca/' target='_blank'>
-            <Image
-              src={`https://res.cloudinary.com/brinca/image/upload/v1717987636/sponsors/BritanniaVillage-removebg-preview_bkxw7i.png`}
-              layout='fill'
-            />
-          </a>
-        </div> */}
+          <Image
+            src={`https://res.cloudinary.com/brinca/image/upload/v1739759860/Screenshot_2025-02-16_at_9.37.15_PM_zjo8wv.png`}
+            layout='fill'
+          />
+        </div>
+        <div className={styles.logo}>
+          <Image
+            src={`https://res.cloudinary.com/brinca/image/upload/c_pad,w_200/v1739759860/Screenshot_2025-02-16_at_9.37.20_PM_fggroy.png`}
+            layout='fill'
+          />
+        </div>
+        <div className={styles.logo}>
+          <Image
+            src={`https://res.cloudinary.com/brinca/image/upload/v1739759860/Screenshot_2025-02-16_at_9.37.27_PM_iyvud1.png`}
+            layout='fill'
+          />
+        </div>
       </div>
     </div>
   );
